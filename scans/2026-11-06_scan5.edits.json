@@ -5,7 +5,8 @@
     "Wall_2",
     "Joint_2",
     "sofa_rect_0",
-    "table_dining_rect_0"
+    "table_dining_rect_0",
+    "Door_0"
   ],
   "retype": {
     "refrigerator_1": "storage_cabinet"
@@ -64,6 +65,17 @@
       "to": [
         -5.471,
         2.0387
+      ]
+    },
+    {
+      "label": "36in opening replacing the 2'8\" door in the kitchen's south wall, same center",
+      "from": [
+        -4.8142,
+        2.316
+      ],
+      "to": [
+        -3.8998,
+        2.316
       ]
     }
   ]

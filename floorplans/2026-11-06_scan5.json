@@ -65,13 +65,6 @@
   ],
   "doors": [
     {
-      "name": "Door_0",
-      "width_m": 0.808,
-      "width_ft_in": "2'8\"",
-      "height_m": 2.06,
-      "height_ft_in": "6'9\""
-    },
-    {
       "name": "Door_1",
       "width_m": 1.548,
       "width_ft_in": "5'1\"",
@@ -368,6 +361,11 @@
     },
     {
       "name": "Opening_added_1",
+      "width_m": 0.914,
+      "width_ft_in": "3'0\""
+    },
+    {
+      "name": "Opening_added_2",
       "width_m": 0.914,
       "width_ft_in": "3'0\""
     }

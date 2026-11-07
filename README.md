@@ -92,7 +92,8 @@ detected piece of furniture are in the matching `floorplans/*.json` files.
   (`scans/2026-11-06_scan5.edits.json`). Ceiling is 7'10", lower than the other rooms.
   The scanner's top-right "fridge" in the kitchen is really a tall cabinet, and the 25" gap to its
   left is filled with a base cabinet. The 3'4" wall at the living room's SE corner is removed: that
-  corner opens to a hallway. Two doorless 36" openings: one in the south wall (to a hallway), centered
+  corner opens to a hallway. The kitchen's 2'8" door in the south wall is now a doorless 36" opening on
+  the same center. Two more doorless 36" openings: one in the south wall (to a hallway), centered
   between the kitchen's tall cabinet and the dining table; one in the kitchen's west wall, centered
   between the fridge and the SW corner. Kitchen cabinets are drawn at standard depths from the wall: 25½" for base
   and tall cabinets, dishwasher and range (24" box + countertop overhang), 12" for uppers.
