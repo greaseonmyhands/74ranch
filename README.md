@@ -60,6 +60,10 @@ How they fit:
   south and a 5' wall runs back west to the Office, forming a closet about 4'8" × 2'8" inside (30"
   door at the left end of its south wall, hinged left, swinging out); the
   gap between that box and the Living Room's west wall is a 3'0" hallway down from the dining room.
+- Below the laundry room, the far SW corner is boxed out too: the laundry room's west wall continues
+  15'8" south, and a 17'3" south wall on the same line as Bedroom 2's south wall runs east to the
+  Office's west wall (2'10" short of the Office's south face). Not scanned yet; the laundry room's two
+  south doors lead into it.
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an
   ~8'-wide area between the Office and the Living Room, plus a strip above the Office); the

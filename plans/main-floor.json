@@ -237,6 +237,28 @@
         1.7764
       ],
       "show_length": false
+    },
+    {
+      "label": "Laundry room's west wall continued south to the Bedroom 2 south-wall line",
+      "from": [
+        -19.6792,
+        -0.069
+      ],
+      "to": [
+        -19.6792,
+        4.694
+      ]
+    },
+    {
+      "label": "South wall of the block below the laundry room, on the Bedroom 2 south-wall line",
+      "from": [
+        -19.6792,
+        4.694
+      ],
+      "to": [
+        -14.4296,
+        4.694
+      ]
     }
   ],
   "add_floor": [
@@ -438,6 +460,13 @@
       "at": [
         -9.599,
         2.748
+      ],
+      "text": "not yet scanned"
+    },
+    {
+      "at": [
+        -17.054,
+        2.312
       ],
       "text": "not yet scanned"
     }

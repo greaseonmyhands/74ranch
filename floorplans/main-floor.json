@@ -160,6 +160,13 @@
       "height_m": 2.5
     },
     {
+      "name": "Wall_plan_17",
+      "added": true,
+      "length_m": 5.25,
+      "length_ft_in": "17'3\"",
+      "height_m": 2.5
+    },
+    {
       "name": "Wall_2~3",
       "added": false,
       "length_m": 5.199,
@@ -179,6 +186,13 @@
       "length_m": 4.846,
       "length_ft_in": "15'11\"",
       "height_m": 2.6
+    },
+    {
+      "name": "Wall_plan_16",
+      "added": true,
+      "length_m": 4.763,
+      "length_ft_in": "15'8\"",
+      "height_m": 2.5
     },
     {
       "name": "Wall_3~2",
