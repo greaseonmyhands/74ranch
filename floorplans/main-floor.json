@@ -255,6 +255,13 @@
       "height_m": 2.5
     },
     {
+      "name": "Wall_plan_13",
+      "added": true,
+      "length_m": 1.968,
+      "length_ft_in": "6'5\"",
+      "height_m": 2.5
+    },
+    {
       "name": "Wall_added_3~0",
       "added": true,
       "length_m": 1.946,
@@ -267,13 +274,6 @@
       "length_m": 1.946,
       "length_ft_in": "6'5\"",
       "height_m": 2.5
-    },
-    {
-      "name": "Wall_4~2",
-      "added": false,
-      "length_m": 1.924,
-      "length_ft_in": "6'4\"",
-      "height_m": 2.56
     },
     {
       "name": "Wall_2~4",
@@ -807,7 +807,7 @@
     }
   ],
   "total_area_sqft": 1931.2,
-  "total_area_m2": 179.42,
+  "total_area_m2": 179.41,
   "fixtures": [
     {
       "name": "Shower\n40\" \u00d7 60\"",

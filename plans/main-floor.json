@@ -51,7 +51,8 @@
     "Wall_1~4",
     "Wall_4~4",
     "Joint_0~4",
-    "Joint_2~4"
+    "Joint_2~4",
+    "Wall_4~2"
   ],
   "add_walls": [
     {
@@ -202,6 +203,17 @@
         0.862
       ],
       "show_length": false
+    },
+    {
+      "label": "Living Room west wall (was 6'4\"), extended south to end level with the Office's 6'2\" wall",
+      "from": [
+        -8.3096,
+        0.774
+      ],
+      "to": [
+        -8.3096,
+        2.742
+      ]
     }
   ],
   "add_floor": [

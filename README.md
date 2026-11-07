@@ -40,6 +40,7 @@ How they fit:
   about 2'9" deep, which the dining room's 5'0" opening leads into (an entry or hall?). The two
   fireplaces sit nearly back to back across it, so it likely holds the shared chimney too. The Living
   Room's 6'4" west wall continues 2'9" north to the dining room's south wall, closing the strip's west end.
+  At its south end it's extended 1¾" (to 6'5") so it ends level with the Office's 6'2" wall opposite.
 - The Laundry Room sits west of the kitchen and shares a standard 4" wall with it (11'0"); their south
   walls are in line, and the kitchen runs 4'2" further north. The kitchen's 36" doorway in that wall
   opens into the laundry room.
