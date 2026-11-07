@@ -6,7 +6,7 @@ Notes, scans and plans for the house.
 
 [`floorplans/main-floor.png`](floorplans/main-floor.png) · [SVG](floorplans/main-floor.svg): the
 North End Renovation (scan 1), the kitchen/dining room (scan 5), the front living room (scan 3) and
-the laundry room (scan 2) and the office (scan 6) joined into one plan, about **1,877 sq ft** so far. Defined in [`plans/main-floor.json`](plans/main-floor.json).
+the laundry room (scan 2) and the office (scan 6) joined into one plan, about **1,879 sq ft** so far. Defined in [`plans/main-floor.json`](plans/main-floor.json).
 
 | Room | Area |
 |---|---|
@@ -16,7 +16,7 @@ the laundry room (scan 2) and the office (scan 6) joined into one plan, about **
 | Room 2 | 314 sq ft |
 | Bedroom 2 (was Room 1B; queen bed drawn for scale) | 183 sq ft |
 | Laundry Room | 188 sq ft |
-| Office | 176 sq ft |
+| Office | 179 sq ft |
 | Bathroom | 55 sq ft |
 
 How they fit:
@@ -42,7 +42,8 @@ How they fit:
   opens into the laundry room.
 - The Office (scan 6, turned 180°, furniture removed) sits in the SW block: its SW inside corner is on
   the block's SW inside corner (kitchen west-wall line / Living Room south-wall line), so its west and
-  south walls are the outline walls. Its ~4' opening faces east into the rest of the block.
+  south walls are the outline walls. Its ~4' opening faces east into the rest of the block; the 5'0"
+  wall below the opening is moved 5½" east to line up with the 6'2" wall above it.
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an
   ~8'-wide area between the Office and the Living Room, plus a strip above the Office); the
@@ -64,7 +65,7 @@ Each scan has its own coordinate frame, so the three plans are not aligned with 
 |   |   | Bathroom | 8'8" × 6'5" (8'4" × 6'1" inside) | 55 sq ft |
 | 2 | [PNG](floorplans/2026-11-06_scan2.png) · [SVG](floorplans/2026-11-06_scan2.svg) | Laundry Room (4 doors, 2 windows) | 17'1" × 11'0" | 188 sq ft |
 | 3 | [PNG](floorplans/2026-11-06_scan3.png) · [SVG](floorplans/2026-11-06_scan3.svg) | Front Living Room (fireplace, 7'9" window) | 15'0" × 15'9" | 235 sq ft |
-| 6 | [PNG](floorplans/2026-11-06_scan6.png) · [SVG](floorplans/2026-11-06_scan6.svg) | Office (turned 180°; 4'10" window, ~4' opening on the right wall) | 11'7" × 15'5" | 176 sq ft |
+| 6 | [PNG](floorplans/2026-11-06_scan6.png) · [SVG](floorplans/2026-11-06_scan6.svg) | Office (turned 180°; 4'10" window, ~4' opening on the right wall) | 11'7" × 15'5" | 179 sq ft |
 | 5 | [PNG](floorplans/2026-11-06_scan5.png) · [SVG](floorplans/2026-11-06_scan5.svg) | Kitchen (open to living room) | 17'3" × 15'2" | 262 sq ft |
 |   |   | Living Room (fireplace) | 18'8" × 15'2" overall | 268 sq ft |
 

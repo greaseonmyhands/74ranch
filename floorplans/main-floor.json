@@ -71,8 +71,8 @@
       "depth_m": 4.704,
       "width_ft_in": "11'7\"",
       "depth_ft_in": "15'5\"",
-      "area_m2": 16.38,
-      "area_sqft": 176.3,
+      "area_m2": 16.61,
+      "area_sqft": 178.8,
       "rectangular": true
     },
     {
@@ -751,8 +751,8 @@
       "bottom_height_m": -0.07
     }
   ],
-  "total_area_sqft": 1876.9,
-  "total_area_m2": 174.37,
+  "total_area_sqft": 1879.3,
+  "total_area_m2": 174.59,
   "fixtures": [
     {
       "name": "Shower\n40\" \u00d7 60\"",

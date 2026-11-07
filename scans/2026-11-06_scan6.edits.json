@@ -14,5 +14,38 @@
     "table_*",
     "storage_*",
     "chair_*"
+  ],
+  "move": [
+    {
+      "label": "Line the 5'0\" east wall up with the 6'2\" east wall",
+      "nodes": [
+        "Wall_3",
+        "Joint_3"
+      ],
+      "by": [
+        0.144,
+        0
+      ]
+    }
+  ],
+  "add_floor": [
+    [
+      [
+        1.65,
+        0.778
+      ],
+      [
+        1.794,
+        0.778
+      ],
+      [
+        1.794,
+        2.352
+      ],
+      [
+        1.65,
+        2.352
+      ]
+    ]
   ]
 }
