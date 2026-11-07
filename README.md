@@ -11,8 +11,8 @@ joined into one plan, about **1,512 sq ft** so far. Defined in [`plans/main-floo
 | Room | Area |
 |---|---|
 | Kitchen | 262 sq ft |
-| Dining (scan 5's "living room", open to the kitchen) | 266 sq ft |
-| Living Room (front living room + old Room 1A and its corridor, wall between removed) | 433 sq ft |
+| Dining (scan 5's "living room", open to the kitchen) | 268 sq ft |
+| Living Room (front living room + old Room 1A and its corridor, wall between removed) | 431 sq ft |
 | Room 2 | 314 sq ft |
 | Bedroom 2 (was Room 1B; queen bed drawn for scale) | 183 sq ft |
 | Bathroom | 55 sq ft |
@@ -26,7 +26,8 @@ How they fit:
   North End's short step-in wall (moved 4 mm to match). The dining room's 5'1" opening runs about 6"
   past the North End corridor line, into that step-in wall.
 - The walk-through from the dining room into the North End corridor has its north side on the same
-  line as the corridor's top wall. The dashed line there separates Dining from the Living Room.
+  line as the corridor's top wall. The dashed line there separates Dining from the Living Room; it
+  meets the south wall at the right edge of the dining room's 5'1" opening.
 - The front living room sat beside Room 1A (sharing a 12'10" wall, now removed so they're one Living
   Room). Its north wall (14'10", with the fireplace) is in line with Room 1A's lower 1'6" wall, and it
   projects 2'10" further south than Room 1A: the front of the house jogs there.
