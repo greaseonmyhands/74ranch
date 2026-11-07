@@ -33,6 +33,14 @@ bath's south wall, his and her 42" vanities flank a centered 32" doorway into th
 a 24" × 20" island in the middle with ~21-22" aisles all round, and a 24" washer/dryer combo by the
 doorway. Tight: a full-size island or separate washer + dryer would need about 2' more width.
 
+**Option F** ([PNG](floorplans/room2-option-f.png), `plans/room2-option-f.json`; E and F side by side in
+[`floorplans/room2-options-ef.png`](floorplans/room2-options-ef.png)): E flipped, with the dressing room
+(77 sq ft) above the bath. The bath (76 sq ft) gets the east window and the alcove for the 60" × 36"
+shower and toilet; his and her 34" vanities flank the centered 32" doorway on the bath's north wall;
+the bedroom enters the bath through a 30" pocket door at the south end of the partition (a swing
+door would hit the vanity). The dressing room's horseshoe runs along the west, north and east walls
+with the combo washer/dryer at the front of the east run, and a 26" × 20" island (aisles ~21-26").
+
 In A/B the bed's headboard is on the east wall with ~36" on each side; in C/D it's on the solid west
 wall (shared with the dining room) with ~29" on each side. Plans: `plans/room2-option-{a,b,c,d}.json`.
 
