@@ -26,6 +26,16 @@
       "rectangular": false
     },
     {
+      "name": "Closet",
+      "width_m": 1.525,
+      "depth_m": 0.914,
+      "width_ft_in": "5'0\"",
+      "depth_ft_in": "3'0\"",
+      "area_m2": 1.39,
+      "area_sqft": 15.0,
+      "rectangular": true
+    },
+    {
       "name": "Dining",
       "width_m": 5.614,
       "depth_m": 4.633,
@@ -304,7 +314,7 @@
       "height_m": 2.5
     },
     {
-      "name": "Wall_plan_15",
+      "name": "Wall_plan_nolabel_15",
       "added": true,
       "length_m": 1.525,
       "length_ft_in": "5'0\"",
@@ -463,6 +473,13 @@
       "name": "Door_plan_0",
       "width_m": 1.829,
       "width_ft_in": "6'0\"",
+      "height_m": 2.03,
+      "height_ft_in": "6'8\""
+    },
+    {
+      "name": "Door_plan_1",
+      "width_m": 0.762,
+      "width_ft_in": "2'6\"",
       "height_m": 2.03,
       "height_ft_in": "6'8\""
     }
@@ -820,8 +837,8 @@
       "bottom_height_m": -0.07
     }
   ],
-  "total_area_sqft": 1931.2,
-  "total_area_m2": 179.41,
+  "total_area_sqft": 1946.2,
+  "total_area_m2": 180.81,
   "fixtures": [
     {
       "name": "Shower\n40\" \u00d7 60\"",

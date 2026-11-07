@@ -57,7 +57,8 @@ How they fit:
   attic stairs (about 11' × 2'9" inside, rising west to east, ~13 treads at 10"): a new wall drops from the kitchen wall flush with the dining hallway
   opening's west edge, and the Office's north wall is extended east to meet it. The stairs open
   straight off the east side of the hall (no wall between). Below the stairs' east end, a 3' wall runs
-  south and a 5' wall runs back west to the Office, boxing in a space about 4'8" × 2'8" inside; the
+  south and a 5' wall runs back west to the Office, forming a closet about 4'8" × 2'8" inside (30"
+  door at the left end of its south wall, hinged left, swinging out); the
   gap between that box and the Living Room's west wall is a 3'0" hallway down from the dining room.
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an
