@@ -228,6 +228,13 @@
       "height_m": 2.5
     },
     {
+      "name": "Wall_plan_9",
+      "added": true,
+      "length_m": 2.507,
+      "length_ft_in": "8'3\"",
+      "height_m": 2.5
+    },
+    {
       "name": "Wall_added_3~0",
       "added": true,
       "length_m": 1.946,
@@ -256,18 +263,18 @@
       "height_m": 2.55
     },
     {
+      "name": "Wall_added_0~4",
+      "added": true,
+      "length_m": 1.584,
+      "length_ft_in": "5'2\"",
+      "height_m": 2.5
+    },
+    {
       "name": "Wall_2~2",
       "added": false,
       "length_m": 1.584,
       "length_ft_in": "5'2\"",
       "height_m": 2.56
-    },
-    {
-      "name": "Wall_3~4",
-      "added": false,
-      "length_m": 1.523,
-      "length_ft_in": "5'0\"",
-      "height_m": 2.55
     },
     {
       "name": "Wall_plan_7",

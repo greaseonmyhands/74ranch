@@ -156,6 +156,17 @@
         -0.069
       ],
       "thickness_in": 4
+    },
+    {
+      "label": "Wall from the top of the Office's 5'2\" wall east to the top of the Living Room's 5'2\" wall",
+      "from": [
+        -10.8486,
+        3.982
+      ],
+      "to": [
+        -8.3416,
+        3.982
+      ]
     }
   ],
   "add_floor": [

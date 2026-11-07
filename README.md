@@ -42,8 +42,10 @@ How they fit:
   opens into the laundry room.
 - The Office (scan 6, turned 180°, furniture removed) sits in the SW block: its SW inside corner is on
   the block's SW inside corner (kitchen west-wall line / Living Room south-wall line), so its west and
-  south walls are the outline walls. Its ~4' opening faces east into the rest of the block; the 5'0"
-  wall below the opening is moved 5½" east to line up with the 6'2" wall above it.
+  south walls are the outline walls. Its ~4' opening faces east into the rest of the block; the wall
+  below the opening is moved 5½" east to line up with the 6'2" wall above it and lengthened to 5'2",
+  matching the Living Room's 5'2" wall opposite. An 8'3" wall joins the tops of those two walls,
+  closing off an unscanned 8'3" × 5'2" space along the south wall.
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an
   ~8'-wide area between the Office and the Living Room, plus a strip above the Office); the

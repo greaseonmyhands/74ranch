@@ -46,11 +46,11 @@
       "height_m": 2.55
     },
     {
-      "name": "Wall_3",
-      "added": false,
-      "length_m": 1.523,
-      "length_ft_in": "5'0\"",
-      "height_m": 2.55
+      "name": "Wall_added_0",
+      "added": true,
+      "length_m": 1.584,
+      "length_ft_in": "5'2\"",
+      "height_m": 2.5
     }
   ],
   "doors": [],
