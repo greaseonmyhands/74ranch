@@ -1,6 +1,6 @@
 {
-  "title": "Main floor: North End + Kitchen/Living",
-  "notes": "Scan 5 (kitchen/living, rotated 90 cw by its own edits) is placed so its north wall is collinear with the North End's and its walk-through meets the North End corridor. The shared wall (living room east / Room 2 west) is a standard 4in wall whose west face is the living room's scanned surface; Room 2 takes the rest of the ~15in the scans left between them. The walk-through's north side is redrawn on the corridor's top-wall line.",
+  "title": "Main floor",
+  "notes": "Scan 5 (kitchen/living, rotated 90 cw by its own edits) is placed so its north wall is collinear with the North End's and its walk-through meets the North End corridor. The shared wall (living room east / Room 2 west) is a standard 4in wall whose west face is the living room's scanned surface; Room 2 takes the rest of the ~15in the scans left between them. The walk-through's north side is redrawn on the corridor's top-wall line. Scan 3 (Front Living Room) shares a standard 4in wall with Room 1A; its north wall is in line with Room 1A's lower 1'6\" wall and it projects 2'10\" further south (the front of the house jogs).",
   "parts": [
     {
       "scan": "scans/2026-11-06_scan1.glb"
@@ -10,6 +10,13 @@
       "offset": [
         -9.151,
         -2.385
+      ]
+    },
+    {
+      "scan": "scans/2026-11-06_scan3.glb",
+      "offset": [
+        -6.0616,
+        3.17
       ]
     }
   ],
@@ -21,7 +28,9 @@
     "Wall_4~1",
     "Wall_5~1",
     "Joint_5~1",
-    "Joint_3~1"
+    "Joint_3~1",
+    "Wall_12~0",
+    "Wall_1~2"
   ],
   "add_walls": [
     {
@@ -59,6 +68,29 @@
         -1.172
       ],
       "show_length": false
+    },
+    {
+      "label": "Shared 4in wall: Front Living Room east / Room 1A west",
+      "from": [
+        -3.7308,
+        0.774
+      ],
+      "to": [
+        -3.7308,
+        4.694
+      ],
+      "thickness_in": 4
+    },
+    {
+      "label": "Front Living Room east wall south of Room 1A (front-of-house jog)",
+      "from": [
+        -3.7816,
+        4.694
+      ],
+      "to": [
+        -3.7816,
+        5.566
+      ]
     }
   ],
   "add_floor": [

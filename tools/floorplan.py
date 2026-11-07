@@ -708,14 +708,22 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
         txt = ft_in(length)
         half_w = (len(txt) * 0.62 + 1) * 7.5 * m_per_pt / 2
         half_h = 1.3 * 7.5 * m_per_pt / 2
-        if horiz:
-            lx, lz = ctr[0], ctr[2] + (off if ctr[2] > cz else -off)
-            box = _rect(lx - half_w, lz - half_h, lx + half_w, lz + half_h)
-        else:
-            lx, lz = ctr[0] + (off if ctr[0] > cx else -off), ctr[2]
-            box = _rect(lx - half_h, lz - half_w, lx + half_h, lz + half_w)
-        if any(box.intersects(b) for b in wall_label_boxes):
-            continue  # would collide with a longer wall's label (e.g. a shared wall)
+        # Default side is away from the plan's center; flip to the other side of the wall if
+        # that collides with another label (wall or furniture), skip if both sides do.
+        sign = 1 if (ctr[2] > cz if horiz else ctr[0] > cx) else -1
+        box = None
+        for sgn in (sign, -sign):
+            if horiz:
+                lx, lz = ctr[0], ctr[2] + sgn * off
+                cand = _rect(lx - half_w, lz - half_h, lx + half_w, lz + half_h)
+            else:
+                lx, lz = ctr[0] + sgn * off, ctr[2]
+                cand = _rect(lx - half_h, lz - half_w, lx + half_h, lz + half_w)
+            if not any(cand.intersects(b) for b in wall_label_boxes + placed):
+                box = cand
+                break
+        if box is None:
+            continue
         wall_label_boxes.append(box)
         ax.text(lx, lz, txt, ha="center", va="center", fontsize=7.5, color="#0b5394",
                 rotation=0 if horiz else 90, zorder=7)

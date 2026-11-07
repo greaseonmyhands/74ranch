@@ -5,13 +5,14 @@ Notes, scans and plans for the house.
 ## Main floor (combined)
 
 [`floorplans/main-floor.png`](floorplans/main-floor.png) · [SVG](floorplans/main-floor.svg): the
-North End Renovation (scan 1) and the kitchen/living room (scan 5) joined into one plan, about
-**1,286 sq ft** so far. Defined in [`plans/main-floor.json`](plans/main-floor.json).
+North End Renovation (scan 1), the kitchen/living room (scan 5) and the Front Living Room (scan 3)
+joined into one plan, about **1,520 sq ft** so far. Defined in [`plans/main-floor.json`](plans/main-floor.json).
 
 | Room | Area |
 |---|---|
 | Kitchen | 262 sq ft |
 | Living Room | 269 sq ft |
+| Front Living Room | 235 sq ft |
 | Room 2 | 323 sq ft (11" wider than its own scan; see below) |
 | Room 1A (incl. corridor) | 194 sq ft |
 | Room 1B | 183 sq ft |
@@ -25,6 +26,12 @@ How they fit:
   North End's short step-in wall (moved 4 mm to match).
 - The walk-through from the living room into the North End corridor has its north side on the same
   line as the corridor's top wall. The dashed line there separates the living room from Room 1A.
+- The Front Living Room shares a standard 4" wall with Room 1A (12'10"). Its north wall (14'10", with
+  the fireplace) is in line with Room 1A's lower 1'6" wall, and it projects 2'10" further south than
+  Room 1A: the front of the house jogs there.
+- Between the living room's south wall and the Front Living Room's north wall is an unscanned strip
+  about 2'9" deep, which the living room's 5'1" opening leads into (an entry or hall?). The two
+  fireplaces sit nearly back to back across it, so it likely holds the shared chimney too.
 
 ## Floorplans
 

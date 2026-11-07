@@ -16,6 +16,16 @@
       "rectangular": true
     },
     {
+      "name": "Front Living Room",
+      "width_m": 4.56,
+      "depth_m": 4.792,
+      "width_ft_in": "15'0\"",
+      "depth_ft_in": "15'9\"",
+      "area_m2": 21.79,
+      "area_sqft": 234.5,
+      "rectangular": true
+    },
+    {
       "name": "Kitchen",
       "width_m": 5.248,
       "depth_m": 4.633,
@@ -110,6 +120,20 @@
       "height_m": 2.5
     },
     {
+      "name": "Wall_3~2",
+      "added": false,
+      "length_m": 4.56,
+      "length_ft_in": "15'0\"",
+      "height_m": 2.56
+    },
+    {
+      "name": "Wall_0~2",
+      "added": false,
+      "length_m": 4.528,
+      "length_ft_in": "14'10\"",
+      "height_m": 2.56
+    },
+    {
       "name": "Wall_0~0",
       "added": false,
       "length_m": 4.449,
@@ -124,14 +148,14 @@
       "height_m": 2.5
     },
     {
-      "name": "Wall_12~0",
-      "added": false,
+      "name": "Wall_added_0~0",
+      "added": true,
       "length_m": 3.92,
       "length_ft_in": "12'10\"",
-      "height_m": 2.6
+      "height_m": 2.5
     },
     {
-      "name": "Wall_added_0~0",
+      "name": "Wall_plan_3",
       "added": true,
       "length_m": 3.92,
       "length_ft_in": "12'10\"",
@@ -170,6 +194,27 @@
       "added": true,
       "length_m": 1.946,
       "length_ft_in": "6'5\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_4~2",
+      "added": false,
+      "length_m": 1.924,
+      "length_ft_in": "6'4\"",
+      "height_m": 2.56
+    },
+    {
+      "name": "Wall_2~2",
+      "added": false,
+      "length_m": 1.584,
+      "length_ft_in": "5'2\"",
+      "height_m": 2.56
+    },
+    {
+      "name": "Wall_plan_4",
+      "added": true,
+      "length_m": 0.872,
+      "length_ft_in": "2'10\"",
       "height_m": 2.5
     },
     {
@@ -277,6 +322,15 @@
       "height_ft_in": "3'1\"",
       "sill_height_m": 1.29,
       "sill_height_ft_in": "4'3\""
+    },
+    {
+      "name": "Window_0~2",
+      "width_m": 2.359,
+      "width_ft_in": "7'9\"",
+      "height_m": 1.89,
+      "height_ft_in": "6'2\"",
+      "sill_height_m": 0.37,
+      "sill_height_ft_in": "1'3\""
     },
     {
       "name": "Window_1~0",
@@ -456,6 +510,16 @@
       "bottom_height_m": -0.07
     },
     {
+      "name": "fireplace_0~2",
+      "type": "fireplace",
+      "size_m": [
+        1.6,
+        1.01,
+        1.4
+      ],
+      "bottom_height_m": 0.01
+    },
+    {
       "name": "storage_shelf_0~1",
       "type": "shelf",
       "size_m": [
@@ -596,8 +660,8 @@
       "bottom_height_m": -0.07
     }
   ],
-  "total_area_sqft": 1285.7,
-  "total_area_m2": 119.45,
+  "total_area_sqft": 1520.2,
+  "total_area_m2": 141.23,
   "fixtures": [
     {
       "name": "Shower\n40\" \u00d7 60\"",
