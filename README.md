@@ -41,6 +41,11 @@ the bedroom enters the bath through a 30" pocket door at the south end of the pa
 door would hit the vanity). The dressing room's horseshoe runs along the west, north and east walls
 with the combo washer/dryer at the front of the east run, and a 26" × 20" island (aisles ~21-26").
 
+**Option G** ([PNG](floorplans/room2-option-g.png), `plans/room2-option-g.json`): Option F with Room 2's
+3'4" exterior door removed, so the suite partition moves 2' west. Bedroom 138 sq ft (11'9" wide, ~32"
+beside the king bed), master bath 82 sq ft with his and her 42" vanities, dressing room 95 sq ft with
+24" horseshoe storage, a 36" × 20" island and ~31" side aisles.
+
 In A/B the bed's headboard is on the east wall with ~36" on each side; in C/D it's on the solid west
 wall (shared with the dining room) with ~29" on each side. Plans: `plans/room2-option-{a,b,c,d}.json`.
 
