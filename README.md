@@ -30,7 +30,8 @@ How they fit:
   projects 2'10" further south than Room 1A: the front of the house jogs there.
 - Between the dining room's south wall and the Living Room's north wall is an unscanned strip
   about 2'9" deep, which the dining room's 5'1" opening leads into (an entry or hall?). The two
-  fireplaces sit nearly back to back across it, so it likely holds the shared chimney too.
+  fireplaces sit nearly back to back across it, so it likely holds the shared chimney too. The Living
+  Room's 6'4" west wall continues 2'9" north to the dining room's south wall, closing the strip's west end.
 
 ## Floorplans
 

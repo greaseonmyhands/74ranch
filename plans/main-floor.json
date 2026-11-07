@@ -79,6 +79,17 @@
         -3.7816,
         5.566
       ]
+    },
+    {
+      "label": "Living Room's 6'4\" west wall extended north to the Dining room's south wall",
+      "from": [
+        -8.3096,
+        0.774
+      ],
+      "to": [
+        -8.3096,
+        -0.069
+      ]
     }
   ],
   "add_floor": [

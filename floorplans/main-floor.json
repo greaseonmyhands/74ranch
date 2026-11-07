@@ -201,6 +201,13 @@
       "height_m": 2.5
     },
     {
+      "name": "Wall_plan_4",
+      "added": true,
+      "length_m": 0.843,
+      "length_ft_in": "2'9\"",
+      "height_m": 2.5
+    },
+    {
       "name": "Wall_9~0",
       "added": false,
       "length_m": 0.786,
