@@ -21,8 +21,8 @@
       "depth_m": 4.896,
       "width_ft_in": "12'4\"",
       "depth_ft_in": "16'1\"",
-      "area_m2": 17.67,
-      "area_sqft": 190.2,
+      "area_m2": 17.88,
+      "area_sqft": 192.5,
       "rectangular": false
     },
     {
@@ -41,8 +41,8 @@
       "depth_m": 4.499,
       "width_ft_in": "24'4\"",
       "depth_ft_in": "14'9\"",
-      "area_m2": 31.27,
-      "area_sqft": 336.6,
+      "area_m2": 30.95,
+      "area_sqft": 333.2,
       "rectangular": false
     }
   ],
@@ -132,17 +132,17 @@
       "height_m": 2.6
     },
     {
-      "name": "Wall_9",
-      "added": false,
-      "length_m": 0.786,
-      "length_ft_in": "2'7\"",
-      "height_m": 2.41
-    },
-    {
       "name": "Wall_added_0",
       "added": true,
       "length_m": 4.896,
       "length_ft_in": "16'1\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_added_1",
+      "added": true,
+      "length_m": 0.976,
+      "length_ft_in": "3'2\"",
       "height_m": 2.5
     }
   ],
@@ -217,6 +217,6 @@
     }
   ],
   "objects": [],
-  "total_area_sqft": 736.5,
-  "total_area_m2": 68.42
+  "total_area_sqft": 735.4,
+  "total_area_m2": 68.32
 }

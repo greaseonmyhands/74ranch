@@ -4,13 +4,53 @@
     "chair_other_four_back_no_1",
     "storage_cabinet_mid1_0",
     "storage_cabinet_tall2_0",
-    "Wall_10"
+    "Wall_10",
+    "Wall_9"
+  ],
+  "move": [
+    {
+      "label": "Shift the hallway north ~5\" so its south wall (6'5\", Wall_2) lines up with the 11'5\" wall (Wall_4)",
+      "by": [
+        0,
+        -0.129
+      ],
+      "nodes": [
+        "Wall_2",
+        "Wall_8",
+        "Wall_11",
+        "Wall_6",
+        "Joint_2",
+        "Joint_4",
+        "Joint_5",
+        "Joint_9",
+        "Door_0",
+        "Door_1",
+        "Floor_Hallway"
+      ]
+    }
   ],
   "add_walls": [
     {
       "label": "New wall: from the west end of the 11'5\" wall (Wall_4) south to the exterior wall (Wall_3)",
-      "from": [0.1232, -0.2019],
-      "to": [0.1232, 4.694]
+      "from": [
+        0.1232,
+        -0.2019
+      ],
+      "to": [
+        0.1232,
+        4.694
+      ]
+    },
+    {
+      "label": "Replaces Wall_9 (2'7\"), stretched north to meet the moved hallway wall",
+      "from": [
+        -3.23,
+        -0.202
+      ],
+      "to": [
+        -3.23,
+        0.774
+      ]
     }
   ]
 }

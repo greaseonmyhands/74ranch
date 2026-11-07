@@ -103,6 +103,7 @@ def pretty_label(name):
 def load_edits(path):
     """Optional sidecar next to the scan: <scan>.edits.json, e.g.
     {"remove": ["chair_*", "Wall_10"],          # names or glob patterns of RoomPlan nodes
+     "move": [{"nodes": ["Wall_2", "Door_0"], "by": [dx, dz]}],
      "add_walls": [{"from": [x, z], "to": [x, z], "label": "..."}]}
     add_walls coordinates are the wall centerline in the scan's own frame, in meters."""
     p = Path(path).with_suffix(".edits.json")
@@ -133,6 +134,19 @@ def process(path, outdir):
             print(f"  warning: edit pattern {pat!r} matched nothing")
         for n in hits:
             del nodes[n]
+    # Moves: translate whole RoomPlan elements in the floor plane
+    moved_floor_orig = {}
+    for mv in edits.get("move", []):
+        dx, dz = mv["by"]
+        T = trimesh.transformations.translation_matrix([dx, 0, dz])
+        for pat in mv["nodes"]:
+            hits = [n for n in nodes if fnmatch.fnmatchcase(n, pat)]
+            if not hits:
+                print(f"  warning: move pattern {pat!r} matched nothing")
+            for n in hits:
+                if n.startswith("Floor") and n not in moved_floor_orig:
+                    moved_floor_orig[n] = footprint(nodes[n])
+                nodes[n].apply_transform(T)
     added = {}
     for i, w in enumerate(edits.get("add_walls", [])):
         name = f"Wall_added_{i}"
@@ -140,6 +154,23 @@ def process(path, outdir):
         nodes[name] = wall_box(w["from"], w["to"], w.get("height", 2.5))
     kind = lambda n: n.split("_")[0]
     added_fp = unary_union([footprint(nodes[n]) for n in added]) if added else None
+
+    floor_polys = {n: footprint(m) for n, m in nodes.items() if kind(n) == "Floor"}
+    # A moved floor takes priority where it now overlaps another room; the area it
+    # vacated goes to the neighbouring room it shares the most boundary with.
+    for n, orig in moved_floor_orig.items():
+        new = floor_polys[n]
+        others = [o for o in floor_polys if o not in moved_floor_orig]
+        for o in others:
+            floor_polys[o] = floor_polys[o].difference(new)
+        for piece in polys_of(orig.difference(new)):
+            if piece.area < 0.01 or not others:
+                continue
+            best = max(others, key=lambda o: floor_polys[o].buffer(0.02).intersection(piece).area)
+            floor_polys[best] = unary_union([floor_polys[best], piece])
+        for o in others:  # drop slivers left behind by the subtraction
+            parts = [q for q in polys_of(floor_polys[o].buffer(0)) if q.area >= 0.05]
+            floor_polys[o] = unary_union(parts).buffer(1e-4).buffer(-1e-4)
 
     floors = {n: m for n, m in nodes.items() if kind(n) == "Floor"}
     walls = {n: m for n, m in nodes.items() if kind(n) in ("Wall", "Joint")}
@@ -163,9 +194,9 @@ def process(path, outdir):
     room_colors = ["#f3ede2", "#e6eef2", "#eef2e6", "#f2e6ee"]
     total_area = 0
     pieces = []
-    for name, m in sorted(floors.items()):
+    for name in sorted(floors):
         label = name.replace("Floor_", "").replace("_", " ")
-        fp = footprint(m)
+        fp = floor_polys[name]
         if added_fp is not None:
             parts = [p for p in polys_of(fp.difference(added_fp)) if p.area > 0.3]
             if len(parts) > 1:  # an added wall divides this room: label each side
@@ -197,7 +228,7 @@ def process(path, outdir):
     summary["total_area_m2"] = round(total_area, 2)
 
     # Furniture (light, under walls). RoomPlan boxes can poke through walls, so clip to the floor.
-    floor_all = unary_union([footprint(m) for m in floors.values()])
+    floor_all = unary_union(list(floor_polys.values()))
     for name, m in objects.items():
         fp = footprint(m)
         if fp is None:
