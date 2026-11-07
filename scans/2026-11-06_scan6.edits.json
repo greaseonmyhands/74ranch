@@ -1,5 +1,18 @@
 {
   "title": "Office",
   "rotate_cw": 180,
-  "rooms": [{"at": [0.0, 0.0], "name": "Office"}]
+  "rooms": [
+    {
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "Office"
+    }
+  ],
+  "remove": [
+    "table_*",
+    "storage_*",
+    "chair_*"
+  ]
 }

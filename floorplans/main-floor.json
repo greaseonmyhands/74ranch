@@ -66,6 +66,16 @@
       "rectangular": false
     },
     {
+      "name": "Office",
+      "width_m": 3.531,
+      "depth_m": 4.704,
+      "width_ft_in": "11'7\"",
+      "depth_ft_in": "15'5\"",
+      "area_m2": 16.38,
+      "area_sqft": 176.3,
+      "rectangular": true
+    },
+    {
       "name": "Room 2",
       "width_m": 7.452,
       "depth_m": 4.499,
@@ -176,6 +186,13 @@
       "height_m": 2.5
     },
     {
+      "name": "Wall_0~4",
+      "added": false,
+      "length_m": 3.531,
+      "length_ft_in": "11'7\"",
+      "height_m": 2.55
+    },
+    {
       "name": "Wall_plan_0",
       "added": true,
       "length_m": 3.529,
@@ -232,11 +249,25 @@
       "height_m": 2.56
     },
     {
+      "name": "Wall_2~4",
+      "added": false,
+      "length_m": 1.879,
+      "length_ft_in": "6'2\"",
+      "height_m": 2.55
+    },
+    {
       "name": "Wall_2~2",
       "added": false,
       "length_m": 1.584,
       "length_ft_in": "5'2\"",
       "height_m": 2.56
+    },
+    {
+      "name": "Wall_3~4",
+      "added": false,
+      "length_m": 1.523,
+      "length_ft_in": "5'0\"",
+      "height_m": 2.55
     },
     {
       "name": "Wall_plan_7",
@@ -403,6 +434,15 @@
       "height_ft_in": "5'6\"",
       "sill_height_m": 0.43,
       "sill_height_ft_in": "1'5\""
+    },
+    {
+      "name": "Window_0~4",
+      "width_m": 1.465,
+      "width_ft_in": "4'10\"",
+      "height_m": 1.54,
+      "height_ft_in": "5'1\"",
+      "sill_height_m": 0.6,
+      "sill_height_ft_in": "1'11\""
     },
     {
       "name": "Window_1~0",
@@ -711,8 +751,8 @@
       "bottom_height_m": -0.07
     }
   ],
-  "total_area_sqft": 1700.5,
-  "total_area_m2": 157.99,
+  "total_area_sqft": 1876.9,
+  "total_area_m2": 174.37,
   "fixtures": [
     {
       "name": "Shower\n40\" \u00d7 60\"",

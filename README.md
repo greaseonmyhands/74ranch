@@ -6,7 +6,7 @@ Notes, scans and plans for the house.
 
 [`floorplans/main-floor.png`](floorplans/main-floor.png) · [SVG](floorplans/main-floor.svg): the
 North End Renovation (scan 1), the kitchen/dining room (scan 5), the front living room (scan 3) and
-the laundry room (scan 2) joined into one plan, about **1,700 sq ft** so far. Defined in [`plans/main-floor.json`](plans/main-floor.json).
+the laundry room (scan 2) and the office (scan 6) joined into one plan, about **1,877 sq ft** so far. Defined in [`plans/main-floor.json`](plans/main-floor.json).
 
 | Room | Area |
 |---|---|
@@ -16,6 +16,7 @@ the laundry room (scan 2) joined into one plan, about **1,700 sq ft** so far. De
 | Room 2 | 314 sq ft |
 | Bedroom 2 (was Room 1B; queen bed drawn for scale) | 183 sq ft |
 | Laundry Room | 188 sq ft |
+| Office | 176 sq ft |
 | Bathroom | 55 sq ft |
 
 How they fit:
@@ -39,8 +40,12 @@ How they fit:
 - The Laundry Room sits west of the kitchen and shares a standard 4" wall with it (11'0"); their south
   walls are in line, and the kitchen runs 4'2" further north. The kitchen's 36" doorway in that wall
   opens into the laundry room.
+- The Office (scan 6, turned 180°, furniture removed) sits in the SW block: its SW inside corner is on
+  the block's SW inside corner (kitchen west-wall line / Living Room south-wall line), so its west and
+  south walls are the outline walls. Its ~4' opening faces east into the rest of the block.
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
-  wall continues 19'10" west to meet it. That block (about 18' × 19' inside) isn't scanned yet; the
+  wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an
+  ~8'-wide area between the Office and the Living Room, plus a strip above the Office); the
   kitchen's south opening, the dining room's hallway opening and the Living Room's 3'11" west opening
   lead into it.
 
