@@ -31,13 +31,13 @@
       ]
     },
     {
-      "label": "North wall of corridor + bathroom (replaces the old 7'9\" hallway wall)",
+      "label": "Room 2's south wall over the corridor (ends at the bathroom's extended west wall)",
       "from": [
         -3.68,
         -1.172
       ],
       "to": [
-        0.7328,
+        -1.911,
         -1.172
       ]
     },
@@ -53,10 +53,10 @@
       ]
     },
     {
-      "label": "Bathroom west wall, 4' clear from the 2'7\" wall",
+      "label": "Bathroom west wall, extended north to Room 2's south wall",
       "from": [
         -1.911,
-        -0.069
+        -1.172
       ],
       "to": [
         -1.911,
@@ -75,10 +75,10 @@
       ]
     },
     {
-      "label": "Bathroom east wall (and Room 2 / Living Room wall above it), down to the moved bathroom's south wall",
+      "label": "Bathroom east wall (bathroom only; the wall above it is removed)",
       "from": [
         0.7328,
-        -1.172
+        -0.069
       ],
       "to": [
         0.7328,

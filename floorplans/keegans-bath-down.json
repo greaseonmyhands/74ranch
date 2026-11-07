@@ -127,12 +127,12 @@
     },
     {
       "name": "Living Room",
-      "width_m": 9.114,
+      "width_m": 8.504,
       "depth_m": 6.738,
-      "width_ft_in": "29'11\"",
+      "width_ft_in": "27'11\"",
       "depth_ft_in": "22'1\"",
-      "area_m2": 40.79,
-      "area_sqft": 439.0,
+      "area_m2": 37.87,
+      "area_sqft": 407.6,
       "rectangular": false
     },
     {
@@ -161,8 +161,8 @@
       "depth_m": 4.632,
       "width_ft_in": "24'5\"",
       "depth_ft_in": "15'2\"",
-      "area_m2": 29.58,
-      "area_sqft": 318.4,
+      "area_m2": 32.49,
+      "area_sqft": 349.8,
       "rectangular": false
     }
   ],
@@ -273,13 +273,6 @@
       "height_m": 2.6
     },
     {
-      "name": "Wall_added_1~0",
-      "added": true,
-      "length_m": 4.413,
-      "length_ft_in": "14'6\"",
-      "height_m": 2.5
-    },
-    {
       "name": "Wall_0~4",
       "added": false,
       "length_m": 3.531,
@@ -308,7 +301,7 @@
       "height_m": 2.58
     },
     {
-      "name": "Wall_added_5~0",
+      "name": "Wall_added_3~0",
       "added": true,
       "length_m": 3.049,
       "length_ft_in": "10'0\"",
@@ -364,7 +357,7 @@
       "height_m": 2.5
     },
     {
-      "name": "Wall_added_3~0",
+      "name": "Wall_added_5~0",
       "added": true,
       "length_m": 1.946,
       "length_ft_in": "6'5\"",
@@ -376,6 +369,13 @@
       "length_m": 1.879,
       "length_ft_in": "6'2\"",
       "height_m": 2.55
+    },
+    {
+      "name": "Wall_added_1~0",
+      "added": true,
+      "length_m": 1.769,
+      "length_ft_in": "5'10\"",
+      "height_m": 2.5
     },
     {
       "name": "Wall_added_0~4",
