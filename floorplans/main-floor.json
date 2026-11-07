@@ -31,8 +31,8 @@
       "depth_m": 4.763,
       "width_ft_in": "11'8\"",
       "depth_ft_in": "15'8\"",
-      "area_m2": 14.5,
-      "area_sqft": 156.1,
+      "area_m2": 14.55,
+      "area_sqft": 156.6,
       "rectangular": false
     },
     {
@@ -57,12 +57,12 @@
     },
     {
       "name": "Closet 2",
-      "width_m": 2.589,
+      "width_m": 2.541,
       "depth_m": 0.94,
-      "width_ft_in": "8'6\"",
+      "width_ft_in": "8'4\"",
       "depth_ft_in": "3'1\"",
-      "area_m2": 2.43,
-      "area_sqft": 26.2,
+      "area_m2": 2.39,
+      "area_sqft": 25.7,
       "rectangular": true
     },
     {
@@ -311,8 +311,8 @@
     {
       "name": "Wall_plan_20",
       "added": true,
-      "length_m": 2.589,
-      "length_ft_in": "8'6\"",
+      "length_m": 2.541,
+      "length_ft_in": "8'4\"",
       "height_m": 2.5
     },
     {
@@ -465,13 +465,6 @@
   ],
   "doors": [
     {
-      "name": "Door_0~3",
-      "width_m": 0.787,
-      "width_ft_in": "2'7\"",
-      "height_m": 2.13,
-      "height_ft_in": "7'0\""
-    },
-    {
       "name": "Door_1~3",
       "width_m": 0.673,
       "width_ft_in": "2'3\"",
@@ -519,6 +512,13 @@
       "width_ft_in": "5'0\"",
       "height_m": 2.11,
       "height_ft_in": "6'11\""
+    },
+    {
+      "name": "Door_added_0~3",
+      "width_m": 0.762,
+      "width_ft_in": "2'6\"",
+      "height_m": 2.13,
+      "height_ft_in": "7'0\""
     },
     {
       "name": "Door_added_1~0",

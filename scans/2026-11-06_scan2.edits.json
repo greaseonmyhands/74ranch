@@ -3,7 +3,8 @@
   "rotate_cw": 180,
   "remove": [
     "table_other_rect_0",
-    "storage_shelf_0"
+    "storage_shelf_0",
+    "Door_0"
   ],
   "rooms": [
     {
@@ -12,6 +13,20 @@
         0.0
       ],
       "name": "Laundry Room"
+    }
+  ],
+  "add_doors": [
+    {
+      "label": "30in door (was the scanned 2'7\" door) into Bedroom 1, centered over the 36in passage below it",
+      "from": [
+        -0.7788,
+        1.68
+      ],
+      "to": [
+        -0.0168,
+        1.68
+      ],
+      "height": 2.129
     }
   ]
 }

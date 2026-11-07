@@ -21,7 +21,7 @@ measurements; about **2,215 sq ft** so far (including the 43 sq ft front porch).
 | Front Porch (6' double front door) | 43 sq ft |
 | Hall (kitchen to office) | 9 sq ft |
 | Closet (under the attic stairs) | 15 sq ft |
-| Bedroom 1 (drawn, not scanned) | 156 sq ft |
+| Bedroom 1 (drawn, not scanned) | 157 sq ft |
 | Closet 2 (boxed off in Bedroom 1's NE corner) | 26 sq ft |
 | Bathroom 2 (drawn, not scanned) | 87 sq ft |
 | Bathroom | 55 sq ft |
@@ -68,9 +68,9 @@ How they fit:
   15'8" south, and a 17'3" south wall on the same line as Bedroom 2's south wall runs east to the
   Office's west wall (2'10" short of the Office's south face). A wall centered between the laundry
   room's two south doors runs the full 15'8" down it, splitting it into Bathroom 2 (5'3" wide inside,
-  off the 2'3" door) and Bedroom 1 (11'4" wide inside, off the 2'7" door). In Bedroom 1, a 3'1" wall
-  drops from just right of the 2'7" door and a wall runs back east to the outline wall, boxing off
-  Closet 2 (about 8'2" × 2'9" inside; no door drawn yet).
+  off the 2'3" door) and Bedroom 1 (11'4" wide inside, off the laundry room's 30" door, which replaces
+  the scanned 2'7" one). Below that door a 36"-wide passage runs between the Bathroom 2 wall and a 3'1"
+  wall, which turns east to the outline wall to box off Closet 2 (about 8' × 2'9" inside; no door yet).
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an
   ~8'-wide area between the Office and the Living Room, plus a strip above the Office); the
@@ -91,7 +91,7 @@ Each scan has its own coordinate frame, so the three plans are not aligned with 
 |   |   | Room 1A (incl. 4' corridor) | 12'6" × 19'3" overall | 193 sq ft |
 |   |   | Room 1B | 13'9" × 16'1" overall | 183 sq ft |
 |   |   | Bathroom | 8'8" × 6'5" (8'4" × 6'1" inside) | 55 sq ft |
-| 2 | [PNG](floorplans/2026-11-06_scan2.png) · [SVG](floorplans/2026-11-06_scan2.svg) | Laundry Room (4 doors, 2 windows) | 17'1" × 11'0" | 188 sq ft |
+| 2 | [PNG](floorplans/2026-11-06_scan2.png) · [SVG](floorplans/2026-11-06_scan2.svg) | Laundry Room (4 doors, 2 windows; the 2'7" south door is drawn as 30") | 17'1" × 11'0" | 188 sq ft |
 | 3 | [PNG](floorplans/2026-11-06_scan3.png) · [SVG](floorplans/2026-11-06_scan3.svg) | Front Living Room (fireplace, 7'9" window) | 15'0" × 15'9" | 235 sq ft |
 | 6 | [PNG](floorplans/2026-11-06_scan6.png) · [SVG](floorplans/2026-11-06_scan6.svg) | Office (turned 180°; 4'10" window, ~4' opening on the right wall) | 11'7" × 15'5" | 179 sq ft |
 | 5 | [PNG](floorplans/2026-11-06_scan5.png) · [SVG](floorplans/2026-11-06_scan5.svg) | Kitchen (open to living room) | 17'3" × 15'2" | 262 sq ft |
