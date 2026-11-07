@@ -174,6 +174,16 @@
       "area_m2": 29.77,
       "area_sqft": 320.5,
       "rectangular": false
+    },
+    {
+      "name": "Utility Closet",
+      "width_m": 2.103,
+      "depth_m": 0.843,
+      "width_ft_in": "6'11\"",
+      "depth_ft_in": "2'9\"",
+      "area_m2": 1.77,
+      "area_sqft": 19.1,
+      "rectangular": true
     }
   ],
   "walls": [
@@ -490,6 +500,13 @@
       "added": true,
       "length_m": 0.116,
       "length_ft_in": "0'5\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_plan_nolabel_24",
+      "added": true,
+      "length_m": 0.1,
+      "length_ft_in": "0'4\"",
       "height_m": 2.5
     }
   ],
@@ -939,8 +956,8 @@
       "bottom_height_m": -0.07
     }
   ],
-  "total_area_sqft": 2331.1,
-  "total_area_m2": 216.56,
+  "total_area_sqft": 2350.1,
+  "total_area_m2": 218.33,
   "fixtures": [
     {
       "name": "Queen bed\n60\" \u00d7 80\"",

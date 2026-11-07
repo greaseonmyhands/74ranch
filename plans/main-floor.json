@@ -330,6 +330,18 @@
         0.774
       ],
       "show_length": false
+    },
+    {
+      "label": "Close the 1.6 mm seam where the Living Room's north wall meets the North End's 1'6\" wall",
+      "from": [
+        -3.8,
+        0.774
+      ],
+      "to": [
+        -3.7,
+        0.774
+      ],
+      "show_length": false
     }
   ],
   "add_floor": [
@@ -566,6 +578,24 @@
         -8.3096,
         0.774
       ]
+    ],
+    [
+      [
+        -5.3326,
+        -0.069
+      ],
+      [
+        -3.23,
+        -0.069
+      ],
+      [
+        -3.23,
+        0.774
+      ],
+      [
+        -5.3326,
+        0.774
+      ]
     ]
   ],
   "room_dividers": [
@@ -721,11 +751,20 @@
       ],
       "name": "Closet 3",
       "compact": true,
-      "label_size": 7,
+      "label_size": 6.5,
       "label_at": [
-        -7.3731,
+        -7.42,
         0.3525
       ]
+    },
+    {
+      "at": [
+        -4.2813,
+        0.3525
+      ],
+      "name": "Utility Closet",
+      "compact": true,
+      "label_size": 7
     }
   ],
   "fixtures": [

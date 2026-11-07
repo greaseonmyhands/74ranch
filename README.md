@@ -64,7 +64,8 @@ How they fit:
   fireplaces sit back to back across it. A box the Living Room fireplace's width (5'3") spans the strip
   as the **Fireplace** (chimney mass), and the dining fireplace is redrawn the same size and lined up
   with it. West of it, **Closet 3** (about 3'10" × 2'5" inside) has a 24" door in the 2'9" wall off the
-  Entry hall, swinging in. The Living
+  Entry hall, swinging in. East of it, the rest of the strip (to the 2'7" wall) is the **Utility
+  Closet**, reached through the dining room's 5'0" door. The Living
   Room's 6'4" west wall continues 2'9" north to the dining room's south wall, closing the strip's west end.
   At its south end it's extended 1¾" (to 6'5") so it ends level with the Office's 6'2" wall opposite.
 - The Laundry Room sits west of the kitchen and shares a standard 4" wall with it (11'0"); their south
