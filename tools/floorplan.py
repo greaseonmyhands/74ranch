@@ -246,6 +246,7 @@ def load_edits(path):
      "move": [{"nodes": ["Wall_2", "Door_0"], "by": [dx, dz]}],
      "add_walls": [{"from": [x, z], "to": [x, z], "label": "..."}],
      "add_doors": [{"from": [x, z], "to": [x, z], "label": "..."}],
+     "add_openings": [{"from": [x, z], "to": [x, z], "label": "..."}],   # doorless doorways
      "add_floor": [[[x, z], [x, z], ...]],      # extra floor polygons
      "rooms": [{"at": [x, z], "name": "Bathroom"}],   # name the room containing a point
      "fixtures": [{"name": "Shower", "rect": [x0, z0, x1, z1]}],  # planned fixtures
@@ -354,6 +355,8 @@ def add_walls_and_doors(nodes, edits, tag="added"):
         if "swing_toward" in d:  # hinge at "from", opening toward the given point
             swings[f"Door_{tag}_{i}"] = {"hinge": d["from"], "other": d["to"],
                                          "toward": d["swing_toward"]}
+    for i, o in enumerate(edits.get("add_openings", [])):  # doorless doorways / cased openings
+        nodes[f"Opening_{tag}_{i}"] = opening_quad(o["from"], o["to"], o.get("height", 2.03))
     return added, swings
 
 
@@ -427,6 +430,7 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
     floors = {n: m for n, m in nodes.items() if kind(n) == "Floor"}
     walls = {n: m for n, m in nodes.items() if kind(n) in ("Wall", "Joint")}
     doors = {n: m for n, m in nodes.items() if kind(n) == "Door"}
+    openings = {n: m for n, m in nodes.items() if kind(n) == "Opening"}  # doorless doorways
     windows = {n: m for n, m in nodes.items() if kind(n) == "Window"}
     ceilings = {n: m for n, m in nodes.items() if kind(n) == "Ceiling"}
     objects = {n: m for n, m in nodes.items() if n[0].islower()}
@@ -765,8 +769,9 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
                 ax.plot([a[0] + n[0] * s, b[0] + n[0] * s], [a[1] + n[1] * s, b[1] + n[1] * s],
                         color=color, lw=lw_gap, zorder=5)
         else:
-            ax.plot([a[0], b[0]], [a[1], b[1]], color=color, lw=lw_gap, ls=(0, (2, 1.5)), zorder=5)
-            for p in (a, b):  # jamb ticks
+            if style == "door":
+                ax.plot([a[0], b[0]], [a[1], b[1]], color=color, lw=lw_gap, ls=(0, (2, 1.5)), zorder=5)
+            for p in (a, b):  # jamb ticks (a doorless opening is just the gap between them)
                 ax.plot([p[0] + n[0] * t, p[0] - n[0] * t], [p[1] + n[1] * t, p[1] - n[1] * t],
                         color="#222", lw=1.2, zorder=5)
         mid = (a + b) / 2
@@ -799,6 +804,12 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
             t = np.linspace(a0, a1, 30)
             ax.plot(hinge[0] + L * np.cos(t), hinge[1] + L * np.sin(t), color="#b45f06",
                     lw=0.6, ls=(0, (3, 2)), zorder=5)
+    for name, m in sorted(openings.items()):
+        L, mid, bottom, h, rot = opening(m, "#b45f06", 1.0, "opening")
+        summary.setdefault("openings", []).append({"name": name, "width_m": round(float(L), 3),
+                                                   "width_ft_in": ft_in(L)})
+        ax.text(mid[0], mid[1], f"open {ft_in(L)}", fontsize=6, color="#b45f06", ha="center",
+                va="bottom", zorder=8, rotation=rot, rotation_mode="anchor")
     for name, m in sorted(windows.items()):
         L, mid, bottom, h, rot = opening(m, "#3d85c6", 1.0, "window")
         summary["windows"].append({"name": name, "width_m": round(float(L), 3), "width_ft_in": ft_in(L),

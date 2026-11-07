@@ -359,5 +359,17 @@
     }
   ],
   "total_area_sqft": 529.7,
-  "total_area_m2": 49.21
+  "total_area_m2": 49.21,
+  "openings": [
+    {
+      "name": "Opening_added_0",
+      "width_m": 0.914,
+      "width_ft_in": "3'0\""
+    },
+    {
+      "name": "Opening_added_1",
+      "width_m": 0.914,
+      "width_ft_in": "3'0\""
+    }
+  ]
 }
