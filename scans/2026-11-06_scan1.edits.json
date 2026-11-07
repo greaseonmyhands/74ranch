@@ -5,5 +5,12 @@
     "storage_cabinet_mid1_0",
     "storage_cabinet_tall2_0",
     "Wall_10"
+  ],
+  "add_walls": [
+    {
+      "label": "New wall: from the west end of the 11'5\" wall (Wall_4) south to the exterior wall (Wall_3)",
+      "from": [0.1232, -0.2019],
+      "to": [0.1232, 4.694]
+    }
   ]
 }

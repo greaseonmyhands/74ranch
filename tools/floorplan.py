@@ -102,9 +102,26 @@ def pretty_label(name):
 
 def load_edits(path):
     """Optional sidecar next to the scan: <scan>.edits.json, e.g.
-    {"remove": ["chair_*", "Wall_10"]}  (names or glob patterns of RoomPlan nodes)."""
+    {"remove": ["chair_*", "Wall_10"],          # names or glob patterns of RoomPlan nodes
+     "add_walls": [{"from": [x, z], "to": [x, z], "label": "..."}]}
+    add_walls coordinates are the wall centerline in the scan's own frame, in meters."""
     p = Path(path).with_suffix(".edits.json")
     return json.loads(p.read_text()) if p.exists() else {}
+
+
+def wall_box(a, b, height):
+    """A WALL_T-thick wall slab whose centerline runs from a to b (floor-plane [x, z], meters).
+    Like RoomPlan walls, it extends WALL_T/2 past each end so corners close."""
+    a, b = np.asarray(a, float), np.asarray(b, float)
+    v = b - a
+    L = np.linalg.norm(v)
+    box = trimesh.creation.box(extents=[L + WALL_T, height, WALL_T])
+    ang = np.arctan2(v[1], v[0])
+    T = trimesh.transformations.rotation_matrix(-ang, [0, 1, 0])
+    mid = (a + b) / 2
+    T[:3, 3] = [mid[0], height / 2, mid[1]]
+    box.apply_transform(T)
+    return box
 
 
 def process(path, outdir):
@@ -116,7 +133,13 @@ def process(path, outdir):
             print(f"  warning: edit pattern {pat!r} matched nothing")
         for n in hits:
             del nodes[n]
+    added = {}
+    for i, w in enumerate(edits.get("add_walls", [])):
+        name = f"Wall_added_{i}"
+        added[name] = w.get("label", name)
+        nodes[name] = wall_box(w["from"], w["to"], w.get("height", 2.5))
     kind = lambda n: n.split("_")[0]
+    added_fp = unary_union([footprint(nodes[n]) for n in added]) if added else None
 
     floors = {n: m for n, m in nodes.items() if kind(n) == "Floor"}
     walls = {n: m for n, m in nodes.items() if kind(n) in ("Wall", "Joint")}
@@ -139,8 +162,18 @@ def process(path, outdir):
     # Floors / rooms
     room_colors = ["#f3ede2", "#e6eef2", "#eef2e6", "#f2e6ee"]
     total_area = 0
-    for i, (name, m) in enumerate(sorted(floors.items())):
+    pieces = []
+    for name, m in sorted(floors.items()):
+        label = name.replace("Floor_", "").replace("_", " ")
         fp = footprint(m)
+        if added_fp is not None:
+            parts = [p for p in polys_of(fp.difference(added_fp)) if p.area > 0.3]
+            if len(parts) > 1:  # an added wall divides this room: label each side
+                parts.sort(key=lambda p: (round(p.centroid.x, 1), p.centroid.y))
+                pieces += [(f"{label}{chr(65 + k)}", p) for k, p in enumerate(parts)]
+                continue
+        pieces.append((label, fp))
+    for i, (label, fp) in enumerate(pieces):
         for p in polys_of(fp):
             ax.add_patch(MplPolygon(np.array(p.exterior.coords), closed=True,
                                     fc=room_colors[i % len(room_colors)], ec="none", zorder=1))
@@ -148,7 +181,6 @@ def process(path, outdir):
         w, d = maxx - minx, maxz - minz
         area = fp.area
         total_area += area
-        label = name.replace("Floor_", "").replace("_", " ")
         rect = abs(area - w * d) < 0.02 * w * d
         c = fp.representative_point() if not rect else fp.centroid
         text = f"{label}\n{ft_in(w)} × {ft_in(d)}\n{sqft(area):.0f} sq ft" if rect else \
@@ -202,7 +234,7 @@ def process(path, outdir):
         ext = m.bounds[1] - m.bounds[0]
         ctr = m.bounds.mean(0)
         length = max(ext[0], ext[2]) - WALL_T
-        summary["walls"].append({"name": name, "length_m": round(float(length), 3),
+        summary["walls"].append({"name": name, "added": name in added, "length_m": round(float(length), 3),
                                  "length_ft_in": ft_in(length),
                                  "height_m": round(float(ext[1]), 2)})
         if length < 0.3:

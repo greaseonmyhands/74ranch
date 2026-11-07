@@ -10,7 +10,8 @@ Each scan has its own coordinate frame, so the three plans are not aligned with 
 
 | Scan | Plan | Rooms | Size | Area |
 |---|---|---|---|---|
-| 1 | [PNG](floorplans/2026-11-06_scan1.png) · [SVG](floorplans/2026-11-06_scan1.svg) | Room 1 | 24'3" × 16'1" | 382 sq ft |
+| 1 | [PNG](floorplans/2026-11-06_scan1.png) · [SVG](floorplans/2026-11-06_scan1.svg) | Room 1A (west of new wall) | 12'4" × 16'1" overall | 190 sq ft |
+|   |   | Room 1B (east of new wall) | 11'7" × 16'1" | 186 sq ft |
 |   |   | Room 2 (not rectangular) | 24'4" × 14'9" overall | 337 sq ft |
 |   |   | Hallway | 8'1" × 3'2" overall | 23 sq ft |
 | 2 | [PNG](floorplans/2026-11-06_scan2.png) · [SVG](floorplans/2026-11-06_scan2.svg) | Room (4 doors, 2 windows) | 17'1" × 11'0" | 188 sq ft |
@@ -23,7 +24,9 @@ detected piece of furniture are in the matching `floorplans/*.json` files.
 - **Scan 1:** Room 1 and Room 2 are open to each other: the wall between them (11'5") stops about 5 ft
   short of the hallway. One hallway door was picked up at an angle, which may be a door left
   ajar rather than an angled wall. Furniture and the short 3'2" wall on the hallway's east end
-  are hidden via `scans/2026-11-06_scan1.edits.json`.
+  are hidden via `scans/2026-11-06_scan1.edits.json`. That file also adds a new 16'1" wall running
+  south from the west end of the 11'5" wall to the exterior wall, splitting Room 1 into 1A and 1B.
+  (1B has no door yet.)
 - **Scan 2:** The "storage cabinet" on the left wall starts 5'3" off the floor, so it's most likely
   upper or wall-mounted cabinets.
 - **Scan 3:** The left wall has a 3'11" opening with no door (an archway or cased opening).
@@ -36,8 +39,12 @@ python tools/floorplan.py scans/*.glb --out floorplans
 ```
 
 Drop new RoomPlan `.glb` exports in `scans/` and rerun. To hide objects or walls from a scan without
-touching the original, list their names (or glob patterns) in a `<scan>.edits.json` next to it:
+touching the original, list their names (or glob patterns) in a `<scan>.edits.json` next to it.
+New walls are given by their centerline endpoints `[x, z]` in the scan's own coordinates (meters):
 
 ```json
-{ "remove": ["chair_*", "Wall_10"] }
+{
+  "remove": ["chair_*", "Wall_10"],
+  "add_walls": [{ "from": [0.12, -0.20], "to": [0.12, 4.69], "label": "new partition" }]
+}
 ```
