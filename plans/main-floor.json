@@ -114,10 +114,10 @@
       ]
     },
     {
-      "label": "Kitchen west wall continued south to the Living Room's south wall line",
+      "label": "Kitchen west wall continued south to the Living Room's south wall line (starts below Closet 2, which opens into the pocket west of the hall)",
       "from": [
         -14.4296,
-        -0.069
+        0.8708
       ],
       "to": [
         -14.4296,
@@ -438,6 +438,24 @@
       [
         -17.9852,
         4.694
+      ]
+    ],
+    [
+      [
+        -14.4296,
+        -0.069
+      ],
+      [
+        -13.7728,
+        -0.069
+      ],
+      [
+        -13.7728,
+        0.862
+      ],
+      [
+        -14.4296,
+        0.862
       ]
     ]
   ],

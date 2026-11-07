@@ -7,7 +7,7 @@ Notes, scans and plans for the house.
 [`floorplans/main-floor.png`](floorplans/main-floor.png) · [SVG](floorplans/main-floor.svg): the
 North End Renovation (scan 1), the kitchen/dining room (scan 5), the front living room (scan 3) and
 the laundry room (scan 2) and the office (scan 6) joined into one plan, plus rooms drawn from
-measurements; about **2,215 sq ft** so far (including the 43 sq ft front porch). Defined in [`plans/main-floor.json`](plans/main-floor.json).
+measurements; about **2,222 sq ft** so far (including the 43 sq ft front porch). Defined in [`plans/main-floor.json`](plans/main-floor.json).
 
 | Room | Area |
 |---|---|
@@ -22,7 +22,7 @@ measurements; about **2,215 sq ft** so far (including the 43 sq ft front porch).
 | Hall (kitchen to office) | 9 sq ft |
 | Closet (under the attic stairs) | 15 sq ft |
 | Bedroom 1 (drawn, not scanned) | 157 sq ft |
-| Closet 2 (boxed off in Bedroom 1's NE corner) | 26 sq ft |
+| Closet 2 (Bedroom 1's NE corner through to the hall) | 32 sq ft |
 | Bathroom 2 (drawn, not scanned) | 87 sq ft |
 | Bathroom | 55 sq ft |
 
@@ -70,7 +70,8 @@ How they fit:
   room's two south doors runs the full 15'8" down it, splitting it into Bathroom 2 (5'3" wide inside,
   off the 2'3" door) and Bedroom 1 (11'4" wide inside, off the laundry room's 30" door, which replaces
   the scanned 2'7" one). Below that door a 36"-wide passage runs between the Bathroom 2 wall and a 3'1"
-  wall, which turns east to the outline wall to box off Closet 2 (about 8' × 2'9" inside; no door yet).
+  wall, which turns east to box off Closet 2. The outline wall between Closet 2 and the pocket west of
+  the hall is removed, so Closet 2 runs about 10' × 2'9" inside, up to the hall's west wall (no door yet).
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an
   ~8'-wide area between the Office and the Living Room, plus a strip above the Office); the
