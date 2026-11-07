@@ -24,7 +24,7 @@ How they fit:
   its south-wall hallway opening ends exactly at the Living Room's extended west wall; with that,
   Room 2 comes out about 1" wider than its own scan.
 - The north walls of both scans are exactly in line, and so are the dining room's south wall and the
-  North End's short step-in wall (moved 4 mm to match). The dining room's 5'0" opening runs about 6"
+  North End's short step-in wall (moved 4 mm to match). The dining room's 5'0" opening runs about 5"
   past the North End corridor line, into that step-in wall.
 - The walk-through from the dining room into the North End corridor has its north side on the same
   line as the corridor's top wall. The dashed line there separates Dining from the Living Room; it
