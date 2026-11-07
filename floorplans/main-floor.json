@@ -27,12 +27,12 @@
     },
     {
       "name": "Dining",
-      "width_m": 5.638,
+      "width_m": 5.614,
       "depth_m": 4.633,
-      "width_ft_in": "18'6\"",
+      "width_ft_in": "18'5\"",
       "depth_ft_in": "15'2\"",
-      "area_m2": 24.87,
-      "area_sqft": 267.7,
+      "area_m2": 24.85,
+      "area_sqft": 267.5,
       "rectangular": false
     },
     {
@@ -61,8 +61,8 @@
       "depth_m": 6.738,
       "width_ft_in": "27'9\"",
       "depth_ft_in": "22'1\"",
-      "area_m2": 40.04,
-      "area_sqft": 431.0,
+      "area_m2": 40.07,
+      "area_sqft": 431.3,
       "rectangular": false
     },
     {
@@ -304,13 +304,6 @@
       "height_ft_in": "7'0\""
     },
     {
-      "name": "Door_1~1",
-      "width_m": 1.548,
-      "width_ft_in": "5'1\"",
-      "height_m": 2.11,
-      "height_ft_in": "6'11\""
-    },
-    {
       "name": "Door_1~3",
       "width_m": 0.673,
       "width_ft_in": "2'3\"",
@@ -351,6 +344,13 @@
       "width_ft_in": "3'0\"",
       "height_m": 2.03,
       "height_ft_in": "6'8\""
+    },
+    {
+      "name": "Door_added_0~1",
+      "width_m": 1.524,
+      "width_ft_in": "5'0\"",
+      "height_m": 2.11,
+      "height_ft_in": "6'11\""
     },
     {
       "name": "Door_added_1~0",

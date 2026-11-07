@@ -24,16 +24,16 @@ How they fit:
   its south-wall hallway opening ends exactly at the Living Room's extended west wall; with that,
   Room 2 comes out about 1" wider than its own scan.
 - The north walls of both scans are exactly in line, and so are the dining room's south wall and the
-  North End's short step-in wall (moved 4 mm to match). The dining room's 5'1" opening runs about 6"
+  North End's short step-in wall (moved 4 mm to match). The dining room's 5'0" opening runs about 6"
   past the North End corridor line, into that step-in wall.
 - The walk-through from the dining room into the North End corridor has its north side on the same
   line as the corridor's top wall. The dashed line there separates Dining from the Living Room; it
-  meets the south wall at the right edge of the dining room's 5'1" opening.
+  meets the south wall at the right edge of the dining room's 5'0" opening.
 - The front living room sat beside Room 1A (sharing a 12'10" wall, now removed so they're one Living
   Room). Its north wall (14'10", with the fireplace) is in line with Room 1A's lower 1'6" wall, and it
   projects 2'10" further south than Room 1A: the front of the house jogs there.
 - Between the dining room's south wall and the Living Room's north wall is an unscanned strip
-  about 2'9" deep, which the dining room's 5'1" opening leads into (an entry or hall?). The two
+  about 2'9" deep, which the dining room's 5'0" opening leads into (an entry or hall?). The two
   fireplaces sit nearly back to back across it, so it likely holds the shared chimney too. The Living
   Room's 6'4" west wall continues 2'9" north to the dining room's south wall, closing the strip's west end.
 - The Laundry Room sits west of the kitchen and shares a standard 4" wall with it (11'0"); their south

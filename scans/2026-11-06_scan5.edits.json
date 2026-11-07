@@ -6,7 +6,8 @@
     "Joint_2",
     "sofa_rect_0",
     "table_dining_rect_0",
-    "Door_0"
+    "Door_0",
+    "Door_1"
   ],
   "retype": {
     "refrigerator_1": "storage_cabinet"
@@ -77,6 +78,20 @@
         -3.8998,
         2.316
       ]
+    }
+  ],
+  "add_doors": [
+    {
+      "label": "5'0\" door replacing the scanned 5'1\" one (left jamb kept, trimmed on the right)",
+      "from": [
+        3.828,
+        2.315
+      ],
+      "to": [
+        5.352,
+        2.315
+      ],
+      "height": 2.106
     }
   ]
 }
