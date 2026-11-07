@@ -137,9 +137,14 @@ def opening_quad(a, b, height):
     return trimesh.Trimesh(vertices=v, faces=[[0, 1, 2], [0, 2, 3]], process=False)
 
 
-def process(path, outdir):
+def process(path, outdir, variant=None):
+    """Render one scan. With `variant`, use <scan>.<variant>.edits.json instead of the
+    base edits and write <scan>.<variant>.png/svg/json (for comparing design options)."""
     nodes = load_nodes(path)
-    edits = load_edits(path)
+    if variant:
+        edits = json.loads(Path(path).with_suffix(f".{variant}.edits.json").read_text())
+    else:
+        edits = load_edits(path)
     for pat in edits.get("remove", []):
         hits = [n for n in nodes if fnmatch.fnmatchcase(n, pat)]
         if not hits:
@@ -207,11 +212,13 @@ def process(path, outdir):
         base = max(floor_polys, key=lambda n: floor_polys[n].intersection(r).area) \
             if floor_polys else "Floor_Room"
         rooms.append([base.replace("Floor_", "").replace("_", " "), full, r])
+    label_opts = {}
     for spec in edits.get("rooms", []):
         pt = Point(spec["at"])
         for rm in rooms:
             if rm[2].contains(pt):
                 rm[0] = spec["name"]
+                label_opts[spec["name"]] = spec
     rooms.sort(key=lambda rm: (round(rm[1].centroid.x, 1), rm[1].centroid.y))
     names = [rm[0] for rm in rooms]
     seen = {}
@@ -231,11 +238,15 @@ def process(path, outdir):
         total_area += area
         rect = abs(area - w * d) < 0.02 * w * d
         c = fp.centroid if rect else polylabel(inner, tolerance=0.01)
+        opt = label_opts.get(label, {})
+        if "label_at" in opt:
+            c = Point(opt["label_at"])
         text = f"{label}\n{ft_in(w)} × {ft_in(d)}\n{sqft(area):.0f} sq ft" if rect else \
                f"{label}\n{sqft(area):.0f} sq ft\n(overall {ft_in(w)} × {ft_in(d)})"
-        if area < 5:  # small spaces (baths, halls, closets): keep the label compact
+        if area < 5 or opt.get("compact"):  # small spaces (baths, halls, closets): compact label
             text = f"{label}\n{sqft(area):.0f} sq ft"
-        ax.text(c.x, c.y, text, ha="center", va="center", fontsize=10 if area >= 5 else 8,
+        ax.text(c.x, c.y, text, ha="center", va="center",
+                fontsize=opt.get("label_size", 10 if area >= 5 else 8),
                 zorder=6, fontweight="bold", color="#333")
         summary["rooms"].append({"name": label, "width_m": round(w, 3), "depth_m": round(d, 3),
                                  "width_ft_in": ft_in(w), "depth_ft_in": ft_in(d),
@@ -389,8 +400,8 @@ def process(path, outdir):
     ax.plot([sx, sx + 5 / M_TO_FT], [sz, sz], color="#222", lw=2)
     ax.text(sx + 2.5 / M_TO_FT, sz + 0.05, "5 ft", ha="center", va="top", fontsize=7)
 
-    stem = Path(path).stem
-    title = f"{stem}  —  {summary['total_area_sqft']:.0f} sq ft"
+    stem = Path(path).stem + (f".{variant}" if variant else "")
+    title = edits.get("title", stem) + f"  —  {summary['total_area_sqft']:.0f} sq ft"
     if ceiling_h:
         title += f"  ·  ceiling {ft_in(ceiling_h)}"
     ax.set_title(title, fontsize=12)
@@ -411,6 +422,13 @@ def main():
     for p in args.glb:
         s = process(p, Path(args.out))
         print(f"{p}: {s['total_area_sqft']} sq ft, rooms={[r['name'] for r in s['rooms']]}")
+        # Design options: <scan>.<variant>.edits.json
+        stem = Path(p).stem
+        for vf in sorted(Path(p).parent.glob(f"{stem}.*.edits.json")):
+            variant = vf.name[len(stem) + 1:-len(".edits.json")]
+            s = process(p, Path(args.out), variant)
+            print(f"  option {variant}: {s['total_area_sqft']} sq ft, "
+                  f"rooms={[(r['name'], r['area_sqft']) for r in s['rooms']]}")
 
 
 if __name__ == "__main__":

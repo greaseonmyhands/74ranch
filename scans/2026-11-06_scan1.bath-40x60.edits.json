@@ -1,0 +1,229 @@
+{
+  "notes": "Layout per hand sketch of 2026-11-07. Coordinates are meters in the scan's frame (x = east, z = south); walls are centerlines.",
+  "remove": [
+    "chair_other_four_back_no_0",
+    "chair_other_four_back_no_1",
+    "storage_cabinet_mid1_0",
+    "storage_cabinet_tall2_0",
+    "Wall_10",
+    "Wall_2",
+    "Wall_8",
+    "Wall_11",
+    "Wall_6",
+    "Door_0",
+    "Door_1",
+    "Joint_2",
+    "Joint_5",
+    "Joint_9",
+    "Joint_4",
+    "Wall_4"
+  ],
+  "add_walls": [
+    {
+      "label": "Room 1A/1B wall, from the bathroom's south wall to the exterior wall",
+      "from": [
+        0.1232,
+        0.774
+      ],
+      "to": [
+        0.1232,
+        4.694
+      ]
+    },
+    {
+      "label": "North wall of corridor + bathroom (replaces the old 7'9\" hallway wall)",
+      "from": [
+        -3.68,
+        -1.172
+      ],
+      "to": [
+        0.7328,
+        -1.172
+      ]
+    },
+    {
+      "label": "Exterior wall west of the corridor (straightens the old angled wall)",
+      "from": [
+        -3.68,
+        -1.172
+      ],
+      "to": [
+        -3.68,
+        -0.073
+      ]
+    },
+    {
+      "label": "Short wall stepping in to the top of the 2'7\" wall",
+      "from": [
+        -3.68,
+        -0.073
+      ],
+      "to": [
+        -3.23,
+        -0.073
+      ]
+    },
+    {
+      "label": "Bathroom west wall, 4' clear from the 2'7\" wall",
+      "from": [
+        -1.911,
+        -1.172
+      ],
+      "to": [
+        -1.911,
+        0.774
+      ]
+    },
+    {
+      "label": "Bathroom south wall, in line with the 1'6\" wall",
+      "from": [
+        -1.911,
+        0.774
+      ],
+      "to": [
+        0.7328,
+        0.774
+      ]
+    },
+    {
+      "label": "Bathroom east wall, moved 24\" east",
+      "from": [
+        0.7328,
+        -1.172
+      ],
+      "to": [
+        0.7328,
+        0.774
+      ]
+    },
+    {
+      "label": "11'5\" wall (Wall_4), shortened to start at the bathroom's east wall",
+      "from": [
+        0.7328,
+        -0.2019
+      ],
+      "to": [
+        3.708,
+        -0.2019
+      ]
+    }
+  ],
+  "add_doors": [
+    {
+      "label": "36\" door, corridor to Room 2, centered in the corridor",
+      "from": [
+        -3.2527,
+        -1.172
+      ],
+      "to": [
+        -2.3383,
+        -1.172
+      ]
+    },
+    {
+      "label": "36\" bathroom door, hinged at its north jamb, swinging in",
+      "from": [
+        -1.911,
+        -0.97
+      ],
+      "to": [
+        -1.911,
+        -0.056
+      ],
+      "swing_toward": [
+        -1.0,
+        -0.5
+      ]
+    },
+    {
+      "label": "36\" door between Room 1A and 1B, 2'6\" south of the bathroom",
+      "from": [
+        0.1232,
+        1.574
+      ],
+      "to": [
+        0.1232,
+        2.488
+      ]
+    },
+    {
+      "label": "Exterior door (scanned at 2'11\"), centered in the west corridor wall",
+      "from": [
+        -3.68,
+        -1.061
+      ],
+      "to": [
+        -3.68,
+        -0.184
+      ]
+    }
+  ],
+  "add_floor": [
+    [
+      [
+        -3.68,
+        -1.172
+      ],
+      [
+        -1.911,
+        -1.172
+      ],
+      [
+        -1.911,
+        -0.073
+      ],
+      [
+        -3.68,
+        -0.073
+      ]
+    ]
+  ],
+  "rooms": [
+    {
+      "at": [
+        -0.9,
+        -0.2
+      ],
+      "name": "Bathroom",
+      "label_at": [
+        -0.53,
+        0.33
+      ],
+      "label_size": 8,
+      "compact": true
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "Shower\n40\" \u00d7 60\"",
+      "rect": [
+        -0.8412,
+        -1.122,
+        0.6828,
+        -0.106
+      ],
+      "hatch": "."
+    },
+    {
+      "name": "WC",
+      "shape": "toilet",
+      "front": "w",
+      "rect": [
+        -0.0284,
+        0.055,
+        0.6828,
+        0.563
+      ]
+    },
+    {
+      "name": "Vanity 36\"",
+      "rect": [
+        -1.861,
+        0.1906,
+        -0.9466,
+        0.724
+      ]
+    }
+  ],
+  "title": "Option B: 40\" \u00d7 60\" shower (bath wall +2 ft)"
+}

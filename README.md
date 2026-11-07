@@ -33,6 +33,26 @@ detected piece of furniture are in the matching `floorplans/*.json` files.
     the door. Meets IRC minimums (15" toilet side clearance, 21" in front of toilet and vanity) and
     the 36" door swings clear of every fixture.
   - Furniture is hidden.
+
+  **Bigger-bathroom options** (side by side: [`floorplans/2026-11-06_scan1.bath-options.png`](floorplans/2026-11-06_scan1.bath-options.png)).
+  Each moves the bathroom's east wall into Room 2 and Room 1B; the 11'5" wall gets shorter and the
+  1A/1B wall now starts at the bathroom's south wall.
+
+  | | Current | Option A | Option B |
+  |---|---|---|---|
+  | Plan | [PNG](floorplans/2026-11-06_scan1.png) | [PNG](floorplans/2026-11-06_scan1.bath-36x48.png) | [PNG](floorplans/2026-11-06_scan1.bath-40x60.png) |
+  | East wall moved | — | 1 ft | 2 ft |
+  | Bathroom inside | 6'4" × 6'1" | 7'4" × 6'1" | 8'4" × 6'1" |
+  | Bathroom area | 43 sq ft | 49 sq ft | 55 sq ft |
+  | Shower | 36" × 36" | 36" × 48" | 40" × 60" |
+  | Vanity | 24" (west wall) | 36" (south wall) | 36" (south wall) |
+  | Toilet centerline to shower / wall | 19" / 18" | 19" / 18" | 16" / 16" |
+  | Room 2 | 319 sq ft | 316 sq ft | 313 sq ft |
+  | Room 1B | 189 sq ft | 186 sq ft | 183 sq ft |
+
+  All three meet IRC minimums (15" toilet side clearance, 21" in front of toilet and vanity), and the
+  36" door swings clear of the shower by about 4" in each. Options live in
+  `scans/2026-11-06_scan1.<option>.edits.json`.
 - **Scan 2:** The "storage cabinet" on the left wall starts 5'3" off the floor, so it's most likely
   upper or wall-mounted cabinets.
 - **Scan 3:** The left wall has a 3'11" opening with no door (an archway or cased opening).
@@ -58,6 +78,9 @@ New walls are given by their centerline endpoints `[x, z]` in the scan's own coo
   "rooms": [{ "at": [-0.9, -0.2], "name": "Bathroom" }]
 }
 ```
+
+To compare design options, copy a scan's edits to `<scan>.<option>.edits.json`, change it, and rerun;
+each option renders as `floorplans/<scan>.<option>.png`.
 
 Rooms are found from the walls themselves (doors don't count as gaps), so adding or removing a wall
 re-divides the rooms automatically. `rooms` renames whichever room contains the given point.
