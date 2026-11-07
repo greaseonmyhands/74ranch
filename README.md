@@ -10,6 +10,14 @@ a locked snapshot of the main-floor plan below as of 2026-11-07, about **2,304 s
 [`plans/keegans-plans/`](plans/keegans-plans/), so later work on the working plan or on new versions
 doesn't change it.
 
+## Keegan's Plans – bathroom moved down
+
+[`floorplans/keegans-bath-down.png`](floorplans/keegans-bath-down.png) (`plans/keegans-bath-down.json`,
+with its own frozen edits in `plans/keegans-bath-down/`): Keegan's Plans with the North End bathroom
+moved 3'2" south so its north wall is on Bedroom 2's north wall line. The space it left joins the Living
+Room (438 sq ft); the short wall between that space and Room 2 stays. Bedroom 2 is 176 sq ft, and its
+36" door from the Living Room moves down to sit 2" below the bathroom's south wall.
+
 ## Room 2 master suite – four layouts
 
 Built on Keegan's Plans; side by side in [`floorplans/room2-options.png`](floorplans/room2-options.png).

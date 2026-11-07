@@ -1,0 +1,5 @@
+{
+  "title": "Front Living Room",
+  "remove": ["table_other_rect_0"],
+  "rooms": [{"at": [0.0, 0.0], "name": "Front Living Room"}]
+}

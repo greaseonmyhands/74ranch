@@ -1,0 +1,99 @@
+{
+  "notes": "Coordinates are in the rotated plan (after rotate_cw).",
+  "rotate_cw": 90,
+  "remove": [
+    "Wall_2",
+    "Joint_2",
+    "sofa_rect_0",
+    "table_dining_rect_0",
+    "Door_0",
+    "Door_1",
+    "table_other_rect_0",
+    "storage_cabinet_tall2_0"
+  ],
+  "retype": {
+    "refrigerator_1": "storage_cabinet"
+  },
+  "add_objects": [
+    {
+      "label": "Base cabinet filling the 25\" gap between the cabinet right of the dishwasher and the tall cabinet",
+      "type": "storage_cabinet",
+      "rect": [
+        -2.267,
+        -2.266,
+        -1.632,
+        -1.622
+      ],
+      "bottom": 0.0,
+      "height": 0.98
+    }
+  ],
+  "labels": [
+    {
+      "at": [
+        5.7,
+        1.8
+      ],
+      "text": "open to\nhallway",
+      "rotation": 90
+    }
+  ],
+  "cabinet_depth": {
+    "base": 25.5,
+    "tall": 25.5,
+    "upper": 12,
+    "rooms": [
+      "Kitchen"
+    ],
+    "note": "24in cabinets + countertop overhang = 25.5in from the wall; uppers 12in"
+  },
+  "add_openings": [
+    {
+      "label": "36in hallway opening in the south wall, right edge at the table's left edge",
+      "from": [
+        -0.3654,
+        2.316
+      ],
+      "to": [
+        0.549,
+        2.316
+      ]
+    },
+    {
+      "label": "36in doorway (no door) in the kitchen's west wall, centered between the fridge and the SW corner",
+      "from": [
+        -5.471,
+        1.1243
+      ],
+      "to": [
+        -5.471,
+        2.0387
+      ]
+    },
+    {
+      "label": "36in opening replacing the 2'8\" door in the kitchen's south wall, same center",
+      "from": [
+        -4.8142,
+        2.316
+      ],
+      "to": [
+        -3.8998,
+        2.316
+      ]
+    }
+  ],
+  "add_doors": [
+    {
+      "label": "5'0\" door replacing the scanned 5'1\" one (left jamb kept, trimmed on the right)",
+      "from": [
+        3.828,
+        2.315
+      ],
+      "to": [
+        5.352,
+        2.315
+      ],
+      "height": 2.106
+    }
+  ]
+}

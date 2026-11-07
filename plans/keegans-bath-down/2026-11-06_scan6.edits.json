@@ -1,0 +1,64 @@
+{
+  "title": "Office",
+  "rotate_cw": 180,
+  "rooms": [
+    {
+      "at": [
+        0.0,
+        0.0
+      ],
+      "name": "Office"
+    }
+  ],
+  "remove": [
+    "table_*",
+    "storage_*",
+    "chair_*",
+    "Wall_3"
+  ],
+  "move": [
+    {
+      "label": "Line the east wall's corner post up with the 6'2\" east wall",
+      "nodes": [
+        "Joint_3"
+      ],
+      "by": [
+        0.144,
+        0
+      ]
+    }
+  ],
+  "add_floor": [
+    [
+      [
+        1.65,
+        0.768
+      ],
+      [
+        1.794,
+        0.768
+      ],
+      [
+        1.794,
+        2.352
+      ],
+      [
+        1.65,
+        2.352
+      ]
+    ]
+  ],
+  "add_walls": [
+    {
+      "label": "Office east wall below the opening, 5'2\", in line with the 6'2\" wall",
+      "from": [
+        1.794,
+        0.768
+      ],
+      "to": [
+        1.794,
+        2.352
+      ]
+    }
+  ]
+}
