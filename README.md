@@ -105,8 +105,8 @@ detected piece of furniture are in the matching `floorplans/*.json` files.
   right up to the dining table's left edge; one in the kitchen's west wall, centered
   between the fridge and the SW corner. Kitchen cabinets are drawn at standard depths from the wall: 25½" for base
   and tall cabinets, dishwasher and range (24" box + countertop overhang), 12" for uppers.
-- **Scan 2:** The "storage cabinet" on the left wall starts 5'3" off the floor, so it's most likely
-  upper or wall-mounted cabinets.
+- **Scan 2:** Turned 180° (`scans/2026-11-06_scan2.edits.json`). The "storage cabinet" on the right
+  wall (dashed) starts 5'3" off the floor, so it's most likely upper or wall-mounted cabinets.
 - **Scan 3 — Front Living Room:** The left wall has a 3'11" opening with no door (an archway or cased
   opening). The scanned table is hidden (`scans/2026-11-06_scan3.edits.json`).
 
