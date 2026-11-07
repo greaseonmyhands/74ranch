@@ -1,1 +1,7 @@
-{ "rotate_cw": 180 }
+{
+  "rotate_cw": 180,
+  "remove": [
+    "table_other_rect_0",
+    "storage_shelf_0"
+  ]
+}
