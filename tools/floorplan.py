@@ -251,7 +251,8 @@ def load_edits(path):
      "rooms": [{"at": [x, z], "name": "Bathroom"}],   # name the room containing a point
      "fixtures": [{"name": "Shower", "rect": [x0, z0, x1, z1]}],  # planned fixtures
      "labels": [{"at": [x, z], "text": "...", "rotation": 0}]}     # free-text notes
-    add_doors entries may add "swing_toward": [x, z] to draw the swing (hinged at "from").
+    add_doors entries may add "swing_toward": [x, z] to draw the swing (hinged at "from"), and
+    "double": true for a pair of doors hinged at both jambs.
     Coordinates are in the scan's own frame, in meters; walls are given by their centerline."""
     p = Path(path).with_suffix(".edits.json")
     return json.loads(p.read_text()) if p.exists() else {}
@@ -352,9 +353,9 @@ def add_walls_and_doors(nodes, edits, tag="added"):
     swings = {}
     for i, d in enumerate(edits.get("add_doors", [])):
         nodes[f"Door_{tag}_{i}"] = opening_quad(d["from"], d["to"], d.get("height", 2.03))
-        if "swing_toward" in d:  # hinge at "from", opening toward the given point
+        if "swing_toward" in d:  # hinge at "from" (both jambs if "double"), opening toward the point
             swings[f"Door_{tag}_{i}"] = {"hinge": d["from"], "other": d["to"],
-                                         "toward": d["swing_toward"]}
+                                         "toward": d["swing_toward"], "double": d.get("double", False)}
     for i, o in enumerate(edits.get("add_openings", [])):  # doorless doorways / cased openings
         nodes[f"Opening_{tag}_{i}"] = opening_quad(o["from"], o["to"], o.get("height", 2.03))
     return added, swings
@@ -402,7 +403,7 @@ def process_plan(plan_path, outdir):
             nodes[n + tag] = m
         sh = lambda p: [p[0] + dx, p[1] + dz]
         for n, sw in ps.items():
-            swings[n + tag] = {k: sh(v) for k, v in sw.items()}
+            swings[n + tag] = {k: (sh(v) if isinstance(v, list) else v) for k, v in sw.items()}
         added |= {n + tag for n in pa}
         for k, v in translate_edits(e, dx, dz).items():
             if k == "labels" and not plan.get("scan_labels", True):
@@ -786,24 +787,28 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
                                  "height_m": round(float(h), 2), "height_ft_in": ft_in(h)})
         ax.text(mid[0], mid[1], f"door {ft_in(L)}", fontsize=6, color="#b45f06", ha="center",
                 va="bottom", zorder=8, rotation=rot, rotation_mode="anchor")
-        if name in swings:  # draw the leaf open at 90 degrees and its swing arc
-            hinge, other = np.array(swings[name]["hinge"]), np.array(swings[name]["other"])
-            toward = np.array(swings[name]["toward"])
-            v = other - hinge
-            n = np.array([-v[1], v[0]])
-            if np.dot(n, toward - hinge) < 0:
-                n = -n
-            tip = hinge + n
-            ax.plot([hinge[0], tip[0]], [hinge[1], tip[1]], color="#b45f06", lw=1.0, zorder=5)
-            a0 = np.arctan2(v[1], v[0])
-            a1 = np.arctan2(n[1], n[0])
-            if a1 - a0 > np.pi:
-                a1 -= 2 * np.pi
-            elif a0 - a1 > np.pi:
-                a1 += 2 * np.pi
-            t = np.linspace(a0, a1, 30)
-            ax.plot(hinge[0] + L * np.cos(t), hinge[1] + L * np.sin(t), color="#b45f06",
-                    lw=0.6, ls=(0, (3, 2)), zorder=5)
+        if name in swings:  # draw each leaf open at 90 degrees and its swing arc
+            sw = swings[name]
+            A, B = np.array(sw["hinge"], float), np.array(sw["other"], float)
+            toward = np.array(sw["toward"], float)
+            leaves = [(A, B)] if not sw.get("double") else [(A, (A + B) / 2), (B, (A + B) / 2)]
+            for hinge, other in leaves:
+                v = other - hinge
+                r = np.linalg.norm(v)
+                n = np.array([-v[1], v[0]])
+                if np.dot(n, toward - hinge) < 0:
+                    n = -n
+                tip = hinge + n
+                ax.plot([hinge[0], tip[0]], [hinge[1], tip[1]], color="#b45f06", lw=1.0, zorder=5)
+                a0 = np.arctan2(v[1], v[0])
+                a1 = np.arctan2(n[1], n[0])
+                if a1 - a0 > np.pi:
+                    a1 -= 2 * np.pi
+                elif a0 - a1 > np.pi:
+                    a1 += 2 * np.pi
+                t = np.linspace(a0, a1, 30)
+                ax.plot(hinge[0] + r * np.cos(t), hinge[1] + r * np.sin(t), color="#b45f06",
+                        lw=0.6, ls=(0, (3, 2)), zorder=5)
     for name, m in sorted(openings.items()):
         L, mid, bottom, h, rot = opening(m, "#b45f06", 1.0, "opening")
         summary.setdefault("openings", []).append({"name": name, "width_m": round(float(L), 3),
