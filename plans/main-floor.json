@@ -178,7 +178,8 @@
       "to": [
         -13.7728,
         0.862
-      ]
+      ],
+      "show_length": false
     },
     {
       "label": "Box east wall: down from the kitchen's south wall, flush with the dining hallway opening's west edge",
@@ -293,6 +294,18 @@
         -14.4296,
         0.8708
       ]
+    },
+    {
+      "label": "Divider: Bedroom 1 closet (west 40%) / pantry (east 60%)",
+      "from": [
+        -15.6816,
+        -0.069
+      ],
+      "to": [
+        -15.6816,
+        0.8708
+      ],
+      "show_length": false
     }
   ],
   "add_floor": [
@@ -605,7 +618,7 @@
     },
     {
       "at": [
-        -15.7002,
+        -16.3262,
         0.4009
       ],
       "name": "Closet 2"
@@ -622,6 +635,13 @@
       ],
       "label_size": 8,
       "compact": true
+    },
+    {
+      "at": [
+        -14.7272,
+        0.3965
+      ],
+      "name": "Pantry"
     }
   ],
   "fixtures": [
@@ -704,6 +724,36 @@
       "swing_toward": [
         -10.7478,
         2.7763999999999998
+      ]
+    },
+    {
+      "label": "30in Bedroom 1 closet door, centered in the closet's south wall, swinging out into the bedroom",
+      "from": [
+        -16.7072,
+        0.8708
+      ],
+      "to": [
+        -15.9452,
+        0.8708
+      ],
+      "swing_toward": [
+        -16.3262,
+        1.8708
+      ]
+    },
+    {
+      "label": "28in pantry door in the hall's west wall, swinging into the pantry",
+      "from": [
+        -13.7728,
+        0.0409
+      ],
+      "to": [
+        -13.7728,
+        0.7521
+      ],
+      "swing_toward": [
+        -14.7728,
+        0.39649999999999996
       ]
     }
   ]
