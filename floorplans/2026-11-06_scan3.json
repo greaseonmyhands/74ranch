@@ -1,0 +1,87 @@
+{
+  "source": "scans/2026-11-06_scan3.glb",
+  "ceiling_height": {
+    "m": 2.46,
+    "ft_in": "8'1\""
+  },
+  "rooms": [
+    {
+      "name": "Room",
+      "width_m": 4.56,
+      "depth_m": 4.792,
+      "width_ft_in": "15'0\"",
+      "depth_ft_in": "15'9\"",
+      "area_m2": 21.79,
+      "area_sqft": 234.5,
+      "rectangular": true
+    }
+  ],
+  "walls": [
+    {
+      "name": "Wall_0",
+      "length_m": 4.528,
+      "length_ft_in": "14'10\"",
+      "height_m": 2.56
+    },
+    {
+      "name": "Wall_1",
+      "length_m": 4.792,
+      "length_ft_in": "15'9\"",
+      "height_m": 2.56
+    },
+    {
+      "name": "Wall_2",
+      "length_m": 1.584,
+      "length_ft_in": "5'2\"",
+      "height_m": 2.56
+    },
+    {
+      "name": "Wall_3",
+      "length_m": 4.56,
+      "length_ft_in": "15'0\"",
+      "height_m": 2.56
+    },
+    {
+      "name": "Wall_4",
+      "length_m": 1.924,
+      "length_ft_in": "6'4\"",
+      "height_m": 2.56
+    }
+  ],
+  "doors": [],
+  "windows": [
+    {
+      "name": "Window_0",
+      "width_m": 2.359,
+      "width_ft_in": "7'9\"",
+      "height_m": 1.89,
+      "height_ft_in": "6'2\"",
+      "sill_height_m": 0.37,
+      "sill_height_ft_in": "1'3\""
+    }
+  ],
+  "objects": [
+    {
+      "name": "table_other_rect_0",
+      "type": "table rect",
+      "size_m": [
+        0.97,
+        1.41,
+        0.8
+      ],
+      "bottom_height_m": 0.01
+    },
+    {
+      "name": "fireplace_0",
+      "type": "fireplace",
+      "size_m": [
+        1.6,
+        1.01,
+        1.4
+      ],
+      "bottom_height_m": 0.01
+    }
+  ],
+  "total_area_sqft": 234.5,
+  "total_area_m2": 21.79
+}

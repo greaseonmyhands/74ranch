@@ -1,0 +1,129 @@
+{
+  "source": "scans/2026-11-06_scan2.glb",
+  "ceiling_height": {
+    "m": 2.47,
+    "ft_in": "8'1\""
+  },
+  "rooms": [
+    {
+      "name": "Room",
+      "width_m": 5.199,
+      "depth_m": 3.361,
+      "width_ft_in": "17'1\"",
+      "depth_ft_in": "11'0\"",
+      "area_m2": 17.47,
+      "area_sqft": 188.1,
+      "rectangular": true
+    }
+  ],
+  "walls": [
+    {
+      "name": "Wall_0",
+      "length_m": 5.199,
+      "length_ft_in": "17'1\"",
+      "height_m": 2.58
+    },
+    {
+      "name": "Wall_1",
+      "length_m": 3.361,
+      "length_ft_in": "11'0\"",
+      "height_m": 2.58
+    },
+    {
+      "name": "Wall_2",
+      "length_m": 5.199,
+      "length_ft_in": "17'1\"",
+      "height_m": 2.58
+    },
+    {
+      "name": "Wall_3",
+      "length_m": 3.361,
+      "length_ft_in": "11'0\"",
+      "height_m": 2.58
+    }
+  ],
+  "doors": [
+    {
+      "name": "Door_0",
+      "width_m": 0.787,
+      "width_ft_in": "2'7\"",
+      "height_m": 2.13,
+      "height_ft_in": "7'0\""
+    },
+    {
+      "name": "Door_1",
+      "width_m": 0.673,
+      "width_ft_in": "2'3\"",
+      "height_m": 2.16,
+      "height_ft_in": "7'1\""
+    },
+    {
+      "name": "Door_2",
+      "width_m": 0.891,
+      "width_ft_in": "2'11\"",
+      "height_m": 2.14,
+      "height_ft_in": "7'0\""
+    },
+    {
+      "name": "Door_3",
+      "width_m": 0.902,
+      "width_ft_in": "2'11\"",
+      "height_m": 2.07,
+      "height_ft_in": "6'10\""
+    }
+  ],
+  "windows": [
+    {
+      "name": "Window_0",
+      "width_m": 0.685,
+      "width_ft_in": "2'3\"",
+      "height_m": 1.67,
+      "height_ft_in": "5'6\"",
+      "sill_height_m": 0.43,
+      "sill_height_ft_in": "1'5\""
+    },
+    {
+      "name": "Window_1",
+      "width_m": 0.696,
+      "width_ft_in": "2'3\"",
+      "height_m": 1.65,
+      "height_ft_in": "5'5\"",
+      "sill_height_m": 0.45,
+      "sill_height_ft_in": "1'6\""
+    }
+  ],
+  "objects": [
+    {
+      "name": "storage_shelf_0",
+      "type": "storage shelf",
+      "size_m": [
+        0.75,
+        0.34,
+        0.82
+      ],
+      "bottom_height_m": 0.0
+    },
+    {
+      "name": "table_other_rect_0",
+      "type": "table rect",
+      "size_m": [
+        0.4,
+        1.95,
+        0.57
+      ],
+      "bottom_height_m": 0.0
+    },
+    {
+      "name": "storage_cabinet_mid4_0",
+      "type": "storage cabinet mid4",
+      "size_m": [
+        0.43,
+        1.87,
+        0.82
+      ],
+      "bottom_height_m": 1.61
+    }
+  ],
+  "total_area_sqft": 188.1,
+  "total_area_m2": 17.47
+}
