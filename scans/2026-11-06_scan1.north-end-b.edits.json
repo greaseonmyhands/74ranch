@@ -64,19 +64,7 @@
       ]
     }
   ],
-  "add_doors": [
-    {
-      "label": "36\" door, corridor to Room 2, centered in the corridor",
-      "from": [
-        -3.2527,
-        -1.172
-      ],
-      "to": [
-        -2.3383,
-        -1.172
-      ]
-    }
-  ],
+  "add_doors": [],
   "add_floor": [
     [
       [
