@@ -1,6 +1,6 @@
 {
   "title": "Main floor",
-  "notes": "Scan 5 (kitchen/living, rotated 90 cw by its own edits) is placed so its north wall is collinear with the North End's and its walk-through meets the North End corridor. The shared wall (living room east / Room 2 west) is a standard 4in wall whose west face is the living room's scanned surface; Room 2 takes the rest of the ~15in the scans left between them. The walk-through's north side is redrawn on the corridor's top-wall line. Scan 3 (Front Living Room) shares a standard 4in wall with Room 1A; its north wall is in line with Room 1A's lower 1'6\" wall and it projects 2'10\" further south (the front of the house jogs). The Front Living Room / Room 1A wall is removed: together they're the Living Room; scan 5's living room is the Dining room.",
+  "notes": "Scan 5 (kitchen/living, rotated 90 cw by its own edits) is placed so its north wall is collinear with the North End's and its walk-through meets the North End corridor. The shared wall (living room east / Room 2 west) is a standard 4in wall whose west face is the living room's scanned surface; Room 2 takes the rest of the ~15in the scans left between them. The walk-through's north side is redrawn on the corridor's top-wall line. Scan 3 (Front Living Room) shares a standard 4in wall with Room 1A; its north wall is in line with Room 1A's lower 1'6\" wall and it projects 2'10\" further south (the front of the house jogs). The Front Living Room / Room 1A wall is removed: together they're the Living Room; scan 5's living room is the Dining room. Scan 5 was then shifted 9.5in east (into Room 2) so the dining room's south-wall hallway opening ends exactly at the Living Room's extended west wall.",
   "parts": [
     {
       "scan": "scans/2026-11-06_scan1.glb"
@@ -8,7 +8,7 @@
     {
       "scan": "scans/2026-11-06_scan5.glb",
       "offset": [
-        -9.151,
+        -8.9086,
         -2.385
       ]
     },
@@ -34,13 +34,13 @@
   ],
   "add_walls": [
     {
-      "label": "Shared 4in wall: living room east / Room 2 west",
+      "label": "Shared 4in wall: dining east / Room 2 west",
       "from": [
-        -4.0372,
+        -3.7948,
         -4.701
       ],
       "to": [
-        -4.0372,
+        -3.7948,
         -1.172
       ],
       "thickness_in": 4
@@ -48,7 +48,7 @@
     {
       "label": "North wall across the top of the shared wall",
       "from": [
-        -4.088,
+        -3.8456,
         -4.701
       ],
       "to": [
@@ -60,7 +60,7 @@
     {
       "label": "North side of the walk-through, on the corridor's top-wall line",
       "from": [
-        -4.038,
+        -3.7956,
         -1.172
       ],
       "to": [
@@ -95,7 +95,7 @@
   "add_floor": [
     [
       [
-        -3.9864,
+        -3.744,
         -4.701
       ],
       [
@@ -107,13 +107,13 @@
         -1.172
       ],
       [
-        -3.9864,
+        -3.744,
         -1.172
       ]
     ],
     [
       [
-        -4.088,
+        -3.8456,
         -1.172
       ],
       [
@@ -125,7 +125,7 @@
         -1.085
       ],
       [
-        -4.088,
+        -3.8456,
         -1.085
       ]
     ],
@@ -172,7 +172,7 @@
     },
     {
       "at": [
-        -6.527,
+        -6.2846,
         -2.385
       ],
       "name": "Dining",

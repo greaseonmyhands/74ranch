@@ -6,23 +6,25 @@ Notes, scans and plans for the house.
 
 [`floorplans/main-floor.png`](floorplans/main-floor.png) · [SVG](floorplans/main-floor.svg): the
 North End Renovation (scan 1), the kitchen/dining room (scan 5) and the front living room (scan 3)
-joined into one plan, about **1,524 sq ft** so far. Defined in [`plans/main-floor.json`](plans/main-floor.json).
+joined into one plan, about **1,512 sq ft** so far. Defined in [`plans/main-floor.json`](plans/main-floor.json).
 
 | Room | Area |
 |---|---|
 | Kitchen | 262 sq ft |
-| Dining (scan 5's "living room", open to the kitchen) | 269 sq ft |
+| Dining (scan 5's "living room", open to the kitchen) | 266 sq ft |
 | Living Room (front living room + old Room 1A and its corridor, wall between removed) | 433 sq ft |
-| Room 2 | 323 sq ft (11" wider than its own scan; see below) |
+| Room 2 | 314 sq ft |
 | Bedroom 2 (was Room 1B; queen bed drawn for scale) | 183 sq ft |
 | Bathroom | 55 sq ft |
 
 How they fit:
-- The living room's east wall and Room 2's west wall are one wall: a standard 4" wall, drawn with its
-  west face on the living room's scanned surface (11'7" long). The two scans put the surfaces ~15"
-  apart; the extra ~11" goes to Room 2.
-- The north walls of both scans are exactly in line, and so are the living room's south wall and the
-  North End's short step-in wall (moved 4 mm to match).
+- The dining room's east wall and Room 2's west wall are one wall: a standard 4" wall, drawn with its
+  west face on the dining room's scanned surface (11'7" long). The kitchen/dining scan is placed so
+  its south-wall hallway opening ends exactly at the Living Room's extended west wall; with that,
+  Room 2 comes out about 1" wider than its own scan.
+- The north walls of both scans are exactly in line, and so are the dining room's south wall and the
+  North End's short step-in wall (moved 4 mm to match). The dining room's 5'1" opening runs about 6"
+  past the North End corridor line, into that step-in wall.
 - The walk-through from the dining room into the North End corridor has its north side on the same
   line as the corridor's top wall. The dashed line there separates Dining from the Living Room.
 - The front living room sat beside Room 1A (sharing a 12'10" wall, now removed so they're one Living
