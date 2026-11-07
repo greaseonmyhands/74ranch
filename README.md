@@ -14,7 +14,7 @@ joined into one plan, about **1,524 sq ft** so far. Defined in [`plans/main-floo
 | Dining (scan 5's "living room", open to the kitchen) | 269 sq ft |
 | Living Room (front living room + old Room 1A and its corridor, wall between removed) | 433 sq ft |
 | Room 2 | 323 sq ft (11" wider than its own scan; see below) |
-| Room 1B | 183 sq ft |
+| Bedroom 2 (was Room 1B; queen bed drawn for scale) | 183 sq ft |
 | Bathroom | 55 sq ft |
 
 How they fit:

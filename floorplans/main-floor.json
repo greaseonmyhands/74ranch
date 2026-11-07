@@ -16,6 +16,16 @@
       "rectangular": true
     },
     {
+      "name": "Bedroom 2",
+      "width_m": 3.585,
+      "depth_m": 4.896,
+      "width_ft_in": "11'9\"",
+      "depth_ft_in": "16'1\"",
+      "area_m2": 16.96,
+      "area_sqft": 182.5,
+      "rectangular": false
+    },
+    {
       "name": "Dining",
       "width_m": 5.733,
       "depth_m": 4.633,
@@ -43,16 +53,6 @@
       "depth_ft_in": "22'1\"",
       "area_m2": 40.2,
       "area_sqft": 432.7,
-      "rectangular": false
-    },
-    {
-      "name": "Room 1B",
-      "width_m": 3.585,
-      "depth_m": 4.896,
-      "width_ft_in": "11'9\"",
-      "depth_ft_in": "16'1\"",
-      "area_m2": 16.96,
-      "area_sqft": 182.5,
       "rectangular": false
     },
     {
@@ -640,6 +640,11 @@
       "name": "Vanity 36\"",
       "width_ft_in": "3'0\"",
       "depth_ft_in": "1'9\""
+    },
+    {
+      "name": "Queen bed\n60\" \u00d7 80\"",
+      "width_ft_in": "5'0\"",
+      "depth_ft_in": "6'8\""
     }
   ]
 }

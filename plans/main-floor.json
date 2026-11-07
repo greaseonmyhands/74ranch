@@ -172,7 +172,20 @@
         2.0,
         2.5
       ],
-      "name": "Room 1B"
+      "name": "Bedroom 2"
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "Queen bed\n60\" \u00d7 80\"",
+      "shape": "bed",
+      "head": "n",
+      "rect": [
+        1.4584,
+        -0.1519,
+        2.9824,
+        1.8801
+      ]
     }
   ]
 }

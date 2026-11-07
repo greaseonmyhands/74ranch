@@ -656,6 +656,27 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
         if fx.get("hatch"):  # light pattern (e.g. shower floor) under the outline
             ax.add_patch(poly_patch(poly, fc="none", ec="#bbb", lw=0, zorder=3.1,
                                     hatch=fx["hatch"]))
+        if fx.get("shape") == "bed":  # two pillows at the head end ("head": n/s/e/w)
+            head = fx.get("head", "n")
+            xa, xb, za, zb = min(x0, x1), max(x0, x1), min(z0, z1), max(z0, z1)
+            pd, gap = 0.30, 0.06  # pillow depth, margins
+            if head in ("n", "s"):
+                zp = za + gap if head == "n" else zb - gap - pd
+                half = (xb - xa) / 2
+                for k in range(2):
+                    px = xa + gap + k * half
+                    ax.add_patch(poly_patch(_rect(px, zp, px + half - 2 * gap, zp + pd),
+                                            fc="white", ec="#777", lw=0.7, zorder=3.5))
+                zl = zp + pd + gap if head == "n" else zp - gap  # top of the folded-back sheet
+                ax.plot([xa, xb], [zl + (0.25 if head == "n" else -0.25)] * 2, color="#999",
+                        lw=0.7, zorder=3.5)
+            else:
+                xp = xa + gap if head == "w" else xb - gap - pd
+                half = (zb - za) / 2
+                for k in range(2):
+                    pz = za + gap + k * half
+                    ax.add_patch(poly_patch(_rect(xp, pz, xp + pd, pz + half - 2 * gap),
+                                            fc="white", ec="#777", lw=0.7, zorder=3.5))
         if fx.get("shape") == "toilet":  # bowl drawn as an ellipse toward the front
             from matplotlib.patches import Ellipse
             w, d = abs(x1 - x0), abs(z1 - z0)
