@@ -61,7 +61,8 @@ How they fit:
 ## Floorplans
 
 Generated from iPhone LiDAR room scans (Apple RoomPlan `.glb` exports) taken 2026-11-06.
-Furniture is drawn grey; wall-hung items (upper cabinets, shelves) are dashed outlines.
+Furniture is drawn grey; wall-hung items (upper cabinets, shelves) are dashed outlines. Doorless
+openings are plain gaps in the wall (no label or end marks); doors and windows are labelled.
 Measurements are surface to surface and are usually accurate to within an inch or two.
 Each scan has its own coordinate frame, so the three plans are not aligned with each other yet.
 

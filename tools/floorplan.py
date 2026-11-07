@@ -772,7 +772,7 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
         else:
             if style == "door":
                 ax.plot([a[0], b[0]], [a[1], b[1]], color=color, lw=lw_gap, ls=(0, (2, 1.5)), zorder=5)
-            for p in (a, b):  # jamb ticks (a doorless opening is just the gap between them)
+            for p in ((a, b) if style == "door" else ()):  # jamb ticks; doorless openings are a plain gap
                 ax.plot([p[0] + n[0] * t, p[0] - n[0] * t], [p[1] + n[1] * t, p[1] - n[1] * t],
                         color="#222", lw=1.2, zorder=5)
         mid = (a + b) / 2
@@ -813,8 +813,6 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
         L, mid, bottom, h, rot = opening(m, "#b45f06", 1.0, "opening")
         summary.setdefault("openings", []).append({"name": name, "width_m": round(float(L), 3),
                                                    "width_ft_in": ft_in(L)})
-        ax.text(mid[0], mid[1], f"open {ft_in(L)}", fontsize=6, color="#b45f06", ha="center",
-                va="bottom", zorder=8, rotation=rot, rotation_mode="anchor")
     for name, m in sorted(windows.items()):
         L, mid, bottom, h, rot = opening(m, "#3d85c6", 1.0, "window")
         summary["windows"].append({"name": name, "width_m": round(float(L), 3), "width_ft_in": ft_in(L),
