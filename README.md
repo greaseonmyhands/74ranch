@@ -10,6 +10,15 @@ a locked snapshot of the main-floor plan below as of 2026-11-07, about **2,304 s
 [`plans/keegans-plans/`](plans/keegans-plans/), so later work on the working plan or on new versions
 doesn't change it.
 
+## North End – Option B
+
+[`floorplans/north-end-b.png`](floorplans/north-end-b.png) · [SVG](floorplans/north-end-b.svg): the
+main floor with a different North End: **no new bathroom**, and **Bedroom 2 boxed out** to a full
+11'9" × 16'1" rectangle (189 sq ft). The bathroom's space joins the Living Room (474 sq ft); Room 2 is
+320 sq ft. Defined by [`plans/north-end-b.json`](plans/north-end-b.json) using
+`scans/2026-11-06_scan1.north-end-b.edits.json`; everything outside the North End follows the working
+main floor.
+
 ## Main floor (combined)
 
 [`floorplans/main-floor.png`](floorplans/main-floor.png) · [SVG](floorplans/main-floor.svg): the

@@ -564,7 +564,8 @@
         3.17
       ],
       "name": "Living Room",
-      "note": "Front Living Room + old Room 1A, wall between removed"
+      "note": "Front Living Room + old Room 1A, wall between removed",
+      "no_split": true
     },
     {
       "at": [

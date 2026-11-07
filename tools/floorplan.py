@@ -249,6 +249,7 @@ def load_edits(path):
      "add_openings": [{"from": [x, z], "to": [x, z], "label": "..."}],   # doorless doorways
      "add_floor": [[[x, z], [x, z], ...]],      # extra floor polygons
      "rooms": [{"at": [x, z], "name": "Bathroom"}],   # name the room containing a point
+                                                      # ("no_split": true keeps it one room)
      "fixtures": [{"name": "Shower", "rect": [x0, z0, x1, z1]}],  # planned fixtures
      "labels": [{"at": [x, z], "text": "...", "rotation": 0}]}     # free-text notes
     add_doors entries may add "swing_toward": [x, z] to draw the swing (hinged at "from"), and
@@ -485,7 +486,9 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
         # (e.g. kitchen + living room). Split the space along their floor boundary.
         whole = [n for n, f in floor_polys.items()
                  if f.area > 0.5 and f.intersection(full).area >= 0.9 * f.area]
-        if len(whole) >= 2:
+        keep_whole = any(spec.get("no_split") and r.contains(Point(spec["at"]))
+                         for spec in edits.get("rooms", []))  # a named room that's one space
+        if len(whole) >= 2 and not keep_whole:
             parts = {n: full.intersection(floor_polys[n]) for n in whole}
             rest = full.difference(unary_union(list(parts.values())))
             for piece in polys_of(rest):  # leftovers join the part they touch most

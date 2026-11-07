@@ -1,0 +1,113 @@
+{
+  "notes": "Option B: no new bathroom; Bedroom 2 boxed out to a full rectangle. Layout per hand sketch of 2026-11-07. Coordinates are meters in the scan's frame (x = east, z = south); walls are centerlines. Bathroom: east wall moved 2 ft into Room 2/1B; 40x60 shower on the south wall, toilet NE corner, 36in vanity SW.",
+  "remove": [
+    "chair_other_four_back_no_0",
+    "chair_other_four_back_no_1",
+    "storage_cabinet_mid1_0",
+    "storage_cabinet_tall2_0",
+    "Wall_10",
+    "Wall_2",
+    "Wall_8",
+    "Wall_11",
+    "Wall_6",
+    "Door_0",
+    "Door_1",
+    "Joint_2",
+    "Joint_5",
+    "Joint_9",
+    "Joint_4",
+    "Wall_4"
+  ],
+  "add_walls": [
+    {
+      "label": "Bedroom 2 west wall: straight from the corridor's north wall to the exterior wall",
+      "from": [
+        0.1232,
+        -1.172
+      ],
+      "to": [
+        0.1232,
+        4.694
+      ]
+    },
+    {
+      "label": "North wall of the corridor (Room 2's south wall)",
+      "from": [
+        -3.68,
+        -1.172
+      ],
+      "to": [
+        0.1232,
+        -1.172
+      ]
+    },
+    {
+      "label": "Short wall stepping in to the top of the 2'7\" wall",
+      "from": [
+        -3.68,
+        -0.069
+      ],
+      "to": [
+        -3.23,
+        -0.069
+      ]
+    },
+    {
+      "label": "Bedroom 2 north wall (11'5\" wall), full width again",
+      "from": [
+        0.1232,
+        -0.2019
+      ],
+      "to": [
+        3.708,
+        -0.2019
+      ]
+    }
+  ],
+  "add_doors": [
+    {
+      "label": "36\" door, corridor to Room 2, centered in the corridor",
+      "from": [
+        -3.2527,
+        -1.172
+      ],
+      "to": [
+        -2.3383,
+        -1.172
+      ]
+    }
+  ],
+  "add_floor": [
+    [
+      [
+        -3.68,
+        -1.172
+      ],
+      [
+        -1.911,
+        -1.172
+      ],
+      [
+        -1.911,
+        -0.069
+      ],
+      [
+        -3.68,
+        -0.069
+      ]
+    ]
+  ],
+  "rooms": [],
+  "fixtures": [],
+  "title": "North End \u2013 Option B",
+  "labels": [
+    {
+      "at": [
+        -3.85,
+        -0.62
+      ],
+      "text": "open to\nhallway",
+      "rotation": 90
+    }
+  ]
+}

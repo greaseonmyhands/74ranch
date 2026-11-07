@@ -1,0 +1,191 @@
+{
+  "source": "scans/2026-11-06_scan1.glb",
+  "ceiling_height": {
+    "m": 2.5,
+    "ft_in": "8'2\""
+  },
+  "rooms": [
+    {
+      "name": "Room 1A",
+      "width_m": 3.836,
+      "depth_m": 5.866,
+      "width_ft_in": "12'7\"",
+      "depth_ft_in": "19'3\"",
+      "area_m2": 21.93,
+      "area_sqft": 236.1,
+      "rectangular": false
+    },
+    {
+      "name": "Room 1B",
+      "width_m": 3.585,
+      "depth_m": 4.896,
+      "width_ft_in": "11'9\"",
+      "depth_ft_in": "16'1\"",
+      "area_m2": 17.55,
+      "area_sqft": 188.9,
+      "rectangular": true
+    },
+    {
+      "name": "Room 2",
+      "width_m": 7.421,
+      "depth_m": 4.499,
+      "width_ft_in": "24'4\"",
+      "depth_ft_in": "14'9\"",
+      "area_m2": 29.66,
+      "area_sqft": 319.3,
+      "rectangular": false
+    }
+  ],
+  "walls": [
+    {
+      "name": "Wall_13",
+      "added": false,
+      "length_m": 7.421,
+      "length_ft_in": "24'4\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_3",
+      "added": false,
+      "length_m": 7.388,
+      "length_ft_in": "24'3\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_added_0",
+      "added": true,
+      "length_m": 5.866,
+      "length_ft_in": "19'3\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_5",
+      "added": false,
+      "length_m": 4.846,
+      "length_ft_in": "15'11\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_0",
+      "added": false,
+      "length_m": 4.449,
+      "length_ft_in": "14'7\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_12",
+      "added": false,
+      "length_m": 3.92,
+      "length_ft_in": "12'10\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_added_1",
+      "added": true,
+      "length_m": 3.803,
+      "length_ft_in": "12'6\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_added_3",
+      "added": true,
+      "length_m": 3.585,
+      "length_ft_in": "11'9\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_7",
+      "added": false,
+      "length_m": 3.488,
+      "length_ft_in": "11'5\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_9",
+      "added": false,
+      "length_m": 0.786,
+      "length_ft_in": "2'7\"",
+      "height_m": 2.41
+    },
+    {
+      "name": "Wall_1",
+      "added": false,
+      "length_m": 0.45,
+      "length_ft_in": "1'6\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_added_2",
+      "added": true,
+      "length_m": 0.45,
+      "length_ft_in": "1'6\"",
+      "height_m": 2.5
+    }
+  ],
+  "doors": [
+    {
+      "name": "Door_2",
+      "width_m": 1.014,
+      "width_ft_in": "3'4\"",
+      "height_m": 2.4,
+      "height_ft_in": "7'11\""
+    },
+    {
+      "name": "Door_added_0",
+      "width_m": 0.914,
+      "width_ft_in": "3'0\"",
+      "height_m": 2.03,
+      "height_ft_in": "6'8\""
+    }
+  ],
+  "windows": [
+    {
+      "name": "Window_0",
+      "width_m": 0.675,
+      "width_ft_in": "2'3\"",
+      "height_m": 1.7,
+      "height_ft_in": "5'7\"",
+      "sill_height_m": 0.44,
+      "sill_height_ft_in": "1'5\""
+    },
+    {
+      "name": "Window_1",
+      "width_m": 1.853,
+      "width_ft_in": "6'1\"",
+      "height_m": 1.79,
+      "height_ft_in": "5'10\"",
+      "sill_height_m": 0.52,
+      "sill_height_ft_in": "1'9\""
+    },
+    {
+      "name": "Window_2",
+      "width_m": 0.667,
+      "width_ft_in": "2'2\"",
+      "height_m": 1.63,
+      "height_ft_in": "5'4\"",
+      "sill_height_m": 0.62,
+      "sill_height_ft_in": "2'0\""
+    },
+    {
+      "name": "Window_3",
+      "width_m": 0.669,
+      "width_ft_in": "2'2\"",
+      "height_m": 1.68,
+      "height_ft_in": "5'6\"",
+      "sill_height_m": 0.47,
+      "sill_height_ft_in": "1'7\""
+    },
+    {
+      "name": "Window_4",
+      "width_m": 0.883,
+      "width_ft_in": "2'11\"",
+      "height_m": 0.88,
+      "height_ft_in": "2'11\"",
+      "sill_height_m": 1.3,
+      "sill_height_ft_in": "4'3\""
+    }
+  ],
+  "objects": [],
+  "total_area_sqft": 744.3,
+  "total_area_m2": 69.15
+}
