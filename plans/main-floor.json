@@ -180,18 +180,6 @@
       ]
     },
     {
-      "label": "Hall east wall, from the kitchen's SW opening down to the Office",
-      "from": [
-        -12.7584,
-        -0.069
-      ],
-      "to": [
-        -12.7584,
-        0.862
-      ],
-      "show_length": false
-    },
-    {
       "label": "Box east wall: down from the kitchen's south wall, flush with the dining hallway opening's west edge",
       "from": [
         -9.324,
@@ -378,7 +366,7 @@
       "up": "e",
       "tread_in": 10,
       "rect": [
-        -12.7084,
+        -12.8084,
         -0.019,
         -9.374,
         0.812

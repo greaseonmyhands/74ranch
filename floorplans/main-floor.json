@@ -297,7 +297,7 @@
       "height_m": 2.56
     },
     {
-      "name": "Wall_plan_nolabel_13",
+      "name": "Wall_plan_nolabel_12",
       "added": true,
       "length_m": 1.525,
       "length_ft_in": "5'0\"",
@@ -319,13 +319,6 @@
     },
     {
       "name": "Wall_plan_nolabel_11",
-      "added": true,
-      "length_m": 0.931,
-      "length_ft_in": "3'1\"",
-      "height_m": 2.5
-    },
-    {
-      "name": "Wall_plan_nolabel_12",
       "added": true,
       "length_m": 0.931,
       "length_ft_in": "3'1\"",
@@ -838,7 +831,7 @@
     },
     {
       "name": "UP to attic",
-      "width_ft_in": "10'11\"",
+      "width_ft_in": "11'3\"",
       "depth_ft_in": "2'9\""
     }
   ],
