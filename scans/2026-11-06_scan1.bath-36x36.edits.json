@@ -15,15 +15,14 @@
     "Joint_2",
     "Joint_5",
     "Joint_9",
-    "Joint_4",
-    "Wall_4"
+    "Joint_4"
   ],
   "add_walls": [
     {
-      "label": "Room 1A/1B wall, from the bathroom's south wall to the exterior wall",
+      "label": "16'1\" wall: west end of the 11'5\" wall south to the exterior wall",
       "from": [
         0.1232,
-        0.774
+        -0.2019
       ],
       "to": [
         0.1232,
@@ -37,7 +36,7 @@
         -1.172
       ],
       "to": [
-        0.7328,
+        0.1232,
         -1.172
       ]
     },
@@ -81,30 +80,19 @@
         0.774
       ],
       "to": [
-        0.7328,
+        0.1232,
         0.774
       ]
     },
     {
-      "label": "Bathroom east wall, moved 24\" east",
+      "label": "Bathroom east wall, continuing the 16'1\" wall north",
       "from": [
-        0.7328,
+        0.1232,
         -1.172
       ],
       "to": [
-        0.7328,
-        0.774
-      ]
-    },
-    {
-      "label": "11'5\" wall (Wall_4), shortened to start at the bathroom's east wall",
-      "from": [
-        0.7328,
-        -0.2019
-      ],
-      "to": [
-        3.708,
-        -0.2019
+        0.1232,
+        -0.202
       ]
     }
   ],
@@ -184,23 +172,17 @@
         -0.9,
         -0.2
       ],
-      "name": "Bathroom",
-      "label_at": [
-        -0.53,
-        0.33
-      ],
-      "label_size": 8,
-      "compact": true
+      "name": "Bathroom"
     }
   ],
   "fixtures": [
     {
-      "name": "Shower\n40\" \u00d7 60\"",
+      "name": "Shower\n36\" \u00d7 36\"",
       "rect": [
         -0.8412,
         -1.122,
-        0.6828,
-        -0.106
+        0.0732,
+        -0.2076
       ],
       "hatch": "."
     },
@@ -209,21 +191,22 @@
       "shape": "toilet",
       "front": "w",
       "rect": [
-        -0.0284,
-        0.055,
-        0.6828,
-        0.563
+        -0.638,
+        0.0128,
+        0.0732,
+        0.5208
       ]
     },
     {
-      "name": "Vanity 36\"",
+      "name": "Vanity\n24\"",
       "rect": [
         -1.861,
-        0.1906,
-        -0.9466,
+        0.1144,
+        -1.3276,
         0.724
-      ]
+      ],
+      "text_rotation": 0
     }
   ],
-  "title": "Option B: 40\" \u00d7 60\" shower (bath wall +2 ft)"
+  "title": "Option: original 36\" \u00d7 36\" shower bathroom"
 }

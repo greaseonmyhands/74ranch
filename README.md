@@ -10,10 +10,10 @@ Each scan has its own coordinate frame, so the three plans are not aligned with 
 
 | Scan | Plan | Rooms | Size | Area |
 |---|---|---|---|---|
-| 1 | [PNG](floorplans/2026-11-06_scan1.png) · [SVG](floorplans/2026-11-06_scan1.svg) | Room 2 | 24'4" × 14'9" overall | 319 sq ft |
+| 1 | [PNG](floorplans/2026-11-06_scan1.png) · [SVG](floorplans/2026-11-06_scan1.svg) | Room 2 | 24'4" × 14'9" overall | 313 sq ft |
 |   |   | Room 1A (incl. 4' corridor) | 12'6" × 19'3" overall | 193 sq ft |
-|   |   | Room 1B | 11'9" × 16'1" | 189 sq ft |
-|   |   | Bathroom | 6'8" × 6'5" (≈6'4" × 6'1" inside) | 43 sq ft |
+|   |   | Room 1B | 13'9" × 16'1" overall | 183 sq ft |
+|   |   | Bathroom | 8'8" × 6'5" (8'4" × 6'1" inside) | 55 sq ft |
 | 2 | [PNG](floorplans/2026-11-06_scan2.png) · [SVG](floorplans/2026-11-06_scan2.svg) | Room (4 doors, 2 windows) | 17'1" × 11'0" | 188 sq ft |
 | 3 | [PNG](floorplans/2026-11-06_scan3.png) · [SVG](floorplans/2026-11-06_scan3.svg) | Room with fireplace, 7'9" window | 15'0" × 15'9" | 235 sq ft |
 
@@ -28,31 +28,24 @@ detected piece of furniture are in the matching `floorplans/*.json` files.
     36" door into Room 2. Bathroom has a 36" door on its west wall near the north end.
   - The 16'1" wall between Room 1A and 1B continues north as the bathroom's east wall and has a 36" door.
   - The angled west wall is straightened onto the exterior line, keeping the scanned 2'11" exterior door.
-  - Bathroom fixture layout drawn in: 36" × 36" shower (NE corner), toilet on the east wall facing
-    west (centerline 18" off the south wall, ~19" from the shower), 24" vanity on the west wall below
-    the door. Meets IRC minimums (15" toilet side clearance, 21" in front of toilet and vanity) and
-    the 36" door swings clear of every fixture.
+  - Bathroom east wall moved 2 ft into Room 2 / Room 1B (the 11'5" wall is shorter and the 1A/1B wall
+    starts at the bathroom's south wall). Layout: 40" × 60" shower along the south wall, toilet in the
+    NE corner facing west (centerline 16" from the north wall and from the shower), 36" vanity in the
+    SW corner. Meets IRC minimums (15" toilet side clearance, 21" in front of toilet and vanity); the
+    36" door swings clear of the shower by about 4".
   - Furniture is hidden.
 
-  **Bigger-bathroom options** (side by side: [`floorplans/2026-11-06_scan1.bath-options.png`](floorplans/2026-11-06_scan1.bath-options.png)).
-  Each moves the bathroom's east wall into Room 2 and Room 1B; the 11'5" wall gets shorter and the
-  1A/1B wall now starts at the bathroom's south wall.
+  **Other bathroom options considered** (each in `scans/2026-11-06_scan1.<option>.edits.json`):
 
-  | | Current | Option A | Option B |
+  | | Main plan | [36×36](floorplans/2026-11-06_scan1.bath-36x36.png) | [36×48](floorplans/2026-11-06_scan1.bath-36x48.png) |
   |---|---|---|---|
-  | Plan | [PNG](floorplans/2026-11-06_scan1.png) | [PNG](floorplans/2026-11-06_scan1.bath-36x48.png) | [PNG](floorplans/2026-11-06_scan1.bath-40x60.png) |
-  | East wall moved | — | 1 ft | 2 ft |
-  | Bathroom inside | 6'4" × 6'1" | 7'4" × 6'1" | 8'4" × 6'1" |
-  | Bathroom area | 43 sq ft | 49 sq ft | 55 sq ft |
-  | Shower | 36" × 36" | 36" × 48" | 40" × 60" |
-  | Vanity | 24" (west wall) | 36" (south wall) | 36" (south wall) |
-  | Toilet centerline to shower / wall | 19" / 18" | 19" / 18" | 16" / 16" |
-  | Room 2 | 319 sq ft | 316 sq ft | 313 sq ft |
-  | Room 1B | 189 sq ft | 186 sq ft | 183 sq ft |
+  | East wall moved | 2 ft | — | 1 ft |
+  | Bathroom inside | 8'4" × 6'1" | 6'4" × 6'1" | 7'4" × 6'1" |
+  | Bathroom area | 55 sq ft | 43 sq ft | 49 sq ft |
+  | Shower | 40" × 60" (south wall) | 36" × 36" (NE) | 36" × 48" (north wall) |
+  | Vanity | 36" | 24" | 36" |
+  | Room 2 / Room 1B | 313 / 183 sq ft | 319 / 189 sq ft | 316 / 186 sq ft |
 
-  All three meet IRC minimums (15" toilet side clearance, 21" in front of toilet and vanity), and the
-  36" door swings clear of the shower by about 4" in each. Options live in
-  `scans/2026-11-06_scan1.<option>.edits.json`.
 - **Scan 2:** The "storage cabinet" on the left wall starts 5'3" off the floor, so it's most likely
   upper or wall-mounted cabinets.
 - **Scan 3:** The left wall has a 3'11" opening with no door (an archway or cased opening).

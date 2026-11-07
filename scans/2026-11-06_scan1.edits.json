@@ -1,5 +1,5 @@
 {
-  "notes": "Layout per hand sketch of 2026-11-07. Coordinates are meters in the scan's frame (x = east, z = south); walls are centerlines.",
+  "notes": "Layout per hand sketch of 2026-11-07. Coordinates are meters in the scan's frame (x = east, z = south); walls are centerlines. Bathroom: east wall moved 2 ft into Room 2/1B; 40x60 shower on the south wall, toilet NE corner, 36in vanity SW.",
   "remove": [
     "chair_other_four_back_no_0",
     "chair_other_four_back_no_1",
@@ -15,14 +15,15 @@
     "Joint_2",
     "Joint_5",
     "Joint_9",
-    "Joint_4"
+    "Joint_4",
+    "Wall_4"
   ],
   "add_walls": [
     {
-      "label": "16'1\" wall: west end of the 11'5\" wall south to the exterior wall",
+      "label": "Room 1A/1B wall, from the bathroom's south wall to the exterior wall",
       "from": [
         0.1232,
-        -0.2019
+        0.774
       ],
       "to": [
         0.1232,
@@ -36,7 +37,7 @@
         -1.172
       ],
       "to": [
-        0.1232,
+        0.7328,
         -1.172
       ]
     },
@@ -80,19 +81,30 @@
         0.774
       ],
       "to": [
-        0.1232,
+        0.7328,
         0.774
       ]
     },
     {
-      "label": "Bathroom east wall, continuing the 16'1\" wall north",
+      "label": "Bathroom east wall, moved 24\" east",
       "from": [
-        0.1232,
+        0.7328,
         -1.172
       ],
       "to": [
-        0.1232,
-        -0.202
+        0.7328,
+        0.774
+      ]
+    },
+    {
+      "label": "11'5\" wall (Wall_4), shortened to start at the bathroom's east wall",
+      "from": [
+        0.7328,
+        -0.2019
+      ],
+      "to": [
+        3.708,
+        -0.2019
       ]
     }
   ],
@@ -172,17 +184,23 @@
         -0.9,
         -0.2
       ],
-      "name": "Bathroom"
+      "name": "Bathroom",
+      "label_at": [
+        -0.439,
+        -0.665
+      ],
+      "label_size": 8,
+      "compact": true
     }
   ],
   "fixtures": [
     {
-      "name": "Shower\n36\" \u00d7 36\"",
+      "name": "Shower\n40\" \u00d7 60\"",
       "rect": [
         -0.8412,
-        -1.122,
-        0.0732,
-        -0.2076
+        -0.292,
+        0.6828,
+        0.724
       ],
       "hatch": "."
     },
@@ -191,21 +209,21 @@
       "shape": "toilet",
       "front": "w",
       "rect": [
-        -0.638,
-        0.0128,
-        0.0732,
-        0.5208
+        -0.0284,
+        -0.961,
+        0.6828,
+        -0.453
       ]
     },
     {
-      "name": "Vanity\n24\"",
+      "name": "Vanity 36\"",
       "rect": [
         -1.861,
-        0.1144,
-        -1.3276,
+        0.1906,
+        -0.9466,
         0.724
-      ],
-      "text_rotation": 0
+      ]
     }
-  ]
+  ],
+  "title": "2026-11-06_scan1"
 }
