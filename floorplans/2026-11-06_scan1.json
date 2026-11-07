@@ -246,5 +246,22 @@
   ],
   "objects": [],
   "total_area_sqft": 744.2,
-  "total_area_m2": 69.14
+  "total_area_m2": 69.14,
+  "fixtures": [
+    {
+      "name": "Shower\n36\" \u00d7 36\"",
+      "width_ft_in": "3'0\"",
+      "depth_ft_in": "3'0\""
+    },
+    {
+      "name": "WC",
+      "width_ft_in": "2'4\"",
+      "depth_ft_in": "1'8\""
+    },
+    {
+      "name": "Vanity\n24\"",
+      "width_ft_in": "1'9\"",
+      "depth_ft_in": "2'0\""
+    }
+  ]
 }

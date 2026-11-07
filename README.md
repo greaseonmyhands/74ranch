@@ -28,6 +28,10 @@ detected piece of furniture are in the matching `floorplans/*.json` files.
     36" door into Room 2. Bathroom has a 36" door on its west wall near the north end.
   - The 16'1" wall between Room 1A and 1B continues north as the bathroom's east wall and has a 36" door.
   - The angled west wall is straightened onto the exterior line, keeping the scanned 2'11" exterior door.
+  - Bathroom fixture layout drawn in: 36" × 36" shower (NE corner), toilet on the east wall facing
+    west (centerline 18" off the south wall, ~19" from the shower), 24" vanity on the west wall below
+    the door. Meets IRC minimums (15" toilet side clearance, 21" in front of toilet and vanity) and
+    the 36" door swings clear of every fixture.
   - Furniture is hidden.
 - **Scan 2:** The "storage cabinet" on the left wall starts 5'3" off the floor, so it's most likely
   upper or wall-mounted cabinets.

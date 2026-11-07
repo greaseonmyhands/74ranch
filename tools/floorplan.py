@@ -107,7 +107,9 @@ def load_edits(path):
      "add_walls": [{"from": [x, z], "to": [x, z], "label": "..."}],
      "add_doors": [{"from": [x, z], "to": [x, z], "label": "..."}],
      "add_floor": [[[x, z], [x, z], ...]],      # extra floor polygons
-     "rooms": [{"at": [x, z], "name": "Bathroom"}]}   # name the room containing a point
+     "rooms": [{"at": [x, z], "name": "Bathroom"}],   # name the room containing a point
+     "fixtures": [{"name": "Shower", "rect": [x0, z0, x1, z1]}]}  # planned fixtures
+    add_doors entries may add "swing_toward": [x, z] to draw the swing (hinged at "from").
     Coordinates are in the scan's own frame, in meters; walls are given by their centerline."""
     p = Path(path).with_suffix(".edits.json")
     return json.loads(p.read_text()) if p.exists() else {}
@@ -159,8 +161,12 @@ def process(path, outdir):
         name = f"Wall_added_{i}"
         added.add(name)
         nodes[name] = wall_box(w["from"], w["to"], w.get("height", 2.5))
+    swings = {}
     for i, d in enumerate(edits.get("add_doors", [])):
         nodes[f"Door_added_{i}"] = opening_quad(d["from"], d["to"], d.get("height", 2.03))
+        if "swing_toward" in d:  # hinge at "from", opening toward the given point
+            swings[f"Door_added_{i}"] = {"hinge": d["from"], "other": d["to"],
+                                         "toward": d["swing_toward"]}
     kind = lambda n: n.split("_")[0]
 
     floors = {n: m for n, m in nodes.items() if kind(n) == "Floor"}
@@ -257,6 +263,32 @@ def process(path, outdir):
                                               round(float(ext[1]), 2)],
                                    "bottom_height_m": round(float(m.bounds[0][1]), 2)})
 
+    # Planned fixtures (shower, toilet, vanity, ...): labelled rectangles from the edits
+    IN = 0.0254
+    for fx in edits.get("fixtures", []):
+        x0, z0, x1, z1 = fx["rect"]
+        poly = Polygon([(x0, z0), (x1, z0), (x1, z1), (x0, z1)])
+        ax.add_patch(poly_patch(poly, fc="white", ec="#555", lw=0.9, zorder=3))
+        if fx.get("hatch"):  # light pattern (e.g. shower floor) under the outline
+            ax.add_patch(poly_patch(poly, fc="none", ec="#bbb", lw=0, zorder=3.1,
+                                    hatch=fx["hatch"]))
+        if fx.get("shape") == "toilet":  # bowl drawn as an ellipse toward the front
+            from matplotlib.patches import Ellipse
+            w, d = abs(x1 - x0), abs(z1 - z0)
+            horiz = w >= d  # long side = depth of the toilet
+            front = fx.get("front", "w")
+            tank = 7 * IN
+            if front in ("w", "e"):
+                bx = (min(x0, x1) + (0 if front == "w" else tank) + max(x0, x1) - (tank if front == "w" else 0)) / 2
+                ax.add_patch(Ellipse((bx, (z0 + z1) / 2), w - tank - 0.02, d - 0.04, fc="white",
+                                     ec="#555", lw=0.8, zorder=3.5))
+                tx = max(x0, x1) - tank if front == "w" else min(x0, x1) + tank
+                ax.plot([tx, tx], [z0, z1], color="#555", lw=0.8, zorder=3.5)
+        ax.text((x0 + x1) / 2, (z0 + z1) / 2, fx["name"], ha="center", va="center", fontsize=6.5,
+                color="#333", zorder=4.5, rotation=fx.get("text_rotation", 0))
+        summary.setdefault("fixtures", []).append(
+            {"name": fx["name"], "width_ft_in": ft_in(abs(x1 - x0)), "depth_ft_in": ft_in(abs(z1 - z0))})
+
     # Walls
     for p in polys_of(wall_geom):
         ax.add_patch(poly_patch(p, fc="#222", ec="#222", lw=0.5, zorder=4))
@@ -318,6 +350,24 @@ def process(path, outdir):
                                  "height_m": round(float(h), 2), "height_ft_in": ft_in(h)})
         ax.text(mid[0], mid[1], f"door {ft_in(L)}", fontsize=6, color="#b45f06", ha="center",
                 va="bottom", zorder=8, rotation=rot, rotation_mode="anchor")
+        if name in swings:  # draw the leaf open at 90 degrees and its swing arc
+            hinge, other = np.array(swings[name]["hinge"]), np.array(swings[name]["other"])
+            toward = np.array(swings[name]["toward"])
+            v = other - hinge
+            n = np.array([-v[1], v[0]])
+            if np.dot(n, toward - hinge) < 0:
+                n = -n
+            tip = hinge + n
+            ax.plot([hinge[0], tip[0]], [hinge[1], tip[1]], color="#b45f06", lw=1.0, zorder=5)
+            a0 = np.arctan2(v[1], v[0])
+            a1 = np.arctan2(n[1], n[0])
+            if a1 - a0 > np.pi:
+                a1 -= 2 * np.pi
+            elif a0 - a1 > np.pi:
+                a1 += 2 * np.pi
+            t = np.linspace(a0, a1, 30)
+            ax.plot(hinge[0] + L * np.cos(t), hinge[1] + L * np.sin(t), color="#b45f06",
+                    lw=0.6, ls=(0, (3, 2)), zorder=5)
     for name, m in sorted(windows.items()):
         L, mid, bottom, h, rot = opening(m, "#3d85c6", 1.0, "window")
         summary["windows"].append({"name": name, "width_m": round(float(L), 3), "width_ft_in": ft_in(L),
