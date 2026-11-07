@@ -24,6 +24,14 @@ and both windows stay.
 | C | [PNG](floorplans/room2-option-c.png) | Suite on the east; bath takes the alcove and the 2'3" window; dressing above with full-width closet; separate washer + dryer | 170 sq ft | 72 sq ft, 60" double vanity | 72 sq ft |
 | D | [PNG](floorplans/room2-option-d.png) | Suite on the east; dressing takes the alcove (9' closet) and the window; bath above; washer/dryer combo | 170 sq ft | 59 sq ft, 48" vanity | 85 sq ft |
 
+**Option E** ([PNG](floorplans/room2-option-e.png), `plans/room2-option-e.json`), refining the
+bed-on-the-west layouts: the bedroom (161 sq ft, 13'9" wide) has the king bed on the west wall and a
+30" door into the master bath (78 sq ft: 60" × 36" shower and toilet along the north wall). On the
+bath's south wall, his and her 42" vanities flank a centered 32" doorway into the dressing room
+(75 sq ft): horseshoe hanging storage (22" deep) on its west, south and east sides around the alcove,
+a 24" × 20" island in the middle with ~21-22" aisles all round, and a 24" washer/dryer combo by the
+doorway. Tight: a full-size island or separate washer + dryer would need about 2' more width.
+
 In A/B the bed's headboard is on the east wall with ~36" on each side; in C/D it's on the solid west
 wall (shared with the dining room) with ~29" on each side. Plans: `plans/room2-option-{a,b,c,d}.json`.
 
