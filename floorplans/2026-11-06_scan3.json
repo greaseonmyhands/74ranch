@@ -18,24 +18,10 @@
   ],
   "walls": [
     {
-      "name": "Wall_0",
-      "added": false,
-      "length_m": 4.528,
-      "length_ft_in": "14'10\"",
-      "height_m": 2.56
-    },
-    {
       "name": "Wall_1",
       "added": false,
       "length_m": 4.792,
       "length_ft_in": "15'9\"",
-      "height_m": 2.56
-    },
-    {
-      "name": "Wall_2",
-      "added": false,
-      "length_m": 1.584,
-      "length_ft_in": "5'2\"",
       "height_m": 2.56
     },
     {
@@ -46,10 +32,24 @@
       "height_m": 2.56
     },
     {
+      "name": "Wall_0",
+      "added": false,
+      "length_m": 4.528,
+      "length_ft_in": "14'10\"",
+      "height_m": 2.56
+    },
+    {
       "name": "Wall_4",
       "added": false,
       "length_m": 1.924,
       "length_ft_in": "6'4\"",
+      "height_m": 2.56
+    },
+    {
+      "name": "Wall_2",
+      "added": false,
+      "length_m": 1.584,
+      "length_ft_in": "5'2\"",
       "height_m": 2.56
     }
   ],

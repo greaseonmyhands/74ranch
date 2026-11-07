@@ -1,0 +1,44 @@
+{
+  "title": "Main floor: North End + Kitchen/Living",
+  "notes": "Scan 5 (kitchen/living, rotated 90 cw by its own edits) is placed so its SE opening meets the North End corridor's west opening. Check: north walls line up within 2 mm; openings within 2 mm (south end) and ~8 cm (north end). The living room's east wall and Room 2's west wall are the same wall, ~15in surface to surface (old exterior wall?).",
+  "parts": [
+    {
+      "scan": "scans/2026-11-06_scan1.glb"
+    },
+    {
+      "scan": "scans/2026-11-06_scan5.glb",
+      "offset": [
+        -9.151,
+        -2.387
+      ]
+    }
+  ],
+  "scan_labels": false,
+  "add_walls": [
+    {
+      "label": "Shared wall: living room east (11'10\") / Room 2 west (11'5\"), ~15in thick",
+      "from": [
+        -3.9005,
+        -4.701
+      ],
+      "to": [
+        -3.9005,
+        -1.087
+      ],
+      "thickness_in": 18.7
+    }
+  ],
+  "room_dividers": [
+    {
+      "label": "Walk-through between the living room and the North End corridor",
+      "from": [
+        -3.68,
+        -1.087
+      ],
+      "to": [
+        -3.68,
+        -0.073
+      ]
+    }
+  ]
+}

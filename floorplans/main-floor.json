@@ -1,0 +1,625 @@
+{
+  "source": "plans/main-floor.json",
+  "ceiling_height": {
+    "m": 2.5,
+    "ft_in": "8'2\""
+  },
+  "rooms": [
+    {
+      "name": "Bathroom",
+      "width_m": 2.644,
+      "depth_m": 1.946,
+      "width_ft_in": "8'8\"",
+      "depth_ft_in": "6'5\"",
+      "area_m2": 5.14,
+      "area_sqft": 55.4,
+      "rectangular": true
+    },
+    {
+      "name": "Kitchen",
+      "width_m": 5.248,
+      "depth_m": 4.633,
+      "width_ft_in": "17'3\"",
+      "depth_ft_in": "15'2\"",
+      "area_m2": 24.31,
+      "area_sqft": 261.7,
+      "rectangular": true
+    },
+    {
+      "name": "Living Room",
+      "width_m": 5.693,
+      "depth_m": 4.633,
+      "width_ft_in": "18'8\"",
+      "depth_ft_in": "15'2\"",
+      "area_m2": 24.9,
+      "area_sqft": 268.0,
+      "rectangular": false
+    },
+    {
+      "name": "Room 1A",
+      "width_m": 3.804,
+      "depth_m": 5.866,
+      "width_ft_in": "12'6\"",
+      "depth_ft_in": "19'3\"",
+      "area_m2": 17.97,
+      "area_sqft": 193.4,
+      "rectangular": false
+    },
+    {
+      "name": "Room 1B",
+      "width_m": 3.585,
+      "depth_m": 4.896,
+      "width_ft_in": "11'9\"",
+      "depth_ft_in": "16'1\"",
+      "area_m2": 16.96,
+      "area_sqft": 182.5,
+      "rectangular": false
+    },
+    {
+      "name": "Room 2",
+      "width_m": 7.421,
+      "depth_m": 4.499,
+      "width_ft_in": "24'4\"",
+      "depth_ft_in": "14'9\"",
+      "area_m2": 29.07,
+      "area_sqft": 312.9,
+      "rectangular": false
+    }
+  ],
+  "walls": [
+    {
+      "name": "Wall_1~1",
+      "added": false,
+      "length_m": 10.941,
+      "length_ft_in": "35'11\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_3~1",
+      "added": false,
+      "length_m": 10.533,
+      "length_ft_in": "34'7\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_13~0",
+      "added": false,
+      "length_m": 7.421,
+      "length_ft_in": "24'4\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_3~0",
+      "added": false,
+      "length_m": 7.388,
+      "length_ft_in": "24'3\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_5~0",
+      "added": false,
+      "length_m": 4.846,
+      "length_ft_in": "15'11\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_0~1",
+      "added": false,
+      "length_m": 4.633,
+      "length_ft_in": "15'2\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_0~0",
+      "added": false,
+      "length_m": 4.449,
+      "length_ft_in": "14'7\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_added_1~0",
+      "added": true,
+      "length_m": 4.413,
+      "length_ft_in": "14'6\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_12~0",
+      "added": false,
+      "length_m": 3.92,
+      "length_ft_in": "12'10\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_added_0~0",
+      "added": true,
+      "length_m": 3.92,
+      "length_ft_in": "12'10\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_4~1",
+      "added": false,
+      "length_m": 3.616,
+      "length_ft_in": "11'10\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_plan_0",
+      "added": true,
+      "length_m": 3.614,
+      "length_ft_in": "11'10\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_7~0",
+      "added": false,
+      "length_m": 3.488,
+      "length_ft_in": "11'5\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_added_6~0",
+      "added": true,
+      "length_m": 2.975,
+      "length_ft_in": "9'9\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_added_4~0",
+      "added": true,
+      "length_m": 2.644,
+      "length_ft_in": "8'8\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_added_3~0",
+      "added": true,
+      "length_m": 1.946,
+      "length_ft_in": "6'5\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_added_5~0",
+      "added": true,
+      "length_m": 1.946,
+      "length_ft_in": "6'5\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_9~0",
+      "added": false,
+      "length_m": 0.786,
+      "length_ft_in": "2'7\"",
+      "height_m": 2.41
+    },
+    {
+      "name": "Wall_1~0",
+      "added": false,
+      "length_m": 0.45,
+      "length_ft_in": "1'6\"",
+      "height_m": 2.6
+    },
+    {
+      "name": "Wall_added_2~0",
+      "added": true,
+      "length_m": 0.45,
+      "length_ft_in": "1'6\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_5~1",
+      "added": false,
+      "length_m": 0.408,
+      "length_ft_in": "1'4\"",
+      "height_m": 2.5
+    }
+  ],
+  "doors": [
+    {
+      "name": "Door_0~1",
+      "width_m": 0.808,
+      "width_ft_in": "2'8\"",
+      "height_m": 2.06,
+      "height_ft_in": "6'9\""
+    },
+    {
+      "name": "Door_1~1",
+      "width_m": 1.548,
+      "width_ft_in": "5'1\"",
+      "height_m": 2.11,
+      "height_ft_in": "6'11\""
+    },
+    {
+      "name": "Door_2~0",
+      "width_m": 1.014,
+      "width_ft_in": "3'4\"",
+      "height_m": 2.4,
+      "height_ft_in": "7'11\""
+    },
+    {
+      "name": "Door_2~1",
+      "width_m": 1.933,
+      "width_ft_in": "6'4\"",
+      "height_m": 2.08,
+      "height_ft_in": "6'10\""
+    },
+    {
+      "name": "Door_added_0~0",
+      "width_m": 0.914,
+      "width_ft_in": "3'0\"",
+      "height_m": 2.03,
+      "height_ft_in": "6'8\""
+    },
+    {
+      "name": "Door_added_1~0",
+      "width_m": 0.914,
+      "width_ft_in": "3'0\"",
+      "height_m": 2.03,
+      "height_ft_in": "6'8\""
+    },
+    {
+      "name": "Door_added_2~0",
+      "width_m": 0.914,
+      "width_ft_in": "3'0\"",
+      "height_m": 2.03,
+      "height_ft_in": "6'8\""
+    }
+  ],
+  "windows": [
+    {
+      "name": "Window_0~0",
+      "width_m": 0.675,
+      "width_ft_in": "2'3\"",
+      "height_m": 1.7,
+      "height_ft_in": "5'7\"",
+      "sill_height_m": 0.44,
+      "sill_height_ft_in": "1'5\""
+    },
+    {
+      "name": "Window_0~1",
+      "width_m": 1.118,
+      "width_ft_in": "3'8\"",
+      "height_m": 0.93,
+      "height_ft_in": "3'1\"",
+      "sill_height_m": 1.29,
+      "sill_height_ft_in": "4'3\""
+    },
+    {
+      "name": "Window_1~0",
+      "width_m": 1.853,
+      "width_ft_in": "6'1\"",
+      "height_m": 1.79,
+      "height_ft_in": "5'10\"",
+      "sill_height_m": 0.52,
+      "sill_height_ft_in": "1'9\""
+    },
+    {
+      "name": "Window_1~1",
+      "width_m": 1.933,
+      "width_ft_in": "6'4\"",
+      "height_m": 1.99,
+      "height_ft_in": "6'7\"",
+      "sill_height_m": 0.06,
+      "sill_height_ft_in": "0'2\""
+    },
+    {
+      "name": "Window_2~0",
+      "width_m": 0.667,
+      "width_ft_in": "2'2\"",
+      "height_m": 1.63,
+      "height_ft_in": "5'4\"",
+      "sill_height_m": 0.62,
+      "sill_height_ft_in": "2'0\""
+    },
+    {
+      "name": "Window_3~0",
+      "width_m": 0.669,
+      "width_ft_in": "2'2\"",
+      "height_m": 1.68,
+      "height_ft_in": "5'6\"",
+      "sill_height_m": 0.47,
+      "sill_height_ft_in": "1'7\""
+    },
+    {
+      "name": "Window_4~0",
+      "width_m": 0.883,
+      "width_ft_in": "2'11\"",
+      "height_m": 0.88,
+      "height_ft_in": "2'11\"",
+      "sill_height_m": 1.3,
+      "sill_height_ft_in": "4'3\""
+    }
+  ],
+  "objects": [
+    {
+      "name": "storage_cabinet_mid1_1~1",
+      "type": "upper cab",
+      "size_m": [
+        0.36,
+        0.42,
+        1.02
+      ],
+      "bottom_height_m": 1.41
+    },
+    {
+      "name": "storage_cabinet_mid1_3~1",
+      "type": "base cab",
+      "size_m": [
+        0.71,
+        0.18,
+        1.05
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "storage_cabinet_mid1_2~1",
+      "type": "upper cab",
+      "size_m": [
+        0.55,
+        0.35,
+        1.02
+      ],
+      "bottom_height_m": 1.4
+    },
+    {
+      "name": "chair_other_four_back_no_0~1",
+      "type": "chair",
+      "size_m": [
+        0.45,
+        0.49,
+        1.07
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "chair_other_four_back_no_1~1",
+      "type": "chair",
+      "size_m": [
+        0.45,
+        0.49,
+        1.07
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "storage_cabinet_low2_1~1",
+      "type": "upper cab",
+      "size_m": [
+        0.38,
+        0.75,
+        0.59
+      ],
+      "bottom_height_m": 1.84
+    },
+    {
+      "name": "storage_cabinet_mid2_0~1",
+      "type": "upper cab",
+      "size_m": [
+        0.36,
+        0.94,
+        1.02
+      ],
+      "bottom_height_m": 1.4
+    },
+    {
+      "name": "storage_cabinet_mid1_0~1",
+      "type": "base cab",
+      "size_m": [
+        0.71,
+        0.48,
+        1.05
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "table_dining_rect_0~1",
+      "type": "dining table",
+      "size_m": [
+        0.62,
+        0.51,
+        0.65
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "storage_cabinet_mid1_4~1",
+      "type": "base cab",
+      "size_m": [
+        0.5,
+        0.64,
+        1.05
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "storage_cabinet_low2_0~1",
+      "type": "upper cab",
+      "size_m": [
+        0.63,
+        1.01,
+        0.6
+      ],
+      "bottom_height_m": 1.83
+    },
+    {
+      "name": "storage_shelf_1~1",
+      "type": "shelf",
+      "size_m": [
+        0.38,
+        0.95,
+        1.63
+      ],
+      "bottom_height_m": 0.75
+    },
+    {
+      "name": "sink_0~1",
+      "type": "sink",
+      "size_m": [
+        0.62,
+        0.49,
+        0.33
+      ],
+      "bottom_height_m": 0.66
+    },
+    {
+      "name": "dishwasher_0~1",
+      "type": "DW",
+      "size_m": [
+        0.6,
+        0.66,
+        1.05
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "storage_shelf_0~1",
+      "type": "shelf",
+      "size_m": [
+        0.43,
+        0.92,
+        1.66
+      ],
+      "bottom_height_m": 0.73
+    },
+    {
+      "name": "storage_cabinet_added_0~1",
+      "type": "base cab",
+      "size_m": [
+        0.63,
+        0.64,
+        0.98
+      ],
+      "bottom_height_m": 0.0
+    },
+    {
+      "name": "storage_cabinet_retyped_0~1",
+      "type": "tall cab",
+      "size_m": [
+        0.64,
+        0.65,
+        1.99
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "storage_cabinet_mid3_1~1",
+      "type": "upper cab",
+      "size_m": [
+        1.68,
+        0.36,
+        1.01
+      ],
+      "bottom_height_m": 1.42
+    },
+    {
+      "name": "oven_0~1",
+      "type": "range",
+      "size_m": [
+        0.73,
+        0.84,
+        1.02
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "table_other_rect_0~1",
+      "type": "table",
+      "size_m": [
+        0.9,
+        0.63,
+        0.83
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "storage_cabinet_tall2_0~1",
+      "type": "tall cab",
+      "size_m": [
+        0.9,
+        0.6,
+        1.88
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "refrigerator_0~1",
+      "type": "fridge",
+      "size_m": [
+        0.9,
+        0.87,
+        1.85
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "sofa_rect_0~1",
+      "type": "sofa",
+      "size_m": [
+        1.22,
+        1.21,
+        0.84
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "fireplace_0~1",
+      "type": "fireplace",
+      "size_m": [
+        2.12,
+        0.63,
+        1.51
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "storage_cabinet_mid3_0~1",
+      "type": "base cab",
+      "size_m": [
+        2.05,
+        0.7,
+        1.05
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "storage_cabinet_mid5_0~1",
+      "type": "base cab",
+      "size_m": [
+        0.45,
+        3.32,
+        0.82
+      ],
+      "bottom_height_m": -0.07
+    },
+    {
+      "name": "storage_cabinet_mid4_0~1",
+      "type": "island",
+      "size_m": [
+        2.59,
+        1.34,
+        1.01
+      ],
+      "bottom_height_m": -0.07
+    }
+  ],
+  "total_area_sqft": 1274.0,
+  "total_area_m2": 118.36,
+  "fixtures": [
+    {
+      "name": "Shower\n40\" \u00d7 60\"",
+      "width_ft_in": "5'0\"",
+      "depth_ft_in": "3'4\""
+    },
+    {
+      "name": "WC",
+      "width_ft_in": "2'4\"",
+      "depth_ft_in": "1'8\""
+    },
+    {
+      "name": "Vanity 36\"",
+      "width_ft_in": "3'0\"",
+      "depth_ft_in": "1'9\""
+    }
+  ]
+}

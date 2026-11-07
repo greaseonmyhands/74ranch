@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-07T19:33:46.147258</dc:date>
+    <dc:date>2026-11-07T19:38:56.270655</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -63,7 +63,7 @@ L 77.715509 264.626475
 L 75.003804 264.626475 
 L 75.003601 264.626485 
 z
-" clip-path="url(#p65229dcf61)" style="fill: #f3ede2"/>
+" clip-path="url(#p4b8c25db90)" style="fill: #f3ede2"/>
    </g>
    <g id="patch_3">
     <path d="M 198.154996 116.007155 
@@ -71,7 +71,7 @@ L 325.426738 116.013679
 L 330.501967 93.716979 
 L 193.084953 93.716979 
 z
-" clip-path="url(#p65229dcf61)" style="fill: #d9d9d9; opacity: 0.8; stroke: #999999; stroke-width: 0.8; stroke-linejoin: miter"/>
+" clip-path="url(#p4b8c25db90)" style="fill: #d9d9d9; opacity: 0.8; stroke: #999999; stroke-width: 0.8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 82.156797 98.156895 
@@ -87,12 +87,12 @@ L 166.208839 98.156895
 L 166.017985 98.04683 
 L 82.347651 98.04683 
 z
-" clip-path="url(#p65229dcf61)" style="fill: #d9d9d9; opacity: 0.8; stroke: #999999; stroke-width: 0.8; stroke-linejoin: miter"/>
+" clip-path="url(#p4b8c25db90)" style="fill: #d9d9d9; opacity: 0.8; stroke: #999999; stroke-width: 0.8; stroke-linejoin: miter"/>
    </g>
    <g id="line2d_1">
     <path d="M 24.519337 566.235497 
 L 156.492682 566.235497 
-" clip-path="url(#p65229dcf61)" style="fill: none; stroke: #222222; stroke-width: 2; stroke-linecap: square"/>
+" clip-path="url(#p4b8c25db90)" style="fill: none; stroke: #222222; stroke-width: 2; stroke-linecap: square"/>
    </g>
    <g id="text_1">
     <!-- fireplace -->
@@ -648,7 +648,7 @@ L 474.181712 513.016965
 L 474.181712 504.357305 
 L 474.181712 98.04681 
 z
-" clip-path="url(#p65229dcf61)" style="fill: #222222; stroke: #222222; stroke-width: 0.5; stroke-linejoin: miter"/>
+" clip-path="url(#p4b8c25db90)" style="fill: #222222; stroke: #222222; stroke-width: 0.5; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
     <path d="M 177.604348 514.662871 
@@ -656,17 +656,17 @@ L 381.903243 514.662871
 L 381.903243 502.539336 
 L 177.604348 502.539336 
 z
-" clip-path="url(#p65229dcf61)" style="fill: #ffffff"/>
+" clip-path="url(#p4b8c25db90)" style="fill: #ffffff"/>
    </g>
    <g id="line2d_2">
     <path d="M 177.604348 506.436186 
 L 381.903243 506.436186 
-" clip-path="url(#p65229dcf61)" style="fill: none; stroke: #3d85c6; stroke-linecap: square"/>
+" clip-path="url(#p4b8c25db90)" style="fill: none; stroke: #3d85c6; stroke-linecap: square"/>
    </g>
    <g id="line2d_3">
     <path d="M 177.604348 510.76602 
 L 381.903243 510.76602 
-" clip-path="url(#p65229dcf61)" style="fill: none; stroke: #3d85c6; stroke-linecap: square"/>
+" clip-path="url(#p4b8c25db90)" style="fill: none; stroke: #3d85c6; stroke-linecap: square"/>
    </g>
    <g id="text_5">
     <!-- Room -->
@@ -980,17 +980,6 @@ z
     </g>
    </g>
    <g id="text_6">
-    <!-- 14'10" -->
-    <g style="fill: #0b5394" transform="translate(263.07825 77.39397) scale(0.075 -0.075)">
-     <use xlink:href="#Inter-Regular-540"/>
-     <use xlink:href="#Inter-Regular-544" transform="translate(40.671875 0)"/>
-     <use xlink:href="#Inter-Regular-5ce" transform="translate(105.265625 0)"/>
-     <use xlink:href="#Inter-Regular-540" transform="translate(135.25 0)"/>
-     <use xlink:href="#Inter-Regular-53f" transform="translate(175.921875 0)"/>
-     <use xlink:href="#Inter-Regular-5cf" transform="translate(239.015625 0)"/>
-    </g>
-   </g>
-   <g id="text_7">
     <!-- 15'9" -->
     <g style="fill: #0b5394" transform="translate(491.631414 310.203805) rotate(-90) scale(0.075 -0.075)">
      <defs>
@@ -1021,16 +1010,7 @@ z
      <use xlink:href="#Inter-Regular-5cf" transform="translate(193.46875 0)"/>
     </g>
    </g>
-   <g id="text_8">
-    <!-- 5'2" -->
-    <g style="fill: #0b5394" transform="translate(58.680582 447.555264) rotate(-90) scale(0.075 -0.075)">
-     <use xlink:href="#Inter-Regular-545"/>
-     <use xlink:href="#Inter-Regular-5ce" transform="translate(60.796875 0)"/>
-     <use xlink:href="#Inter-Regular-541" transform="translate(90.78125 0)"/>
-     <use xlink:href="#Inter-Regular-5cf" transform="translate(151.765625 0)"/>
-    </g>
-   </g>
-   <g id="text_9">
+   <g id="text_7">
     <!-- 15'0" -->
     <g style="fill: #0b5394" transform="translate(263.385539 530.466676) scale(0.075 -0.075)">
      <use xlink:href="#Inter-Regular-540"/>
@@ -1040,13 +1020,33 @@ z
      <use xlink:href="#Inter-Regular-5cf" transform="translate(194.546875 0)"/>
     </g>
    </g>
-   <g id="text_10">
+   <g id="text_8">
+    <!-- 14'10" -->
+    <g style="fill: #0b5394" transform="translate(263.07825 77.39397) scale(0.075 -0.075)">
+     <use xlink:href="#Inter-Regular-540"/>
+     <use xlink:href="#Inter-Regular-544" transform="translate(40.671875 0)"/>
+     <use xlink:href="#Inter-Regular-5ce" transform="translate(105.265625 0)"/>
+     <use xlink:href="#Inter-Regular-540" transform="translate(135.25 0)"/>
+     <use xlink:href="#Inter-Regular-53f" transform="translate(175.921875 0)"/>
+     <use xlink:href="#Inter-Regular-5cf" transform="translate(239.015625 0)"/>
+    </g>
+   </g>
+   <g id="text_9">
     <!-- 6'4" -->
     <g style="fill: #0b5394" transform="translate(61.40116 184.391372) rotate(-90) scale(0.075 -0.075)">
      <use xlink:href="#Inter-Regular-547"/>
      <use xlink:href="#Inter-Regular-5ce" transform="translate(62.015625 0)"/>
      <use xlink:href="#Inter-Regular-544" transform="translate(85.75 0)"/>
      <use xlink:href="#Inter-Regular-5cf" transform="translate(150.34375 0)"/>
+    </g>
+   </g>
+   <g id="text_10">
+    <!-- 5'2" -->
+    <g style="fill: #0b5394" transform="translate(58.680582 447.555264) rotate(-90) scale(0.075 -0.075)">
+     <use xlink:href="#Inter-Regular-545"/>
+     <use xlink:href="#Inter-Regular-5ce" transform="translate(60.796875 0)"/>
+     <use xlink:href="#Inter-Regular-541" transform="translate(90.78125 0)"/>
+     <use xlink:href="#Inter-Regular-5cf" transform="translate(151.765625 0)"/>
     </g>
    </g>
    <g id="text_11">
@@ -1100,7 +1100,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p65229dcf61">
+  <clipPath id="p4b8c25db90">
    <rect x="7.2" y="24.825" width="530.455453" height="554.4"/>
   </clipPath>
  </defs>

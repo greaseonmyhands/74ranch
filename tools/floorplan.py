@@ -28,7 +28,7 @@ import numpy as np
 import trimesh
 from matplotlib.patches import PathPatch, Polygon as MplPolygon
 from matplotlib.path import Path as MplPath
-from shapely.geometry import MultiPolygon, Point, Polygon
+from shapely.geometry import LineString, MultiPolygon, Point, Polygon
 from shapely.ops import polylabel, unary_union
 
 WALL_T = 0.10  # RoomPlan models every wall as a 10 cm box centered on the scanned surface
@@ -213,6 +213,7 @@ def close_gaps(poly, targets, walls, reach=0.15):
 
 
 def friendly_label(name, bottom=0.0, freestanding=False, top=0.0):
+    name = name.split("~")[0]  # drop the part tag used on combined plans
     if name.startswith("stove"):  # RoomPlan's "stove" is the cooktop on top of the oven
         return None
     for prefix, label in FRIENDLY:
@@ -228,7 +229,7 @@ def friendly_label(name, bottom=0.0, freestanding=False, top=0.0):
 
 
 def pretty_label(name):
-    base = re.sub(r"_\d+$", "", name)
+    base = re.sub(r"_\d+$", "", name.split("~")[0])
     return base.replace("_other", "").replace("_", " ")
 
 
@@ -252,13 +253,13 @@ def load_edits(path):
     return json.loads(p.read_text()) if p.exists() else {}
 
 
-def wall_box(a, b, height):
-    """A WALL_T-thick wall slab whose centerline runs from a to b (floor-plane [x, z], meters).
-    Like RoomPlan walls, it extends WALL_T/2 past each end so corners close."""
+def wall_box(a, b, height, thickness=WALL_T):
+    """A wall slab (default WALL_T thick) whose centerline runs from a to b (floor-plane [x, z],
+    meters). Like RoomPlan walls, it extends WALL_T/2 past each end so corners close."""
     a, b = np.asarray(a, float), np.asarray(b, float)
     v = b - a
     L = np.linalg.norm(v)
-    box = trimesh.creation.box(extents=[L + WALL_T, height, WALL_T])
+    box = trimesh.creation.box(extents=[L + WALL_T, height, thickness])
     ang = np.arctan2(v[1], v[0])
     T = trimesh.transformations.rotation_matrix(-ang, [0, 1, 0])
     mid = (a + b) / 2
@@ -274,14 +275,24 @@ def opening_quad(a, b, height):
     return trimesh.Trimesh(vertices=v, faces=[[0, 1, 2], [0, 2, 3]], process=False)
 
 
+def scan_edits(path, variant=None):
+    if variant:
+        return json.loads(Path(path).with_suffix(f".{variant}.edits.json").read_text())
+    return load_edits(path)
+
+
 def process(path, outdir, variant=None):
     """Render one scan. With `variant`, use <scan>.<variant>.edits.json instead of the
     base edits and write <scan>.<variant>.png/svg/json (for comparing design options)."""
+    edits = scan_edits(path, variant)
+    nodes, swings, added = prepare(path, edits)
+    stem = Path(path).stem + (f".{variant}" if variant else "")
+    return render(nodes, swings, added, edits, stem, outdir, source=str(path))
+
+
+def prepare(path, edits):
+    """Load a scan and apply its edits; returns (nodes, door swings, names of added walls)."""
     nodes = load_nodes(path)
-    if variant:
-        edits = json.loads(Path(path).with_suffix(f".{variant}.edits.json").read_text())
-    else:
-        edits = load_edits(path)
     # Turn the whole plan clockwise on the page (in 90 degree steps or any angle).
     # Later edit coordinates refer to the rotated plan.
     if edits.get("rotate_cw"):
@@ -322,17 +333,91 @@ def process(path, outdir, variant=None):
                 print(f"  warning: move pattern {pat!r} matched nothing")
             for n in hits:
                 nodes[n].apply_transform(T)
+    added, swings = add_walls_and_doors(nodes, edits)
+    return nodes, swings, added
+
+
+def add_walls_and_doors(nodes, edits, tag="added"):
     added = set()
     for i, w in enumerate(edits.get("add_walls", [])):
-        name = f"Wall_added_{i}"
+        name = f"Wall_{tag}_{i}"
         added.add(name)
-        nodes[name] = wall_box(w["from"], w["to"], w.get("height", 2.5))
+        nodes[name] = wall_box(w["from"], w["to"], w.get("height", 2.5),
+                               w.get("thickness_in", WALL_T / 0.0254) * 0.0254)
     swings = {}
     for i, d in enumerate(edits.get("add_doors", [])):
-        nodes[f"Door_added_{i}"] = opening_quad(d["from"], d["to"], d.get("height", 2.03))
+        nodes[f"Door_{tag}_{i}"] = opening_quad(d["from"], d["to"], d.get("height", 2.03))
         if "swing_toward" in d:  # hinge at "from", opening toward the given point
-            swings[f"Door_added_{i}"] = {"hinge": d["from"], "other": d["to"],
+            swings[f"Door_{tag}_{i}"] = {"hinge": d["from"], "other": d["to"],
                                          "toward": d["swing_toward"]}
+    return added, swings
+
+
+def translate_edits(edits, dx, dz):
+    """Shift the drawing-level parts of a scan's edits (used when combining scans)."""
+    sh = lambda p: [p[0] + dx, p[1] + dz]
+    out = {}
+    out["rooms"] = [dict(r, at=sh(r["at"]), **({"label_at": sh(r["label_at"])} if "label_at" in r else {}))
+                    for r in edits.get("rooms", [])]
+    out["add_floor"] = [[sh(p) for p in poly] for poly in edits.get("add_floor", [])]
+    out["fixtures"] = [dict(f, rect=[f["rect"][0] + dx, f["rect"][1] + dz, f["rect"][2] + dx, f["rect"][3] + dz])
+                       for f in edits.get("fixtures", [])]
+    out["labels"] = [dict(l, at=sh(l["at"])) for l in edits.get("labels", [])]
+    out["room_dividers"] = [dict(d, **{"from": sh(d["from"]), "to": sh(d["to"])})
+                            for d in edits.get("room_dividers", [])]
+    return out
+
+
+def process_plan(plan_path, outdir):
+    """Render several scans together on one plan. plans/<name>.json:
+    {"title": "...",
+     "parts": [{"scan": "scans/a.glb"},                               # its own edits apply
+               {"scan": "scans/b.glb", "variant": "opt", "offset": [dx, dz]}],
+     "add_walls": [{"from": [x, z], "to": [x, z], "thickness_in": 15}],  # e.g. a thick shared wall
+     "room_dividers": [{"from": [x, z], "to": [x, z]}],   # open boundary between rooms (dashed)
+     "remove": ["Wall_3~1"],                              # node names get ~<part index>
+     "scan_labels": false,                                # drop the scans' own text notes
+     "rooms"/"labels"/...: as in a scan's edits, in plan coordinates}
+    Offsets are applied after each scan's own edits (including its rotate_cw)."""
+    plan = json.loads(Path(plan_path).read_text())
+    nodes, swings, added = {}, {}, set()
+    draw = {"title": plan.get("title", Path(plan_path).stem), "rooms": [], "add_floor": [],
+            "fixtures": [], "labels": [], "room_dividers": []}
+    cab = None
+    for i, part in enumerate(plan["parts"]):
+        e = scan_edits(part["scan"], part.get("variant"))
+        pn, ps, pa = prepare(part["scan"], e)
+        dx, dz = part.get("offset", [0, 0])
+        T = trimesh.transformations.translation_matrix([dx, 0, dz])
+        tag = f"~{i}"
+        for n, m in pn.items():
+            m.apply_transform(T)
+            nodes[n + tag] = m
+        sh = lambda p: [p[0] + dx, p[1] + dz]
+        for n, sw in ps.items():
+            swings[n + tag] = {k: sh(v) for k, v in sw.items()}
+        added |= {n + tag for n in pa}
+        for k, v in translate_edits(e, dx, dz).items():
+            if k == "labels" and not plan.get("scan_labels", True):
+                continue  # notes like "open to hallway" may no longer apply once joined
+            draw[k] += v
+        if e.get("cabinet_depth"):
+            cab = dict(e["cabinet_depth"]) if cab is None else \
+                dict(cab, rooms=cab.get("rooms", []) + e["cabinet_depth"].get("rooms", []))
+    if cab:
+        draw["cabinet_depth"] = cab
+    for pat in plan.get("remove", []):
+        for n in [n for n in nodes if fnmatch.fnmatchcase(n, pat)]:
+            del nodes[n]
+    pa, ps = add_walls_and_doors(nodes, plan, tag="plan")
+    added |= pa
+    swings.update(ps)
+    for k in ("rooms", "add_floor", "fixtures", "labels", "room_dividers"):
+        draw[k] += plan.get(k, [])
+    return render(nodes, swings, added, draw, Path(plan_path).stem, outdir, source=str(plan_path))
+
+
+def render(nodes, swings, added, edits, stem, outdir, source=""):
     kind = lambda n: n.split("_")[0]
 
     floors = {n: m for n, m in nodes.items() if kind(n) == "Floor"}
@@ -342,7 +427,8 @@ def process(path, outdir, variant=None):
     ceilings = {n: m for n, m in nodes.items() if kind(n) == "Ceiling"}
     objects = {n: m for n, m in nodes.items() if n[0].islower()}
 
-    ceiling_h = max((m.bounds.mean(0)[1] for m in ceilings.values()), default=None)
+    ceiling_hs = sorted(m.bounds.mean(0)[1] for m in ceilings.values())
+    ceiling_h = ceiling_hs[-1] if ceiling_hs else None
 
     # Each wall is a straight slab; using its oriented rectangle squares off the mitered
     # ends RoomPlan leaves where a wall met one that has since been removed.
@@ -356,11 +442,14 @@ def process(path, outdir, variant=None):
     extra_floor = [Polygon(f) for f in edits.get("add_floor", [])]
     floor_all = unary_union(list(floor_polys.values()) + extra_floor).buffer(1e-4).buffer(-1e-4)
 
-    fig, ax = plt.subplots(figsize=(10, 10))
+    # Page size grows with the drawing so text stays readable on whole-floor plans
+    fb = floor_all.bounds
+    fig_in = float(np.clip(0.9 * max(fb[2] - fb[0], fb[3] - fb[1]), 10, 22))
+    fig, ax = plt.subplots(figsize=(fig_in, fig_in))
     ax.set_aspect("equal")
     ax.axis("off")
 
-    summary = {"source": str(path), "ceiling_height": None, "rooms": [], "walls": [],
+    summary = {"source": source, "ceiling_height": None, "rooms": [], "walls": [],
                "doors": [], "windows": [], "objects": []}
     if ceiling_h:
         summary["ceiling_height"] = {"m": round(ceiling_h, 2), "ft_in": ft_in(ceiling_h)}
@@ -368,10 +457,12 @@ def process(path, outdir, variant=None):
     # Rooms: the floor split up by the walls. Each region is grown back out to the wall
     # centerlines (how RoomPlan measures rooms) and named after the scanned floor it
     # mostly sits on, unless the edits name it.
-    regions = [r for r in polys_of(floor_all.difference(wall_geom)) if r.area > 0.3]
+    divider_lines = [LineString([d["from"], d["to"]]) for d in edits.get("room_dividers", [])]
+    cut = unary_union([wall_geom] + [l.buffer(0.01, cap_style=2) for l in divider_lines])
+    regions = [r for r in polys_of(floor_all.difference(cut)) if r.area > 0.3]
     rooms = []
     dividers = []
-    nice = lambda n: n.replace("Floor_", "").replace("_", " ")
+    nice = lambda n: n.split("~")[0].replace("Floor_", "").replace("_", " ")
     for r in regions:
         full = r.buffer(WALL_T / 2, join_style=2).intersection(floor_all)
         full = max(polys_of(full), key=lambda q: q.area)
@@ -446,6 +537,9 @@ def process(path, outdir, variant=None):
                                  "width_ft_in": ft_in(w), "depth_ft_in": ft_in(d),
                                  "area_m2": round(area, 2), "area_sqft": round(sqft(area), 1),
                                  "rectangular": bool(rect)})
+    for l in divider_lines:  # user-drawn open boundaries between rooms
+        (ax_, az), (bx, bz) = l.coords
+        ax.plot([ax_, bx], [az, bz], color="#888", lw=1, ls=(0, (6, 4)), zorder=1.5)
     for dv in dividers:  # open-plan boundary between rooms
         for q in polys_of(dv):
             mrr = q.minimum_rotated_rectangle
@@ -461,7 +555,7 @@ def process(path, outdir, variant=None):
     # Furniture (light, under walls). RoomPlan boxes can poke through walls, so clip to the floor.
     # Scale for fitting labels: the figure is ~10in across the larger drawing dimension.
     fb = floor_all.bounds
-    m_per_pt = (max(fb[2] - fb[0], fb[3] - fb[1]) + 1.0) / (10 * 72)
+    m_per_pt = (max(fb[2] - fb[0], fb[3] - fb[1]) + 1.0) / (fig_in * 72)
     def fits(text, size, poly):
         mrr = poly.minimum_rotated_rectangle
         minx, minz, maxx, maxz = mrr.bounds
@@ -588,7 +682,9 @@ def process(path, outdir, variant=None):
     allb = np.array([m.bounds for m in nodes.values()])
     cx = (allb[:, 0, 0].min() + allb[:, 1, 0].max()) / 2
     cz = (allb[:, 0, 2].min() + allb[:, 1, 2].max()) / 2
-    for name, m in sorted(walls.items()):
+    wall_label_boxes = []
+    by_length = lambda kv: -max((kv[1].bounds[1] - kv[1].bounds[0])[[0, 2]])
+    for name, m in sorted(walls.items(), key=by_length):  # longest walls get labels first
         if not name.startswith("Wall"):
             continue
         ext = m.bounds[1] - m.bounds[0]
@@ -599,16 +695,26 @@ def process(path, outdir, variant=None):
                                  "height_m": round(float(ext[1]), 2)})
         if length < 0.3:
             continue
+        fpw = footprint(m)
+        others = unary_union([footprint(o) for n2, o in walls.items() if n2 != name and n2.startswith("Wall")])
+        if fpw is not None and not others.is_empty and fpw.difference(others).area < 0.2 * fpw.area:
+            continue  # buried inside a thicker wall (e.g. a shared wall on a combined plan)
         horiz = ext[0] >= ext[2]
         off = 0.22
+        txt = ft_in(length)
+        half_w = (len(txt) * 0.62 + 1) * 7.5 * m_per_pt / 2
+        half_h = 1.3 * 7.5 * m_per_pt / 2
         if horiz:
-            tz = ctr[2] + (off if ctr[2] > cz else -off)
-            ax.text(ctr[0], tz, ft_in(length), ha="center", va="center", fontsize=7.5,
-                    color="#0b5394", zorder=7)
+            lx, lz = ctr[0], ctr[2] + (off if ctr[2] > cz else -off)
+            box = _rect(lx - half_w, lz - half_h, lx + half_w, lz + half_h)
         else:
-            tx = ctr[0] + (off if ctr[0] > cx else -off)
-            ax.text(tx, ctr[2], ft_in(length), ha="center", va="center", fontsize=7.5,
-                    color="#0b5394", rotation=90, zorder=7)
+            lx, lz = ctr[0] + (off if ctr[0] > cx else -off), ctr[2]
+            box = _rect(lx - half_h, lz - half_w, lx + half_h, lz + half_w)
+        if any(box.intersects(b) for b in wall_label_boxes):
+            continue  # would collide with a longer wall's label (e.g. a shared wall)
+        wall_label_boxes.append(box)
+        ax.text(lx, lz, txt, ha="center", va="center", fontsize=7.5, color="#0b5394",
+                rotation=0 if horiz else 90, zorder=7)
 
     # Doors and windows: cut a gap in the wall, then draw a symbol
     def opening(m, color, lw_gap, style):
@@ -680,10 +786,12 @@ def process(path, outdir, variant=None):
     ax.plot([sx, sx + 5 / M_TO_FT], [sz, sz], color="#222", lw=2)
     ax.text(sx + 2.5 / M_TO_FT, sz + 0.05, "5 ft", ha="center", va="top", fontsize=7)
 
-    stem = Path(path).stem + (f".{variant}" if variant else "")
     title = edits.get("title", stem) + f"  —  {summary['total_area_sqft']:.0f} sq ft"
     if ceiling_h:
-        title += f"  ·  ceiling {ft_in(ceiling_h)}"
+        if ceiling_hs[-1] - ceiling_hs[0] > 0.02:  # combined plans: rooms differ
+            title += f"  ·  ceilings {ft_in(ceiling_hs[0])}–{ft_in(ceiling_hs[-1])}"
+        else:
+            title += f"  ·  ceiling {ft_in(ceiling_h)}"
     ax.set_title(title, fontsize=12)
 
     outdir.mkdir(parents=True, exist_ok=True)
@@ -696,10 +804,15 @@ def process(path, outdir, variant=None):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("glb", nargs="+")
+    ap.add_argument("glb", nargs="+", help="scan .glb files and/or combined plans/*.json")
     ap.add_argument("--out", default="floorplans")
     args = ap.parse_args()
     for p in args.glb:
+        if p.endswith(".json"):  # a combined plan (plans/*.json)
+            s = process_plan(p, Path(args.out))
+            print(f"{p}: {s['total_area_sqft']} sq ft, "
+                  f"rooms={[(r['name'], r['area_sqft']) for r in s['rooms']]}")
+            continue
         s = process(p, Path(args.out))
         print(f"{p}: {s['total_area_sqft']} sq ft, rooms={[r['name'] for r in s['rooms']]}")
         # Design options: <scan>.<variant>.edits.json

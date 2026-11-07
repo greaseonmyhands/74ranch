@@ -2,6 +2,28 @@
 
 Notes, scans and plans for the house.
 
+## Main floor (combined)
+
+[`floorplans/main-floor.png`](floorplans/main-floor.png) · [SVG](floorplans/main-floor.svg): the
+North End Renovation (scan 1) and the kitchen/living room (scan 5) joined into one plan, about
+**1,274 sq ft** so far. Defined in [`plans/main-floor.json`](plans/main-floor.json).
+
+| Room | Area |
+|---|---|
+| Kitchen | 262 sq ft |
+| Living Room | 268 sq ft |
+| Room 2 | 313 sq ft |
+| Room 1A (incl. corridor) | 193 sq ft |
+| Room 1B | 183 sq ft |
+| Bathroom | 55 sq ft |
+
+How they fit: the living room's east wall (11'10") and Room 2's west wall (11'5") are the same wall.
+The scans are aligned at the walk-through that joins the living room to the North End corridor (the
+two "open to hallway" sides were the same opening); with that, the north walls of both scans line up
+within ¼". The shared wall measures ~15" surface to surface, thicker than a normal interior wall,
+which suggests it was the old exterior wall before the North End was added. The dashed line at the
+walk-through separates the living room from Room 1A's corridor.
+
 ## Floorplans
 
 Generated from iPhone LiDAR room scans (Apple RoomPlan `.glb` exports) taken 2026-11-06.
@@ -72,8 +94,11 @@ detected piece of furniture are in the matching `floorplans/*.json` files.
 
 ```bash
 pip install trimesh numpy shapely matplotlib
-python tools/floorplan.py scans/*.glb --out floorplans
+python tools/floorplan.py scans/*.glb plans/*.json --out floorplans
 ```
+
+Combined plans (`plans/*.json`) place several scans on one drawing, each with its own edits, shifted
+by an `offset` in meters; see `process_plan()` in `tools/floorplan.py` for the format.
 
 Drop new RoomPlan `.glb` exports in `scans/` and rerun. To hide objects or walls from a scan without
 touching the original, list their names (or glob patterns) in a `<scan>.edits.json` next to it.

@@ -28,13 +28,6 @@
   ],
   "walls": [
     {
-      "name": "Wall_0",
-      "added": false,
-      "length_m": 4.633,
-      "length_ft_in": "15'2\"",
-      "height_m": 2.5
-    },
-    {
       "name": "Wall_1",
       "added": false,
       "length_m": 10.941,
@@ -46,6 +39,13 @@
       "added": false,
       "length_m": 10.533,
       "length_ft_in": "34'7\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_0",
+      "added": false,
+      "length_m": 4.633,
+      "length_ft_in": "15'2\"",
       "height_m": 2.5
     },
     {
