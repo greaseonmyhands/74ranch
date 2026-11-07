@@ -6,8 +6,8 @@ Notes, scans and plans for the house.
 
 [`floorplans/main-floor.png`](floorplans/main-floor.png) · [SVG](floorplans/main-floor.svg): the
 North End Renovation (scan 1), the kitchen/dining room (scan 5), the front living room (scan 3) and
-the laundry room (scan 2) and the office (scan 6) joined into one plan, about **1,931 sq ft** so far
-(including the 43 sq ft front porch). Defined in [`plans/main-floor.json`](plans/main-floor.json).
+the laundry room (scan 2) and the office (scan 6) joined into one plan, plus rooms drawn from
+measurements; about **2,215 sq ft** so far (including the 43 sq ft front porch). Defined in [`plans/main-floor.json`](plans/main-floor.json).
 
 | Room | Area |
 |---|---|
@@ -20,6 +20,9 @@ the laundry room (scan 2) and the office (scan 6) joined into one plan, about **
 | Office | 179 sq ft |
 | Front Porch (6' double front door) | 43 sq ft |
 | Hall (kitchen to office) | 9 sq ft |
+| Closet (under the attic stairs) | 15 sq ft |
+| Bedroom 1 (drawn, not scanned) | 182 sq ft |
+| Bathroom 2 (drawn, not scanned) | 87 sq ft |
 | Bathroom | 55 sq ft |
 
 How they fit:
@@ -63,8 +66,8 @@ How they fit:
 - Below the laundry room, the far SW corner is boxed out too: the laundry room's west wall continues
   15'8" south, and a 17'3" south wall on the same line as Bedroom 2's south wall runs east to the
   Office's west wall (2'10" short of the Office's south face). A wall centered between the laundry
-  room's two south doors runs the full 15'8" down it, splitting it into a 5'3"-wide west part (off the
-  2'3" door) and an 11'4"-wide east part (off the 2'7" door). Not scanned yet.
+  room's two south doors runs the full 15'8" down it, splitting it into Bathroom 2 (5'3" wide inside,
+  off the 2'3" door) and Bedroom 1 (11'4" wide inside, off the 2'7" door).
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an
   ~8'-wide area between the Office and the Living Room, plus a strip above the Office); the

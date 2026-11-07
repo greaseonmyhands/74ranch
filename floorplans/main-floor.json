@@ -16,6 +16,26 @@
       "rectangular": true
     },
     {
+      "name": "Bathroom 2",
+      "width_m": 1.694,
+      "depth_m": 4.763,
+      "width_ft_in": "5'7\"",
+      "depth_ft_in": "15'8\"",
+      "area_m2": 8.07,
+      "area_sqft": 86.8,
+      "rectangular": true
+    },
+    {
+      "name": "Bedroom 1",
+      "width_m": 3.556,
+      "depth_m": 4.763,
+      "width_ft_in": "11'8\"",
+      "depth_ft_in": "15'8\"",
+      "area_m2": 16.94,
+      "area_sqft": 182.3,
+      "rectangular": true
+    },
+    {
       "name": "Bedroom 2",
       "width_m": 3.585,
       "depth_m": 4.896,
@@ -195,7 +215,7 @@
       "height_m": 2.5
     },
     {
-      "name": "Wall_plan_18",
+      "name": "Wall_plan_nolabel_18",
       "added": true,
       "length_m": 4.763,
       "length_ft_in": "15'8\"",
@@ -858,8 +878,8 @@
       "bottom_height_m": -0.07
     }
   ],
-  "total_area_sqft": 1946.2,
-  "total_area_m2": 180.81,
+  "total_area_sqft": 2215.4,
+  "total_area_m2": 205.81,
   "fixtures": [
     {
       "name": "Shower\n40\" \u00d7 60\"",
