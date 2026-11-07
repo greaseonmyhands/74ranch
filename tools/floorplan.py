@@ -440,6 +440,7 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
                              for m in walls.values() if footprint(m) is not None])
 
     furn = [footprint(m) for n, m in objects.items() if m.bounds[0][1] <= 1.2]
+    furn += [_rect(*fx["rect"]) for fx in edits.get("fixtures", [])]  # planned fixtures too
     furn_union = unary_union([f.convex_hull for f in furn if f is not None]) if furn else None
 
     floor_polys = {n: footprint(m) for n, m in floors.items()}
