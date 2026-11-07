@@ -7,11 +7,15 @@ Floor_*, Ceiling_*, Joint_*, plus furniture like chair_*, storage_*), in
 meters, Y-up. We project everything onto the floor plane (X/Z) and draw it
 top-down.
 
+Per-scan tweaks (e.g. dropping furniture or a stray wall) go in an optional
+<scan>.edits.json next to the .glb; see load_edits().
+
 Usage:
     pip install trimesh numpy shapely matplotlib
     python tools/floorplan.py scans/*.glb --out floorplans
 """
 import argparse
+import fnmatch
 import json
 import re
 from pathlib import Path
@@ -96,8 +100,22 @@ def pretty_label(name):
     return base.replace("_other", "").replace("_", " ")
 
 
+def load_edits(path):
+    """Optional sidecar next to the scan: <scan>.edits.json, e.g.
+    {"remove": ["chair_*", "Wall_10"]}  (names or glob patterns of RoomPlan nodes)."""
+    p = Path(path).with_suffix(".edits.json")
+    return json.loads(p.read_text()) if p.exists() else {}
+
+
 def process(path, outdir):
     nodes = load_nodes(path)
+    edits = load_edits(path)
+    for pat in edits.get("remove", []):
+        hits = [n for n in nodes if fnmatch.fnmatchcase(n, pat)]
+        if not hits:
+            print(f"  warning: edit pattern {pat!r} matched nothing")
+        for n in hits:
+            del nodes[n]
     kind = lambda n: n.split("_")[0]
 
     floors = {n: m for n, m in nodes.items() if kind(n) == "Floor"}
@@ -167,7 +185,10 @@ def process(path, outdir):
                                    "bottom_height_m": round(float(m.bounds[0][1]), 2)})
 
     # Walls
-    wall_geom = unary_union([footprint(m) for m in walls.values() if footprint(m) is not None])
+    # Each wall is a straight slab; using its oriented rectangle squares off the mitered
+    # ends RoomPlan leaves where a wall met one that has since been removed.
+    wall_geom = unary_union([footprint(m).minimum_rotated_rectangle
+                             for m in walls.values() if footprint(m) is not None])
     for p in polys_of(wall_geom):
         ax.add_patch(poly_patch(p, fc="#222", ec="#222", lw=0.5, zorder=4))
 

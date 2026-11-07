@@ -22,7 +22,8 @@ detected piece of furniture are in the matching `floorplans/*.json` files.
 ### Notes from the scans
 - **Scan 1:** Room 1 and Room 2 are open to each other: the wall between them (11'5") stops about 5 ft
   short of the hallway. One hallway door was picked up at an angle, which may be a door left
-  ajar rather than an angled wall.
+  ajar rather than an angled wall. Furniture and the short 3'2" wall on the hallway's east end
+  are hidden via `scans/2026-11-06_scan1.edits.json`.
 - **Scan 2:** The "storage cabinet" on the left wall starts 5'3" off the floor, so it's most likely
   upper or wall-mounted cabinets.
 - **Scan 3:** The left wall has a 3'11" opening with no door (an archway or cased opening).
@@ -34,4 +35,9 @@ pip install trimesh numpy shapely matplotlib
 python tools/floorplan.py scans/*.glb --out floorplans
 ```
 
-Drop new RoomPlan `.glb` exports in `scans/` and rerun.
+Drop new RoomPlan `.glb` exports in `scans/` and rerun. To hide objects or walls from a scan without
+touching the original, list their names (or glob patterns) in a `<scan>.edits.json` next to it:
+
+```json
+{ "remove": ["chair_*", "Wall_10"] }
+```
