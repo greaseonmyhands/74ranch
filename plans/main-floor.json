@@ -306,6 +306,30 @@
         0.8708
       ],
       "show_length": false
+    },
+    {
+      "label": "Fireplace box west wall (Living Room fireplace's west edge)",
+      "from": [
+        -7.0366,
+        -0.069
+      ],
+      "to": [
+        -7.0366,
+        0.774
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Fireplace box east wall (Living Room fireplace's east edge)",
+      "from": [
+        -5.3326,
+        -0.069
+      ],
+      "to": [
+        -5.3326,
+        0.774
+      ],
+      "show_length": false
     }
   ],
   "add_floor": [
@@ -506,6 +530,42 @@
         -10.8486,
         3.982
       ]
+    ],
+    [
+      [
+        -7.0366,
+        -0.069
+      ],
+      [
+        -5.3326,
+        -0.069
+      ],
+      [
+        -5.3326,
+        0.774
+      ],
+      [
+        -7.0366,
+        0.774
+      ]
+    ],
+    [
+      [
+        -8.3096,
+        -0.069
+      ],
+      [
+        -7.0366,
+        -0.069
+      ],
+      [
+        -7.0366,
+        0.774
+      ],
+      [
+        -8.3096,
+        0.774
+      ]
     ]
   ],
   "room_dividers": [
@@ -643,6 +703,29 @@
         0.3965
       ],
       "name": "Pantry"
+    },
+    {
+      "at": [
+        -6.1846,
+        0.3525
+      ],
+      "name": "Fireplace",
+      "compact": true,
+      "label_size": 7,
+      "no_furniture": true
+    },
+    {
+      "at": [
+        -7.5231,
+        0.3525
+      ],
+      "name": "Closet 3",
+      "compact": true,
+      "label_size": 7,
+      "label_at": [
+        -7.3731,
+        0.3525
+      ]
     }
   ],
   "fixtures": [
@@ -755,6 +838,21 @@
       "swing_toward": [
         -14.7728,
         0.39649999999999996
+      ]
+    },
+    {
+      "label": "24in Closet 3 door in the 2'9\" wall (off the Entry hall), hinged at its north end, swinging into the closet",
+      "from": [
+        -8.3096,
+        0.0477
+      ],
+      "to": [
+        -8.3096,
+        0.6573
+      ],
+      "swing_toward": [
+        -7.3096,
+        0.35250000000000004
       ]
     }
   ]

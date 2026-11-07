@@ -526,6 +526,7 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
             seen[rm[0]] = k + 1
             rm[0] = f"{rm[0]}{chr(65 + k)}"
 
+    room_label_boxes = []
     room_colors = ["#f3ede2", "#e6eef2", "#eef2e6", "#f2e6ee", "#eae6f2", "#f2efe6"]
     total_area = 0
     # Colour rooms so that neighbours (rooms within a wall's thickness of each other) differ:
@@ -557,9 +558,14 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
                f"{label}\n{sqft(area):.0f} sq ft\n(overall {ft_in(w)} × {ft_in(d)})"
         if area < 5 or opt.get("compact"):  # small spaces (baths, halls, closets): compact label
             text = f"{label}\n{sqft(area):.0f} sq ft"
-        ax.text(c.x, c.y, text, ha="center", va="center",
-                fontsize=opt.get("label_size", 10 if area >= 5 else 8),
+        fs = opt.get("label_size", 10 if area >= 5 else 8)
+        ax.text(c.x, c.y, text, ha="center", va="center", fontsize=fs,
                 zorder=6, fontweight="bold", color="#333")
+        lines = text.split("\n")  # remember the label's footprint so wall labels can avoid it
+        mpp = (max(fb[2] - fb[0], fb[3] - fb[1]) + 1.0) / (fig_in * 72)
+        hw = max(len(t) for t in lines) * 0.62 * fs * mpp / 2
+        hh = len(lines) * 1.3 * fs * mpp / 2
+        room_label_boxes.append(_rect(c.x - hw, c.y - hh, c.x + hw, c.y + hh))
         summary["rooms"].append({"name": label, "width_m": round(w, 3), "depth_m": round(d, 3),
                                  "width_ft_in": ft_in(w), "depth_ft_in": ft_in(d),
                                  "area_m2": round(area, 2), "area_sqft": round(sqft(area), 1),
@@ -595,6 +601,9 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
         if tw <= (maxz - minz) * 0.95 and th <= (maxx - minx) * 0.95:
             return 90
         return None
+    # Rooms marked "no_furniture" (e.g. a chimney box) don't show scanned furniture spilling in
+    no_furn = unary_union([rm[1] for rm in rooms
+                           if label_opts.get(rm[0], {}).get("no_furniture")]) if rooms else None
     # Pass 1: footprints and labels for every object
     items = []
     for name, m in objects.items():
@@ -602,6 +611,8 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
         if fp is None:
             continue
         hull = fp.convex_hull.intersection(floor_all)
+        if no_furn is not None and not no_furn.is_empty:
+            hull = hull.difference(no_furn)
         if hull.is_empty:
             continue
         bottom = float(m.bounds[0][1])
@@ -784,7 +795,7 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
             else:
                 lx, lz = ctr[0] + sgn * off, ctr[2]
                 cand = _rect(lx - half_h, lz - half_w, lx + half_h, lz + half_w)
-            if not any(cand.intersects(b) for b in wall_label_boxes + placed):
+            if not any(cand.intersects(b) for b in wall_label_boxes + placed + room_label_boxes):
                 box = cand
                 break
         if box is None:
