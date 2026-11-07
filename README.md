@@ -25,7 +25,8 @@ and both windows stay.
 | D | [PNG](floorplans/room2-option-d.png) | Suite on the east; dressing takes the alcove (9' closet) and the window; bath above; washer/dryer combo | 170 sq ft | 59 sq ft, 48" vanity | 85 sq ft |
 
 **Option E** ([PNG](floorplans/room2-option-e.png), `plans/room2-option-e.json`), refining the
-bed-on-the-west layouts: the bedroom (161 sq ft, 13'9" wide) has the king bed on the west wall and a
+bed-on-the-west layouts: the bedroom (161 sq ft, 13'9" wide) has the king bed's headboard on the north
+wall (centered between the west wall and the exterior door, under the 2'11" window) and a
 30" door into the master bath (78 sq ft: 60" × 36" shower and toilet along the north wall). On the
 bath's south wall, his and her 42" vanities flank a centered 32" doorway into the dressing room
 (75 sq ft): horseshoe hanging storage (22" deep) on its west, south and east sides around the alcove,
