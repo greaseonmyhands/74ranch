@@ -104,6 +104,39 @@ FRIENDLY = [  # RoomPlan category prefix -> short plan label
 ]
 
 
+SQUARED = {"base cab", "upper cab", "tall cab", "island", "shelf", "fridge", "range", "DW",
+           "sink", "washer", "dryer"}
+
+
+def square_up(poly, walls, snap=0.12, align_deg=4):
+    """Draw built-ins as clean rectangles: the smallest enclosing rectangle, made axis-aligned
+    when it's within a few degrees of square, with any side that stops just short of a wall
+    pushed out to meet it."""
+    mrr = poly.minimum_rotated_rectangle
+    pts = np.asarray(mrr.exterior.coords)[:4]
+    edge = pts[1] - pts[0]
+    ang = np.degrees(np.arctan2(edge[1], edge[0])) % 90
+    if min(ang, 90 - ang) > align_deg:
+        return mrr  # genuinely angled (e.g. a sofa set on the diagonal): keep its angle
+    x0, z0, x1, z1 = poly.bounds
+    box = lambda a, b, c, d: Polygon([(a, b), (c, b), (c, d), (a, d)])
+    for side in range(4):  # 0: left, 1: top, 2: right, 3: bottom
+        for step in np.arange(0.005, snap + 1e-9, 0.005):
+            probe = [box(x0 - step, z0, x0, z1), box(x0, z0 - step, x1, z0),
+                     box(x1, z0, x1 + step, z1), box(x0, z1, x1, z1 + step)][side]
+            if probe.intersects(walls):
+                if side == 0:
+                    x0 -= step
+                elif side == 1:
+                    z0 -= step
+                elif side == 2:
+                    x1 += step
+                else:
+                    z1 += step
+                break
+    return box(x0, z0, x1, z1)
+
+
 def friendly_label(name, bottom=0.0, freestanding=False, top=0.0):
     if name.startswith("stove"):  # RoomPlan's "stove" is the cooktop on top of the oven
         return None
@@ -377,6 +410,8 @@ def process(path, outdir, variant=None):
         bottom = float(m.bounds[0][1])
         kind_ = friendly_label(name, bottom, hull.distance(wall_geom) > 0.15,
                                top=float(m.bounds[1][1]))
+        if kind_ in SQUARED:
+            hull = square_up(hull, wall_geom).intersection(floor_all)
         if kind_ is None:  # e.g. cooktop sitting on the oven
             continue
         if bottom > 1.2:  # wall-hung (upper cabinets, shelves): draw after base units, dashed
@@ -387,7 +422,7 @@ def process(path, outdir, variant=None):
             rot = fits(kind_, 6.5, hull)
             if rot is not None:
                 c = hull.centroid
-                tw = len(kind_) * 0.55 * 6.5 * m_per_pt / 2
+                tw = (len(kind_) * 0.62 + 1) * 6.5 * m_per_pt / 2  # a little padding
                 th = 1.3 * 6.5 * m_per_pt / 2
                 hw, hh = (tw, th) if rot == 0 else (th, tw)
                 box = Polygon([(c.x - hw, c.y - hh), (c.x + hw, c.y - hh),
