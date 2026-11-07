@@ -95,6 +95,28 @@ def polys_of(geom):
     return [geom]
 
 
+FRIENDLY = [  # RoomPlan category prefix -> short plan label
+    ("storage_cabinet", "cabinet"), ("storage_shelf", "shelf"), ("refrigerator", "fridge"),
+    ("table_dining", "dining table"), ("table", "table"), ("chair", "chair"), ("sofa", "sofa"),
+    ("fireplace", "fireplace"), ("sink", "sink"), ("oven", "range"), ("dishwasher", "DW"),
+    ("washer", "washer"), ("dryer", "dryer"), ("toilet", "WC"), ("bathtub", "tub"),
+    ("bed", "bed"), ("television", "TV"), ("stairs", "stairs"),
+]
+
+
+def friendly_label(name, bottom=0.0, freestanding=False):
+    if name.startswith("stove"):  # RoomPlan's "stove" is the cooktop on top of the oven
+        return None
+    for prefix, label in FRIENDLY:
+        if name.startswith(prefix):
+            if label == "cabinet":
+                if bottom > 1.2:
+                    return "upper cab"
+                return "island" if freestanding else "base cab"
+            return label
+    return pretty_label(name)
+
+
 def pretty_label(name):
     base = re.sub(r"_\d+$", "", name)
     return base.replace("_other", "").replace("_", " ")
@@ -102,7 +124,8 @@ def pretty_label(name):
 
 def load_edits(path):
     """Optional sidecar next to the scan: <scan>.edits.json, e.g.
-    {"remove": ["chair_*", "Wall_10"],          # names or glob patterns of RoomPlan nodes
+    {"rotate_cw": 90,                           # turn the plan clockwise on the page (degrees)
+     "remove": ["chair_*", "Wall_10"],          # names or glob patterns of RoomPlan nodes
      "move": [{"nodes": ["Wall_2", "Door_0"], "by": [dx, dz]}],
      "add_walls": [{"from": [x, z], "to": [x, z], "label": "..."}],
      "add_doors": [{"from": [x, z], "to": [x, z], "label": "..."}],
@@ -146,6 +169,14 @@ def process(path, outdir, variant=None):
         edits = json.loads(Path(path).with_suffix(f".{variant}.edits.json").read_text())
     else:
         edits = load_edits(path)
+    # Turn the whole plan clockwise on the page (in 90 degree steps or any angle).
+    # Later edit coordinates refer to the rotated plan.
+    if edits.get("rotate_cw"):
+        # On the page x points right and z points down, so clockwise by t maps
+        # (x, z) -> (x cos t - z sin t, x sin t + z cos t): a rotation about +Y by -t.
+        R = trimesh.transformations.rotation_matrix(-np.radians(edits["rotate_cw"]), [0, 1, 0])
+        for m in nodes.values():
+            m.apply_transform(R)
     for pat in edits.get("remove", []):
         hits = [n for n in nodes if fnmatch.fnmatchcase(n, pat)]
         if not hits:
@@ -189,6 +220,9 @@ def process(path, outdir, variant=None):
     wall_geom = unary_union([footprint(m).minimum_rotated_rectangle
                              for m in walls.values() if footprint(m) is not None])
 
+    furn = [footprint(m) for n, m in objects.items() if m.bounds[0][1] <= 1.2]
+    furn_union = unary_union([f.convex_hull for f in furn if f is not None]) if furn else None
+
     floor_polys = {n: footprint(m) for n, m in floors.items()}
     extra_floor = [Polygon(f) for f in edits.get("add_floor", [])]
     floor_all = unary_union(list(floor_polys.values()) + extra_floor).buffer(1e-4).buffer(-1e-4)
@@ -207,12 +241,37 @@ def process(path, outdir, variant=None):
     # mostly sits on, unless the edits name it.
     regions = [r for r in polys_of(floor_all.difference(wall_geom)) if r.area > 0.3]
     rooms = []
+    dividers = []
+    nice = lambda n: n.replace("Floor_", "").replace("_", " ")
     for r in regions:
         full = r.buffer(WALL_T / 2, join_style=2).intersection(floor_all)
         full = max(polys_of(full), key=lambda q: q.area)
+        # Open plan: RoomPlan scanned two or more whole rooms that no wall separates
+        # (e.g. kitchen + living room). Split the space along their floor boundary.
+        whole = [n for n, f in floor_polys.items()
+                 if f.area > 0.5 and f.intersection(full).area >= 0.9 * f.area]
+        if len(whole) >= 2:
+            parts = {n: full.intersection(floor_polys[n]) for n in whole}
+            rest = full.difference(unary_union(list(parts.values())))
+            for piece in polys_of(rest):  # leftovers join the part they touch most
+                if piece.area < 1e-4:
+                    continue
+                best = max(parts, key=lambda n: parts[n].buffer(0.02).intersection(piece).area)
+                parts[best] = unary_union([parts[best], piece])
+            for n, part in parts.items():
+                part = max(polys_of(part.buffer(0)), key=lambda q: q.area)
+                rooms.append([nice(n), part, part.intersection(r)])
+            names_ = list(parts)
+            for i in range(len(names_)):
+                for j in range(i + 1, len(names_)):
+                    shared = parts[names_[i]].buffer(0.01).intersection(
+                        parts[names_[j]].buffer(0.01)).difference(wall_geom)
+                    if not shared.is_empty:
+                        dividers.append(shared)
+            continue
         base = max(floor_polys, key=lambda n: floor_polys[n].intersection(r).area) \
             if floor_polys else "Floor_Room"
-        rooms.append([base.replace("Floor_", "").replace("_", " "), full, r])
+        rooms.append([nice(base), full, r])
     label_opts = {}
     for spec in edits.get("rooms", []):
         pt = Point(spec["at"])
@@ -239,6 +298,11 @@ def process(path, outdir, variant=None):
         total_area += area
         rect = abs(area - w * d) < 0.02 * w * d
         c = fp.centroid if rect else polylabel(inner, tolerance=0.01)
+        if furn_union is not None and furn_union.intersects(c.buffer(0.6)):
+            # keep the room label off the furniture: use the middle of the open floor
+            free = [q for q in polys_of(inner.difference(furn_union.buffer(0.1))) if q.area > 0.5]
+            if free:
+                c = polylabel(max(free, key=lambda q: q.area), tolerance=0.01)
         opt = label_opts.get(label, {})
         if "label_at" in opt:
             c = Point(opt["label_at"])
@@ -253,27 +317,72 @@ def process(path, outdir, variant=None):
                                  "width_ft_in": ft_in(w), "depth_ft_in": ft_in(d),
                                  "area_m2": round(area, 2), "area_sqft": round(sqft(area), 1),
                                  "rectangular": bool(rect)})
+    for dv in dividers:  # open-plan boundary between rooms
+        for q in polys_of(dv):
+            mrr = q.minimum_rotated_rectangle
+            pts = np.asarray(mrr.exterior.coords)[:4]
+            e = [(np.linalg.norm(pts[i] - pts[(i + 1) % 4]), i) for i in range(4)]
+            _, i = max(e)
+            a = (pts[i] + pts[(i + 3) % 4]) / 2
+            b = (pts[(i + 1) % 4] + pts[(i + 2) % 4]) / 2
+            ax.plot([a[0], b[0]], [a[1], b[1]], color="#888", lw=1, ls=(0, (6, 4)), zorder=1.5)
     summary["total_area_sqft"] = round(sqft(total_area), 1)
     summary["total_area_m2"] = round(total_area, 2)
 
     # Furniture (light, under walls). RoomPlan boxes can poke through walls, so clip to the floor.
-    for name, m in objects.items():
+    # Scale for fitting labels: the figure is ~10in across the larger drawing dimension.
+    fb = floor_all.bounds
+    m_per_pt = (max(fb[2] - fb[0], fb[3] - fb[1]) + 1.0) / (10 * 72)
+    def fits(text, size, poly):
+        mrr = poly.minimum_rotated_rectangle
+        minx, minz, maxx, maxz = mrr.bounds
+        tw = len(text) * 0.55 * size * m_per_pt
+        th = 1.3 * size * m_per_pt
+        if tw <= (maxx - minx) * 0.95 and th <= (maxz - minz) * 0.95:
+            return 0
+        if tw <= (maxz - minz) * 0.95 and th <= (maxx - minx) * 0.95:
+            return 90
+        return None
+    uppers = []
+    placed = []  # label boxes already drawn, to avoid overlapping text
+    order = sorted(objects.items(), key=lambda kv: footprint(kv[1]).area
+                   if footprint(kv[1]) is not None else 0)
+    for name, m in order:
         fp = footprint(m)
         if fp is None:
             continue
         hull = fp.convex_hull.intersection(floor_all)
         if hull.is_empty:
             continue
-        for hp in polys_of(hull):
-            ax.add_patch(poly_patch(hp, fc="#d9d9d9", ec="#999", lw=0.8, zorder=2, alpha=0.8))
-        c = hull.centroid
-        ax.text(c.x, c.y, pretty_label(name), ha="center", va="center", fontsize=6.5,
-                color="#555", zorder=3)
+        bottom = float(m.bounds[0][1])
+        kind_ = friendly_label(name, bottom, hull.distance(wall_geom) > 0.15)
+        if kind_ is None:  # e.g. cooktop sitting on the oven
+            continue
+        if bottom > 1.2:  # wall-hung (upper cabinets, shelves): draw after base units, dashed
+            uppers.append((hull, kind_))
+        else:
+            for hp in polys_of(hull):
+                ax.add_patch(poly_patch(hp, fc="#d9d9d9", ec="#999", lw=0.8, zorder=2, alpha=0.8))
+            rot = fits(kind_, 6.5, hull)
+            if rot is not None:
+                c = hull.centroid
+                tw = len(kind_) * 0.55 * 6.5 * m_per_pt / 2
+                th = 1.3 * 6.5 * m_per_pt / 2
+                hw, hh = (tw, th) if rot == 0 else (th, tw)
+                box = Polygon([(c.x - hw, c.y - hh), (c.x + hw, c.y - hh),
+                               (c.x + hw, c.y + hh), (c.x - hw, c.y + hh)])
+                if not any(box.intersects(b) for b in placed):
+                    placed.append(box)
+                    ax.text(c.x, c.y, kind_, ha="center", va="center", fontsize=6.5,
+                            color="#555", zorder=3, rotation=rot)
         ext = m.bounds[1] - m.bounds[0]
-        summary["objects"].append({"name": name, "type": pretty_label(name),
+        summary["objects"].append({"name": name, "type": kind_,
                                    "size_m": [round(float(ext[0]), 2), round(float(ext[2]), 2),
                                               round(float(ext[1]), 2)],
-                                   "bottom_height_m": round(float(m.bounds[0][1]), 2)})
+                                   "bottom_height_m": round(bottom, 2)})
+    for hull, kind_ in uppers:
+        for hp in polys_of(hull):
+            ax.add_patch(poly_patch(hp, fc="none", ec="#777", lw=0.7, ls=(0, (3, 2)), zorder=2.5))
 
     # Planned fixtures (shower, toilet, vanity, ...): labelled rectangles from the edits
     IN = 0.0254

@@ -5,6 +5,7 @@ Notes, scans and plans for the house.
 ## Floorplans
 
 Generated from iPhone LiDAR room scans (Apple RoomPlan `.glb` exports) taken 2026-11-06.
+Furniture is drawn grey; wall-hung items (upper cabinets, shelves) are dashed outlines.
 Measurements are surface to surface and are usually accurate to within an inch or two.
 Each scan has its own coordinate frame, so the three plans are not aligned with each other yet.
 
@@ -16,8 +17,10 @@ Each scan has its own coordinate frame, so the three plans are not aligned with 
 |   |   | Bathroom | 8'8" × 6'5" (8'4" × 6'1" inside) | 55 sq ft |
 | 2 | [PNG](floorplans/2026-11-06_scan2.png) · [SVG](floorplans/2026-11-06_scan2.svg) | Room (4 doors, 2 windows) | 17'1" × 11'0" | 188 sq ft |
 | 3 | [PNG](floorplans/2026-11-06_scan3.png) · [SVG](floorplans/2026-11-06_scan3.svg) | Room with fireplace, 7'9" window | 15'0" × 15'9" | 235 sq ft |
+| 5 | [PNG](floorplans/2026-11-06_scan5.png) · [SVG](floorplans/2026-11-06_scan5.svg) | Kitchen (open to living room) | 17'3" × 15'2" | 262 sq ft |
+|   |   | Living Room (fireplace) | 18'8" × 15'2" overall | 268 sq ft |
 
-Ceilings are about 8'1"–8'2". Full details for every wall, door, window (with sill height) and
+Ceilings are about 8'1"–8'2" (7'10" in the kitchen/living room). Full details for every wall, door, window (with sill height) and
 detected piece of furniture are in the matching `floorplans/*.json` files.
 
 ### Notes from the scans
@@ -53,6 +56,10 @@ detected piece of furniture are in the matching `floorplans/*.json` files.
   | Vanity | 36" | 24" | 36" |
   | Room 2 / Room 1B | 313 / 183 sq ft | 319 / 189 sq ft | 316 / 186 sq ft |
 
+- **Scan 4** was a duplicate of scan 3 (identical file), so it isn't included.
+- **Scan 5:** Open-plan kitchen + living room, one 35'11" × 15'2" space; the dashed line on the plan is
+  where RoomPlan put the boundary between them. The plan is turned 90° clockwise
+  (`scans/2026-11-06_scan5.edits.json`). Ceiling is 7'10", lower than the other rooms.
 - **Scan 2:** The "storage cabinet" on the left wall starts 5'3" off the floor, so it's most likely
   upper or wall-mounted cabinets.
 - **Scan 3:** The left wall has a 3'11" opening with no door (an archway or cased opening).

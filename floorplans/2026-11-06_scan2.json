@@ -99,7 +99,7 @@
   "objects": [
     {
       "name": "storage_shelf_0",
-      "type": "storage shelf",
+      "type": "shelf",
       "size_m": [
         0.75,
         0.34,
@@ -108,24 +108,24 @@
       "bottom_height_m": 0.0
     },
     {
-      "name": "table_other_rect_0",
-      "type": "table rect",
-      "size_m": [
-        0.4,
-        1.95,
-        0.57
-      ],
-      "bottom_height_m": 0.0
-    },
-    {
       "name": "storage_cabinet_mid4_0",
-      "type": "storage cabinet mid4",
+      "type": "upper cab",
       "size_m": [
         0.43,
         1.87,
         0.82
       ],
       "bottom_height_m": 1.61
+    },
+    {
+      "name": "table_other_rect_0",
+      "type": "table",
+      "size_m": [
+        0.4,
+        1.95,
+        0.57
+      ],
+      "bottom_height_m": 0.0
     }
   ],
   "total_area_sqft": 188.1,

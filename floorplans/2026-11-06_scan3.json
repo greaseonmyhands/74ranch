@@ -68,7 +68,7 @@
   "objects": [
     {
       "name": "table_other_rect_0",
-      "type": "table rect",
+      "type": "table",
       "size_m": [
         0.97,
         1.41,
