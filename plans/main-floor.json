@@ -457,6 +457,42 @@
         -14.4296,
         0.862
       ]
+    ],
+    [
+      [
+        -9.324,
+        -0.069
+      ],
+      [
+        -8.3096,
+        -0.069
+      ],
+      [
+        -8.3096,
+        0.862
+      ],
+      [
+        -9.324,
+        0.862
+      ]
+    ],
+    [
+      [
+        -10.8486,
+        0.862
+      ],
+      [
+        -8.3096,
+        0.862
+      ],
+      [
+        -8.3096,
+        3.982
+      ],
+      [
+        -10.8486,
+        3.982
+      ]
     ]
   ],
   "room_dividers": [
@@ -470,6 +506,42 @@
         -3.5566,
         -0.069
       ]
+    },
+    {
+      "label": "Entry / Office opening",
+      "from": [
+        -10.8486,
+        2.742
+      ],
+      "to": [
+        -10.8486,
+        3.932
+      ],
+      "hidden": true
+    },
+    {
+      "label": "Entry / Living Room opening",
+      "from": [
+        -8.341,
+        2.742
+      ],
+      "to": [
+        -8.341,
+        3.982
+      ],
+      "hidden": true
+    },
+    {
+      "label": "Entry / Dining hallway opening",
+      "from": [
+        -9.374,
+        -0.069
+      ],
+      "to": [
+        -8.3096,
+        -0.069
+      ],
+      "hidden": true
     }
   ],
   "rooms": [
@@ -537,6 +609,19 @@
         0.4009
       ],
       "name": "Closet 2"
+    },
+    {
+      "at": [
+        -9.5791,
+        2.3
+      ],
+      "name": "Entry",
+      "label_at": [
+        -9.4,
+        2.75
+      ],
+      "label_size": 8,
+      "compact": true
     }
   ],
   "fixtures": [
@@ -564,15 +649,7 @@
       ]
     }
   ],
-  "labels": [
-    {
-      "at": [
-        -9.599,
-        2.748
-      ],
-      "text": "not yet scanned"
-    }
-  ],
+  "labels": [],
   "add_openings": [
     {
       "label": "36in doorway (no door) from the kitchen into the laundry room, through the shared wall",

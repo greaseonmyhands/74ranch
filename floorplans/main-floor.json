@@ -76,6 +76,16 @@
       "rectangular": false
     },
     {
+      "name": "Entry",
+      "width_m": 2.588,
+      "depth_m": 4.051,
+      "width_ft_in": "8'6\"",
+      "depth_ft_in": "13'3\"",
+      "area_m2": 7.53,
+      "area_sqft": 81.1,
+      "rectangular": false
+    },
+    {
       "name": "Front Porch",
       "width_m": 2.507,
       "depth_m": 1.584,
@@ -117,22 +127,22 @@
     },
     {
       "name": "Living Room",
-      "width_m": 8.465,
+      "width_m": 8.504,
       "depth_m": 6.738,
-      "width_ft_in": "27'9\"",
+      "width_ft_in": "27'11\"",
       "depth_ft_in": "22'1\"",
-      "area_m2": 40.07,
-      "area_sqft": 431.3,
+      "area_m2": 40.11,
+      "area_sqft": 431.8,
       "rectangular": false
     },
     {
       "name": "Office",
-      "width_m": 3.531,
+      "width_m": 3.571,
       "depth_m": 4.704,
-      "width_ft_in": "11'7\"",
+      "width_ft_in": "11'9\"",
       "depth_ft_in": "15'5\"",
-      "area_m2": 16.61,
-      "area_sqft": 178.8,
+      "area_m2": 16.66,
+      "area_sqft": 179.3,
       "rectangular": true
     },
     {
@@ -902,8 +912,8 @@
       "bottom_height_m": -0.07
     }
   ],
-  "total_area_sqft": 2221.9,
-  "total_area_m2": 206.42,
+  "total_area_sqft": 2304.1,
+  "total_area_m2": 214.05,
   "fixtures": [
     {
       "name": "Shower\n40\" \u00d7 60\"",

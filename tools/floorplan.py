@@ -382,7 +382,8 @@ def process_plan(plan_path, outdir):
      "parts": [{"scan": "scans/a.glb"},                               # its own edits apply
                {"scan": "scans/b.glb", "variant": "opt", "offset": [dx, dz]}],
      "add_walls": [{"from": [x, z], "to": [x, z], "thickness_in": 4, "show_length": false}],
-     "room_dividers": [{"from": [x, z], "to": [x, z]}],   # open boundary between rooms (dashed)
+     "room_dividers": [{"from": [x, z], "to": [x, z]}],   # open boundary between rooms (dashed;
+                                                          # "hidden": true to separate without a line)
      "remove": ["Wall_3~1"],                              # node names get ~<part index>
      "scan_labels": false,                                # drop the scans' own text notes
      "rooms"/"labels"/...: as in a scan's edits, in plan coordinates}
@@ -520,8 +521,17 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
 
     room_colors = ["#f3ede2", "#e6eef2", "#eef2e6", "#f2e6ee", "#eae6f2", "#f2efe6"]
     total_area = 0
-    for i, (label, fp, inner) in enumerate(sorted(rooms, key=lambda rm: rm[0])):
-        ax.add_patch(poly_patch(fp, fc=room_colors[i % len(room_colors)], ec="none", zorder=1))
+    # Colour rooms so that neighbours (rooms within a wall's thickness of each other) differ:
+    # greedy colouring, biggest rooms first.
+    ordered = sorted(rooms, key=lambda rm: rm[0])
+    color_of = {}
+    for rm in sorted(ordered, key=lambda rm: -rm[1].area):
+        near = {color_of[o[0]] for o in ordered
+                if o[0] in color_of and o is not rm and o[1].distance(rm[1]) < 0.3}
+        color_of[rm[0]] = next((c for c in range(len(room_colors)) if c not in near),
+                               len(color_of) % len(room_colors))
+    for i, (label, fp, inner) in enumerate(ordered):
+        ax.add_patch(poly_patch(fp, fc=room_colors[color_of[label]], ec="none", zorder=1))
         minx, minz, maxx, maxz = fp.bounds
         w, d = maxx - minx, maxz - minz
         area = fp.area
@@ -547,7 +557,9 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
                                  "width_ft_in": ft_in(w), "depth_ft_in": ft_in(d),
                                  "area_m2": round(area, 2), "area_sqft": round(sqft(area), 1),
                                  "rectangular": bool(rect)})
-    for l in divider_lines:  # user-drawn open boundaries between rooms
+    for d, l in zip(edits.get("room_dividers", []), divider_lines):  # open boundaries between rooms
+        if d.get("hidden"):
+            continue  # separates the rooms without drawing anything (e.g. across a plain opening)
         (ax_, az), (bx, bz) = l.coords
         ax.plot([ax_, bx], [az, bz], color="#888", lw=1, ls=(0, (6, 4)), zorder=1.5)
     for dv in dividers:  # open-plan boundary between rooms

@@ -7,7 +7,7 @@ Notes, scans and plans for the house.
 [`floorplans/main-floor.png`](floorplans/main-floor.png) · [SVG](floorplans/main-floor.svg): the
 North End Renovation (scan 1), the kitchen/dining room (scan 5), the front living room (scan 3) and
 the laundry room (scan 2) and the office (scan 6) joined into one plan, plus rooms drawn from
-measurements; about **2,222 sq ft** so far (including the 43 sq ft front porch). Defined in [`plans/main-floor.json`](plans/main-floor.json).
+measurements; about **2,304 sq ft** so far (including the 43 sq ft front porch). Defined in [`plans/main-floor.json`](plans/main-floor.json).
 
 | Room | Area |
 |---|---|
@@ -19,6 +19,7 @@ measurements; about **2,222 sq ft** so far (including the 43 sq ft front porch).
 | Laundry Room | 188 sq ft |
 | Office | 179 sq ft |
 | Front Porch (6' double front door) | 43 sq ft |
+| Entry (inside the front door, incl. the 3' hall up to the dining room) | 81 sq ft |
 | Hall (kitchen to office) | 9 sq ft |
 | Closet (under the attic stairs) | 15 sq ft |
 | Bedroom 1 (drawn, not scanned) | 157 sq ft |
