@@ -10,7 +10,7 @@ Each scan has its own coordinate frame, so the three plans are not aligned with 
 
 | Scan | Plan | Rooms | Size | Area |
 |---|---|---|---|---|
-| 1 | [PNG](floorplans/2026-11-06_scan1.png) · [SVG](floorplans/2026-11-06_scan1.svg) | Room 2 | 24'4" × 14'9" overall | 313 sq ft |
+| 1 — North End Renovation | [PNG](floorplans/2026-11-06_scan1.png) · [SVG](floorplans/2026-11-06_scan1.svg) | Room 2 | 24'4" × 14'9" overall | 313 sq ft |
 |   |   | Room 1A (incl. 4' corridor) | 12'6" × 19'3" overall | 193 sq ft |
 |   |   | Room 1B | 13'9" × 16'1" overall | 183 sq ft |
 |   |   | Bathroom | 8'8" × 6'5" (8'4" × 6'1" inside) | 55 sq ft |
@@ -21,7 +21,7 @@ Ceilings are about 8'1"–8'2". Full details for every wall, door, window (with 
 detected piece of furniture are in the matching `floorplans/*.json` files.
 
 ### Notes from the scans
-- **Scan 1:** Re-laid-out to match the hand sketch in [`sketches/2026-11-07_scan1-layout.jpg`](sketches/2026-11-07_scan1-layout.jpg)
+- **Scan 1 — North End Renovation** *(parked 2026-11-07)*. Re-laid-out to match the hand sketch in [`sketches/2026-11-07_scan1-layout.jpg`](sketches/2026-11-07_scan1-layout.jpg)
   (all changes live in `scans/2026-11-06_scan1.edits.json`; the original scan is untouched):
   - Old hallway removed; a 4' corridor runs from the 2'7" wall to a new bathroom and opens south into Room 1A.
   - Corridor's north wall runs straight from the west exterior wall to the bathroom's east wall, with a
@@ -35,6 +35,12 @@ detected piece of furniture are in the matching `floorplans/*.json` files.
     SW corner. Meets IRC minimums (15" toilet side clearance, 21" in front of toilet and vanity); the
     36" door swings clear of the shower by about 4".
   - Furniture is hidden.
+
+  **Open items when we pick this back up:**
+  - Confirm the bathroom door position (drawn 6" from the bathroom's inside NW corner) and the
+    Room 1A/1B door position (drawn 2'6" south of the bathroom).
+  - Give Room 1A, 1B and 2 real names.
+  - Connect the hallway beyond the corridor's west opening once it's scanned.
 
   **Other bathroom options considered** (each in `scans/2026-11-06_scan1.<option>.edits.json`):
 
