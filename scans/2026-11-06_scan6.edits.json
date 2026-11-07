@@ -1,0 +1,5 @@
+{
+  "title": "Office",
+  "rotate_cw": 180,
+  "rooms": [{"at": [0.0, 0.0], "name": "Office"}]
+}

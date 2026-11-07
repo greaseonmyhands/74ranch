@@ -7,7 +7,9 @@
     "sofa_rect_0",
     "table_dining_rect_0",
     "Door_0",
-    "Door_1"
+    "Door_1",
+    "table_other_rect_0",
+    "storage_cabinet_tall2_0"
   ],
   "retype": {
     "refrigerator_1": "storage_cabinet"
