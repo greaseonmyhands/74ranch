@@ -62,8 +62,9 @@ How they fit:
   gap between that box and the Living Room's west wall is a 3'0" hallway down from the dining room.
 - Below the laundry room, the far SW corner is boxed out too: the laundry room's west wall continues
   15'8" south, and a 17'3" south wall on the same line as Bedroom 2's south wall runs east to the
-  Office's west wall (2'10" short of the Office's south face). Not scanned yet; the laundry room's two
-  south doors lead into it.
+  Office's west wall (2'10" short of the Office's south face). A wall centered between the laundry
+  room's two south doors runs the full 15'8" down it, splitting it into a 5'3"-wide west part (off the
+  2'3" door) and an 11'4"-wide east part (off the 2'7" door). Not scanned yet.
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an
   ~8'-wide area between the Office and the Living Room, plus a strip above the Office); the

@@ -259,6 +259,17 @@
         -14.4296,
         4.694
       ]
+    },
+    {
+      "label": "Wall centered between the laundry room's two south doors, running south to the block's south wall",
+      "from": [
+        -17.9852,
+        -0.069
+      ],
+      "to": [
+        -17.9852,
+        4.694
+      ]
     }
   ],
   "add_floor": [
@@ -465,7 +476,7 @@
     },
     {
       "at": [
-        -17.054,
+        -16.207,
         2.312
       ],
       "text": "not yet scanned"
