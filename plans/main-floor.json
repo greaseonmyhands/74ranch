@@ -214,6 +214,28 @@
         -8.3096,
         2.742
       ]
+    },
+    {
+      "label": "Box below the stairs: east wall, continuing the stairs' east wall 3' south",
+      "from": [
+        -9.324,
+        0.862
+      ],
+      "to": [
+        -9.324,
+        1.7764
+      ]
+    },
+    {
+      "label": "Box below the stairs: south wall, back west to the Office's 6'2\" wall",
+      "from": [
+        -9.324,
+        1.7764
+      ],
+      "to": [
+        -10.8486,
+        1.7764
+      ]
     }
   ],
   "add_floor": [

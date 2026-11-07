@@ -56,7 +56,9 @@ How they fit:
 - East of the hall, the strip between the kitchen's south wall and the Office's north wall is the
   attic stairs (about 11' × 2'9" inside, rising west to east, ~13 treads at 10"): a new wall drops from the kitchen wall flush with the dining hallway
   opening's west edge, and the Office's north wall is extended east to meet it. The stairs open
-  straight off the east side of the hall (no wall between).
+  straight off the east side of the hall (no wall between). Below the stairs' east end, a 3' wall runs
+  south and a 5' wall runs back west to the Office, boxing in a space about 4'8" × 2'8" inside; the
+  gap between that box and the Living Room's west wall is a 3'0" hallway down from the dining room.
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an
   ~8'-wide area between the Office and the Living Room, plus a strip above the Office); the
