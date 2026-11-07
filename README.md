@@ -6,23 +6,25 @@ Notes, scans and plans for the house.
 
 [`floorplans/main-floor.png`](floorplans/main-floor.png) · [SVG](floorplans/main-floor.svg): the
 North End Renovation (scan 1) and the kitchen/living room (scan 5) joined into one plan, about
-**1,274 sq ft** so far. Defined in [`plans/main-floor.json`](plans/main-floor.json).
+**1,286 sq ft** so far. Defined in [`plans/main-floor.json`](plans/main-floor.json).
 
 | Room | Area |
 |---|---|
 | Kitchen | 262 sq ft |
-| Living Room | 268 sq ft |
-| Room 2 | 313 sq ft |
-| Room 1A (incl. corridor) | 193 sq ft |
+| Living Room | 269 sq ft |
+| Room 2 | 323 sq ft (11" wider than its own scan; see below) |
+| Room 1A (incl. corridor) | 194 sq ft |
 | Room 1B | 183 sq ft |
 | Bathroom | 55 sq ft |
 
-How they fit: the living room's east wall (11'10") and Room 2's west wall (11'5") are the same wall.
-The scans are aligned at the walk-through that joins the living room to the North End corridor (the
-two "open to hallway" sides were the same opening); with that, the north walls of both scans line up
-within ¼". The shared wall measures ~15" surface to surface, thicker than a normal interior wall,
-which suggests it was the old exterior wall before the North End was added. The dashed line at the
-walk-through separates the living room from Room 1A's corridor.
+How they fit:
+- The living room's east wall and Room 2's west wall are one wall: a standard 4" wall, drawn with its
+  west face on the living room's scanned surface (11'7" long). The two scans put the surfaces ~15"
+  apart; the extra ~11" goes to Room 2.
+- The north walls of both scans are exactly in line, and so are the living room's south wall and the
+  North End's short step-in wall (moved 4 mm to match).
+- The walk-through from the living room into the North End corridor has its north side on the same
+  line as the corridor's top wall. The dashed line there separates the living room from Room 1A.
 
 ## Floorplans
 
@@ -33,7 +35,7 @@ Each scan has its own coordinate frame, so the three plans are not aligned with 
 
 | Scan | Plan | Rooms | Size | Area |
 |---|---|---|---|---|
-| 1 — North End Renovation | [PNG](floorplans/2026-11-06_scan1.png) · [SVG](floorplans/2026-11-06_scan1.svg) | Room 2 | 24'4" × 14'9" overall | 313 sq ft |
+| 1 — North End Renovation | [PNG](floorplans/2026-11-06_scan1.png) · [SVG](floorplans/2026-11-06_scan1.svg) | Room 2 (323 sq ft on the main-floor plan) | 24'4" × 14'9" overall | 313 sq ft |
 |   |   | Room 1A (incl. 4' corridor) | 12'6" × 19'3" overall | 193 sq ft |
 |   |   | Room 1B | 13'9" × 16'1" overall | 183 sq ft |
 |   |   | Bathroom | 8'8" × 6'5" (8'4" × 6'1" inside) | 55 sq ft |

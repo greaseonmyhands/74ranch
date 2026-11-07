@@ -22,7 +22,7 @@
       "width_ft_in": "12'7\"",
       "depth_ft_in": "19'3\"",
       "area_m2": 17.97,
-      "area_sqft": 193.4,
+      "area_sqft": 193.5,
       "rectangular": false
     },
     {
@@ -232,7 +232,7 @@
   ],
   "objects": [],
   "total_area_sqft": 744.3,
-  "total_area_m2": 69.14,
+  "total_area_m2": 69.15,
   "fixtures": [
     {
       "name": "Shower\n36\" \u00d7 36\"",

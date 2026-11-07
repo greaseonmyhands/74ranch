@@ -88,11 +88,14 @@ def poly_patch(poly, **kw):
 
 
 def polys_of(geom):
-    if geom is None:
+    """The polygons in a shapely geometry (lines/points left over from clipping are dropped)."""
+    if geom is None or geom.is_empty:
         return []
-    if isinstance(geom, MultiPolygon):
-        return list(geom.geoms)
-    return [geom]
+    if isinstance(geom, Polygon):
+        return [geom]
+    if hasattr(geom, "geoms"):  # MultiPolygon or GeometryCollection
+        return [p for g in geom.geoms for p in polys_of(g)]
+    return []
 
 
 FRIENDLY = [  # RoomPlan category prefix -> short plan label
@@ -340,7 +343,8 @@ def prepare(path, edits):
 def add_walls_and_doors(nodes, edits, tag="added"):
     added = set()
     for i, w in enumerate(edits.get("add_walls", [])):
-        name = f"Wall_{tag}_{i}"
+        # "show_length": false hides the length label (connector pieces of a longer wall)
+        name = f"Wall_{tag}_{i}" if w.get("show_length", True) else f"Wall_{tag}_nolabel_{i}"
         added.add(name)
         nodes[name] = wall_box(w["from"], w["to"], w.get("height", 2.5),
                                w.get("thickness_in", WALL_T / 0.0254) * 0.0254)
@@ -373,7 +377,7 @@ def process_plan(plan_path, outdir):
     {"title": "...",
      "parts": [{"scan": "scans/a.glb"},                               # its own edits apply
                {"scan": "scans/b.glb", "variant": "opt", "offset": [dx, dz]}],
-     "add_walls": [{"from": [x, z], "to": [x, z], "thickness_in": 15}],  # e.g. a thick shared wall
+     "add_walls": [{"from": [x, z], "to": [x, z], "thickness_in": 4, "show_length": false}],
      "room_dividers": [{"from": [x, z], "to": [x, z]}],   # open boundary between rooms (dashed)
      "remove": ["Wall_3~1"],                              # node names get ~<part index>
      "scan_labels": false,                                # drop the scans' own text notes
@@ -693,7 +697,7 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
         summary["walls"].append({"name": name, "added": name in added, "length_m": round(float(length), 3),
                                  "length_ft_in": ft_in(length),
                                  "height_m": round(float(ext[1]), 2)})
-        if length < 0.3:
+        if length < 0.3 or "_nolabel_" in name:
             continue
         fpw = footprint(m)
         others = unary_union([footprint(o) for n2, o in walls.items() if n2 != name and n2.startswith("Wall")])
