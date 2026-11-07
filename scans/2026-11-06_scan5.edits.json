@@ -3,7 +3,9 @@
   "rotate_cw": 90,
   "remove": [
     "Wall_2",
-    "Joint_2"
+    "Joint_2",
+    "sofa_rect_0",
+    "table_dining_rect_0"
   ],
   "retype": {
     "refrigerator_1": "storage_cabinet"
