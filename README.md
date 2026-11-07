@@ -10,6 +10,23 @@ a locked snapshot of the main-floor plan below as of 2026-11-07, about **2,304 s
 [`plans/keegans-plans/`](plans/keegans-plans/), so later work on the working plan or on new versions
 doesn't change it.
 
+## Room 2 master suite – four layouts
+
+Built on Keegan's Plans; side by side in [`floorplans/room2-options.png`](floorplans/room2-options.png).
+Each has a king bed (76" × 80"), a master bath (36" × 60" shower, toilet, vanity) and a dressing-room
+closet with laundry. Entry is still the 3' door from the Living Room's corridor; the 3'4" exterior door
+and both windows stay.
+
+| | Plan | Layout | Bedroom | Bath | Dressing / Laundry |
+|---|---|---|---|---|---|
+| A | [PNG](floorplans/room2-option-a.png) | Suite on the west (bath gets the 2'11" window), corridor door opens into the dressing room; separate 27" washer + dryer | 200 sq ft | 60 sq ft, 60" double vanity | 54 sq ft |
+| B | [PNG](floorplans/room2-option-b.png) | Same as A with a 24" washer/dryer combo, more hanging | 200 sq ft | 60 sq ft, 60" double vanity | 54 sq ft |
+| C | [PNG](floorplans/room2-option-c.png) | Suite on the east; bath takes the alcove and the 2'3" window; dressing above with full-width closet; separate washer + dryer | 170 sq ft | 72 sq ft, 60" double vanity | 72 sq ft |
+| D | [PNG](floorplans/room2-option-d.png) | Suite on the east; dressing takes the alcove (9' closet) and the window; bath above; washer/dryer combo | 170 sq ft | 59 sq ft, 48" vanity | 85 sq ft |
+
+In A/B the bed's headboard is on the east wall with ~36" on each side; in C/D it's on the solid west
+wall (shared with the dining room) with ~29" on each side. Plans: `plans/room2-option-{a,b,c,d}.json`.
+
 ## North End – Option B
 
 [`floorplans/north-end-b.png`](floorplans/north-end-b.png) · [SVG](floorplans/north-end-b.svg): the

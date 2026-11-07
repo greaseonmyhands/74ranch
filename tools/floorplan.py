@@ -731,6 +731,25 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
                 (sz, ez) = (zb - 0.15, za + 0.15) if up == "n" else (za + 0.15, zb - 0.15)
                 ax.annotate("", xy=(xc, ez), xytext=(xc, sz), zorder=3.6,
                             arrowprops=dict(arrowstyle="-|>", color="#555", lw=1.1))
+        if fx.get("shape") == "closet":  # reach-in/hanging closet: dashed rod down the middle
+            xa, xb, za, zb = min(x0, x1), max(x0, x1), min(z0, z1), max(z0, z1)
+            if (xb - xa) >= (zb - za):
+                ax.plot([xa + 0.05, xb - 0.05], [(za + zb) / 2] * 2, color="#888", lw=0.8,
+                        ls=(0, (4, 3)), zorder=3.5)
+            else:
+                ax.plot([(xa + xb) / 2] * 2, [za + 0.05, zb - 0.05], color="#888", lw=0.8,
+                        ls=(0, (4, 3)), zorder=3.5)
+        if fx.get("shape") == "toilet" and fx.get("front", "w") in ("n", "s"):
+            from matplotlib.patches import Ellipse
+            w, d = abs(x1 - x0), abs(z1 - z0)
+            tank = 7 * IN
+            za, zb = min(z0, z1), max(z0, z1)
+            front = fx["front"]
+            bz = (za + (0 if front == "n" else tank) + zb - (tank if front == "n" else 0)) / 2
+            ax.add_patch(Ellipse(((x0 + x1) / 2, bz), w - 0.04, d - tank - 0.02, fc="white",
+                                 ec="#555", lw=0.8, zorder=3.5))
+            tz = zb - tank if front == "n" else za + tank
+            ax.plot([x0, x1], [tz, tz], color="#555", lw=0.8, zorder=3.5)
         if fx.get("shape") == "toilet":  # bowl drawn as an ellipse toward the front
             from matplotlib.patches import Ellipse
             w, d = abs(x1 - x0), abs(z1 - z0)
