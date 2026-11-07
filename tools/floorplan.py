@@ -28,8 +28,8 @@ import numpy as np
 import trimesh
 from matplotlib.patches import PathPatch, Polygon as MplPolygon
 from matplotlib.path import Path as MplPath
-from shapely.geometry import MultiPolygon, Polygon
-from shapely.ops import unary_union
+from shapely.geometry import MultiPolygon, Point, Polygon
+from shapely.ops import polylabel, unary_union
 
 WALL_T = 0.10  # RoomPlan models every wall as a 10 cm box centered on the scanned surface
 M_TO_FT = 3.280839895
@@ -104,8 +104,11 @@ def load_edits(path):
     """Optional sidecar next to the scan: <scan>.edits.json, e.g.
     {"remove": ["chair_*", "Wall_10"],          # names or glob patterns of RoomPlan nodes
      "move": [{"nodes": ["Wall_2", "Door_0"], "by": [dx, dz]}],
-     "add_walls": [{"from": [x, z], "to": [x, z], "label": "..."}]}
-    add_walls coordinates are the wall centerline in the scan's own frame, in meters."""
+     "add_walls": [{"from": [x, z], "to": [x, z], "label": "..."}],
+     "add_doors": [{"from": [x, z], "to": [x, z], "label": "..."}],
+     "add_floor": [[[x, z], [x, z], ...]],      # extra floor polygons
+     "rooms": [{"at": [x, z], "name": "Bathroom"}]}   # name the room containing a point
+    Coordinates are in the scan's own frame, in meters; walls are given by their centerline."""
     p = Path(path).with_suffix(".edits.json")
     return json.loads(p.read_text()) if p.exists() else {}
 
@@ -125,6 +128,13 @@ def wall_box(a, b, height):
     return box
 
 
+def opening_quad(a, b, height):
+    """A flat vertical quad (like RoomPlan's doors/windows) from a to b on the floor plane."""
+    (ax_, az), (bx, bz) = a, b
+    v = np.array([[ax_, 0, az], [bx, 0, bz], [bx, height, bz], [ax_, height, az]], float)
+    return trimesh.Trimesh(vertices=v, faces=[[0, 1, 2], [0, 2, 3]], process=False)
+
+
 def process(path, outdir):
     nodes = load_nodes(path)
     edits = load_edits(path)
@@ -135,7 +145,6 @@ def process(path, outdir):
         for n in hits:
             del nodes[n]
     # Moves: translate whole RoomPlan elements in the floor plane
-    moved_floor_orig = {}
     for mv in edits.get("move", []):
         dx, dz = mv["by"]
         T = trimesh.transformations.translation_matrix([dx, 0, dz])
@@ -144,33 +153,15 @@ def process(path, outdir):
             if not hits:
                 print(f"  warning: move pattern {pat!r} matched nothing")
             for n in hits:
-                if n.startswith("Floor") and n not in moved_floor_orig:
-                    moved_floor_orig[n] = footprint(nodes[n])
                 nodes[n].apply_transform(T)
-    added = {}
+    added = set()
     for i, w in enumerate(edits.get("add_walls", [])):
         name = f"Wall_added_{i}"
-        added[name] = w.get("label", name)
+        added.add(name)
         nodes[name] = wall_box(w["from"], w["to"], w.get("height", 2.5))
+    for i, d in enumerate(edits.get("add_doors", [])):
+        nodes[f"Door_added_{i}"] = opening_quad(d["from"], d["to"], d.get("height", 2.03))
     kind = lambda n: n.split("_")[0]
-    added_fp = unary_union([footprint(nodes[n]) for n in added]) if added else None
-
-    floor_polys = {n: footprint(m) for n, m in nodes.items() if kind(n) == "Floor"}
-    # A moved floor takes priority where it now overlaps another room; the area it
-    # vacated goes to the neighbouring room it shares the most boundary with.
-    for n, orig in moved_floor_orig.items():
-        new = floor_polys[n]
-        others = [o for o in floor_polys if o not in moved_floor_orig]
-        for o in others:
-            floor_polys[o] = floor_polys[o].difference(new)
-        for piece in polys_of(orig.difference(new)):
-            if piece.area < 0.01 or not others:
-                continue
-            best = max(others, key=lambda o: floor_polys[o].buffer(0.02).intersection(piece).area)
-            floor_polys[best] = unary_union([floor_polys[best], piece])
-        for o in others:  # drop slivers left behind by the subtraction
-            parts = [q for q in polys_of(floor_polys[o].buffer(0)) if q.area >= 0.05]
-            floor_polys[o] = unary_union(parts).buffer(1e-4).buffer(-1e-4)
 
     floors = {n: m for n, m in nodes.items() if kind(n) == "Floor"}
     walls = {n: m for n, m in nodes.items() if kind(n) in ("Wall", "Joint")}
@@ -181,6 +172,15 @@ def process(path, outdir):
 
     ceiling_h = max((m.bounds.mean(0)[1] for m in ceilings.values()), default=None)
 
+    # Each wall is a straight slab; using its oriented rectangle squares off the mitered
+    # ends RoomPlan leaves where a wall met one that has since been removed.
+    wall_geom = unary_union([footprint(m).minimum_rotated_rectangle
+                             for m in walls.values() if footprint(m) is not None])
+
+    floor_polys = {n: footprint(m) for n, m in floors.items()}
+    extra_floor = [Polygon(f) for f in edits.get("add_floor", [])]
+    floor_all = unary_union(list(floor_polys.values()) + extra_floor).buffer(1e-4).buffer(-1e-4)
+
     fig, ax = plt.subplots(figsize=(10, 10))
     ax.set_aspect("equal")
     ax.axis("off")
@@ -190,36 +190,47 @@ def process(path, outdir):
     if ceiling_h:
         summary["ceiling_height"] = {"m": round(ceiling_h, 2), "ft_in": ft_in(ceiling_h)}
 
-    # Floors / rooms
-    room_colors = ["#f3ede2", "#e6eef2", "#eef2e6", "#f2e6ee"]
+    # Rooms: the floor split up by the walls. Each region is grown back out to the wall
+    # centerlines (how RoomPlan measures rooms) and named after the scanned floor it
+    # mostly sits on, unless the edits name it.
+    regions = [r for r in polys_of(floor_all.difference(wall_geom)) if r.area > 0.3]
+    rooms = []
+    for r in regions:
+        full = r.buffer(WALL_T / 2, join_style=2).intersection(floor_all)
+        full = max(polys_of(full), key=lambda q: q.area)
+        base = max(floor_polys, key=lambda n: floor_polys[n].intersection(r).area) \
+            if floor_polys else "Floor_Room"
+        rooms.append([base.replace("Floor_", "").replace("_", " "), full, r])
+    for spec in edits.get("rooms", []):
+        pt = Point(spec["at"])
+        for rm in rooms:
+            if rm[2].contains(pt):
+                rm[0] = spec["name"]
+    rooms.sort(key=lambda rm: (round(rm[1].centroid.x, 1), rm[1].centroid.y))
+    names = [rm[0] for rm in rooms]
+    seen = {}
+    for rm in rooms:  # rooms sharing a scanned floor's name become 1A, 1B, ...
+        if names.count(rm[0]) > 1:
+            k = seen.get(rm[0], 0)
+            seen[rm[0]] = k + 1
+            rm[0] = f"{rm[0]}{chr(65 + k)}"
+
+    room_colors = ["#f3ede2", "#e6eef2", "#eef2e6", "#f2e6ee", "#eae6f2", "#f2efe6"]
     total_area = 0
-    pieces = []
-    for name in sorted(floors):
-        label = name.replace("Floor_", "").replace("_", " ")
-        fp = floor_polys[name]
-        if added_fp is not None:
-            parts = [p for p in polys_of(fp.difference(added_fp)) if p.area > 0.3]
-            if len(parts) > 1:  # an added wall divides this room: label each side
-                parts.sort(key=lambda p: (round(p.centroid.x, 1), p.centroid.y))
-                pieces += [(f"{label}{chr(65 + k)}", p) for k, p in enumerate(parts)]
-                continue
-        pieces.append((label, fp))
-    for i, (label, fp) in enumerate(pieces):
-        for p in polys_of(fp):
-            ax.add_patch(MplPolygon(np.array(p.exterior.coords), closed=True,
-                                    fc=room_colors[i % len(room_colors)], ec="none", zorder=1))
+    for i, (label, fp, inner) in enumerate(sorted(rooms, key=lambda rm: rm[0])):
+        ax.add_patch(poly_patch(fp, fc=room_colors[i % len(room_colors)], ec="none", zorder=1))
         minx, minz, maxx, maxz = fp.bounds
         w, d = maxx - minx, maxz - minz
         area = fp.area
         total_area += area
         rect = abs(area - w * d) < 0.02 * w * d
-        c = fp.representative_point() if not rect else fp.centroid
+        c = fp.centroid if rect else polylabel(inner, tolerance=0.01)
         text = f"{label}\n{ft_in(w)} × {ft_in(d)}\n{sqft(area):.0f} sq ft" if rect else \
                f"{label}\n{sqft(area):.0f} sq ft\n(overall {ft_in(w)} × {ft_in(d)})"
-        if area < 5:  # small spaces (halls, closets): keep the label compact
+        if area < 5:  # small spaces (baths, halls, closets): keep the label compact
             text = f"{label}\n{sqft(area):.0f} sq ft"
-        ax.text(c.x, c.y, text, ha="center", va="center", fontsize=10 if area >= 5 else 7.5, zorder=6,
-                fontweight="bold", color="#333")
+        ax.text(c.x, c.y, text, ha="center", va="center", fontsize=10 if area >= 5 else 8,
+                zorder=6, fontweight="bold", color="#333")
         summary["rooms"].append({"name": label, "width_m": round(w, 3), "depth_m": round(d, 3),
                                  "width_ft_in": ft_in(w), "depth_ft_in": ft_in(d),
                                  "area_m2": round(area, 2), "area_sqft": round(sqft(area), 1),
@@ -228,7 +239,6 @@ def process(path, outdir):
     summary["total_area_m2"] = round(total_area, 2)
 
     # Furniture (light, under walls). RoomPlan boxes can poke through walls, so clip to the floor.
-    floor_all = unary_union(list(floor_polys.values()))
     for name, m in objects.items():
         fp = footprint(m)
         if fp is None:
@@ -248,10 +258,6 @@ def process(path, outdir):
                                    "bottom_height_m": round(float(m.bounds[0][1]), 2)})
 
     # Walls
-    # Each wall is a straight slab; using its oriented rectangle squares off the mitered
-    # ends RoomPlan leaves where a wall met one that has since been removed.
-    wall_geom = unary_union([footprint(m).minimum_rotated_rectangle
-                             for m in walls.values() if footprint(m) is not None])
     for p in polys_of(wall_geom):
         ax.add_patch(poly_patch(p, fc="#222", ec="#222", lw=0.5, zorder=4))
 
@@ -301,22 +307,25 @@ def process(path, outdir):
                 ax.plot([p[0] + n[0] * t, p[0] - n[0] * t], [p[1] + n[1] * t, p[1] - n[1] * t],
                         color="#222", lw=1.2, zorder=5)
         mid = (a + b) / 2
-        return L, mid, m.bounds[0][1], m.bounds[1][1] - m.bounds[0][1]
+        # screen y is flipped (z points down), so negate z for the on-screen angle
+        rot = np.degrees(np.arctan2(-u[1], u[0]))
+        rot = (rot + 90) % 180 - 90  # keep text upright
+        return L, mid, m.bounds[0][1], m.bounds[1][1] - m.bounds[0][1], rot
 
     for name, m in sorted(doors.items()):
-        L, mid, bottom, h = opening(m, "#b45f06", 1.2, "door")
+        L, mid, bottom, h, rot = opening(m, "#b45f06", 1.2, "door")
         summary["doors"].append({"name": name, "width_m": round(float(L), 3), "width_ft_in": ft_in(L),
                                  "height_m": round(float(h), 2), "height_ft_in": ft_in(h)})
         ax.text(mid[0], mid[1], f"door {ft_in(L)}", fontsize=6, color="#b45f06", ha="center",
-                va="bottom", zorder=8, rotation=0)
+                va="bottom", zorder=8, rotation=rot, rotation_mode="anchor")
     for name, m in sorted(windows.items()):
-        L, mid, bottom, h = opening(m, "#3d85c6", 1.0, "window")
+        L, mid, bottom, h, rot = opening(m, "#3d85c6", 1.0, "window")
         summary["windows"].append({"name": name, "width_m": round(float(L), 3), "width_ft_in": ft_in(L),
                                    "height_m": round(float(h), 2), "height_ft_in": ft_in(h),
                                    "sill_height_m": round(float(bottom), 2),
                                    "sill_height_ft_in": ft_in(bottom)})
         ax.text(mid[0], mid[1], f"win {ft_in(L)}", fontsize=6, color="#3d85c6", ha="center",
-                va="top", zorder=8)
+                va="top", zorder=8, rotation=rot, rotation_mode="anchor")
 
     # glTF is Y-up with +Z toward the viewer; looking down, screen-up = -Z
     ax.autoscale_view()

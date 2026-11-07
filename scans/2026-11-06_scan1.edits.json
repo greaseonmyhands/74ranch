@@ -1,56 +1,52 @@
 {
+  "notes": "Layout per hand sketch of 2026-11-07. Coordinates are meters in the scan's frame (x = east, z = south); walls are centerlines.",
   "remove": [
     "chair_other_four_back_no_0",
     "chair_other_four_back_no_1",
     "storage_cabinet_mid1_0",
     "storage_cabinet_tall2_0",
     "Wall_10",
-    "Wall_9"
-  ],
-  "move": [
-    {
-      "label": "Shift the hallway north ~5\" so its south wall (6'5\", Wall_2) lines up with the 11'5\" wall (Wall_4)",
-      "by": [
-        0,
-        -0.129
-      ],
-      "nodes": [
-        "Wall_2",
-        "Wall_8",
-        "Wall_11",
-        "Wall_6",
-        "Joint_2",
-        "Joint_4",
-        "Joint_5",
-        "Joint_9",
-        "Door_0",
-        "Door_1",
-        "Floor_Hallway"
-      ]
-    }
+    "Wall_2",
+    "Wall_8",
+    "Wall_11",
+    "Wall_6",
+    "Door_0",
+    "Door_1",
+    "Joint_2",
+    "Joint_5",
+    "Joint_9",
+    "Joint_4"
   ],
   "add_walls": [
-    {
-      "label": "New wall: from the west end of the 11'5\" wall (Wall_4) south to the exterior wall (Wall_3)",
-      "from": [
-        0.1232,
-        -0.2019
-      ],
-      "to": [
-        0.1232,
-        4.694
-      ]
-    },
-    {
-      "label": "Replaces Wall_9 (2'7\"), stretched north to meet the moved hallway wall",
-      "from": [
-        -3.23,
-        -0.202
-      ],
-      "to": [
-        -3.23,
-        0.774
-      ]
-    }
+    {"label": "16'1\" wall: west end of the 11'5\" wall south to the exterior wall",
+     "from": [0.1232, -0.2019], "to": [0.1232, 4.694]},
+    {"label": "North wall of corridor + bathroom (replaces the old 7'9\" hallway wall)",
+     "from": [-3.68, -1.172], "to": [0.1232, -1.172]},
+    {"label": "Exterior wall west of the corridor (straightens the old angled wall)",
+     "from": [-3.68, -1.172], "to": [-3.68, -0.073]},
+    {"label": "Short wall stepping in to the top of the 2'7\" wall",
+     "from": [-3.68, -0.073], "to": [-3.23, -0.073]},
+    {"label": "Bathroom west wall, 4' clear from the 2'7\" wall",
+     "from": [-1.911, -1.172], "to": [-1.911, 0.774]},
+    {"label": "Bathroom south wall, in line with the 1'6\" wall",
+     "from": [-1.911, 0.774], "to": [0.1232, 0.774]},
+    {"label": "Bathroom east wall, continuing the 16'1\" wall north",
+     "from": [0.1232, -1.172], "to": [0.1232, -0.202]}
+  ],
+  "add_doors": [
+    {"label": "36\" door, corridor to Room 2, centered in the corridor",
+     "from": [-3.2527, -1.172], "to": [-2.3383, -1.172]},
+    {"label": "36\" bathroom door, 6\" from the bathroom's inside NW corner",
+     "from": [-1.911, -0.970], "to": [-1.911, -0.056]},
+    {"label": "36\" door between Room 1A and 1B, 2'6\" south of the bathroom",
+     "from": [0.1232, 1.574], "to": [0.1232, 2.488]},
+    {"label": "Exterior door (scanned at 2'11\"), centered in the west corridor wall",
+     "from": [-3.68, -1.061], "to": [-3.68, -0.184]}
+  ],
+  "add_floor": [
+    [[-3.68, -1.172], [-1.911, -1.172], [-1.911, -0.073], [-3.68, -0.073]]
+  ],
+  "rooms": [
+    {"at": [-0.9, -0.2], "name": "Bathroom"}
   ]
 }
