@@ -53,7 +53,7 @@ Each scan has its own coordinate frame, so the three plans are not aligned with 
 |   |   | Room 1A (incl. 4' corridor) | 12'6" × 19'3" overall | 193 sq ft |
 |   |   | Room 1B | 13'9" × 16'1" overall | 183 sq ft |
 |   |   | Bathroom | 8'8" × 6'5" (8'4" × 6'1" inside) | 55 sq ft |
-| 2 | [PNG](floorplans/2026-11-06_scan2.png) · [SVG](floorplans/2026-11-06_scan2.svg) | Room (4 doors, 2 windows) | 17'1" × 11'0" | 188 sq ft |
+| 2 | [PNG](floorplans/2026-11-06_scan2.png) · [SVG](floorplans/2026-11-06_scan2.svg) | Laundry Room (4 doors, 2 windows) | 17'1" × 11'0" | 188 sq ft |
 | 3 | [PNG](floorplans/2026-11-06_scan3.png) · [SVG](floorplans/2026-11-06_scan3.svg) | Front Living Room (fireplace, 7'9" window) | 15'0" × 15'9" | 235 sq ft |
 | 5 | [PNG](floorplans/2026-11-06_scan5.png) · [SVG](floorplans/2026-11-06_scan5.svg) | Kitchen (open to living room) | 17'3" × 15'2" | 262 sq ft |
 |   |   | Living Room (fireplace) | 18'8" × 15'2" overall | 268 sq ft |
@@ -105,7 +105,7 @@ detected piece of furniture are in the matching `floorplans/*.json` files.
   right up to the dining table's left edge; one in the kitchen's west wall, centered
   between the fridge and the SW corner. Kitchen cabinets are drawn at standard depths from the wall: 25½" for base
   and tall cabinets, dishwasher and range (24" box + countertop overhang), 12" for uppers.
-- **Scan 2:** Turned 180° (`scans/2026-11-06_scan2.edits.json`). The "storage cabinet" on the right
+- **Scan 2 — Laundry Room:** Turned 180°, table and shelf removed (`scans/2026-11-06_scan2.edits.json`). The "storage cabinet" on the right
   wall (dashed) starts 5'3" off the floor, so it's most likely upper or wall-mounted cabinets.
 - **Scan 3 — Front Living Room:** The left wall has a 3'11" opening with no door (an archway or cased
   opening). The scanned table is hidden (`scans/2026-11-06_scan3.edits.json`).
