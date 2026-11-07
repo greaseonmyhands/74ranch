@@ -2,6 +2,14 @@
 
 Notes, scans and plans for the house.
 
+## Keegan's Plans (locked)
+
+[`floorplans/keegans-plans.png`](floorplans/keegans-plans.png) · [SVG](floorplans/keegans-plans.svg):
+a locked snapshot of the main-floor plan below as of 2026-11-07, about **2,304 sq ft**. It's defined by
+[`plans/keegans-plans.json`](plans/keegans-plans.json) and uses frozen copies of every scan's edits in
+[`plans/keegans-plans/`](plans/keegans-plans/), so later work on the working plan or on new versions
+doesn't change it.
+
 ## Main floor (combined)
 
 [`floorplans/main-floor.png`](floorplans/main-floor.png) · [SVG](floorplans/main-floor.svg): the

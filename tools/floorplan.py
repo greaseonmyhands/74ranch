@@ -380,6 +380,7 @@ def process_plan(plan_path, outdir):
     """Render several scans together on one plan. plans/<name>.json:
     {"title": "...",
      "parts": [{"scan": "scans/a.glb"},                               # its own edits apply
+               {"scan": "scans/c.glb", "edits": "plans/v1/c.edits.json"},  # or a frozen copy
                {"scan": "scans/b.glb", "variant": "opt", "offset": [dx, dz]}],
      "add_walls": [{"from": [x, z], "to": [x, z], "thickness_in": 4, "show_length": false}],
      "room_dividers": [{"from": [x, z], "to": [x, z]}],   # open boundary between rooms (dashed;
@@ -394,7 +395,10 @@ def process_plan(plan_path, outdir):
             "fixtures": [], "labels": [], "room_dividers": []}
     cab = None
     for i, part in enumerate(plan["parts"]):
-        e = scan_edits(part["scan"], part.get("variant"))
+        # A part can point at its own frozen copy of the scan's edits ("edits": path), so a saved
+        # version of a plan doesn't change when the scan's working edits do.
+        e = (json.loads(Path(part["edits"]).read_text()) if part.get("edits")
+             else scan_edits(part["scan"], part.get("variant")))
         pn, ps, pa = prepare(part["scan"], e)
         dx, dz = part.get("offset", [0, 0])
         T = trimesh.transformations.translation_matrix([dx, 0, dz])
