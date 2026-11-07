@@ -190,6 +190,29 @@
         0.862
       ],
       "show_length": false
+    },
+    {
+      "label": "Box east wall: down from the kitchen's south wall, flush with the dining hallway opening's west edge",
+      "from": [
+        -9.324,
+        -0.069
+      ],
+      "to": [
+        -9.324,
+        0.862
+      ]
+    },
+    {
+      "label": "Office north wall extended east to the box's east wall",
+      "from": [
+        -10.8486,
+        0.862
+      ],
+      "to": [
+        -9.324,
+        0.862
+      ],
+      "show_length": false
     }
   ],
   "add_floor": [
