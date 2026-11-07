@@ -27,7 +27,8 @@ detected piece of furniture are in the matching `floorplans/*.json` files.
   - Corridor's north wall runs straight from the west exterior wall to the bathroom's east wall, with a
     36" door into Room 2. Bathroom has a 36" door on its west wall near the north end.
   - The 16'1" wall between Room 1A and 1B continues north as the bathroom's east wall and has a 36" door.
-  - The angled west wall is straightened onto the exterior line, keeping the scanned 2'11" exterior door.
+  - The angled west wall (with the 2'11" "door" the scanner found) is removed: that side of the corridor
+    is an open passage to a hallway, not a doorway.
   - Bathroom east wall moved 2 ft into Room 2 / Room 1B (the 11'5" wall is shorter and the 1A/1B wall
     starts at the bathroom's south wall). Layout: 40" × 60" shower along the south wall, toilet in the
     NE corner facing west (centerline 16" from the north wall and from the shower), 36" vanity in the

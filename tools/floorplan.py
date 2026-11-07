@@ -108,7 +108,8 @@ def load_edits(path):
      "add_doors": [{"from": [x, z], "to": [x, z], "label": "..."}],
      "add_floor": [[[x, z], [x, z], ...]],      # extra floor polygons
      "rooms": [{"at": [x, z], "name": "Bathroom"}],   # name the room containing a point
-     "fixtures": [{"name": "Shower", "rect": [x0, z0, x1, z1]}]}  # planned fixtures
+     "fixtures": [{"name": "Shower", "rect": [x0, z0, x1, z1]}],  # planned fixtures
+     "labels": [{"at": [x, z], "text": "...", "rotation": 0}]}     # free-text notes
     add_doors entries may add "swing_toward": [x, z] to draw the swing (hinged at "from").
     Coordinates are in the scan's own frame, in meters; walls are given by their centerline."""
     p = Path(path).with_suffix(".edits.json")
@@ -299,6 +300,11 @@ def process(path, outdir, variant=None):
                 color="#333", zorder=4.5, rotation=fx.get("text_rotation", 0))
         summary.setdefault("fixtures", []).append(
             {"name": fx["name"], "width_ft_in": ft_in(abs(x1 - x0)), "depth_ft_in": ft_in(abs(z1 - z0))})
+
+    # Free-text notes on the plan
+    for lb in edits.get("labels", []):
+        ax.text(lb["at"][0], lb["at"][1], lb["text"], ha="center", va="center", fontsize=7,
+                style="italic", color="#666", rotation=lb.get("rotation", 0), zorder=8)
 
     # Walls
     for p in polys_of(wall_geom):

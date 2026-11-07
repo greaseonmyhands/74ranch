@@ -41,17 +41,6 @@
       ]
     },
     {
-      "label": "Exterior wall west of the corridor (straightens the old angled wall)",
-      "from": [
-        -3.68,
-        -1.172
-      ],
-      "to": [
-        -3.68,
-        -0.073
-      ]
-    },
-    {
       "label": "Short wall stepping in to the top of the 2'7\" wall",
       "from": [
         -3.68,
@@ -133,17 +122,6 @@
         0.1232,
         2.488
       ]
-    },
-    {
-      "label": "Exterior door (scanned at 2'11\"), centered in the west corridor wall",
-      "from": [
-        -3.68,
-        -1.061
-      ],
-      "to": [
-        -3.68,
-        -0.184
-      ]
     }
   ],
   "add_floor": [
@@ -208,5 +186,15 @@
       "text_rotation": 0
     }
   ],
-  "title": "Option: original 36\" \u00d7 36\" shower bathroom"
+  "title": "Option: original 36\" \u00d7 36\" shower bathroom",
+  "labels": [
+    {
+      "at": [
+        -3.85,
+        -0.62
+      ],
+      "text": "open to\nhallway",
+      "rotation": 90
+    }
+  ]
 }

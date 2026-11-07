@@ -17,9 +17,9 @@
     },
     {
       "name": "Room 1A",
-      "width_m": 3.803,
+      "width_m": 3.836,
       "depth_m": 5.866,
-      "width_ft_in": "12'6\"",
+      "width_ft_in": "12'7\"",
       "depth_ft_in": "19'3\"",
       "area_m2": 17.97,
       "area_sqft": 193.4,
@@ -127,33 +127,26 @@
     {
       "name": "Wall_added_2",
       "added": true,
-      "length_m": 1.099,
-      "length_ft_in": "3'7\"",
-      "height_m": 2.5
-    },
-    {
-      "name": "Wall_added_3",
-      "added": true,
       "length_m": 0.45,
       "length_ft_in": "1'6\"",
       "height_m": 2.5
     },
     {
-      "name": "Wall_added_4",
+      "name": "Wall_added_3",
       "added": true,
       "length_m": 1.946,
       "length_ft_in": "6'5\"",
       "height_m": 2.5
     },
     {
-      "name": "Wall_added_5",
+      "name": "Wall_added_4",
       "added": true,
       "length_m": 2.034,
       "length_ft_in": "6'8\"",
       "height_m": 2.5
     },
     {
-      "name": "Wall_added_6",
+      "name": "Wall_added_5",
       "added": true,
       "length_m": 0.97,
       "length_ft_in": "3'2\"",
@@ -186,13 +179,6 @@
       "name": "Door_added_2",
       "width_m": 0.914,
       "width_ft_in": "3'0\"",
-      "height_m": 2.03,
-      "height_ft_in": "6'8\""
-    },
-    {
-      "name": "Door_added_3",
-      "width_m": 0.877,
-      "width_ft_in": "2'11\"",
       "height_m": 2.03,
       "height_ft_in": "6'8\""
     }
@@ -245,7 +231,7 @@
     }
   ],
   "objects": [],
-  "total_area_sqft": 744.2,
+  "total_area_sqft": 744.3,
   "total_area_m2": 69.14,
   "fixtures": [
     {
