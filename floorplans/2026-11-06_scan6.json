@@ -1,0 +1,132 @@
+{
+  "source": "scans/2026-11-06_scan6.glb",
+  "ceiling_height": {
+    "m": 2.45,
+    "ft_in": "8'1\""
+  },
+  "rooms": [
+    {
+      "name": "Room",
+      "width_m": 3.531,
+      "depth_m": 4.704,
+      "width_ft_in": "11'7\"",
+      "depth_ft_in": "15'5\"",
+      "area_m2": 16.38,
+      "area_sqft": 176.3,
+      "rectangular": true
+    }
+  ],
+  "walls": [
+    {
+      "name": "Wall_1",
+      "added": false,
+      "length_m": 4.704,
+      "length_ft_in": "15'5\"",
+      "height_m": 2.55
+    },
+    {
+      "name": "Wall_0",
+      "added": false,
+      "length_m": 3.531,
+      "length_ft_in": "11'7\"",
+      "height_m": 2.55
+    },
+    {
+      "name": "Wall_4",
+      "added": false,
+      "length_m": 3.387,
+      "length_ft_in": "11'1\"",
+      "height_m": 2.55
+    },
+    {
+      "name": "Wall_2",
+      "added": false,
+      "length_m": 1.879,
+      "length_ft_in": "6'2\"",
+      "height_m": 2.55
+    },
+    {
+      "name": "Wall_3",
+      "added": false,
+      "length_m": 1.523,
+      "length_ft_in": "5'0\"",
+      "height_m": 2.55
+    }
+  ],
+  "doors": [],
+  "windows": [
+    {
+      "name": "Window_0",
+      "width_m": 1.465,
+      "width_ft_in": "4'10\"",
+      "height_m": 1.54,
+      "height_ft_in": "5'1\"",
+      "sill_height_m": 0.6,
+      "sill_height_ft_in": "1'11\""
+    }
+  ],
+  "objects": [
+    {
+      "name": "chair_dining_four_back_no_0",
+      "type": "chair",
+      "size_m": [
+        0.54,
+        0.48,
+        1.05
+      ],
+      "bottom_height_m": 0.01
+    },
+    {
+      "name": "storage_shelf_0",
+      "type": "shelf",
+      "size_m": [
+        0.37,
+        0.94,
+        1.15
+      ],
+      "bottom_height_m": 0.84
+    },
+    {
+      "name": "table_other_rect_0",
+      "type": "table",
+      "size_m": [
+        0.87,
+        0.87,
+        0.79
+      ],
+      "bottom_height_m": 0.01
+    },
+    {
+      "name": "storage_cabinet_mid2_0",
+      "type": "base cab",
+      "size_m": [
+        0.49,
+        0.86,
+        0.82
+      ],
+      "bottom_height_m": 0.01
+    },
+    {
+      "name": "table_other_rect_1",
+      "type": "table",
+      "size_m": [
+        1.04,
+        0.42,
+        0.99
+      ],
+      "bottom_height_m": 0.01
+    },
+    {
+      "name": "storage_shelf_1",
+      "type": "shelf",
+      "size_m": [
+        0.4,
+        1.52,
+        0.83
+      ],
+      "bottom_height_m": 0.01
+    }
+  ],
+  "total_area_sqft": 176.3,
+  "total_area_m2": 16.38
+}

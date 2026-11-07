@@ -59,6 +59,7 @@ Each scan has its own coordinate frame, so the three plans are not aligned with 
 |   |   | Bathroom | 8'8" × 6'5" (8'4" × 6'1" inside) | 55 sq ft |
 | 2 | [PNG](floorplans/2026-11-06_scan2.png) · [SVG](floorplans/2026-11-06_scan2.svg) | Laundry Room (4 doors, 2 windows) | 17'1" × 11'0" | 188 sq ft |
 | 3 | [PNG](floorplans/2026-11-06_scan3.png) · [SVG](floorplans/2026-11-06_scan3.svg) | Front Living Room (fireplace, 7'9" window) | 15'0" × 15'9" | 235 sq ft |
+| 6 | [PNG](floorplans/2026-11-06_scan6.png) · [SVG](floorplans/2026-11-06_scan6.svg) | Room (4'10" window, ~4' opening on the left wall) | 11'7" × 15'5" | 176 sq ft |
 | 5 | [PNG](floorplans/2026-11-06_scan5.png) · [SVG](floorplans/2026-11-06_scan5.svg) | Kitchen (open to living room) | 17'3" × 15'2" | 262 sq ft |
 |   |   | Living Room (fireplace) | 18'8" × 15'2" overall | 268 sq ft |
 
