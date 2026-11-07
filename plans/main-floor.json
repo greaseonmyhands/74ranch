@@ -271,6 +271,28 @@
         4.694
       ],
       "show_length": false
+    },
+    {
+      "label": "Box in Bedroom 1: wall down 3'1\" from just right of the 2'7\" door",
+      "from": [
+        -17.0182,
+        -0.069
+      ],
+      "to": [
+        -17.0182,
+        0.8708
+      ]
+    },
+    {
+      "label": "Box in Bedroom 1: wall back east to Bedroom 1's east wall",
+      "from": [
+        -17.0182,
+        0.8708
+      ],
+      "to": [
+        -14.4296,
+        0.8708
+      ]
     }
   ],
   "add_floor": [
@@ -490,6 +512,13 @@
         2.3125
       ],
       "name": "Bedroom 1"
+    },
+    {
+      "at": [
+        -15.7239,
+        0.4009
+      ],
+      "name": "Closet 2"
     }
   ],
   "fixtures": [

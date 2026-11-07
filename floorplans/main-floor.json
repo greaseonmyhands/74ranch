@@ -31,9 +31,9 @@
       "depth_m": 4.763,
       "width_ft_in": "11'8\"",
       "depth_ft_in": "15'8\"",
-      "area_m2": 16.94,
-      "area_sqft": 182.3,
-      "rectangular": true
+      "area_m2": 14.5,
+      "area_sqft": 156.1,
+      "rectangular": false
     },
     {
       "name": "Bedroom 2",
@@ -53,6 +53,16 @@
       "depth_ft_in": "3'0\"",
       "area_m2": 1.39,
       "area_sqft": 15.0,
+      "rectangular": true
+    },
+    {
+      "name": "Closet 2",
+      "width_m": 2.589,
+      "depth_m": 0.94,
+      "width_ft_in": "8'6\"",
+      "depth_ft_in": "3'1\"",
+      "area_m2": 2.43,
+      "area_sqft": 26.2,
       "rectangular": true
     },
     {
@@ -299,6 +309,13 @@
       "height_m": 2.5
     },
     {
+      "name": "Wall_plan_20",
+      "added": true,
+      "length_m": 2.589,
+      "length_ft_in": "8'6\"",
+      "height_m": 2.5
+    },
+    {
       "name": "Wall_plan_9",
       "added": true,
       "length_m": 2.507,
@@ -366,6 +383,13 @@
       "added": true,
       "length_m": 1.27,
       "length_ft_in": "4'2\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_plan_19",
+      "added": true,
+      "length_m": 0.94,
+      "length_ft_in": "3'1\"",
       "height_m": 2.5
     },
     {

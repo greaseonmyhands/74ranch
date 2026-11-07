@@ -21,7 +21,8 @@ measurements; about **2,215 sq ft** so far (including the 43 sq ft front porch).
 | Front Porch (6' double front door) | 43 sq ft |
 | Hall (kitchen to office) | 9 sq ft |
 | Closet (under the attic stairs) | 15 sq ft |
-| Bedroom 1 (drawn, not scanned) | 182 sq ft |
+| Bedroom 1 (drawn, not scanned) | 156 sq ft |
+| Closet 2 (boxed off in Bedroom 1's NE corner) | 26 sq ft |
 | Bathroom 2 (drawn, not scanned) | 87 sq ft |
 | Bathroom | 55 sq ft |
 
@@ -67,7 +68,9 @@ How they fit:
   15'8" south, and a 17'3" south wall on the same line as Bedroom 2's south wall runs east to the
   Office's west wall (2'10" short of the Office's south face). A wall centered between the laundry
   room's two south doors runs the full 15'8" down it, splitting it into Bathroom 2 (5'3" wide inside,
-  off the 2'3" door) and Bedroom 1 (11'4" wide inside, off the 2'7" door).
+  off the 2'3" door) and Bedroom 1 (11'4" wide inside, off the 2'7" door). In Bedroom 1, a 3'1" wall
+  drops from just right of the 2'7" door and a wall runs back east to the outline wall, boxing off
+  Closet 2 (about 8'2" × 2'9" inside; no door drawn yet).
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an
   ~8'-wide area between the Office and the Living Room, plus a strip above the Office); the
