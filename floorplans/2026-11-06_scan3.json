@@ -6,7 +6,7 @@
   },
   "rooms": [
     {
-      "name": "Room",
+      "name": "Front Living Room",
       "width_m": 4.56,
       "depth_m": 4.792,
       "width_ft_in": "15'0\"",
@@ -73,16 +73,6 @@
         1.6,
         1.01,
         1.4
-      ],
-      "bottom_height_m": 0.01
-    },
-    {
-      "name": "table_other_rect_0",
-      "type": "table",
-      "size_m": [
-        0.97,
-        1.41,
-        0.8
       ],
       "bottom_height_m": 0.01
     }
