@@ -194,17 +194,17 @@
       "height_m": 2.5
     },
     {
-      "name": "Wall_plan_nolabel_2",
-      "added": true,
-      "length_m": 0.408,
-      "length_ft_in": "1'4\"",
-      "height_m": 2.5
-    },
-    {
       "name": "Wall_plan_nolabel_1",
       "added": true,
       "length_m": 0.375,
       "length_ft_in": "1'3\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_plan_nolabel_2",
+      "added": true,
+      "length_m": 0.358,
+      "length_ft_in": "1'2\"",
       "height_m": 2.5
     }
   ],
