@@ -16,14 +16,14 @@
       "rectangular": true
     },
     {
-      "name": "Front Living Room",
-      "width_m": 4.56,
-      "depth_m": 4.792,
-      "width_ft_in": "15'0\"",
-      "depth_ft_in": "15'9\"",
-      "area_m2": 21.79,
-      "area_sqft": 234.5,
-      "rectangular": true
+      "name": "Dining",
+      "width_m": 5.733,
+      "depth_m": 4.633,
+      "width_ft_in": "18'10\"",
+      "depth_ft_in": "15'2\"",
+      "area_m2": 24.98,
+      "area_sqft": 268.9,
+      "rectangular": false
     },
     {
       "name": "Kitchen",
@@ -37,22 +37,12 @@
     },
     {
       "name": "Living Room",
-      "width_m": 5.733,
-      "depth_m": 4.633,
-      "width_ft_in": "18'10\"",
-      "depth_ft_in": "15'2\"",
-      "area_m2": 24.98,
-      "area_sqft": 268.9,
-      "rectangular": false
-    },
-    {
-      "name": "Room 1A",
-      "width_m": 3.843,
-      "depth_m": 5.866,
-      "width_ft_in": "12'7\"",
-      "depth_ft_in": "19'3\"",
-      "area_m2": 18.01,
-      "area_sqft": 193.9,
+      "width_m": 8.465,
+      "depth_m": 6.738,
+      "width_ft_in": "27'9\"",
+      "depth_ft_in": "22'1\"",
+      "area_m2": 40.2,
+      "area_sqft": 432.7,
       "rectangular": false
     },
     {
@@ -155,13 +145,6 @@
       "height_m": 2.5
     },
     {
-      "name": "Wall_plan_3",
-      "added": true,
-      "length_m": 3.92,
-      "length_ft_in": "12'10\"",
-      "height_m": 2.5
-    },
-    {
       "name": "Wall_plan_0",
       "added": true,
       "length_m": 3.529,
@@ -211,7 +194,7 @@
       "height_m": 2.56
     },
     {
-      "name": "Wall_plan_4",
+      "name": "Wall_plan_3",
       "added": true,
       "length_m": 0.872,
       "length_ft_in": "2'10\"",
@@ -660,8 +643,8 @@
       "bottom_height_m": -0.07
     }
   ],
-  "total_area_sqft": 1520.2,
-  "total_area_m2": 141.23,
+  "total_area_sqft": 1524.5,
+  "total_area_m2": 141.63,
   "fixtures": [
     {
       "name": "Shower\n40\" \u00d7 60\"",

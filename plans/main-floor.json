@@ -1,6 +1,6 @@
 {
   "title": "Main floor",
-  "notes": "Scan 5 (kitchen/living, rotated 90 cw by its own edits) is placed so its north wall is collinear with the North End's and its walk-through meets the North End corridor. The shared wall (living room east / Room 2 west) is a standard 4in wall whose west face is the living room's scanned surface; Room 2 takes the rest of the ~15in the scans left between them. The walk-through's north side is redrawn on the corridor's top-wall line. Scan 3 (Front Living Room) shares a standard 4in wall with Room 1A; its north wall is in line with Room 1A's lower 1'6\" wall and it projects 2'10\" further south (the front of the house jogs).",
+  "notes": "Scan 5 (kitchen/living, rotated 90 cw by its own edits) is placed so its north wall is collinear with the North End's and its walk-through meets the North End corridor. The shared wall (living room east / Room 2 west) is a standard 4in wall whose west face is the living room's scanned surface; Room 2 takes the rest of the ~15in the scans left between them. The walk-through's north side is redrawn on the corridor's top-wall line. Scan 3 (Front Living Room) shares a standard 4in wall with Room 1A; its north wall is in line with Room 1A's lower 1'6\" wall and it projects 2'10\" further south (the front of the house jogs). The Front Living Room / Room 1A wall is removed: together they're the Living Room; scan 5's living room is the Dining room.",
   "parts": [
     {
       "scan": "scans/2026-11-06_scan1.glb"
@@ -70,18 +70,6 @@
       "show_length": false
     },
     {
-      "label": "Shared 4in wall: Front Living Room east / Room 1A west",
-      "from": [
-        -3.7308,
-        0.774
-      ],
-      "to": [
-        -3.7308,
-        4.694
-      ],
-      "thickness_in": 4
-    },
-    {
       "label": "Front Living Room east wall south of Room 1A (front-of-house jog)",
       "from": [
         -3.7816,
@@ -129,6 +117,24 @@
         -4.088,
         -1.085
       ]
+    ],
+    [
+      [
+        -3.7816,
+        0.774
+      ],
+      [
+        -3.68,
+        0.774
+      ],
+      [
+        -3.68,
+        4.694
+      ],
+      [
+        -3.7816,
+        4.694
+      ]
     ]
   ],
   "room_dividers": [
@@ -142,6 +148,31 @@
         -3.68,
         -0.069
       ]
+    }
+  ],
+  "rooms": [
+    {
+      "at": [
+        -6.0616,
+        3.17
+      ],
+      "name": "Living Room",
+      "note": "Front Living Room + old Room 1A, wall between removed"
+    },
+    {
+      "at": [
+        -6.527,
+        -2.385
+      ],
+      "name": "Dining",
+      "note": "scan 5's living room, open to the kitchen"
+    },
+    {
+      "at": [
+        2.0,
+        2.5
+      ],
+      "name": "Room 1B"
     }
   ]
 }
