@@ -137,6 +137,81 @@ def square_up(poly, walls, snap=0.12, align_deg=4):
     return box(x0, z0, x1, z1)
 
 
+def _axis_rect(poly):
+    """(x0, z0, x1, z1) if poly is an axis-aligned rectangle, else None."""
+    if poly.is_empty or abs(poly.area - shapely_box_area(poly)) > 1e-6 * max(poly.area, 1e-9) + 1e-9:
+        return None
+    return poly.bounds
+
+
+def shapely_box_area(poly):
+    x0, z0, x1, z1 = poly.bounds
+    return (x1 - x0) * (z1 - z0)
+
+
+def _rect(x0, z0, x1, z1):
+    return Polygon([(x0, z0), (x1, z0), (x1, z1), (x0, z1)])
+
+
+def _touching_sides(b, walls, tol=0.02):
+    x0, z0, x1, z1 = b
+    probes = [_rect(x0 - tol, z0 + tol, x0, z1 - tol), _rect(x0 + tol, z0 - tol, x1 - tol, z0),
+              _rect(x1, z0 + tol, x1 + tol, z1 - tol), _rect(x0 + tol, z1, x1 - tol, z1 + tol)]
+    return [i for i, p in enumerate(probes) if p.intersects(walls)]
+
+
+def set_depth(poly, walls, depth):
+    """Make a wall-backed cabinet exactly `depth` deep, measured out from the wall behind it.
+    In a corner (two walls), the wall behind is the one across the unit's shorter side."""
+    b = _axis_rect(poly)
+    if b is None:
+        return None
+    x0, z0, x1, z1 = b
+    sides = _touching_sides(b, walls)
+    if not sides:
+        return None
+    # the depth direction is the shorter dimension among the wall-touching sides
+    side = min(sides, key=lambda i: (x1 - x0) if i in (0, 2) else (z1 - z0))
+    if side == 0:
+        x1 = x0 + depth
+    elif side == 2:
+        x0 = x1 - depth
+    elif side == 1:
+        z1 = z0 + depth
+    else:
+        z0 = z1 - depth
+    return _rect(x0, z0, x1, z1)
+
+
+def close_gaps(poly, targets, walls, reach=0.15):
+    """Stretch a cabinet's ends (along its run, not out from the wall) to meet a neighbouring
+    cabinet or wall when the gap is smaller than `reach`."""
+    b = _axis_rect(poly)
+    if b is None:
+        return poly
+    x0, z0, x1, z1 = b
+    sides = _touching_sides(b, walls)
+    if not sides:
+        return poly
+    back = min(sides, key=lambda i: (x1 - x0) if i in (0, 2) else (z1 - z0))
+    ends = (1, 3) if back in (0, 2) else (0, 2)  # run direction is along the back wall
+    for side in ends:
+        for step in np.arange(0.005, reach + 1e-9, 0.005):
+            probe = [_rect(x0 - step, z0 + 0.01, x0, z1 - 0.01), _rect(x0 + 0.01, z0 - step, x1 - 0.01, z0),
+                     _rect(x1, z0 + 0.01, x1 + step, z1 - 0.01), _rect(x0 + 0.01, z1, x1 - 0.01, z1 + step)][side]
+            if probe.intersects(targets):
+                if side == 0:
+                    x0 -= step - 0.005
+                elif side == 1:
+                    z0 -= step - 0.005
+                elif side == 2:
+                    x1 += step - 0.005
+                else:
+                    z1 += step - 0.005
+                break
+    return _rect(x0, z0, x1, z1)
+
+
 def friendly_label(name, bottom=0.0, freestanding=False, top=0.0):
     if name.startswith("stove"):  # RoomPlan's "stove" is the cooktop on top of the oven
         return None
@@ -163,6 +238,7 @@ def load_edits(path):
      "remove": ["chair_*", "Wall_10"],          # names or glob patterns of RoomPlan nodes
      "retype": {"refrigerator_1": "storage_cabinet"},   # fix misidentified objects
      "add_objects": [{"type": "storage_cabinet", "rect": [x0, z0, x1, z1], "height": 0.9}],
+     "cabinet_depth": {"base": 25.5, "upper": 12, "rooms": ["Kitchen"]},  # inches from wall
      "move": [{"nodes": ["Wall_2", "Door_0"], "by": [dx, dz]}],
      "add_walls": [{"from": [x, z], "to": [x, z], "label": "..."}],
      "add_doors": [{"from": [x, z], "to": [x, z], "label": "..."}],
@@ -389,18 +465,16 @@ def process(path, outdir, variant=None):
     def fits(text, size, poly):
         mrr = poly.minimum_rotated_rectangle
         minx, minz, maxx, maxz = mrr.bounds
-        tw = len(text) * 0.55 * size * m_per_pt
+        tw = (len(text) * 0.62 + 1) * size * m_per_pt  # same estimate as the overlap check
         th = 1.3 * size * m_per_pt
         if tw <= (maxx - minx) * 0.95 and th <= (maxz - minz) * 0.95:
             return 0
         if tw <= (maxz - minz) * 0.95 and th <= (maxx - minx) * 0.95:
             return 90
         return None
-    uppers = []
-    placed = []  # label boxes already drawn, to avoid overlapping text
-    order = sorted(objects.items(), key=lambda kv: footprint(kv[1]).area
-                   if footprint(kv[1]) is not None else 0)
-    for name, m in order:
+    # Pass 1: footprints and labels for every object
+    items = []
+    for name, m in objects.items():
         fp = footprint(m)
         if fp is None:
             continue
@@ -410,26 +484,61 @@ def process(path, outdir, variant=None):
         bottom = float(m.bounds[0][1])
         kind_ = friendly_label(name, bottom, hull.distance(wall_geom) > 0.15,
                                top=float(m.bounds[1][1]))
-        if kind_ in SQUARED:
-            hull = square_up(hull, wall_geom).intersection(floor_all)
         if kind_ is None:  # e.g. cooktop sitting on the oven
             continue
+        if kind_ in SQUARED:
+            hull = square_up(hull, wall_geom).intersection(floor_all)
+        items.append({"name": name, "m": m, "kind": kind_, "hull": hull, "bottom": bottom})
+
+    # Pass 2 (optional): standard cabinet depths measured from the wall behind each unit,
+    # e.g. "cabinet_depth": {"base": 25.5, "upper": 12, "rooms": ["Kitchen"]} (inches).
+    cd = edits.get("cabinet_depth")
+    if cd:
+        IN_ = 0.0254
+        depth_for = {"base cab": cd.get("base"), "tall cab": cd.get("tall", cd.get("base")),
+                     "DW": cd.get("base"), "range": cd.get("base"), "upper cab": cd.get("upper")}
+        zones = [rm[1] for rm in rooms if not cd.get("rooms") or rm[0] in cd["rooms"]]
+        zone = unary_union(zones) if zones else None
+        adjusted = []
+        for it in items:
+            d = depth_for.get(it["kind"])
+            if d and zone is not None and zone.contains(it["hull"].centroid):
+                new_rect = set_depth(it["hull"], wall_geom, d * IN_)
+                if new_rect is not None:
+                    it["hull"] = new_rect
+                    adjusted.append(it)
+        # close small gaps along each run (to neighbouring cabinets or a wall), base and upper
+        # cabinets separately
+        for upper in (False, True):
+            group = [it for it in adjusted if (it["bottom"] > 1.2) == upper]
+            for it in group:
+                others = unary_union([wall_geom] + [o["hull"] for o in group if o is not it])
+                it["hull"] = close_gaps(it["hull"], others, wall_geom)
+
+    uppers = []
+    placed = []  # label boxes already drawn, to avoid overlapping text
+    for it in sorted(items, key=lambda it: it["hull"].area):  # label small items first
+        name, m, kind_, hull, bottom = it["name"], it["m"], it["kind"], it["hull"], it["bottom"]
         if bottom > 1.2:  # wall-hung (upper cabinets, shelves): draw after base units, dashed
             uppers.append((hull, kind_))
         else:
             for hp in polys_of(hull):
                 ax.add_patch(poly_patch(hp, fc="#d9d9d9", ec="#999", lw=0.8, zorder=2, alpha=0.8))
-            rot = fits(kind_, 6.5, hull)
+            size = 6.5
+            rot = fits(kind_, size, hull)
+            if rot is None:  # try a smaller font before giving up on the label
+                size = 5.5
+                rot = fits(kind_, size, hull)
             if rot is not None:
                 c = hull.centroid
-                tw = (len(kind_) * 0.62 + 1) * 6.5 * m_per_pt / 2  # a little padding
-                th = 1.3 * 6.5 * m_per_pt / 2
+                tw = (len(kind_) * 0.62 + 1) * size * m_per_pt / 2  # a little padding
+                th = 1.3 * size * m_per_pt / 2
                 hw, hh = (tw, th) if rot == 0 else (th, tw)
                 box = Polygon([(c.x - hw, c.y - hh), (c.x + hw, c.y - hh),
                                (c.x + hw, c.y + hh), (c.x - hw, c.y + hh)])
                 if not any(box.intersects(b) for b in placed):
                     placed.append(box)
-                    ax.text(c.x, c.y, kind_, ha="center", va="center", fontsize=6.5,
+                    ax.text(c.x, c.y, kind_, ha="center", va="center", fontsize=size,
                             color="#555", zorder=3, rotation=rot)
         ext = m.bounds[1] - m.bounds[0]
         summary["objects"].append({"name": name, "type": kind_,

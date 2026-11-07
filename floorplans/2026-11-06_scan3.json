@@ -67,22 +67,22 @@
   ],
   "objects": [
     {
-      "name": "table_other_rect_0",
-      "type": "table",
-      "size_m": [
-        0.97,
-        1.41,
-        0.8
-      ],
-      "bottom_height_m": 0.01
-    },
-    {
       "name": "fireplace_0",
       "type": "fireplace",
       "size_m": [
         1.6,
         1.01,
         1.4
+      ],
+      "bottom_height_m": 0.01
+    },
+    {
+      "name": "table_other_rect_0",
+      "type": "table",
+      "size_m": [
+        0.97,
+        1.41,
+        0.8
       ],
       "bottom_height_m": 0.01
     }

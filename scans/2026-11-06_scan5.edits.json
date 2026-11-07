@@ -31,5 +31,14 @@
       "text": "open to\nhallway",
       "rotation": 90
     }
-  ]
+  ],
+  "cabinet_depth": {
+    "base": 25.5,
+    "tall": 25.5,
+    "upper": 12,
+    "rooms": [
+      "Kitchen"
+    ],
+    "note": "24in cabinets + countertop overhang = 25.5in from the wall; uppers 12in"
+  }
 }

@@ -108,16 +108,6 @@
       "bottom_height_m": 0.0
     },
     {
-      "name": "storage_cabinet_mid4_0",
-      "type": "upper cab",
-      "size_m": [
-        0.43,
-        1.87,
-        0.82
-      ],
-      "bottom_height_m": 1.61
-    },
-    {
       "name": "table_other_rect_0",
       "type": "table",
       "size_m": [
@@ -126,6 +116,16 @@
         0.57
       ],
       "bottom_height_m": 0.0
+    },
+    {
+      "name": "storage_cabinet_mid4_0",
+      "type": "upper cab",
+      "size_m": [
+        0.43,
+        1.87,
+        0.82
+      ],
+      "bottom_height_m": 1.61
     }
   ],
   "total_area_sqft": 188.1,
