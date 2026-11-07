@@ -46,6 +46,16 @@
       "rectangular": true
     },
     {
+      "name": "Hall",
+      "width_m": 1.014,
+      "depth_m": 0.931,
+      "width_ft_in": "3'4\"",
+      "depth_ft_in": "3'1\"",
+      "area_m2": 0.85,
+      "area_sqft": 9.2,
+      "rectangular": false
+    },
+    {
       "name": "Kitchen",
       "width_m": 5.248,
       "depth_m": 4.633,
@@ -291,6 +301,20 @@
       "added": true,
       "length_m": 1.27,
       "length_ft_in": "4'2\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_plan_10",
+      "added": true,
+      "length_m": 0.931,
+      "length_ft_in": "3'1\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_plan_nolabel_11",
+      "added": true,
+      "length_m": 0.931,
+      "length_ft_in": "3'1\"",
       "height_m": 2.5
     },
     {
@@ -775,8 +799,8 @@
       "bottom_height_m": -0.07
     }
   ],
-  "total_area_sqft": 1922.1,
-  "total_area_m2": 178.56,
+  "total_area_sqft": 1931.2,
+  "total_area_m2": 179.42,
   "fixtures": [
     {
       "name": "Shower\n40\" \u00d7 60\"",
@@ -812,6 +836,11 @@
     },
     {
       "name": "Opening_plan_0",
+      "width_m": 0.914,
+      "width_ft_in": "3'0\""
+    },
+    {
+      "name": "Opening_plan_1",
       "width_m": 0.914,
       "width_ft_in": "3'0\""
     }

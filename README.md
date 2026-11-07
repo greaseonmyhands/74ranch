@@ -6,7 +6,7 @@ Notes, scans and plans for the house.
 
 [`floorplans/main-floor.png`](floorplans/main-floor.png) · [SVG](floorplans/main-floor.svg): the
 North End Renovation (scan 1), the kitchen/dining room (scan 5), the front living room (scan 3) and
-the laundry room (scan 2) and the office (scan 6) joined into one plan, about **1,922 sq ft** so far
+the laundry room (scan 2) and the office (scan 6) joined into one plan, about **1,931 sq ft** so far
 (including the 43 sq ft front porch). Defined in [`plans/main-floor.json`](plans/main-floor.json).
 
 | Room | Area |
@@ -19,6 +19,7 @@ the laundry room (scan 2) and the office (scan 6) joined into one plan, about **
 | Laundry Room | 188 sq ft |
 | Office | 179 sq ft |
 | Front Porch (6' double front door) | 43 sq ft |
+| Hall (kitchen to office) | 9 sq ft |
 | Bathroom | 55 sq ft |
 
 How they fit:
@@ -49,6 +50,8 @@ How they fit:
   matching the Living Room's 5'2" wall opposite. An 8'3" wall joins the tops of those two walls,
   enclosing the Front Porch (8'3" × 5'2"); a 6' double front door, centered in that wall, opens north
   into the hallway area.
+- A 36"-wide hall runs about 3' from the kitchen's SW opening straight down to the Office, ending in
+  a 36" opening in the Office's north wall.
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an
   ~8'-wide area between the Office and the Living Room, plus a strip above the Office); the

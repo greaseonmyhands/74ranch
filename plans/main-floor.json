@@ -167,6 +167,29 @@
         -8.3416,
         3.982
       ]
+    },
+    {
+      "label": "Hall west wall, from the kitchen's SW opening down to the Office",
+      "from": [
+        -13.7728,
+        -0.069
+      ],
+      "to": [
+        -13.7728,
+        0.862
+      ]
+    },
+    {
+      "label": "Hall east wall, from the kitchen's SW opening down to the Office",
+      "from": [
+        -12.7584,
+        -0.069
+      ],
+      "to": [
+        -12.7584,
+        0.862
+      ],
+      "show_length": false
     }
   ],
   "add_floor": [
@@ -241,6 +264,24 @@
         -10.8486,
         5.566
       ]
+    ],
+    [
+      [
+        -13.7228,
+        -0.069
+      ],
+      [
+        -12.8084,
+        -0.069
+      ],
+      [
+        -12.8084,
+        0.862
+      ],
+      [
+        -13.7228,
+        0.862
+      ]
     ]
   ],
   "room_dividers": [
@@ -286,6 +327,13 @@
         4.774
       ],
       "name": "Front Porch"
+    },
+    {
+      "at": [
+        -13.2656,
+        0.3965
+      ],
+      "name": "Hall"
     }
   ],
   "fixtures": [
@@ -320,6 +368,17 @@
       "to": [
         -14.4304,
         -0.3463
+      ]
+    },
+    {
+      "label": "36in opening from the hall into the Office",
+      "from": [
+        -13.7228,
+        0.862
+      ],
+      "to": [
+        -12.8084,
+        0.862
       ]
     }
   ],
