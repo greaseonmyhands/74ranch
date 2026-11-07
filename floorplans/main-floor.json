@@ -46,6 +46,16 @@
       "rectangular": true
     },
     {
+      "name": "Laundry Room",
+      "width_m": 5.199,
+      "depth_m": 3.361,
+      "width_ft_in": "17'1\"",
+      "depth_ft_in": "11'0\"",
+      "area_m2": 17.47,
+      "area_sqft": 188.1,
+      "rectangular": true
+    },
+    {
       "name": "Living Room",
       "width_m": 8.465,
       "depth_m": 6.738,
@@ -98,8 +108,8 @@
     {
       "name": "Wall_plan_6",
       "added": true,
-      "length_m": 6.038,
-      "length_ft_in": "19'10\"",
+      "length_m": 6.088,
+      "length_ft_in": "20'0\"",
       "height_m": 2.5
     },
     {
@@ -110,18 +120,25 @@
       "height_m": 2.5
     },
     {
+      "name": "Wall_2~3",
+      "added": false,
+      "length_m": 5.199,
+      "length_ft_in": "17'1\"",
+      "height_m": 2.58
+    },
+    {
+      "name": "Wall_0~3",
+      "added": false,
+      "length_m": 5.199,
+      "length_ft_in": "17'1\"",
+      "height_m": 2.58
+    },
+    {
       "name": "Wall_5~0",
       "added": false,
       "length_m": 4.846,
       "length_ft_in": "15'11\"",
       "height_m": 2.6
-    },
-    {
-      "name": "Wall_0~1",
-      "added": false,
-      "length_m": 4.633,
-      "length_ft_in": "15'2\"",
-      "height_m": 2.5
     },
     {
       "name": "Wall_3~2",
@@ -166,6 +183,20 @@
       "height_m": 2.5
     },
     {
+      "name": "Wall_plan_8",
+      "added": true,
+      "length_m": 3.362,
+      "length_ft_in": "11'0\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_1~3",
+      "added": false,
+      "length_m": 3.361,
+      "length_ft_in": "11'0\"",
+      "height_m": 2.58
+    },
+    {
       "name": "Wall_added_6~0",
       "added": true,
       "length_m": 2.975,
@@ -206,6 +237,13 @@
       "length_m": 1.584,
       "length_ft_in": "5'2\"",
       "height_m": 2.56
+    },
+    {
+      "name": "Wall_plan_7",
+      "added": true,
+      "length_m": 1.27,
+      "length_ft_in": "4'2\"",
+      "height_m": 2.5
     },
     {
       "name": "Wall_plan_3",
@@ -259,11 +297,25 @@
   ],
   "doors": [
     {
+      "name": "Door_0~3",
+      "width_m": 0.787,
+      "width_ft_in": "2'7\"",
+      "height_m": 2.13,
+      "height_ft_in": "7'0\""
+    },
+    {
       "name": "Door_1~1",
       "width_m": 1.548,
       "width_ft_in": "5'1\"",
       "height_m": 2.11,
       "height_ft_in": "6'11\""
+    },
+    {
+      "name": "Door_1~3",
+      "width_m": 0.673,
+      "width_ft_in": "2'3\"",
+      "height_m": 2.16,
+      "height_ft_in": "7'1\""
     },
     {
       "name": "Door_2~0",
@@ -277,6 +329,20 @@
       "width_m": 1.933,
       "width_ft_in": "6'4\"",
       "height_m": 2.08,
+      "height_ft_in": "6'10\""
+    },
+    {
+      "name": "Door_2~3",
+      "width_m": 0.891,
+      "width_ft_in": "2'11\"",
+      "height_m": 2.14,
+      "height_ft_in": "7'0\""
+    },
+    {
+      "name": "Door_3~3",
+      "width_m": 0.901,
+      "width_ft_in": "2'11\"",
+      "height_m": 2.07,
       "height_ft_in": "6'10\""
     },
     {
@@ -330,6 +396,15 @@
       "sill_height_ft_in": "1'3\""
     },
     {
+      "name": "Window_0~3",
+      "width_m": 0.685,
+      "width_ft_in": "2'3\"",
+      "height_m": 1.67,
+      "height_ft_in": "5'6\"",
+      "sill_height_m": 0.43,
+      "sill_height_ft_in": "1'5\""
+    },
+    {
       "name": "Window_1~0",
       "width_m": 1.853,
       "width_ft_in": "6'1\"",
@@ -346,6 +421,15 @@
       "height_ft_in": "6'7\"",
       "sill_height_m": 0.06,
       "sill_height_ft_in": "0'2\""
+    },
+    {
+      "name": "Window_1~3",
+      "width_m": 0.696,
+      "width_ft_in": "2'3\"",
+      "height_m": 1.65,
+      "height_ft_in": "5'5\"",
+      "sill_height_m": 0.45,
+      "sill_height_ft_in": "1'6\""
     },
     {
       "name": "Window_2~0",
@@ -587,6 +671,16 @@
       "bottom_height_m": -0.07
     },
     {
+      "name": "storage_cabinet_mid4_0~3",
+      "type": "upper cab",
+      "size_m": [
+        0.43,
+        1.87,
+        0.82
+      ],
+      "bottom_height_m": 1.61
+    },
+    {
       "name": "refrigerator_0~1",
       "type": "fridge",
       "size_m": [
@@ -637,8 +731,8 @@
       "bottom_height_m": -0.07
     }
   ],
-  "total_area_sqft": 1512.4,
-  "total_area_m2": 140.51,
+  "total_area_sqft": 1700.5,
+  "total_area_m2": 157.99,
   "fixtures": [
     {
       "name": "Shower\n40\" \u00d7 60\"",
@@ -668,12 +762,12 @@
       "width_ft_in": "3'0\""
     },
     {
-      "name": "Opening_added_1~1",
+      "name": "Opening_added_2~1",
       "width_m": 0.914,
       "width_ft_in": "3'0\""
     },
     {
-      "name": "Opening_added_2~1",
+      "name": "Opening_plan_0",
       "width_m": 0.914,
       "width_ft_in": "3'0\""
     }

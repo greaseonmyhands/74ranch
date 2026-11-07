@@ -5,8 +5,8 @@ Notes, scans and plans for the house.
 ## Main floor (combined)
 
 [`floorplans/main-floor.png`](floorplans/main-floor.png) · [SVG](floorplans/main-floor.svg): the
-North End Renovation (scan 1), the kitchen/dining room (scan 5) and the front living room (scan 3)
-joined into one plan, about **1,512 sq ft** so far. Defined in [`plans/main-floor.json`](plans/main-floor.json).
+North End Renovation (scan 1), the kitchen/dining room (scan 5), the front living room (scan 3) and
+the laundry room (scan 2) joined into one plan, about **1,700 sq ft** so far. Defined in [`plans/main-floor.json`](plans/main-floor.json).
 
 | Room | Area |
 |---|---|
@@ -15,6 +15,7 @@ joined into one plan, about **1,512 sq ft** so far. Defined in [`plans/main-floo
 | Living Room (front living room + old Room 1A and its corridor, wall between removed) | 431 sq ft |
 | Room 2 | 314 sq ft |
 | Bedroom 2 (was Room 1B; queen bed drawn for scale) | 183 sq ft |
+| Laundry Room | 188 sq ft |
 | Bathroom | 55 sq ft |
 
 How they fit:
@@ -35,10 +36,13 @@ How they fit:
   about 2'9" deep, which the dining room's 5'1" opening leads into (an entry or hall?). The two
   fireplaces sit nearly back to back across it, so it likely holds the shared chimney too. The Living
   Room's 6'4" west wall continues 2'9" north to the dining room's south wall, closing the strip's west end.
+- The Laundry Room sits west of the kitchen and shares a standard 4" wall with it (11'0"); their south
+  walls are in line, and the kitchen runs 4'2" further north. The kitchen's 36" doorway in that wall
+  opens into the laundry room.
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 19'10" west to meet it. That block (about 18' × 19' inside) isn't scanned yet; the
-  kitchen's two south/west openings, the dining room's hallway opening and the Living Room's 3'11"
-  west opening all lead into it.
+  kitchen's south opening, the dining room's hallway opening and the Living Room's 3'11" west opening
+  lead into it.
 
 ## Floorplans
 
