@@ -75,7 +75,7 @@ How they fit:
   wall, which turns east to box off Closet 2. The outline wall between Closet 2 and the pocket west of
   the hall is removed, so the space runs about 10'2" × 2'9" inside, up to the hall's west wall. A
   divider splits it 40/60: the west part is Bedroom 1's closet (3'11" inside, 30" door in its south
-  wall swinging into the closet) and the east part is a pantry (5'11" inside, 28" door in the hall's
+  wall swinging out into the bedroom) and the east part is a pantry (5'11" inside, 28" door in the hall's
   west wall swinging into the pantry).
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an

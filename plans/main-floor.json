@@ -727,7 +727,7 @@
       ]
     },
     {
-      "label": "30in Bedroom 1 closet door, centered in the closet's south wall, swinging into the closet",
+      "label": "30in Bedroom 1 closet door, centered in the closet's south wall, swinging out into the bedroom",
       "from": [
         -16.7072,
         0.8708
@@ -738,7 +738,7 @@
       ],
       "swing_toward": [
         -16.3262,
-        -0.12919999999999998
+        1.8708
       ]
     },
     {
