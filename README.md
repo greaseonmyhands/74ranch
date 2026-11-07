@@ -52,8 +52,8 @@ How they fit:
   into the hallway area.
 - A 36"-wide hall runs about 3' from the kitchen's SW opening straight down to the Office, ending in
   a 36" opening in the Office's north wall.
-- East of the hall, the strip between the kitchen's south wall and the Office's north wall is boxed
-  in (about 11' × 2'9" inside): a new wall drops from the kitchen wall flush with the dining hallway
+- East of the hall, the strip between the kitchen's south wall and the Office's north wall is the
+  attic stairs (about 11' × 2'9" inside, rising west to east, ~13 treads at 10"): a new wall drops from the kitchen wall flush with the dining hallway
   opening's west edge, and the Office's north wall is extended east to meet it.
 - The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
   wall continues 20'0" west to meet it. Apart from the Office, that block isn't scanned yet (an

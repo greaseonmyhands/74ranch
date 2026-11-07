@@ -325,7 +325,7 @@
       "height_m": 2.5
     },
     {
-      "name": "Wall_plan_12",
+      "name": "Wall_plan_nolabel_12",
       "added": true,
       "length_m": 0.931,
       "length_ft_in": "3'1\"",
@@ -835,6 +835,11 @@
       "name": "Queen bed\n60\" \u00d7 80\"",
       "width_ft_in": "6'8\"",
       "depth_ft_in": "5'0\""
+    },
+    {
+      "name": "UP to attic",
+      "width_ft_in": "10'11\"",
+      "depth_ft_in": "2'9\""
     }
   ],
   "openings": [

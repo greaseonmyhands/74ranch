@@ -683,6 +683,24 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
                     pz = za + gap + k * half
                     ax.add_patch(poly_patch(_rect(xp, pz, xp + pd, pz + half - 2 * gap),
                                             fc="white", ec="#777", lw=0.7, zorder=3.5))
+        if fx.get("shape") == "stairs":  # treads across the run, arrow pointing up ("up": n/s/e/w)
+            up = fx.get("up", "e")
+            xa, xb, za, zb = min(x0, x1), max(x0, x1), min(z0, z1), max(z0, z1)
+            tread = fx.get("tread_in", 10) * 0.0254
+            if up in ("e", "w"):
+                for xt in np.arange(xa + tread, xb - 1e-6, tread):
+                    ax.plot([xt, xt], [za, zb], color="#999", lw=0.7, zorder=3.5)
+                zc = (za + zb) / 2
+                (sx, ex) = (xa + 0.15, xb - 0.15) if up == "e" else (xb - 0.15, xa + 0.15)
+                ax.annotate("", xy=(ex, zc), xytext=(sx, zc), zorder=3.6,
+                            arrowprops=dict(arrowstyle="-|>", color="#555", lw=1.1))
+            else:
+                for zt in np.arange(za + tread, zb - 1e-6, tread):
+                    ax.plot([xa, xb], [zt, zt], color="#999", lw=0.7, zorder=3.5)
+                xc = (xa + xb) / 2
+                (sz, ez) = (zb - 0.15, za + 0.15) if up == "n" else (za + 0.15, zb - 0.15)
+                ax.annotate("", xy=(xc, ez), xytext=(xc, sz), zorder=3.6,
+                            arrowprops=dict(arrowstyle="-|>", color="#555", lw=1.1))
         if fx.get("shape") == "toilet":  # bowl drawn as an ellipse toward the front
             from matplotlib.patches import Ellipse
             w, d = abs(x1 - x0), abs(z1 - z0)
@@ -696,7 +714,8 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
                 tx = max(x0, x1) - tank if front == "w" else min(x0, x1) + tank
                 ax.plot([tx, tx], [z0, z1], color="#555", lw=0.8, zorder=3.5)
         ax.text((x0 + x1) / 2, (z0 + z1) / 2, fx["name"], ha="center", va="center", fontsize=6.5,
-                color="#333", zorder=4.5, rotation=fx.get("text_rotation", 0))
+                color="#333", zorder=4.5, rotation=fx.get("text_rotation", 0),
+                bbox=dict(fc="white", ec="none", pad=1.0) if fx.get("shape") == "stairs" else None)
         summary.setdefault("fixtures", []).append(
             {"name": fx["name"], "width_ft_in": ft_in(abs(x1 - x0)), "depth_ft_in": ft_in(abs(z1 - z0))})
 
