@@ -90,6 +90,28 @@
         -8.3096,
         -0.069
       ]
+    },
+    {
+      "label": "Kitchen west wall continued south to the Living Room's south wall line",
+      "from": [
+        -14.3796,
+        -0.069
+      ],
+      "to": [
+        -14.3796,
+        5.566
+      ]
+    },
+    {
+      "label": "Living Room south wall continued west to the kitchen's west wall line",
+      "from": [
+        -8.3416,
+        5.566
+      ],
+      "to": [
+        -14.3796,
+        5.566
+      ]
     }
   ],
   "add_floor": [
@@ -197,6 +219,15 @@
         3.658,
         4.1689
       ]
+    }
+  ],
+  "labels": [
+    {
+      "at": [
+        -11.361,
+        2.748
+      ],
+      "text": "not yet scanned"
     }
   ]
 }

@@ -96,6 +96,20 @@
       "height_m": 2.6
     },
     {
+      "name": "Wall_plan_6",
+      "added": true,
+      "length_m": 6.038,
+      "length_ft_in": "19'10\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_plan_5",
+      "added": true,
+      "length_m": 5.635,
+      "length_ft_in": "18'6\"",
+      "height_m": 2.5
+    },
+    {
       "name": "Wall_5~0",
       "added": false,
       "length_m": 4.846,

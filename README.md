@@ -34,6 +34,10 @@ How they fit:
   about 2'9" deep, which the dining room's 5'1" opening leads into (an entry or hall?). The two
   fireplaces sit nearly back to back across it, so it likely holds the shared chimney too. The Living
   Room's 6'4" west wall continues 2'9" north to the dining room's south wall, closing the strip's west end.
+- The SW corner is boxed out: the kitchen's west wall continues 18'6" south and the Living Room's south
+  wall continues 19'10" west to meet it. That block (about 18' × 19' inside) isn't scanned yet; the
+  kitchen's two south/west openings, the dining room's hallway opening and the Living Room's 3'11"
+  west opening all lead into it.
 
 ## Floorplans
 
