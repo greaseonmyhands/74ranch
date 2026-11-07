@@ -57,7 +57,8 @@
     "Wall_4~4",
     "Joint_0~4",
     "Joint_2~4",
-    "Wall_4~2"
+    "Wall_4~2",
+    "Joint_1~0"
   ],
   "add_walls": [
     {

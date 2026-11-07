@@ -38,11 +38,11 @@
     {
       "name": "Bedroom 2",
       "width_m": 3.585,
-      "depth_m": 4.896,
+      "depth_m": 4.763,
       "width_ft_in": "11'9\"",
-      "depth_ft_in": "16'1\"",
-      "area_m2": 16.36,
-      "area_sqft": 176.1,
+      "depth_ft_in": "15'8\"",
+      "area_m2": 15.89,
+      "area_sqft": 171.0,
       "rectangular": false
     },
     {
@@ -131,8 +131,8 @@
       "depth_m": 6.738,
       "width_ft_in": "29'11\"",
       "depth_ft_in": "22'1\"",
-      "area_m2": 40.71,
-      "area_sqft": 438.2,
+      "area_m2": 40.79,
+      "area_sqft": 439.0,
       "rectangular": false
     },
     {
@@ -158,11 +158,11 @@
     {
       "name": "Room 2",
       "width_m": 7.452,
-      "depth_m": 4.499,
+      "depth_m": 4.632,
       "width_ft_in": "24'5\"",
-      "depth_ft_in": "14'9\"",
-      "area_m2": 29.18,
-      "area_sqft": 314.1,
+      "depth_ft_in": "15'2\"",
+      "area_m2": 29.58,
+      "area_sqft": 318.4,
       "rectangular": false
     }
   ],
@@ -308,6 +308,13 @@
       "height_m": 2.58
     },
     {
+      "name": "Wall_added_5~0",
+      "added": true,
+      "length_m": 3.049,
+      "length_ft_in": "10'0\"",
+      "height_m": 2.5
+    },
+    {
       "name": "Wall_added_6~0",
       "added": true,
       "length_m": 2.975,
@@ -317,15 +324,8 @@
     {
       "name": "Wall_added_0~0",
       "added": true,
-      "length_m": 2.95,
-      "length_ft_in": "9'8\"",
-      "height_m": 2.5
-    },
-    {
-      "name": "Wall_added_5~0",
-      "added": true,
-      "length_m": 2.916,
-      "length_ft_in": "9'7\"",
+      "length_m": 2.817,
+      "length_ft_in": "9'3\"",
       "height_m": 2.5
     },
     {
@@ -951,7 +951,7 @@
     }
   ],
   "total_area_sqft": 2304.1,
-  "total_area_m2": 214.05,
+  "total_area_m2": 214.06,
   "fixtures": [
     {
       "name": "Shower\n40\" \u00d7 60\"",

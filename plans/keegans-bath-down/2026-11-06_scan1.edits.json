@@ -23,7 +23,7 @@
       "label": "Room 1A/1B wall, from the bathroom's south wall to the exterior wall",
       "from": [
         0.1232,
-        1.7441
+        1.877
       ],
       "to": [
         0.1232,
@@ -56,22 +56,22 @@
       "label": "Bathroom west wall, 4' clear from the 2'7\" wall",
       "from": [
         -1.911,
-        -0.2019
+        -0.069
       ],
       "to": [
         -1.911,
-        1.7441
+        1.877
       ]
     },
     {
       "label": "Bathroom south wall, in line with the 1'6\" wall",
       "from": [
         -1.911,
-        1.7441
+        1.877
       ],
       "to": [
         0.7328,
-        1.7441
+        1.877
       ]
     },
     {
@@ -82,29 +82,29 @@
       ],
       "to": [
         0.7328,
-        1.7441
+        1.877
       ]
     },
     {
-      "label": "11'5\" wall (Wall_4), shortened to start at the bathroom's east wall",
+      "label": "Bedroom 2 north wall (was the 11'5\" wall), moved down to the dining room's south wall line",
       "from": [
         0.7328,
-        -0.2019
+        -0.069
       ],
       "to": [
         3.708,
-        -0.2019
+        -0.069
       ]
     },
     {
       "label": "Bathroom north wall, on Bedroom 2's north (11'5\") wall line",
       "from": [
         -1.911,
-        -0.2019
+        -0.069
       ],
       "to": [
         0.7328,
-        -0.2019
+        -0.069
       ]
     }
   ],
@@ -124,26 +124,26 @@
       "label": "36\" bathroom door, hinged at its north jamb, swinging in",
       "from": [
         -1.911,
-        0.0001
+        0.133
       ],
       "to": [
         -1.911,
-        0.9141
+        1.047
       ],
       "swing_toward": [
         -1.0,
-        0.4701
+        0.603
       ]
     },
     {
       "label": "36\" door between the Living Room and Bedroom 2, 2\" below the moved bathroom",
       "from": [
         0.1232,
-        1.8449
+        1.9778
       ],
       "to": [
         0.1232,
-        2.7593
+        2.8922
       ]
     }
   ],
@@ -171,12 +171,12 @@
     {
       "at": [
         -0.9,
-        0.7701
+        0.903
       ],
       "name": "Bathroom",
       "label_at": [
         -0.439,
-        0.3051
+        0.438
       ],
       "label_size": 8,
       "compact": true
@@ -187,9 +187,9 @@
       "name": "Shower\n40\" \u00d7 60\"",
       "rect": [
         -0.8412,
-        0.6781,
+        0.811,
         0.6828,
-        1.6941
+        1.827
       ],
       "hatch": "."
     },
@@ -199,18 +199,18 @@
       "front": "w",
       "rect": [
         -0.0284,
-        0.0091,
+        0.142,
         0.6828,
-        0.5171
+        0.65
       ]
     },
     {
       "name": "Vanity 36\"",
       "rect": [
         -1.861,
-        1.1607,
+        1.2936,
         -0.9466,
-        1.6941
+        1.827
       ]
     }
   ],
