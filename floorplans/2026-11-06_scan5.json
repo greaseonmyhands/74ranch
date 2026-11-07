@@ -235,8 +235,8 @@
       "bottom_height_m": 0.75
     },
     {
-      "name": "refrigerator_1",
-      "type": "fridge",
+      "name": "storage_cabinet_retyped_0",
+      "type": "tall cab",
       "size_m": [
         0.64,
         0.65,
@@ -265,8 +265,18 @@
       "bottom_height_m": 0.73
     },
     {
-      "name": "storage_cabinet_tall2_0",
+      "name": "storage_cabinet_added_0",
       "type": "base cab",
+      "size_m": [
+        0.63,
+        0.64,
+        0.98
+      ],
+      "bottom_height_m": 0.0
+    },
+    {
+      "name": "storage_cabinet_tall2_0",
+      "type": "tall cab",
       "size_m": [
         0.9,
         0.6,

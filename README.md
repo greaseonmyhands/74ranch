@@ -60,6 +60,8 @@ detected piece of furniture are in the matching `floorplans/*.json` files.
 - **Scan 5:** Open-plan kitchen + living room, one 35'11" × 15'2" space; the dashed line on the plan is
   where RoomPlan put the boundary between them. The plan is turned 90° clockwise
   (`scans/2026-11-06_scan5.edits.json`). Ceiling is 7'10", lower than the other rooms.
+  The scanner's top-right "fridge" in the kitchen is really a tall cabinet, and the 25" gap to its
+  left is filled with a base cabinet.
 - **Scan 2:** The "storage cabinet" on the left wall starts 5'3" off the floor, so it's most likely
   upper or wall-mounted cabinets.
 - **Scan 3:** The left wall has a 3'11" opening with no door (an archway or cased opening).

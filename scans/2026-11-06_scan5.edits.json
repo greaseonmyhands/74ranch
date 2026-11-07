@@ -1,1 +1,21 @@
-{ "rotate_cw": 90 }
+{
+  "rotate_cw": 90,
+  "retype": {
+    "refrigerator_1": "storage_cabinet"
+  },
+  "add_objects": [
+    {
+      "label": "Base cabinet filling the 25\" gap between the cabinet right of the dishwasher and the tall cabinet",
+      "type": "storage_cabinet",
+      "rect": [
+        -2.267,
+        -2.266,
+        -1.632,
+        -1.622
+      ],
+      "bottom": 0.0,
+      "height": 0.98
+    }
+  ],
+  "notes": "Coordinates are in the rotated plan (after rotate_cw)."
+}

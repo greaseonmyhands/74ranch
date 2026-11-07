@@ -104,7 +104,7 @@ FRIENDLY = [  # RoomPlan category prefix -> short plan label
 ]
 
 
-def friendly_label(name, bottom=0.0, freestanding=False):
+def friendly_label(name, bottom=0.0, freestanding=False, top=0.0):
     if name.startswith("stove"):  # RoomPlan's "stove" is the cooktop on top of the oven
         return None
     for prefix, label in FRIENDLY:
@@ -112,6 +112,8 @@ def friendly_label(name, bottom=0.0, freestanding=False):
             if label == "cabinet":
                 if bottom > 1.2:
                     return "upper cab"
+                if top > 1.5:
+                    return "tall cab"
                 return "island" if freestanding else "base cab"
             return label
     return pretty_label(name)
@@ -126,6 +128,8 @@ def load_edits(path):
     """Optional sidecar next to the scan: <scan>.edits.json, e.g.
     {"rotate_cw": 90,                           # turn the plan clockwise on the page (degrees)
      "remove": ["chair_*", "Wall_10"],          # names or glob patterns of RoomPlan nodes
+     "retype": {"refrigerator_1": "storage_cabinet"},   # fix misidentified objects
+     "add_objects": [{"type": "storage_cabinet", "rect": [x0, z0, x1, z1], "height": 0.9}],
      "move": [{"nodes": ["Wall_2", "Door_0"], "by": [dx, dz]}],
      "add_walls": [{"from": [x, z], "to": [x, z], "label": "..."}],
      "add_doors": [{"from": [x, z], "to": [x, z], "label": "..."}],
@@ -183,6 +187,22 @@ def process(path, outdir, variant=None):
             print(f"  warning: edit pattern {pat!r} matched nothing")
         for n in hits:
             del nodes[n]
+    # Retype scanned objects RoomPlan misidentified, e.g. {"refrigerator_1": "storage_cabinet"}
+    for old_name, new_type in edits.get("retype", {}).items():
+        if old_name not in nodes:
+            print(f"  warning: retype target {old_name!r} not found")
+            continue
+        k = 0
+        while f"{new_type}_retyped_{k}" in nodes:
+            k += 1
+        nodes[f"{new_type}_retyped_{k}"] = nodes.pop(old_name)
+    # New furniture/cabinets: box footprints [x0, z0, x1, z1] with a RoomPlan-style type
+    for i, ob in enumerate(edits.get("add_objects", [])):
+        x0, z0, x1, z1 = ob["rect"]
+        bottom, height = ob.get("bottom", 0.0), ob.get("height", 0.9)
+        box = trimesh.creation.box(extents=[abs(x1 - x0), height, abs(z1 - z0)])
+        box.apply_translation([(x0 + x1) / 2, bottom + height / 2, (z0 + z1) / 2])
+        nodes[f"{ob['type']}_added_{i}"] = box
     # Moves: translate whole RoomPlan elements in the floor plane
     for mv in edits.get("move", []):
         dx, dz = mv["by"]
@@ -355,7 +375,8 @@ def process(path, outdir, variant=None):
         if hull.is_empty:
             continue
         bottom = float(m.bounds[0][1])
-        kind_ = friendly_label(name, bottom, hull.distance(wall_geom) > 0.15)
+        kind_ = friendly_label(name, bottom, hull.distance(wall_geom) > 0.15,
+                               top=float(m.bounds[1][1]))
         if kind_ is None:  # e.g. cooktop sitting on the oven
             continue
         if bottom > 1.2:  # wall-hung (upper cabinets, shelves): draw after base units, dashed
