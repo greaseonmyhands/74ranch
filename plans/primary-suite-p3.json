@@ -1,0 +1,1209 @@
+{
+  "title": "Primary Suite \u2013 P3",
+  "notes": "Primary Suite \u2013 P3. Copy of Keegan's Plans (own frozen edits in plans/keegans-bath-down/) with the North End bathroom moved down to Bedroom 2's top wall line. Locked snapshot of the main-floor plan (2026-11-07). Uses frozen copies of each scan's edits in this folder; don't edit these for new versions. Scan 5 (kitchen/living, rotated 90 cw by its own edits) is placed so its north wall is collinear with the North End's and its walk-through meets the North End corridor. The shared wall (living room east / Room 2 west) is a standard 4in wall whose west face is the living room's scanned surface; Room 2 takes the rest of the ~15in the scans left between them. The walk-through's north side is redrawn on the corridor's top-wall line. Scan 3 (Front Living Room) shares a standard 4in wall with Room 1A; its north wall is in line with Room 1A's lower 1'6\" wall and it projects 2'10\" further south (the front of the house jogs). The Front Living Room / Room 1A wall is removed: together they're the Living Room; scan 5's living room is the Dining room. Scan 5 was then shifted 9.5in east (into Room 2) so the dining room's south-wall hallway opening ends exactly at the Living Room's extended west wall. Scan 2 (Laundry Room, rotated 180 by its own edits) shares a standard 4in wall with the kitchen; their south walls are in line, and the kitchen extends further north. Scan 6 (Office, rotated 180) sits in the SW block with its SW inside corner on the block's SW inside corner.",
+  "parts": [
+    {
+      "scan": "scans/2026-11-06_scan1.glb",
+      "edits": "plans/keegans-bath-down/2026-11-06_scan1.edits.json"
+    },
+    {
+      "scan": "scans/2026-11-06_scan5.glb",
+      "offset": [
+        -8.9086,
+        -2.385
+      ],
+      "edits": "plans/keegans-bath-down/2026-11-06_scan5.edits.json"
+    },
+    {
+      "scan": "scans/2026-11-06_scan3.glb",
+      "offset": [
+        -6.0616,
+        3.17
+      ],
+      "edits": "plans/keegans-bath-down/2026-11-06_scan3.edits.json"
+    },
+    {
+      "scan": "scans/2026-11-06_scan2.glb",
+      "offset": [
+        -17.0802,
+        -1.75
+      ],
+      "edits": "plans/keegans-bath-down/2026-11-06_scan2.edits.json"
+    },
+    {
+      "scan": "scans/2026-11-06_scan6.glb",
+      "offset": [
+        -12.6426,
+        3.214
+      ],
+      "edits": "plans/keegans-bath-down/2026-11-06_scan6.edits.json"
+    }
+  ],
+  "scan_labels": false,
+  "remove": [
+    "Wall_7~0",
+    "Joint_8~0",
+    "Joint_3~0",
+    "Wall_4~1",
+    "Wall_5~1",
+    "Joint_5~1",
+    "Joint_3~1",
+    "Wall_12~0",
+    "Wall_1~2",
+    "Wall_0~1",
+    "Wall_3~3",
+    "Opening_added_1~1",
+    "Wall_1~4",
+    "Wall_4~4",
+    "Joint_0~4",
+    "Joint_2~4",
+    "Wall_4~2",
+    "Joint_1~0",
+    "Door_2~0"
+  ],
+  "add_walls": [
+    {
+      "label": "Shared 4in wall: dining east / Room 2 west",
+      "from": [
+        -3.7948,
+        -4.701
+      ],
+      "to": [
+        -3.7948,
+        -1.172
+      ],
+      "thickness_in": 4
+    },
+    {
+      "label": "North wall across the top of the shared wall",
+      "from": [
+        -3.8456,
+        -4.701
+      ],
+      "to": [
+        -3.713,
+        -4.701
+      ],
+      "show_length": false
+    },
+    {
+      "label": "North side of the walk-through, on the corridor's top-wall line",
+      "from": [
+        -3.7956,
+        -1.172
+      ],
+      "to": [
+        -3.68,
+        -1.172
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Front Living Room east wall south of Room 1A (front-of-house jog)",
+      "from": [
+        -3.7816,
+        4.694
+      ],
+      "to": [
+        -3.7816,
+        5.566
+      ]
+    },
+    {
+      "label": "Living Room's 6'4\" west wall extended north to the Dining room's south wall",
+      "from": [
+        -8.3096,
+        0.774
+      ],
+      "to": [
+        -8.3096,
+        -0.069
+      ]
+    },
+    {
+      "label": "Kitchen west wall continued south to the Living Room's south wall line (starts below Closet 2, which opens into the pocket west of the hall)",
+      "from": [
+        -14.4296,
+        0.8708
+      ],
+      "to": [
+        -14.4296,
+        5.566
+      ]
+    },
+    {
+      "label": "Living Room south wall continued west to the kitchen's west wall line",
+      "from": [
+        -8.3416,
+        5.566
+      ],
+      "to": [
+        -14.4296,
+        5.566
+      ]
+    },
+    {
+      "label": "Kitchen west wall above the laundry room (exterior)",
+      "from": [
+        -14.4296,
+        -4.701
+      ],
+      "to": [
+        -14.4296,
+        -3.431
+      ]
+    },
+    {
+      "label": "Shared 4in wall: kitchen west / laundry room east",
+      "from": [
+        -14.4304,
+        -3.431
+      ],
+      "to": [
+        -14.4304,
+        -0.069
+      ],
+      "thickness_in": 4
+    },
+    {
+      "label": "Wall from the top of the Office's 5'2\" wall east to the top of the Living Room's 5'2\" wall",
+      "from": [
+        -10.8486,
+        3.982
+      ],
+      "to": [
+        -8.3416,
+        3.982
+      ]
+    },
+    {
+      "label": "Hall west wall, from the kitchen's SW opening down to the Office",
+      "from": [
+        -13.7728,
+        -0.069
+      ],
+      "to": [
+        -13.7728,
+        0.862
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Box east wall: down from the kitchen's south wall, flush with the dining hallway opening's west edge",
+      "from": [
+        -9.324,
+        -0.069
+      ],
+      "to": [
+        -9.324,
+        0.862
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Office north wall extended east to the box's east wall",
+      "from": [
+        -10.8486,
+        0.862
+      ],
+      "to": [
+        -9.324,
+        0.862
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Living Room west wall (was 6'4\"), extended south to end level with the Office's 6'2\" wall",
+      "from": [
+        -8.3096,
+        0.774
+      ],
+      "to": [
+        -8.3096,
+        2.742
+      ]
+    },
+    {
+      "label": "Box below the stairs: east wall, continuing the stairs' east wall 3' south",
+      "from": [
+        -9.324,
+        0.862
+      ],
+      "to": [
+        -9.324,
+        1.7764
+      ]
+    },
+    {
+      "label": "Box below the stairs: south wall, back west to the Office's 6'2\" wall",
+      "from": [
+        -9.324,
+        1.7764
+      ],
+      "to": [
+        -10.8486,
+        1.7764
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Laundry room's west wall continued south to the Bedroom 2 south-wall line",
+      "from": [
+        -19.6792,
+        -0.069
+      ],
+      "to": [
+        -19.6792,
+        4.694
+      ]
+    },
+    {
+      "label": "South wall of the block below the laundry room, on the Bedroom 2 south-wall line",
+      "from": [
+        -19.6792,
+        4.694
+      ],
+      "to": [
+        -14.4296,
+        4.694
+      ]
+    },
+    {
+      "label": "Wall centered between the laundry room's two south doors, running south to the block's south wall",
+      "from": [
+        -17.9852,
+        -0.069
+      ],
+      "to": [
+        -17.9852,
+        4.694
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Box in Bedroom 1: wall down 3'1\" from just right of the 2'7\" door",
+      "from": [
+        -16.9708,
+        -0.069
+      ],
+      "to": [
+        -16.9708,
+        0.8708
+      ]
+    },
+    {
+      "label": "Box in Bedroom 1: wall back east to Bedroom 1's east wall",
+      "from": [
+        -16.9708,
+        0.8708
+      ],
+      "to": [
+        -14.4296,
+        0.8708
+      ]
+    },
+    {
+      "label": "Divider: Bedroom 1 closet (west 40%) / pantry (east 60%)",
+      "from": [
+        -15.6816,
+        -0.069
+      ],
+      "to": [
+        -15.6816,
+        0.8708
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Bedroom 2 closet wall, just above the east window",
+      "from": [
+        0.7328,
+        1.0932
+      ],
+      "to": [
+        3.708,
+        1.0932
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Fireplace box west wall (Living Room fireplace's west edge)",
+      "from": [
+        -7.0366,
+        -0.069
+      ],
+      "to": [
+        -7.0366,
+        0.774
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Fireplace box east wall (Living Room fireplace's east edge)",
+      "from": [
+        -5.3326,
+        -0.069
+      ],
+      "to": [
+        -5.3326,
+        0.774
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Close the 1.6 mm seam where the Living Room's north wall meets the North End's 1'6\" wall",
+      "from": [
+        -3.8,
+        0.774
+      ],
+      "to": [
+        -3.7,
+        0.774
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Primary suite partition",
+      "from": [
+        -0.696,
+        -4.701
+      ],
+      "to": [
+        -0.696,
+        -0.069
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Dressing / bath wall",
+      "from": [
+        -0.696,
+        -2.5312
+      ],
+      "to": [
+        3.708,
+        -2.5312
+      ],
+      "show_length": false
+    },
+    {
+      "label": "WC room north wall",
+      "from": [
+        -0.696,
+        -1.0834
+      ],
+      "to": [
+        0.928,
+        -1.0834
+      ],
+      "show_length": false
+    },
+    {
+      "label": "WC room east wall",
+      "from": [
+        0.928,
+        -1.0834
+      ],
+      "to": [
+        0.928,
+        -0.069
+      ],
+      "show_length": false
+    }
+  ],
+  "add_floor": [
+    [
+      [
+        -3.744,
+        -4.701
+      ],
+      [
+        -3.713,
+        -4.701
+      ],
+      [
+        -3.713,
+        -1.172
+      ],
+      [
+        -3.744,
+        -1.172
+      ]
+    ],
+    [
+      [
+        -3.8456,
+        -1.172
+      ],
+      [
+        -3.68,
+        -1.172
+      ],
+      [
+        -3.68,
+        -1.085
+      ],
+      [
+        -3.8456,
+        -1.085
+      ]
+    ],
+    [
+      [
+        -3.7816,
+        0.774
+      ],
+      [
+        -3.68,
+        0.774
+      ],
+      [
+        -3.68,
+        4.694
+      ],
+      [
+        -3.7816,
+        4.694
+      ]
+    ],
+    [
+      [
+        -10.8486,
+        3.982
+      ],
+      [
+        -8.3416,
+        3.982
+      ],
+      [
+        -8.3416,
+        5.566
+      ],
+      [
+        -10.8486,
+        5.566
+      ]
+    ],
+    [
+      [
+        -13.7228,
+        -0.069
+      ],
+      [
+        -12.8084,
+        -0.069
+      ],
+      [
+        -12.8084,
+        0.862
+      ],
+      [
+        -13.7228,
+        0.862
+      ]
+    ],
+    [
+      [
+        -10.8486,
+        0.862
+      ],
+      [
+        -9.324,
+        0.862
+      ],
+      [
+        -9.324,
+        1.7764
+      ],
+      [
+        -10.8486,
+        1.7764
+      ]
+    ],
+    [
+      [
+        -19.6792,
+        -0.069
+      ],
+      [
+        -17.9852,
+        -0.069
+      ],
+      [
+        -17.9852,
+        4.694
+      ],
+      [
+        -19.6792,
+        4.694
+      ]
+    ],
+    [
+      [
+        -17.9852,
+        -0.069
+      ],
+      [
+        -14.4296,
+        -0.069
+      ],
+      [
+        -14.4296,
+        4.694
+      ],
+      [
+        -17.9852,
+        4.694
+      ]
+    ],
+    [
+      [
+        -14.4296,
+        -0.069
+      ],
+      [
+        -13.7728,
+        -0.069
+      ],
+      [
+        -13.7728,
+        0.862
+      ],
+      [
+        -14.4296,
+        0.862
+      ]
+    ],
+    [
+      [
+        -9.324,
+        -0.069
+      ],
+      [
+        -8.3096,
+        -0.069
+      ],
+      [
+        -8.3096,
+        0.862
+      ],
+      [
+        -9.324,
+        0.862
+      ]
+    ],
+    [
+      [
+        -10.8486,
+        0.862
+      ],
+      [
+        -8.3096,
+        0.862
+      ],
+      [
+        -8.3096,
+        3.982
+      ],
+      [
+        -10.8486,
+        3.982
+      ]
+    ],
+    [
+      [
+        -7.0366,
+        -0.069
+      ],
+      [
+        -5.3326,
+        -0.069
+      ],
+      [
+        -5.3326,
+        0.774
+      ],
+      [
+        -7.0366,
+        0.774
+      ]
+    ],
+    [
+      [
+        -8.3096,
+        -0.069
+      ],
+      [
+        -7.0366,
+        -0.069
+      ],
+      [
+        -7.0366,
+        0.774
+      ],
+      [
+        -8.3096,
+        0.774
+      ]
+    ],
+    [
+      [
+        -5.3326,
+        -0.069
+      ],
+      [
+        -3.23,
+        -0.069
+      ],
+      [
+        -3.23,
+        0.774
+      ],
+      [
+        -5.3326,
+        0.774
+      ]
+    ]
+  ],
+  "room_dividers": [
+    {
+      "label": "Walk-through between the living room and the North End corridor",
+      "from": [
+        -3.5566,
+        -1.172
+      ],
+      "to": [
+        -3.5566,
+        -0.069
+      ]
+    },
+    {
+      "label": "Entry / Office opening",
+      "from": [
+        -10.8486,
+        2.742
+      ],
+      "to": [
+        -10.8486,
+        3.932
+      ],
+      "hidden": true
+    },
+    {
+      "label": "Entry / Living Room opening",
+      "from": [
+        -8.341,
+        2.742
+      ],
+      "to": [
+        -8.341,
+        3.982
+      ],
+      "hidden": true
+    },
+    {
+      "label": "Entry / Dining hallway opening",
+      "from": [
+        -9.374,
+        -0.069
+      ],
+      "to": [
+        -8.3096,
+        -0.069
+      ],
+      "hidden": true
+    }
+  ],
+  "rooms": [
+    {
+      "at": [
+        -6.0616,
+        3.17
+      ],
+      "name": "Living Room",
+      "note": "Front Living Room + old Room 1A, wall between removed",
+      "no_split": true
+    },
+    {
+      "at": [
+        -6.2846,
+        -2.385
+      ],
+      "name": "Dining",
+      "note": "scan 5's living room, open to the kitchen"
+    },
+    {
+      "at": [
+        2.0,
+        2.5
+      ],
+      "name": "Bedroom 2",
+      "label_at": [
+        2.35,
+        1.85
+      ],
+      "compact": true,
+      "label_size": 9
+    },
+    {
+      "at": [
+        -9.5951,
+        4.774
+      ],
+      "name": "Front Porch"
+    },
+    {
+      "at": [
+        -13.2656,
+        0.3965
+      ],
+      "name": "Hall"
+    },
+    {
+      "at": [
+        -10.0863,
+        1.3192
+      ],
+      "name": "Closet"
+    },
+    {
+      "at": [
+        -18.8322,
+        2.3125
+      ],
+      "name": "Bathroom 2"
+    },
+    {
+      "at": [
+        -16.2074,
+        2.3125
+      ],
+      "name": "Bedroom 1"
+    },
+    {
+      "at": [
+        -16.3262,
+        0.4009
+      ],
+      "name": "Closet 2"
+    },
+    {
+      "at": [
+        -9.5791,
+        2.3
+      ],
+      "name": "Entry",
+      "label_at": [
+        -9.4,
+        2.75
+      ],
+      "label_size": 8,
+      "compact": true
+    },
+    {
+      "at": [
+        -14.7272,
+        0.3965
+      ],
+      "name": "Pantry"
+    },
+    {
+      "at": [
+        2.2,
+        0.5121
+      ],
+      "name": "Bedroom 2 Closet",
+      "compact": true,
+      "label_size": 8
+    },
+    {
+      "at": [
+        -6.1846,
+        0.3525
+      ],
+      "name": "Fireplace",
+      "compact": true,
+      "label_size": 7,
+      "no_furniture": true
+    },
+    {
+      "at": [
+        -7.5231,
+        0.3525
+      ],
+      "name": "Closet 3",
+      "compact": true,
+      "label_size": 6.5,
+      "label_at": [
+        -7.42,
+        0.3525
+      ]
+    },
+    {
+      "at": [
+        -4.2813,
+        0.3525
+      ],
+      "name": "Utility Closet",
+      "compact": true,
+      "label_size": 7
+    },
+    {
+      "at": [
+        1.506,
+        -1.5156
+      ],
+      "name": "Primary Bath",
+      "compact": true,
+      "label_size": 7.5,
+      "label_at": [
+        1.756,
+        -1.5406
+      ]
+    },
+    {
+      "at": [
+        0.141,
+        -0.5762
+      ],
+      "name": "WC",
+      "compact": true,
+      "label_size": 6.5,
+      "label_at": [
+        0.4716,
+        -0.5762
+      ]
+    },
+    {
+      "at": [
+        1.506,
+        -2.8812
+      ],
+      "name": "Dressing",
+      "compact": true,
+      "label_size": 7,
+      "label_at": [
+        1.506,
+        -2.9389
+      ]
+    },
+    {
+      "at": [
+        -1.204,
+        -2.9365
+      ],
+      "name": "Primary Bedroom",
+      "compact": true,
+      "label_size": 8.5,
+      "label_at": [
+        -2.5756,
+        -1.58
+      ]
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "Queen bed\n60\" \u00d7 80\"",
+      "shape": "bed",
+      "head": "e",
+      "rect": [
+        1.626,
+        2.6449,
+        3.658,
+        4.1689
+      ]
+    },
+    {
+      "name": "UP to attic",
+      "shape": "stairs",
+      "up": "e",
+      "tread_in": 10,
+      "rect": [
+        -12.8084,
+        -0.019,
+        -9.374,
+        0.812
+      ]
+    },
+    {
+      "name": "WC",
+      "rect": [
+        -0.646,
+        -0.8302,
+        0.0652,
+        -0.3222
+      ],
+      "shape": "toilet",
+      "front": "e"
+    },
+    {
+      "name": "Shower\n60\" \u00d7 36\"",
+      "rect": [
+        2.134,
+        -1.0334,
+        3.658,
+        -0.119
+      ],
+      "hatch": "."
+    },
+    {
+      "name": "Linen",
+      "rect": [
+        1.028,
+        -0.7286,
+        1.6376,
+        -0.119
+      ]
+    },
+    {
+      "name": "His vanity 48\"",
+      "rect": [
+        -0.1577,
+        -2.4812,
+        1.0615,
+        -1.9478
+      ]
+    },
+    {
+      "name": "Her vanity 48\"",
+      "rect": [
+        1.9505,
+        -2.4812,
+        3.1697,
+        -1.9478
+      ]
+    },
+    {
+      "name": "Hanging",
+      "rect": [
+        -0.646,
+        -4.651,
+        -0.0872,
+        -2.5812
+      ],
+      "shape": "closet",
+      "text_rotation": 90
+    },
+    {
+      "name": "Shelves / drawers",
+      "rect": [
+        -0.0872,
+        -4.651,
+        2.8452,
+        -4.2446
+      ],
+      "shape": "closet"
+    },
+    {
+      "name": "Washer",
+      "rect": [
+        2.8452,
+        -4.651,
+        3.658,
+        -3.9652
+      ],
+      "text_rotation": 90
+    },
+    {
+      "name": "Dryer",
+      "rect": [
+        2.8452,
+        -3.9652,
+        3.658,
+        -3.2794
+      ],
+      "text_rotation": 90
+    },
+    {
+      "name": "Hanging",
+      "rect": [
+        3.0992,
+        -3.254,
+        3.658,
+        -2.5812
+      ],
+      "shape": "closet",
+      "text_rotation": 90
+    },
+    {
+      "name": "Island 48\" \u00d7 20\"",
+      "rect": [
+        0.8964,
+        -3.6669,
+        2.1156,
+        -3.1589
+      ]
+    },
+    {
+      "name": "King bed\n76\" \u00d7 80\"",
+      "rect": [
+        -3.744,
+        -3.9017,
+        -1.712,
+        -1.9713
+      ],
+      "shape": "bed",
+      "head": "w"
+    }
+  ],
+  "labels": [],
+  "add_openings": [
+    {
+      "label": "36in doorway (no door) from the kitchen into the laundry room, through the shared wall",
+      "from": [
+        -14.4304,
+        -1.2607
+      ],
+      "to": [
+        -14.4304,
+        -0.3463
+      ]
+    },
+    {
+      "label": "36in opening from the hall into the Office",
+      "from": [
+        -13.7228,
+        0.862
+      ],
+      "to": [
+        -12.8084,
+        0.862
+      ]
+    },
+    {
+      "label": "32in doorway between the vanities into the dressing room",
+      "from": [
+        1.0996,
+        -2.5312
+      ],
+      "to": [
+        1.9124,
+        -2.5312
+      ]
+    }
+  ],
+  "add_doors": [
+    {
+      "label": "6' double front door, centered in the porch's north wall",
+      "from": [
+        -10.5095,
+        3.982
+      ],
+      "to": [
+        -8.6807,
+        3.982
+      ],
+      "double": true,
+      "swing_toward": [
+        -9.5951,
+        2.982
+      ]
+    },
+    {
+      "label": "30in closet door, left end of the closet's south wall, hinged left, swinging south",
+      "from": [
+        -10.7478,
+        1.7764
+      ],
+      "to": [
+        -9.9858,
+        1.7764
+      ],
+      "swing_toward": [
+        -10.7478,
+        2.7763999999999998
+      ]
+    },
+    {
+      "label": "30in Bedroom 1 closet door, centered in the closet's south wall, swinging out into the bedroom",
+      "from": [
+        -16.7072,
+        0.8708
+      ],
+      "to": [
+        -15.9452,
+        0.8708
+      ],
+      "swing_toward": [
+        -16.3262,
+        1.8708
+      ]
+    },
+    {
+      "label": "28in pantry door in the hall's west wall, swinging into the pantry",
+      "from": [
+        -13.7728,
+        0.0409
+      ],
+      "to": [
+        -13.7728,
+        0.7521
+      ],
+      "swing_toward": [
+        -14.7728,
+        0.39649999999999996
+      ]
+    },
+    {
+      "label": "6' bifold doors, centered on the Bedroom 2 closet wall",
+      "from": [
+        1.306,
+        1.0932
+      ],
+      "to": [
+        3.1348,
+        1.0932
+      ],
+      "bifold": true,
+      "swing_toward": [
+        2.2204,
+        2.0932
+      ]
+    },
+    {
+      "label": "24in Closet 3 door in the 2'9\" wall (off the Entry hall), hinged at its north end, swinging into the closet",
+      "from": [
+        -8.3096,
+        0.0477
+      ],
+      "to": [
+        -8.3096,
+        0.6573
+      ],
+      "swing_toward": [
+        -7.3096,
+        0.35250000000000004
+      ]
+    },
+    {
+      "label": "30in door, entry to bath aisle",
+      "from": [
+        -0.696,
+        -1.8978
+      ],
+      "to": [
+        -0.696,
+        -1.1358
+      ],
+      "swing_toward": [
+        -1.696,
+        -1.5478
+      ]
+    },
+    {
+      "label": "24in WC room door",
+      "from": [
+        0.2176,
+        -1.0834
+      ],
+      "to": [
+        0.8272,
+        -1.0834
+      ],
+      "swing_toward": [
+        0.428,
+        -0.0834
+      ]
+    }
+  ]
+}
