@@ -17,6 +17,7 @@ Usage:
 import argparse
 import fnmatch
 import json
+import math
 import re
 from pathlib import Path
 
@@ -148,8 +149,24 @@ def _axis_rect(poly):
     return poly.bounds
 
 
+def arc_points(c, r, a0, a1, n=24):
+    """Points on a circle about c; angle 0 points south (+z), positive toward east (+x)."""
+    return [(c[0] + r * math.sin(math.radians(a)), c[1] + r * math.cos(math.radians(a)))
+            for a in np.linspace(a0, a1, n)]
+
+
+def arc_poly(arc, r_in=None, r_out=None):
+    c, a0, a1 = arc["center"], arc["a0"], arc["a1"]
+    r_in = arc["r_in"] if r_in is None else r_in
+    r_out = arc["r_out"] if r_out is None else r_out
+    return Polygon(arc_points(c, r_out, a0, a1) + arc_points(c, r_in, a1, a0))
+
+
 def fixture_poly(fx):
-    """A planned fixture's footprint: its rect, turned by "angle" degrees (clockwise on the plan) about its centre."""
+    """A planned fixture's footprint: its rect, turned by "angle" degrees (clockwise on the plan) about its centre.
+    Curved seating ("arc": centre, r_in, r_out, a0, a1) is the ring segment between those radii and angles."""
+    if fx.get("arc"):
+        return arc_poly(fx["arc"])
     x0, z0, x1, z1 = fx["rect"]
     p = Polygon([(x0, z0), (x1, z0), (x1, z1), (x0, z1)])
     return affinity.rotate(p, fx["angle"], origin=((x0 + x1) / 2, (z0 + z1) / 2)) if fx.get("angle") else p
@@ -713,6 +730,23 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
         ang = fx.get("angle", 0)
         turn = (lambda g, _o=((x0 + x1) / 2, (z0 + z1) / 2), _a=ang: affinity.rotate(g, _a, origin=_o)) if ang else (lambda g: g)
         poly = turn(Polygon([(x0, z0), (x1, z0), (x1, z1), (x0, z1)]))
+        if fx.get("arc"):  # curved sectional: ring segment, back cushion on the outside, radial seat seams
+            arc = fx["arc"]
+            ax.add_patch(poly_patch(arc_poly(arc), fc="white", ec="#555", lw=0.9, zorder=3))
+            bd = 8 * IN
+            ax.add_patch(poly_patch(arc_poly(arc, r_in=arc["r_out"] - bd), fc="#e9e5dc", ec="#777", lw=0.7, zorder=3.4))
+            n = fx.get("seats", 0)
+            for k in range(1, n):
+                a = arc["a0"] + (arc["a1"] - arc["a0"]) * k / n
+                (xa, za), = arc_points(arc["center"], arc["r_in"], a, a, 1)
+                (xb, zb), = arc_points(arc["center"], arc["r_out"] - bd, a, a, 1)
+                ax.plot([xa, xb], [za, zb], color="#aaa", lw=0.6, zorder=3.45)
+            rm = (arc["r_in"] + arc["r_out"] - bd) / 2
+            (tx, tz), = arc_points(arc["center"], rm, (arc["a0"] + arc["a1"]) / 2, 0, 1)
+            ax.text(tx, tz, fx["name"], ha="center", va="center", fontsize=6.5, color="#333", zorder=4.5)
+            summary.setdefault("fixtures", []).append({"name": fx["name"], "width_ft_in": ft_in(abs(x1 - x0)),
+                                                       "depth_ft_in": ft_in(abs(z1 - z0))})
+            continue
         if fx.get("shape") == "rug":
             ax.add_patch(poly_patch(poly, fc="none", ec="#a08f72", lw=0.9, ls=(0, (5, 3)), zorder=1.6))
             ax.text(x0 + 0.08, z1 - 0.08, fx["name"], ha="left", va="bottom", fontsize=6, color="#8a7a5e", zorder=1.7)

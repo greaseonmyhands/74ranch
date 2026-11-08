@@ -1,6 +1,11 @@
 {
   "plans": [
     {
+      "id": "living-room-l7",
+      "title": "Living Room \u2013 L7 (curved sectional, seats 10)",
+      "src": "plans/living-room-l7.png"
+    },
+    {
       "id": "living-room-l3",
       "title": "Living Room \u2013 L3 (wall to wall, seats 10)",
       "src": "plans/living-room-l3.png"

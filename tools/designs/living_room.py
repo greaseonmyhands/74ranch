@@ -174,4 +174,28 @@ def l5():
     json.dump(pl, open('plans/living-room-l5.json', 'w'), indent=2)
 
 
-l3(); l4(); l5()
+
+def arc_piece(pl, name, c, r_in, r_out, a0, a1, seats):
+    """Curved sectional on a ring about c (angles from due south, + toward east)."""
+    pts = lambda r, a_from, a_to: [(c[0] + r * math.sin(math.radians(a)), c[1] + r * math.cos(math.radians(a)))
+                                   for a in [a_from + (a_to - a_from) * i / 24 for i in range(25)]]
+    poly = Polygon(pts(r_out, a0, a1) + pts(r_in, a1, a0))
+    arc = {"center": r4(c), "r_in": round(r_in, 4), "r_out": round(r_out, 4), "a0": a0, "a1": a1}
+    pl["fixtures"].append(dict(name=name, rect=r4(poly.bounds), arc=arc, seats=seats))
+    rm = (r_in + r_out) / 2
+    pl["_pieces"].append((name, poly, seats, c[0], c[1] + rm, 0))
+    return poly
+
+
+def l7():
+    """Curved sectional wrapped around the TV: every seat faces the screen at ~10-11 ft."""
+    pl = new("Living Room – L7 (curved sectional, seats 10)")
+    R_IN, DEPTH = 2.85, 38 * IN                      # seat fronts 9'4" from the TV
+    arc_piece(pl, "Curved sectional", TV, R_IN, R_IN + DEPTH, -50, 50, seats=9)
+    piece(pl, "Round ottoman 42\"", TVX, 2.80, 42 * IN, 42 * IN, shape="stool")
+    piece(pl, "Swivel", -0.85, 3.75, 32 * IN, 32 * IN, angle=-50, seats=1, shape="chair", back="s")
+    report(pl, "L7")
+    json.dump(pl, open('plans/living-room-l7.json', 'w'), indent=2)
+
+
+l3(); l4(); l5(); l7()
