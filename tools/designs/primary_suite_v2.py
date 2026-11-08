@@ -87,10 +87,10 @@ def south_bath(pl, xp, vanity_in):
     fx(pl, f"His vanity {vanity_in}\"", [cx - 17.5 * IN - vanity_in * IN, bN, cx - 17.5 * IN, vz])
     fx(pl, f"Her vanity {vanity_in}\"", [cx + 17.5 * IN, bN, cx + 17.5 * IN + vanity_in * IN, vz])
     arm, back = 22 * IN, 16 * IN
-    # washer + dryer on the west wall at the bottom (by the doorway); hanging above them and down the east wall
-    fx(pl, "Washer", [iW, dS - 54 * IN, iW + 32 * IN, dS - 27 * IN], text_rotation=90)
-    fx(pl, "Dryer", [iW, dS - 27 * IN, iW + 32 * IN, dS], text_rotation=90)
-    fx(pl, "Hanging", [iW, N, iW + arm, dS - 55 * IN], shape="closet", text_rotation=90)
+    # stacked washer/dryer (27" wide, 32" deep) on the west wall at the bottom, by the doorway;
+    # hanging fills the rest of the west wall above it and the whole east wall
+    fx(pl, "W/D\nstacked", [iW, dS - 27 * IN, iW + 32 * IN, dS])
+    fx(pl, "Hanging", [iW, N, iW + arm, dS - 28 * IN], shape="closet", text_rotation=90)
     fx(pl, "Shelves / drawers", [iW + arm, N, E - arm, N + back], shape="closet")
     fx(pl, "Hanging", [E - arm, N, E, dS], shape="closet", text_rotation=90)
     icz = (N + back + dS) / 2
@@ -100,7 +100,8 @@ def south_bath(pl, xp, vanity_in):
     room(pl, "Dressing", [cx, dS - 0.3], [cx, icz + 10 * IN + 0.22], 7)
     report[pl["title"]] = {"suite inside": f"{f(E - iW)} wide", "aisle": f(zc - 0.05 - vz),
         "dressing": f"{f(E - iW)}x{f(dS - N)}", "island aisles (front/back)": (f(dS - (icz + 10 * IN)), f(icz - 10 * IN - (N + back))),
-        "W/D front to island": f((cx - 24 * IN) - (iW + 32 * IN)), "island to east hanging": f((E - arm) - (cx + 24 * IN))}
+        "W/D front to island": f((cx - 24 * IN) - (iW + 32 * IN)),
+        "west hanging length": f((dS - 28 * IN) - N), "east hanging length": f(dS - N), "island to east hanging": f((E - arm) - (cx + 24 * IN))}
 
 def bed_north(pl, xp, door_w=-0.591):
     bcx = (W + door_w) / 2

@@ -1151,19 +1151,14 @@
       "depth_ft_in": "1'9\""
     },
     {
-      "name": "Washer",
-      "width_ft_in": "2'8\"",
-      "depth_ft_in": "2'3\""
-    },
-    {
-      "name": "Dryer",
+      "name": "W/D\nstacked",
       "width_ft_in": "2'8\"",
       "depth_ft_in": "2'3\""
     },
     {
       "name": "Hanging",
       "width_ft_in": "1'10\"",
-      "depth_ft_in": "2'2\""
+      "depth_ft_in": "4'5\""
     },
     {
       "name": "Shelves / drawers",

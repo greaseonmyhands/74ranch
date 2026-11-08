@@ -974,24 +974,13 @@
       ]
     },
     {
-      "name": "Washer",
-      "rect": [
-        -0.646,
-        -3.9528,
-        0.1668,
-        -3.267
-      ],
-      "text_rotation": 90
-    },
-    {
-      "name": "Dryer",
+      "name": "W/D\nstacked",
       "rect": [
         -0.646,
         -3.267,
         0.1668,
         -2.5812
-      ],
-      "text_rotation": 90
+      ]
     },
     {
       "name": "Hanging",
@@ -999,7 +988,7 @@
         -0.646,
         -4.651,
         -0.0872,
-        -3.9782
+        -3.2924
       ],
       "shape": "closet",
       "text_rotation": 90
