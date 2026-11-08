@@ -1151,16 +1151,6 @@
       "depth_ft_in": "1'9\""
     },
     {
-      "name": "Hanging",
-      "width_ft_in": "1'10\"",
-      "depth_ft_in": "6'9\""
-    },
-    {
-      "name": "Shelves / drawers",
-      "width_ft_in": "9'7\"",
-      "depth_ft_in": "1'4\""
-    },
-    {
       "name": "Washer",
       "width_ft_in": "2'8\"",
       "depth_ft_in": "2'3\""
@@ -1174,6 +1164,16 @@
       "name": "Hanging",
       "width_ft_in": "1'10\"",
       "depth_ft_in": "2'2\""
+    },
+    {
+      "name": "Shelves / drawers",
+      "width_ft_in": "10'5\"",
+      "depth_ft_in": "1'4\""
+    },
+    {
+      "name": "Hanging",
+      "width_ft_in": "1'10\"",
+      "depth_ft_in": "6'9\""
     },
     {
       "name": "Island 48\" \u00d7 20\"",
