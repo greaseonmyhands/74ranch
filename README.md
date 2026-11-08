@@ -34,27 +34,29 @@ wall line as the bathroom door (centered on the section above the bathroom). Liv
 below the bathroom's south wall. Also includes the Fireplace box (with matched back-to-back
 fireplaces), Closet 3 and the Utility Closet from the working main floor.
 
-## Living Room – game-day layouts (L3–L6)
+## Living Room – game-day layouts (L3–L5)
 
-Built on Primary Suite P3 (`tools/designs/living_room.py` → `plans/living-room-l{3,4}.json`).
-An 85" TV hangs on the Living Room side of the Utility Closet wall, shifted 8" east so it clears the
-fireplace box. The layouts spread across the room's full ~27' width and seat 10.
-L1 and L2 (U sectional, and sectional + bar ledge) were dropped for being too bunched in the middle.
-Side-by-side: `floorplans/living-room-options.png`.
+Built on Primary Suite P3 (`tools/designs/living_room.py` → `plans/living-room-l{3,4,5}.json`).
+An 85" TV hangs on the Living Room side of the Utility Closet wall, shifted 8" east to clear the
+fireplace box. Each layout seats 10. Side-by-side: `floorplans/living-room-options.png`.
 
-| | Seating | Distance / angle to TV |
+**Walkway to Bedroom 2 (drawn in blue).** One 36" lane runs in from the Entry, along the TV side of the
+room, then straight east under the bathroom to the Bedroom 2 door. A second 36" lane comes down from the
+hall to meet it. Seating stays south of the lane. The script also checks that every piece:
+- stays inside the room;
+- keeps 4" from other pieces;
+- stays clear of the walkways, the Entry landing, the hall mouth and the area in front of the Bedroom 2 door.
+
+| | Seating | Distance to TV |
 |---|---|---|
-| **L3 – wall to wall** | 171" sofa (6) with its back to the 15' front window, and a 132" sofa (4) against the old 1A front wall. The two sofas step with the front-of-house jog. | 14.7 ft / 22° and 13.2 ft / 35° |
-| **L4 – wide sectional + wing** | 172" sectional (7) across the room plus a 78" wing (3) angled 40° toward the TV in the old 1A corner | 10.9 ft / 12° and 11.8 ft / 46° |
+| **L3 – wall to wall** | 171" sofa (6) against the 15' front window + 132" sofa (4) against the old 1A front wall | 14.7 / 13.2 ft |
+| **L4 – wide sectional + wing** | 161" sectional (6) + 84" wing (3) turned 23° toward the TV + swivel in the SW corner (1) | 10.9 / ~12 ft |
+| **L5 – theater rows** | 4 recliners in front + 4 wall-hugger recliners on a 7" riser along the front window + 2 swivels in the 1A corner | 8–9 / 13–17 ft |
 
-The script checks every piece:
-- stays inside the room and is at least 4" from the other pieces;
-- keeps the Entry landing (3 ft), the hall mouth and the area in front of the Bedroom 2 door (30") clear.
-
-**L5 – theater rows** has 4 recliners about 8–9 ft from the TV. Behind them, 4 wall-hugger recliners sit on a 7" riser along the 15' front window. Two swivel chairs angle in from the old 1A corner.
-**L6 – facing sofas** puts two 108" sofas 100" apart, facing each other off the TV wall. Two swivel chairs close the far end. Comparison sheet: `floorplans/living-room-options-2.png`.
-
-Furniture can be turned with `"angle"` (degrees clockwise on the plan).
+In L5, reclined front-row footrests reach into the walkway.
+Dropped: L1 (U sectional) and L2 (sectional + bar ledge) were bunched in the middle. L6 (facing sofas)
+can't coexist with the walkway. Furniture can be turned with `"angle"` (degrees clockwise on the plan),
+and walkways are drawn from a plan's `"walkways"` list.
 
 ## Primary Suite designs for the larger suite (P1–P3)
 
