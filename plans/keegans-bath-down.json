@@ -312,6 +312,17 @@
         0.8708
       ],
       "show_length": false
+    },
+    {
+      "label": "Bedroom 2 closet wall, just above the east window",
+      "from": [
+        0.7328,
+        1.0932
+      ],
+      "to": [
+        3.708,
+        1.0932
+      ]
     }
   ],
   "add_floor": [
@@ -586,7 +597,13 @@
         2.0,
         2.5
       ],
-      "name": "Bedroom 2"
+      "name": "Bedroom 2",
+      "label_at": [
+        2.35,
+        1.85
+      ],
+      "compact": true,
+      "label_size": 9
     },
     {
       "at": [
@@ -649,6 +666,22 @@
         0.3965
       ],
       "name": "Pantry"
+    },
+    {
+      "at": [
+        1.5,
+        -3.0
+      ],
+      "name": "Primary Suite"
+    },
+    {
+      "at": [
+        2.2,
+        0.5121
+      ],
+      "name": "Bedroom 2 Closet",
+      "compact": true,
+      "label_size": 8
     }
   ],
   "fixtures": [

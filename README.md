@@ -18,9 +18,11 @@ moved south so its north wall, and Bedroom 2's north wall, are on the dining roo
 (the top of the fireplace box) — 3'7½" lower than in Keegan's Plans for the bathroom, 5¼" lower for
 Bedroom 2's north wall. The bathroom's west wall continues north to Room 2's old south wall, and the
 space above the bathroom is opened into Room 2 (its old south wall there and the short wall above the
-bathroom's east side are removed), so Room 2 (350 sq ft) runs down to the bathroom's north wall.
-Living Room 408 sq ft, Bedroom 2 171 sq ft; Bedroom 2's 36" door from the Living Room sits 2" below
-the bathroom's south wall.
+bathroom's east side are removed), so Room 2 — renamed the **Primary Suite** (350 sq ft) — runs down
+to the bathroom's north wall. In Bedroom 2, a wall across the room just above its east window makes a
+**Bedroom 2 Closet** (about 9'5" × 3'6" inside, 37 sq ft; no door drawn yet), leaving Bedroom 2 at
+134 sq ft (11'9" × 11'10"). Living Room 408 sq ft; Bedroom 2's 36" door from the Living Room sits 2"
+below the bathroom's south wall.
 
 ## Room 2 master suite – four layouts
 
