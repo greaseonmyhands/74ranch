@@ -34,9 +34,9 @@ wall line as the bathroom door (centered on the section above the bathroom). Liv
 below the bathroom's south wall. Also includes the Fireplace box (with matched back-to-back
 fireplaces), Closet 3 and the Utility Closet from the working main floor.
 
-## Living Room – game-day layouts (L3–L5, L7)
+## Living Room – game-day layouts (L3–L5, L7, L8)
 
-Built on Primary Suite P3 (`tools/designs/living_room.py` → `plans/living-room-l{3,4,5,7}.json`).
+Built on Primary Suite P3 (`tools/designs/living_room.py` → `plans/living-room-l{3,4,5,7,8}.json`).
 An 85" TV hangs on the Living Room side of the Utility Closet wall, shifted 8" east to clear the
 fireplace box. Each layout seats 10. Side-by-side: `floorplans/living-room-options.png`.
 
@@ -55,6 +55,7 @@ door. The hall opens straight onto it. Seating stays south of the lane. The scri
 | **L3 – wall to wall** | 171" sofa (6) against the 15' front window + 132" sofa (4) against the old 1A front wall | 14.7 / 13.2 ft |
 | **L4 – wide sectional + wing** | 161" sectional (6) + 84" wing (3) turned 23° toward the TV + swivel in the SW corner (1) | 10.9 / ~12 ft |
 | **L7 – curved sectional** | 9-seat curved sectional on a 100° arc centred on the TV (each seat faces the screen), 42" round ottoman in the middle, swivel chair in the old 1A corner | 10.9 ft (every seat) / 14.8 ft |
+| **L8 – our 8' × 8' sectional at 45°** | The existing 8' × 8' L sectional turned 45°: corner toward the front window, arms opening toward the TV (5 seats). Square ottoman set as a diamond between the arms, plus 2 swivel chairs (1A corner and SW corner) = 7 | 9.6–10.4 ft / ~15 ft |
 | **L5 – theater rows** | 4 recliners in front + 4 wall-hugger recliners on a 7" riser along the front window + 2 swivels in the 1A corner | 8–9 / 13–17 ft |
 
 Dropped: L1 (U sectional) and L2 (sectional + bar ledge) were bunched in the middle. L6 (facing sofas)

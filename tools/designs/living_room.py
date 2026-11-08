@@ -198,4 +198,27 @@ def l7():
     json.dump(pl, open('plans/living-room-l7.json', 'w'), indent=2)
 
 
-l3(); l4(); l5(); l7()
+
+def l8(cz=5.20, cx=TVX):
+    """Your 8' x 8' L sectional turned 45°: corner toward the front window, arms opening toward the TV."""
+    pl = new("Living Room – L8 (8' x 8' sectional at 45°)")
+    L, Dp = 96 * IN, 38 * IN
+    u = (math.sqrt(.5), -math.sqrt(.5))           # corner -> north-east arm
+    v = (-math.sqrt(.5), -math.sqrt(.5))          # corner -> north-west arm
+    P = lambda a, b: (cx + a * u[0] + b * v[0], cz + a * u[1] + b * v[1])
+    e = P(L / 2, Dp / 2)                           # east arm, full 96" incl. the corner seat
+    piece(pl, "8' sectional", e[0], e[1], L, Dp, angle=-45, seats=3, shape="sofa", back="s", arms=False)
+    w = P(Dp / 2, (Dp + L) / 2)                    # west arm, the other 58"
+    piece(pl, "", w[0], w[1], L - Dp, Dp, angle=45, seats=2, shape="sofa", back="s", arms=False)
+    inner = P(Dp, Dp)
+    o = (cx, inner[1] - 16 * IN - 18 * IN * math.sqrt(2))
+    piece(pl, "Ottoman", o[0], o[1], 36 * IN, 36 * IN, angle=45)
+    piece(pl, "Swivel", -0.85, 3.75, 32 * IN, 32 * IN, angle=-50, seats=1, shape="chair", back="s")
+    piece(pl, "Swivel", -7.0, 4.55, 32 * IN, 32 * IN, angle=40, seats=1, shape="chair", back="s")
+    print(f"  L8 corner seat to TV {math.hypot(inner[0] - TV[0], inner[1] - TV[1]) / FT:.1f} ft;"
+          f" arm tips at z {P(L, 0)[1]:.2f} / {P(0, L)[1]:.2f}, x {P(L, 0)[0]:.2f} / {P(0, L)[0]:.2f}")
+    report(pl, "L8")
+    json.dump(pl, open('plans/living-room-l8.json', 'w'), indent=2)
+
+
+l3(); l4(); l5(); l7(); l8()

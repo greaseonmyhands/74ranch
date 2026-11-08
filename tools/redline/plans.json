@@ -1,6 +1,11 @@
 {
   "plans": [
     {
+      "id": "living-room-l8",
+      "title": "Living Room \u2013 L8 (8' \u00d7 8' sectional at 45\u00b0)",
+      "src": "plans/living-room-l8.png"
+    },
+    {
       "id": "living-room-l7",
       "title": "Living Room \u2013 L7 (curved sectional, seats 10)",
       "src": "plans/living-room-l7.png"
