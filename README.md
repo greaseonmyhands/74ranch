@@ -40,9 +40,9 @@ Built on Primary Suite P3 (`tools/designs/living_room.py` → `plans/living-room
 An 85" TV hangs on the Living Room side of the Utility Closet wall, shifted 8" east to clear the
 fireplace box. Each layout seats 10. Side-by-side: `floorplans/living-room-options.png`.
 
-**Walkway to Bedroom 2 (drawn in blue).** One 36" lane runs in from the Entry, along the TV side of the
-room, then straight east under the bathroom to the Bedroom 2 door. A second 36" lane comes down from the
-hall to meet it. Seating stays south of the lane. The script also checks that every piece:
+**Walkway to Bedroom 2 (drawn in blue).** One 36" lane runs in from the Entry and heads up to the TV wall.
+It runs along the hearth and TV (2" off the hearth), then steps down under the bathroom to the Bedroom 2
+door. The hall opens straight onto it. Seating stays south of the lane. The script also checks that every piece:
 - stays inside the room;
 - keeps 4" from other pieces;
 - stays clear of the walkways, the Entry landing, the hall mouth and the area in front of the Bedroom 2 door.
@@ -53,7 +53,6 @@ hall to meet it. Seating stays south of the lane. The script also checks that ev
 | **L4 – wide sectional + wing** | 161" sectional (6) + 84" wing (3) turned 23° toward the TV + swivel in the SW corner (1) | 10.9 / ~12 ft |
 | **L5 – theater rows** | 4 recliners in front + 4 wall-hugger recliners on a 7" riser along the front window + 2 swivels in the 1A corner | 8–9 / 13–17 ft |
 
-In L5, reclined front-row footrests reach into the walkway.
 Dropped: L1 (U sectional) and L2 (sectional + bar ledge) were bunched in the middle. L6 (facing sofas)
 can't coexist with the walkway. Furniture can be turned with `"angle"` (degrees clockwise on the plan),
 and walkways are drawn from a plan's `"walkways"` list.

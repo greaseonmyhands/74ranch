@@ -30,9 +30,10 @@ KEEP_CLEAR = {"entry landing": box(-8.26, 2.79, -7.36, 3.93),        # 3 ft in f
               "Bedroom 2 door": box(-0.69, 1.83, 0.073, 2.85),      # 30" in front of the door
               "hall mouth": box(-3.18, 0.824, -1.96, 1.74)}
 # 36" walkways to the Bedroom 2 door (east wall, z ~1.95..2.81), drawn on the plan and kept clear
-WALKS = [{"name": "walkway to\nBedroom 2", "path": [[-8.26, 3.36], [-7.45, 3.36], [-6.85, 2.3], [0.073, 2.3]],
-          "width_in": 36, "label_at": [-1.0, 2.3]},
-         {"path": [[-2.57, 0.824], [-2.57, 2.3]], "width_in": 36}]
+WALKS = [{"name": "walkway to\nBedroom 2", "path": [[-8.26, 3.36], [-7.75, 3.36], [-7.3, 1.56],
+                                                     [-2.3, 1.56], [-1.6, 2.33], [0.073, 2.33]],
+          "width_in": 36, "label_at": [-0.85, 2.33]},           # hugs the hearth / TV wall (2" off the hearth)
+         {"path": [[-2.57, 0.824], [-2.57, 1.56]], "width_in": 36}]
 from shapely.geometry import LineString
 for _w in WALKS:
     KEEP_CLEAR["walkway"] = KEEP_CLEAR.get("walkway", Polygon()).union(
@@ -126,7 +127,7 @@ def l3():
     e0, e1 = JOG + 0.05, -0.30                    # east: 132" sofa, 4-5 seats
     piece(pl, "Sofa 132\"", (e0 + e1) / 2, S_E - D / 2, e1 - e0, D, seats=4, shape="sofa", back="s")
     piece(pl, "Coffee table", -5.95, S_W - D - 18 * IN - 13 * IN, 54 * IN, 26 * IN)
-    piece(pl, "Coffee table", -2.45, S_E - D - 15 * IN - 9 * IN, 42 * IN, 18 * IN)
+    piece(pl, "Coffee table", -2.8, S_E - D - 18 * IN - 12 * IN, 42 * IN, 24 * IN)
     report(pl, "L3")
     json.dump(pl, open('plans/living-room-l3.json', 'w'), indent=2)
 
@@ -139,8 +140,8 @@ def l4():
     piece(pl, "Sectional", (x0 + x1) / 2, front + D / 2, x1 - x0, D, seats=6, shape="sofa", back="s", arms=False)
     piece(pl, "", x0 - 3 * IN, front + D / 2, 6 * IN, D, shape="sofa", back="s", arms=False)   # west arm
     wing(pl, "Wing", (x1, front), "e", 84 * IN, -23, seats=3, shape="sofa", back="s", arms=False)
-    piece(pl, "Coffee table", -5.75, front - 15 * IN - 9 * IN, 48 * IN, 18 * IN)
-    piece(pl, "Coffee table", -3.95, front - 15 * IN - 9 * IN, 48 * IN, 18 * IN)
+    piece(pl, "Coffee table", -5.75, front - 18 * IN - 13 * IN, 48 * IN, 26 * IN)
+    piece(pl, "Coffee table", -3.95, front - 18 * IN - 13 * IN, 48 * IN, 26 * IN)
     piece(pl, "Swivel", -7.6, 4.7, 32 * IN, 32 * IN, angle=40, seats=1, shape="chair", back="s")
     report(pl, "L4")
     json.dump(pl, open('plans/living-room-l4.json', 'w'), indent=2)
