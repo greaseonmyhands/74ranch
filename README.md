@@ -40,6 +40,9 @@ Built on Primary Suite P3 (`tools/designs/living_room.py` → `plans/living-room
 An 85" TV hangs on the Living Room side of the Utility Closet wall, shifted 8" east to clear the
 fireplace box. Each layout seats 10. Side-by-side: `floorplans/living-room-options.png`.
 
+**Wall removal:** these layouts need the wall between the formal living room and old Room 1A removed. Keegan
+confirmed it is **not load-bearing** (Nov 8, 2026).
+
 **Walkway to Bedroom 2 (drawn in blue).** One 36" lane runs in from the Entry and heads up to the TV wall.
 It runs along the hearth and TV (2" off the hearth), then steps down under the bathroom to the Bedroom 2
 door. The hall opens straight onto it. Seating stays south of the lane. The script also checks that every piece:
