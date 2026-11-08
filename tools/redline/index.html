@@ -137,7 +137,7 @@ button:disabled { opacity: .45; cursor: default; }
       <button id="history">Sent <span id="count" class="label"></span></button>
     </div>
     <div class="note-row">
-      <textarea id="note" rows="1" placeholder="Add a note for Claude (optional), e.g. “move this wall 2 ft left”"></textarea>
+      <textarea id="note" rows="1" readonly placeholder="Tap to add a note for Claude (optional), e.g. “move this wall 2 ft left”"></textarea>
       <button id="send" class="send">Send to Claude</button>
     </div>
   </div>
@@ -278,6 +278,15 @@ button:disabled { opacity: .45; cursor: default; }
   $("zin").addEventListener("click", () => zoomAt(1.25, ...centre()));
   $("zout").addEventListener("click", () => zoomAt(0.8, ...centre()));
   $("zfit").addEventListener("click", fit);
+  // iPadOS Scribble turns Pencil strokes near any editable field into typed text, so the note box
+  // stays read-only (invisible to Scribble) until it is tapped on purpose, and locks again on blur.
+  const note = $("note");
+  const unlockNote = () => { if (note.readOnly) { note.readOnly = false; note.focus(); } };
+  note.addEventListener("click", unlockNote);
+  note.addEventListener("blur", () => { note.readOnly = true; });
+  document.addEventListener("pointerdown", (e) => {
+    if (e.target !== note && document.activeElement === note) note.blur();
+  }, true);
   $("note").addEventListener("input", () => { clearTimeout($("note")._t); $("note")._t = setTimeout(saveDraft, 400); });
 
   // ---------- plans ----------
