@@ -253,7 +253,7 @@ def load_edits(path):
      "fixtures": [{"name": "Shower", "rect": [x0, z0, x1, z1]}],  # planned fixtures
      "labels": [{"at": [x, z], "text": "...", "rotation": 0}]}     # free-text notes
     add_doors entries may add "swing_toward": [x, z] to draw the swing (hinged at "from"), and
-    "double": true for a pair of doors hinged at both jambs.
+    "double": true for a pair of doors hinged at both jambs, "bifold": true for bifold doors.
     Coordinates are in the scan's own frame, in meters; walls are given by their centerline."""
     p = Path(path).with_suffix(".edits.json")
     return json.loads(p.read_text()) if p.exists() else {}
@@ -356,7 +356,8 @@ def add_walls_and_doors(nodes, edits, tag="added"):
         nodes[f"Door_{tag}_{i}"] = opening_quad(d["from"], d["to"], d.get("height", 2.03))
         if "swing_toward" in d:  # hinge at "from" (both jambs if "double"), opening toward the point
             swings[f"Door_{tag}_{i}"] = {"hinge": d["from"], "other": d["to"],
-                                         "toward": d["swing_toward"], "double": d.get("double", False)}
+                                         "toward": d["swing_toward"], "double": d.get("double", False),
+                                         "bifold": d.get("bifold", False)}
     for i, o in enumerate(edits.get("add_openings", [])):  # doorless doorways / cased openings
         nodes[f"Opening_{tag}_{i}"] = opening_quad(o["from"], o["to"], o.get("height", 2.03))
     return added, swings
@@ -853,12 +854,23 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
         L, mid, bottom, h, rot = opening(m, "#b45f06", 1.2, "door")
         summary["doors"].append({"name": name, "width_m": round(float(L), 3), "width_ft_in": ft_in(L),
                                  "height_m": round(float(h), 2), "height_ft_in": ft_in(h)})
-        ax.text(mid[0], mid[1], f"door {ft_in(L)}", fontsize=6, color="#b45f06", ha="center",
+        kind_txt = "bifold" if swings.get(name, {}).get("bifold") else "door"
+        ax.text(mid[0], mid[1], f"{kind_txt} {ft_in(L)}", fontsize=6, color="#b45f06", ha="center",
                 va="bottom", zorder=8, rotation=rot, rotation_mode="anchor")
         if name in swings:  # draw each leaf open at 90 degrees and its swing arc
             sw = swings[name]
             A, B = np.array(sw["hinge"], float), np.array(sw["other"], float)
             toward = np.array(sw["toward"], float)
+            if sw.get("bifold"):  # pairs of folding panels: a shallow zig-zag toward the room
+                v = B - A
+                n = np.array([-v[1], v[0]]) / np.linalg.norm(v)
+                if np.dot(n, toward - A) < 0:
+                    n = -n
+                depth = np.linalg.norm(v) / 8
+                for a, b in ((A, (A + B) / 2), (B, (A + B) / 2)):  # each half folds from its jamb
+                    mid = (a + b) / 2 + n * depth
+                    ax.plot([a[0], mid[0], b[0]], [a[1], mid[1], b[1]], color="#b45f06", lw=1.0, zorder=5)
+                continue
             leaves = [(A, B)] if not sw.get("double") else [(A, (A + B) / 2), (B, (A + B) / 2)]
             for hinge, other in leaves:
                 v = other - hinge

@@ -322,7 +322,8 @@
       "to": [
         3.708,
         1.0932
-      ]
+      ],
+      "show_length": false
     }
   ],
   "add_floor": [
@@ -794,6 +795,22 @@
       "swing_toward": [
         -14.7728,
         0.39649999999999996
+      ]
+    },
+    {
+      "label": "6' bifold doors, centered on the Bedroom 2 closet wall",
+      "from": [
+        1.306,
+        1.0932
+      ],
+      "to": [
+        3.1348,
+        1.0932
+      ],
+      "bifold": true,
+      "swing_toward": [
+        2.2204,
+        2.0932
       ]
     }
   ]
