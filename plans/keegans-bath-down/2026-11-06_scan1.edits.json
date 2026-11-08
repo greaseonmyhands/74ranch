@@ -110,17 +110,6 @@
   ],
   "add_doors": [
     {
-      "label": "36\" door, corridor to Room 2, centered in the corridor",
-      "from": [
-        -3.2527,
-        -1.172
-      ],
-      "to": [
-        -2.3383,
-        -1.172
-      ]
-    },
-    {
       "label": "36\" bathroom door, hinged at its north jamb, swinging in",
       "from": [
         -1.911,
@@ -144,6 +133,17 @@
       "to": [
         0.1232,
         2.8922
+      ]
+    },
+    {
+      "label": "36in Primary Suite door from the Living Room, centered on the bathroom's west wall line above the bathroom",
+      "from": [
+        -1.911,
+        -1.0777
+      ],
+      "to": [
+        -1.911,
+        -0.1633
       ]
     }
   ],
