@@ -1,0 +1,39 @@
+{
+  "plans": [
+    {
+      "id": "keegans-bath-down",
+      "title": "Keegan's Plans \u2013 bathroom moved down",
+      "src": "plans/keegans-bath-down.png"
+    },
+    {
+      "id": "keegans-plans",
+      "title": "Keegan's Plans (locked)",
+      "src": "plans/keegans-plans.png"
+    },
+    {
+      "id": "main-floor",
+      "title": "Working main floor",
+      "src": "plans/main-floor.png"
+    },
+    {
+      "id": "north-end-b",
+      "title": "North End \u2013 Option B",
+      "src": "plans/north-end-b.png"
+    },
+    {
+      "id": "room2-option-h",
+      "title": "Room 2 suite \u2013 Option H",
+      "src": "plans/room2-option-h.png"
+    },
+    {
+      "id": "room2-option-i",
+      "title": "Room 2 suite \u2013 Option I",
+      "src": "plans/room2-option-i.png"
+    },
+    {
+      "id": "room2-option-j",
+      "title": "Room 2 suite \u2013 Option J",
+      "src": "plans/room2-option-j.png"
+    }
+  ]
+}

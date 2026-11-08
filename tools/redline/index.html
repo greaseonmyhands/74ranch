@@ -1,0 +1,360 @@
+<title>74 Ranch Redlines</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one-screen drafting table — a tool rail across the top, the sheet filling the rest,
+   a slide-in drawer listing what's been sent. */
+:root {
+  --ground: #eef0ec;       /* drafting-table green-grey */
+  --rail: #ffffff;
+  --ink: #1f2522;          /* graphite */
+  --muted: #5d6762;
+  --line: #d3d8d3;
+  --redline: #c8361f;      /* the markup red */
+  --redline-soft: #f6e0db;
+  --ok: #2f7a4f;
+  --paper: #ffffff;        /* the sheet itself stays white in both themes */
+  --shadow: 0 1px 2px rgb(20 30 25 / .12), 0 6px 20px rgb(20 30 25 / .10);
+  --ui: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #171b19; --rail: #222825; --ink: #e7ece8; --muted: #9aa59f; --line: #36403b;
+    --redline: #ff6a4f; --redline-soft: #3c231d; --ok: #64c18c; --paper: #ffffff;
+    --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #171b19; --rail: #222825; --ink: #e7ece8; --muted: #9aa59f; --line: #36403b;
+  --redline: #ff6a4f; --redline-soft: #3c231d; --ok: #64c18c; --paper: #ffffff;
+  --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body { background: var(--ground); color: var(--ink); font-family: var(--ui); font-size: 15px; overflow: hidden; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--rail); }
+.app { height: 100%; display: flex; flex-direction: column; }
+
+.rail { background: var(--rail); border-bottom: 1px solid var(--line); box-shadow: var(--shadow); z-index: 5;
+  padding-block: 8px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.brand { font-weight: 600; letter-spacing: .02em; display: flex; align-items: baseline; gap: 6px; margin-right: 4px; }
+.brand b { color: var(--redline); font-weight: 600; }
+.group { display: flex; align-items: center; gap: 6px; }
+.group + .group { padding-left: 14px; border-left: 1px solid var(--line); }
+.label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+
+select, textarea, button { font: inherit; color: inherit; }
+select { min-height: 40px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--rail); max-width: 62vw; }
+button { min-height: 40px; min-width: 40px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--rail); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+button:focus-visible, select:focus-visible, textarea:focus-visible, .swatch:focus-visible { outline: 2px solid var(--redline); outline-offset: 2px; }
+button[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+button:disabled { opacity: .45; cursor: default; }
+.swatch { width: 32px; height: 32px; min-width: 0; padding: 0; border-radius: 50%; border: 2px solid var(--rail); box-shadow: 0 0 0 1px var(--line); }
+.swatch[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--ink); }
+.width-dot { display: block; border-radius: 50%; background: var(--ink); }
+.send { background: var(--redline); color: #fff; border-color: var(--redline); font-weight: 600; padding: 0 16px; }
+.toggle { font-size: 13px; }
+.spacer { flex: 1; }
+
+.note-row { width: 100%; display: flex; gap: 8px; align-items: stretch; }
+.note-row textarea { flex: 1; min-width: 0; min-height: 40px; height: 40px; resize: vertical; padding: 9px 10px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--rail); line-height: 1.3; }
+
+.stage-wrap { position: relative; flex: 1; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; }
+.stage { position: absolute; left: 0; top: 0; transform-origin: 0 0; background: var(--paper); box-shadow: var(--shadow); }
+.stage img, .stage canvas { position: absolute; left: 0; top: 0; display: block; max-width: none; }
+.stage img { pointer-events: none; }
+.hint { position: absolute; left: 50%; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%);
+  background: var(--rail); color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 13px;
+  box-shadow: var(--shadow); white-space: nowrap; max-width: calc(100% - 32px); overflow: hidden; text-overflow: ellipsis; }
+.zoom { position: absolute; right: max(14px, env(safe-area-inset-right, 0px)); top: 14px; display: flex; flex-direction: column; gap: 6px; }
+.zoom button { width: 44px; box-shadow: var(--shadow); font-family: var(--mono); }
+
+.toast { position: fixed; left: 50%; top: calc(16px + env(safe-area-inset-top, 0px)); transform: translateX(-50%); z-index: 30;
+  background: var(--ink); color: var(--rail); padding: 10px 16px; border-radius: 10px; box-shadow: var(--shadow); max-width: calc(100% - 32px); font-size: 14px; }
+.toast.err { background: var(--redline); color: #fff; }
+
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(380px, 100%); background: var(--rail); z-index: 20; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.drawer header { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.drawer h2 { font-size: 17px; margin: 0; flex: 1; }
+.drawer .list { overflow-y: auto; padding: 12px 16px; display: grid; gap: 12px; }
+.item { display: grid; grid-template-columns: 112px 1fr; gap: 10px; align-items: start; }
+.item img { width: 112px; aspect-ratio: 2 / 1; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); background: var(--paper); }
+.item .meta { min-width: 0; display: grid; gap: 3px; }
+.item .t { font-weight: 600; font-size: 14px; }
+.item .n { font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+.item time { font-family: var(--mono); font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.pill { justify-self: start; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; padding: 2px 8px; border-radius: 999px; }
+.pill.new { background: var(--redline-soft); color: var(--redline); }
+.pill.applied { background: color-mix(in srgb, var(--ok) 18%, transparent); color: var(--ok); }
+.empty { color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+@media (max-width: 720px) {
+  .group + .group { padding-left: 0; border-left: 0; }
+  .brand .sub { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .drawer { transition: transform .2s ease; }
+}
+</style>
+
+<div class="app">
+  <div class="rail" role="toolbar" aria-label="Markup tools">
+    <div class="brand">74 Ranch <b>Redlines</b><span class="label sub">markup</span></div>
+    <div class="group">
+      <label class="label" for="plan">Plan</label>
+      <select id="plan" aria-label="Floor plan"></select>
+    </div>
+    <div class="group" aria-label="Pen color">
+      <button class="swatch" id="c-red" aria-label="Red pen" aria-pressed="true" style="background:#c8361f"></button>
+      <button class="swatch" id="c-blue" aria-label="Blue pen" aria-pressed="false" style="background:#1f5fbf"></button>
+      <button class="swatch" id="c-green" aria-label="Green pen" aria-pressed="false" style="background:#2f8a4f"></button>
+      <button class="swatch" id="c-ink" aria-label="Black pen" aria-pressed="false" style="background:#1f2522"></button>
+    </div>
+    <div class="group" aria-label="Line width">
+      <button id="w-fine" aria-label="Fine line" aria-pressed="false"><span class="width-dot" style="width:4px;height:4px"></span></button>
+      <button id="w-med" aria-label="Medium line" aria-pressed="true"><span class="width-dot" style="width:8px;height:8px"></span></button>
+      <button id="w-bold" aria-label="Bold line" aria-pressed="false"><span class="width-dot" style="width:13px;height:13px"></span></button>
+    </div>
+    <div class="group">
+      <button id="eraser" aria-pressed="false">Eraser</button>
+      <button id="undo" aria-label="Undo">↶</button>
+      <button id="redo" aria-label="Redo">↷</button>
+      <button id="clear">Clear</button>
+    </div>
+    <div class="group">
+      <button id="finger" class="toggle" aria-pressed="false" title="Draw with your finger instead of panning">Finger draws</button>
+    </div>
+    <div class="spacer"></div>
+    <div class="group">
+      <button id="history">Sent <span id="count" class="label"></span></button>
+    </div>
+    <div class="note-row">
+      <textarea id="note" rows="1" placeholder="Add a note for Claude (optional), e.g. “move this wall 2 ft left”"></textarea>
+      <button id="send" class="send">Send to Claude</button>
+    </div>
+  </div>
+
+  <div class="stage-wrap" id="wrap">
+    <div class="stage" id="stage">
+      <img id="planImg" alt="">
+      <canvas id="ink"></canvas>
+    </div>
+    <div class="zoom">
+      <button id="zin" aria-label="Zoom in">+</button>
+      <button id="zout" aria-label="Zoom out">−</button>
+      <button id="zfit" aria-label="Fit plan">Fit</button>
+    </div>
+    <div class="hint" id="hint">Draw with Apple Pencil · pan and pinch with your fingers</div>
+  </div>
+</div>
+
+<aside class="drawer" id="drawer" hidden aria-label="Sent markups">
+  <header><h2>Sent to Claude</h2><button id="closeDrawer">Close</button></header>
+  <div class="list" id="list"><p class="empty">Nothing sent yet. Mark up a plan and tap <b>Send to Claude</b>; then tell Claude in the chat to check your redlines.</p></div>
+</aside>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const wrap = $("wrap"), stage = $("stage"), img = $("planImg"), canvas = $("ink"), ctx = canvas.getContext("2d");
+  const COLORS = { "c-red": "#c8361f", "c-blue": "#1f5fbf", "c-green": "#2f8a4f", "c-ink": "#1f2522" };
+  const WIDTHS = { "w-fine": 5, "w-med": 10, "w-bold": 20 };   // in plan pixels
+  const st = { plans: [], plan: null, strokes: [], redo: [], color: COLORS["c-red"], width: 10, eraser: false, finger: false,
+               view: { s: 1, x: 0, y: 0 }, natW: 0, natH: 0, db: null, assets: null };
+
+  // ---------- storage helpers (per-viewer drafts only) ----------
+  const draftKey = (id) => "redline-draft:" + id;
+  const loadDraft = (id) => { try { return JSON.parse(localStorage.getItem(draftKey(id)) || "null"); } catch { return null; } };
+  const saveDraft = () => { try { localStorage.setItem(draftKey(st.plan.id), JSON.stringify({ strokes: st.strokes, note: $("note").value })); } catch {} };
+
+  // ---------- toast ----------
+  let toastT;
+  function toast(msg, err) { const t = $("toast"); t.textContent = msg; t.className = "toast" + (err ? " err" : ""); t.hidden = false;
+    clearTimeout(toastT); toastT = setTimeout(() => (t.hidden = true), err ? 6000 : 3500); }
+
+  // ---------- view (pan / zoom) ----------
+  function applyView() { stage.style.transform = `translate(${st.view.x}px, ${st.view.y}px) scale(${st.view.s})`; }
+  function fit() {
+    if (!st.natW) return;
+    const r = wrap.getBoundingClientRect(), pad = 24;
+    const s = Math.min((r.width - pad * 2) / st.natW, (r.height - pad * 2) / st.natH);
+    st.view = { s, x: (r.width - st.natW * s) / 2, y: (r.height - st.natH * s) / 2 };
+    applyView();
+  }
+  function zoomAt(f, cx, cy) {
+    const v = st.view, ns = Math.min(4, Math.max(0.05, v.s * f));
+    v.x = cx - (cx - v.x) * (ns / v.s); v.y = cy - (cy - v.y) * (ns / v.s); v.s = ns; applyView();
+  }
+  const centre = () => { const r = wrap.getBoundingClientRect(); return [r.width / 2, r.height / 2]; };
+
+  // ---------- drawing ----------
+  function toPlan(e) { const r = stage.getBoundingClientRect();
+    return [(e.clientX - r.left) / r.width * st.natW, (e.clientY - r.top) / r.height * st.natH]; }
+  function strokeStyle(s) {
+    ctx.globalCompositeOperation = s.eraser ? "destination-out" : "source-over";
+    ctx.strokeStyle = s.color; ctx.lineCap = "round"; ctx.lineJoin = "round";
+  }
+  function drawSegment(s, i) {
+    const p0 = s.pts[Math.max(0, i - 1)], p1 = s.pts[i];
+    strokeStyle(s);
+    ctx.lineWidth = s.w * (s.eraser ? 2.5 : (0.45 + 1.1 * p1[2]));
+    ctx.beginPath(); ctx.moveTo(p0[0], p0[1]); ctx.lineTo(p1[0], p1[1]); ctx.stroke();
+  }
+  function redraw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const s of st.strokes) for (let i = 0; i < s.pts.length; i++) drawSegment(s, i);
+    ctx.globalCompositeOperation = "source-over";
+    $("undo").disabled = !st.strokes.length; $("redo").disabled = !st.redo.length; $("clear").disabled = !st.strokes.length;
+  }
+
+  const pointers = new Map(); let current = null, pinch = null;
+  function isDrawPointer(e) { return e.pointerType === "pen" || e.pointerType === "mouse" || (e.pointerType === "touch" && st.finger); }
+  wrap.addEventListener("pointerdown", (e) => {
+    if (e.target.closest(".zoom")) return;
+    wrap.setPointerCapture(e.pointerId);
+    if (isDrawPointer(e) && !current && e.button !== 1 && !(e.pointerType === "mouse" && e.button === 2)) {
+      if (e.pointerType === "pen") pointers.forEach((p, id) => p.type === "touch" && pointers.delete(id)); // palm rejection
+      const [x, y] = toPlan(e);
+      current = { id: e.pointerId, color: st.color, w: st.width, eraser: st.eraser, pts: [[x, y, e.pointerType === "pen" ? (e.pressure || .5) : .5]] };
+      st.strokes.push(current); st.redo = []; drawSegment(current, 0);
+      $("hint").hidden = true;
+      return;
+    }
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY, type: e.pointerType });
+    if (pointers.size === 2) { const [a, b] = [...pointers.values()];
+      pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), mx: (a.x + b.x) / 2, my: (a.y + b.y) / 2 }; }
+  });
+  wrap.addEventListener("pointermove", (e) => {
+    if (current && e.pointerId === current.id) {
+      const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+      for (const ce of evs.length ? evs : [e]) { const [x, y] = toPlan(ce);
+        current.pts.push([x, y, e.pointerType === "pen" ? (ce.pressure || .5) : .5]); drawSegment(current, current.pts.length - 1); }
+      return;
+    }
+    const p = pointers.get(e.pointerId); if (!p) return;
+    const r = wrap.getBoundingClientRect();
+    if (pointers.size === 1) { st.view.x += e.clientX - p.x; st.view.y += e.clientY - p.y; applyView(); }
+    p.x = e.clientX; p.y = e.clientY;
+    if (pointers.size === 2 && pinch) { const [a, b] = [...pointers.values()];
+      const d = Math.hypot(a.x - b.x, a.y - b.y), mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+      st.view.x += mx - pinch.mx; st.view.y += my - pinch.my; zoomAt(d / pinch.d, mx - r.left, my - r.top);
+      pinch = { d, mx, my }; }
+  });
+  function endPointer(e) {
+    if (current && e.pointerId === current.id) { current = null; redraw(); saveDraft(); return; }
+    pointers.delete(e.pointerId); if (pointers.size < 2) pinch = null;
+  }
+  wrap.addEventListener("pointerup", endPointer); wrap.addEventListener("pointercancel", endPointer);
+  wrap.addEventListener("wheel", (e) => { e.preventDefault(); const r = wrap.getBoundingClientRect();
+    if (e.ctrlKey || e.metaKey) zoomAt(Math.exp(-e.deltaY / 300), e.clientX - r.left, e.clientY - r.top);
+    else { st.view.x -= e.deltaX; st.view.y -= e.deltaY; applyView(); } }, { passive: false });
+  wrap.addEventListener("contextmenu", (e) => e.preventDefault());
+  addEventListener("resize", () => fit());
+
+  // ---------- tools ----------
+  function press(ids, on) { ids.forEach((id) => $(id).setAttribute("aria-pressed", String(id === on))); }
+  Object.keys(COLORS).forEach((id) => $(id).addEventListener("click", () => {
+    st.color = COLORS[id]; st.eraser = false; press(Object.keys(COLORS), id); $("eraser").setAttribute("aria-pressed", "false"); }));
+  Object.keys(WIDTHS).forEach((id) => $(id).addEventListener("click", () => { st.width = WIDTHS[id]; press(Object.keys(WIDTHS), id); }));
+  $("eraser").addEventListener("click", () => { st.eraser = !st.eraser; $("eraser").setAttribute("aria-pressed", String(st.eraser)); });
+  $("undo").addEventListener("click", () => { if (st.strokes.length) { st.redo.push(st.strokes.pop()); redraw(); saveDraft(); } });
+  $("redo").addEventListener("click", () => { if (st.redo.length) { st.strokes.push(st.redo.pop()); redraw(); saveDraft(); } });
+  let clearArmed = false;
+  $("clear").addEventListener("click", () => {
+    if (!clearArmed) { clearArmed = true; $("clear").textContent = "Tap again to clear"; setTimeout(() => { clearArmed = false; $("clear").textContent = "Clear"; }, 2500); return; }
+    clearArmed = false; $("clear").textContent = "Clear"; st.redo = st.strokes.splice(0).reverse(); redraw(); saveDraft();
+  });
+  $("finger").addEventListener("click", () => { st.finger = !st.finger; $("finger").setAttribute("aria-pressed", String(st.finger));
+    $("hint").textContent = st.finger ? "Finger draws · use the + / − buttons to zoom" : "Draw with Apple Pencil · pan and pinch with your fingers"; $("hint").hidden = false; });
+  $("zin").addEventListener("click", () => zoomAt(1.25, ...centre()));
+  $("zout").addEventListener("click", () => zoomAt(0.8, ...centre()));
+  $("zfit").addEventListener("click", fit);
+  $("note").addEventListener("input", () => { clearTimeout($("note")._t); $("note")._t = setTimeout(saveDraft, 400); });
+
+  // ---------- plans ----------
+  function openPlan(id) {
+    const p = st.plans.find((q) => q.id === id) || st.plans[0]; st.plan = p;
+    try { localStorage.setItem("redline-plan", p.id); } catch {}
+    img.onload = () => {
+      st.natW = img.naturalWidth; st.natH = img.naturalHeight;
+      for (const el of [stage, img, canvas]) { el.style.width = st.natW + "px"; el.style.height = st.natH + "px"; }
+      canvas.width = st.natW; canvas.height = st.natH;
+      const d = loadDraft(p.id); st.strokes = d?.strokes || []; st.redo = []; $("note").value = d?.note || "";
+      redraw(); fit();
+    };
+    img.onerror = () => toast("Couldn't load that plan image.", true);
+    img.src = p.src + "?v=" + (p.v || "");
+  }
+  $("plan").addEventListener("change", (e) => openPlan(e.target.value));
+  fetch("plans.json").then((r) => r.json()).then((m) => {
+    st.plans = m.plans;
+    $("plan").innerHTML = ""; for (const p of st.plans) { const o = document.createElement("option"); o.value = p.id; o.textContent = p.title; $("plan").append(o); }
+    let last = null; try { last = localStorage.getItem("redline-plan"); } catch {}
+    const start = st.plans.some((p) => p.id === last) ? last : st.plans[0].id; $("plan").value = start; openPlan(start);
+  }).catch(() => toast("Couldn't load the plan list.", true));
+
+  // ---------- send to Claude ----------
+  function exportBlob() {
+    const maxW = 2600, k = Math.min(1, maxW / st.natW);
+    const out = document.createElement("canvas"); out.width = Math.round(st.natW * k); out.height = Math.round(st.natH * k);
+    const o = out.getContext("2d"); o.fillStyle = "#fff"; o.fillRect(0, 0, out.width, out.height);
+    o.drawImage(img, 0, 0, out.width, out.height); o.drawImage(canvas, 0, 0, out.width, out.height);
+    return new Promise((res, rej) => out.toBlob((b) => (b ? res(b) : rej(new Error("export failed"))), "image/png"));
+  }
+  let sending = false;
+  $("send").addEventListener("click", async () => {
+    if (sending) return;
+    if (!st.db || !st.assets) { toast("Sending works in the Claude app when you're signed in as the owner of this page.", true); return; }
+    if (!st.strokes.length && !$("note").value.trim()) { toast("Draw something or add a note first."); return; }
+    sending = true; $("send").disabled = true; $("send").textContent = "Sending…";
+    try {
+      const blob = await exportBlob();
+      const up = await st.assets.upload(blob, { type: "image/png" });
+      await st.db.collection("markups").add({ plan: st.plan.id, planTitle: st.plan.title, note: $("note").value.trim(),
+        asset: up.id, createdAt: new Date().toISOString(), status: "new" });
+      st.strokes = []; st.redo = []; $("note").value = ""; redraw(); saveDraft();
+      toast("Sent. Tell Claude in the chat to check your redlines.");
+    } catch (err) {
+      toast("Couldn't send (" + (err?.code || "error") + "). Your drawing is still here; try again.", true);
+    } finally { sending = false; $("send").disabled = false; $("send").textContent = "Send to Claude"; }
+  });
+
+  // ---------- sent list ----------
+  $("history").addEventListener("click", () => { $("drawer").hidden = false; });
+  $("closeDrawer").addEventListener("click", () => { $("drawer").hidden = true; });
+  function renderList(docs) {
+    $("count").textContent = docs.length ? String(docs.length) : "";
+    const list = $("list"); list.innerHTML = "";
+    if (!docs.length) { const p = document.createElement("p"); p.className = "empty";
+      p.textContent = "Nothing sent yet. Mark up a plan and tap Send to Claude, then tell Claude in the chat to check your redlines."; list.append(p); return; }
+    for (const d of docs) { const m = d.data();
+      const row = document.createElement("div"); row.className = "item";
+      const im = document.createElement("img"); im.alt = "Marked-up " + (m.planTitle || "plan"); im.loading = "lazy"; im.src = "/_blob/" + m.asset;
+      const meta = document.createElement("div"); meta.className = "meta";
+      const t = document.createElement("div"); t.className = "t"; t.textContent = m.planTitle || m.plan || "Plan";
+      const n = document.createElement("div"); n.className = "n"; n.textContent = m.note || "No note";
+      const tm = document.createElement("time"); tm.dateTime = m.createdAt || ""; tm.textContent = m.createdAt ? new Date(m.createdAt).toLocaleString() : "";
+      const pill = document.createElement("span"); const applied = m.status === "applied";
+      pill.className = "pill " + (applied ? "applied" : "new"); pill.textContent = applied ? "Applied" : "Waiting for Claude";
+      meta.append(t, n, tm, pill); row.append(im, meta); list.append(row); }
+  }
+
+  // ---------- capabilities ----------
+  (async () => {
+    const [db, assets] = await Promise.all([window.claude?.use?.("db") ?? null, window.claude?.use?.("assets") ?? null]);
+    st.db = db; st.assets = assets;
+    if (!db || !assets) { $("send").title = "Sending needs the Claude app, signed in as this page's owner"; }
+    if (!db) return;
+    db.collection("markups").orderBy("createdAt", "desc").limit(40).onSnapshot((snap) => renderList(snap.docs), () => {});
+  })();
+})();
+</script>

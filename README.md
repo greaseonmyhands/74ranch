@@ -2,6 +2,14 @@
 
 Notes, scans and plans for the house.
 
+## Redlines (Apple Pencil markup)
+
+[74 Ranch Redlines](https://claude.ai/artifact/Wmor8Ry9iVfsunzUHbmJZS) is a private markup page:
+pick a plan, draw on it with Apple Pencil (fingers pan and pinch-zoom; "Finger draws" switches that),
+add a note, and tap **Send to Claude**. Each send is saved with the artifact (the marked-up image plus
+the note) for Claude to read and apply. Source: `tools/redline/` (`plans.json` lists the plans shown;
+`files.json` maps them to `floorplans/*.png` for republishing).
+
 ## Keegan's Plans (locked)
 
 [`floorplans/keegans-plans.png`](floorplans/keegans-plans.png) · [SVG](floorplans/keegans-plans.svg):
