@@ -82,8 +82,10 @@ def south_bath(pl, xp, vanity_in):
     opening(pl, "32in doorway between the vanities into the dressing room", [cx - 16 * IN, zw], [cx + 16 * IN, zw])
     wz = (zc + 0.05 + SS) / 2
     fx(pl, "WC", [iW, wz - 10 * IN, iW + 28 * IN, wz + 10 * IN], shape="toilet", front="e")
-    fx(pl, "Shower\n60\" × 36\"", [E - 60 * IN, SS - 36 * IN, E, SS], hatch=".")
-    fx(pl, "Linen", [wc_e + 0.1, SS - 24 * IN, wc_e + 0.1 + 24 * IN, SS])
+    # shower turned to run along the east wall (36" wide, 60" long), tub along the south wall beside it
+    fx(pl, "Shower\n36\" × 60\"", [E - 36 * IN, SS - 60 * IN, E, SS], hatch=".")
+    tub_x0 = wc_e + 0.05 + 2 * IN
+    fx(pl, "Tub 60\" × 32\"", [tub_x0, SS - 32 * IN, tub_x0 + 60 * IN, SS], shape="tub")
     fx(pl, f"His vanity {vanity_in}\"", [cx - 17.5 * IN - vanity_in * IN, bN, cx - 17.5 * IN, vz])
     fx(pl, f"Her vanity {vanity_in}\"", [cx + 17.5 * IN, bN, cx + 17.5 * IN + vanity_in * IN, vz])
     arm, back = 22 * IN, 16 * IN
@@ -101,6 +103,9 @@ def south_bath(pl, xp, vanity_in):
     report[pl["title"]] = {"suite inside": f"{f(E - iW)} wide", "aisle": f(zc - 0.05 - vz),
         "dressing": f"{f(E - iW)}x{f(dS - N)}", "island aisles (front/back)": (f(dS - (icz + 10 * IN)), f(icz - 10 * IN - (N + back))),
         "W/D front to island": f((cx - 24 * IN) - (iW + 32 * IN)),
+        "tub to shower gap": f((E - 36 * IN) - (wc_e + 0.05 + 2 * IN + 60 * IN)),
+        "shower opening above the tub (west face)": f((SS - 32 * IN) - (SS - 60 * IN)),
+        "tub front to vanities": f((SS - 32 * IN) - vz),
         "west hanging length": f((dS - 28 * IN) - N), "east hanging length": f(dS - N), "island to east hanging": f((E - arm) - (cx + 24 * IN))}
 
 def bed_north(pl, xp, door_w=-0.591):

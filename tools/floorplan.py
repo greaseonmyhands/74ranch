@@ -732,6 +732,13 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
                 (sz, ez) = (zb - 0.15, za + 0.15) if up == "n" else (za + 0.15, zb - 0.15)
                 ax.annotate("", xy=(xc, ez), xytext=(xc, sz), zorder=3.6,
                             arrowprops=dict(arrowstyle="-|>", color="#555", lw=1.1))
+        if fx.get("shape") == "tub":  # bathtub: rounded basin inset inside the rim
+            from matplotlib.patches import FancyBboxPatch
+            xa, xb, za, zb = min(x0, x1), max(x0, x1), min(z0, z1), max(z0, z1)
+            ins = 3 * IN
+            ax.add_patch(FancyBboxPatch((xa + ins, za + ins), (xb - xa) - 2 * ins, (zb - za) - 2 * ins,
+                                        boxstyle=f"round,pad=0,rounding_size={min(xb - xa, zb - za) * 0.3}",
+                                        fc="white", ec="#777", lw=0.8, zorder=3.5))
         if fx.get("shape") == "closet":  # reach-in/hanging closet: dashed rod down the middle
             xa, xb, za, zb = min(x0, x1), max(x0, x1), min(z0, z1), max(z0, z1)
             if (xb - xa) >= (zb - za):
