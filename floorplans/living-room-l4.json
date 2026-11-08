@@ -3547,7 +3547,7 @@
     },
     {
       "name": "Sectional",
-      "width_ft_in": "14'4\"",
+      "width_ft_in": "13'5\"",
       "depth_ft_in": "3'2\""
     },
     {
@@ -3557,18 +3557,23 @@
     },
     {
       "name": "Wing",
-      "width_ft_in": "6'6\"",
+      "width_ft_in": "7'0\"",
       "depth_ft_in": "3'2\""
     },
     {
       "name": "Coffee table",
       "width_ft_in": "4'0\"",
-      "depth_ft_in": "2'2\""
+      "depth_ft_in": "1'6\""
     },
     {
       "name": "Coffee table",
       "width_ft_in": "4'0\"",
-      "depth_ft_in": "2'2\""
+      "depth_ft_in": "1'6\""
+    },
+    {
+      "name": "Swivel",
+      "width_ft_in": "2'8\"",
+      "depth_ft_in": "2'8\""
     }
   ],
   "openings": [

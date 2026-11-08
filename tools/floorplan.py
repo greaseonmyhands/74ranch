@@ -437,6 +437,8 @@ def process_plan(plan_path, outdir):
     swings.update(ps)
     for k in ("rooms", "add_floor", "fixtures", "labels", "room_dividers"):
         draw[k] += plan.get(k, [])
+    if plan.get("walkways"):
+        draw["walkways"] = plan["walkways"]
     return render(nodes, swings, added, draw, Path(plan_path).stem, outdir, source=str(plan_path))
 
 
@@ -694,6 +696,15 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
     for hull, kind_ in uppers:
         for hp in polys_of(hull):
             ax.add_patch(poly_patch(hp, fc="none", ec="#777", lw=0.7, ls=(0, (3, 2)), zorder=2.5))
+
+    # Walkways: {"path": [[x, z], ...], "width_in": 36} drawn as a pale band under the furniture
+    for wk in edits.get("walkways", []):
+        band = LineString(wk["path"]).buffer(wk.get("width_in", 36) * 0.0254 / 2, cap_style=2, join_style=1)
+        for q in polys_of(band):
+            ax.add_patch(poly_patch(q, fc="#cfe3f2", ec="#7fa9c9", lw=0.6, ls=(0, (2, 2)), alpha=0.75, zorder=1.55))
+        if wk.get("name"):
+            ax.text(*wk.get("label_at", wk["path"][0]), wk["name"], ha="center", va="center", fontsize=6,
+                    color="#3c6e91", zorder=1.7, rotation=wk.get("text_rotation", 0))
 
     # Planned fixtures (shower, toilet, vanity, ...): labelled rectangles from the edits
     IN = 0.0254

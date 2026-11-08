@@ -29,6 +29,14 @@ ROOM = Polygon([(-8.26, 1.031), (-3.28, 1.031), (-3.28, 0.824), (-1.96, 0.824), 
 KEEP_CLEAR = {"entry landing": box(-8.26, 2.79, -7.36, 3.93),        # 3 ft in from the entry opening
               "Bedroom 2 door": box(-0.69, 1.83, 0.073, 2.85),      # 30" in front of the door
               "hall mouth": box(-3.18, 0.824, -1.96, 1.74)}
+# 36" walkways to the Bedroom 2 door (east wall, z ~1.95..2.81), drawn on the plan and kept clear
+WALKS = [{"name": "walkway to\nBedroom 2", "path": [[-8.26, 3.36], [-7.45, 3.36], [-6.85, 2.3], [0.073, 2.3]],
+          "width_in": 36, "label_at": [-1.0, 2.3]},
+         {"path": [[-2.57, 0.824], [-2.57, 2.3]], "width_in": 36}]
+from shapely.geometry import LineString
+for _w in WALKS:
+    KEEP_CLEAR["walkway"] = KEEP_CLEAR.get("walkway", Polygon()).union(
+        LineString(_w["path"]).buffer(_w["width_in"] * IN / 2, cap_style=2, join_style=1))
 
 
 def new(title):
@@ -39,6 +47,7 @@ def new(title):
             r["label_at"] = [-5.9, 1.75]; r["compact"] = True
     pl["fixtures"].append(dict(name="TV 85\"", rect=r4([TVX - TVW / 2, WALL_N, TVX + TVW / 2, WALL_N + 3 * IN]), shape="tv"))
     pl["_pieces"] = []
+    pl["walkways"] = WALKS
     return pl
 
 
@@ -117,7 +126,7 @@ def l3():
     e0, e1 = JOG + 0.05, -0.30                    # east: 132" sofa, 4-5 seats
     piece(pl, "Sofa 132\"", (e0 + e1) / 2, S_E - D / 2, e1 - e0, D, seats=4, shape="sofa", back="s")
     piece(pl, "Coffee table", -5.95, S_W - D - 18 * IN - 13 * IN, 54 * IN, 26 * IN)
-    piece(pl, "Coffee table", -2.45, S_E - D - 18 * IN - 12 * IN, 42 * IN, 24 * IN)
+    piece(pl, "Coffee table", -2.45, S_E - D - 15 * IN - 9 * IN, 42 * IN, 18 * IN)
     report(pl, "L3")
     json.dump(pl, open('plans/living-room-l3.json', 'w'), indent=2)
 
@@ -125,13 +134,14 @@ def l3():
 def l4():
     """Long sectional across the room + a wing turned toward the TV in the old 1A corner."""
     pl = new("Living Room – L4 (wide sectional + angled wing, seats 10)")
-    x0, x1 = -7.18, -2.80                        # 172" run, 6 seats
+    x0, x1 = -6.90, -2.80                        # 161" run, 6 seats
     front = 4.60 - D
-    piece(pl, "Sectional", (x0 + x1) / 2, front + D / 2, x1 - x0, D, seats=7, shape="sofa", back="s", arms=False)
+    piece(pl, "Sectional", (x0 + x1) / 2, front + D / 2, x1 - x0, D, seats=6, shape="sofa", back="s", arms=False)
     piece(pl, "", x0 - 3 * IN, front + D / 2, 6 * IN, D, shape="sofa", back="s", arms=False)   # west arm
-    wing(pl, "Wing", (x1, front), "e", 78 * IN, -40, seats=3, shape="sofa", back="s", arms=False)
-    piece(pl, "Coffee table", -6.0, front - 18 * IN - 13 * IN, 48 * IN, 26 * IN)
-    piece(pl, "Coffee table", -4.1, front - 18 * IN - 13 * IN, 48 * IN, 26 * IN)
+    wing(pl, "Wing", (x1, front), "e", 84 * IN, -23, seats=3, shape="sofa", back="s", arms=False)
+    piece(pl, "Coffee table", -5.75, front - 15 * IN - 9 * IN, 48 * IN, 18 * IN)
+    piece(pl, "Coffee table", -3.95, front - 15 * IN - 9 * IN, 48 * IN, 18 * IN)
+    piece(pl, "Swivel", -7.6, 4.7, 32 * IN, 32 * IN, angle=40, seats=1, shape="chair", back="s")
     report(pl, "L4")
     json.dump(pl, open('plans/living-room-l4.json', 'w'), indent=2)
 
@@ -157,26 +167,10 @@ def l5():
         piece(pl, "", cx, 5.516 - 0.03 - RD / 2, RW2, RD, seats=1, shape="chair", back="s")
     pl["labels"] = pl.get("labels", []) + [{"at": [-7.55, 4.18], "text": "7\" riser"},
                                            {"at": [TVX, 2.6], "text": "footrests out"}]
-    for cx, cz in [(-1.55, 3.0), (-0.75, 3.85)]:
+    for cx, cz in [(-1.95, 3.98), (-0.72, 3.98)]:
         piece(pl, "Swivel", cx, cz, 32 * IN, 32 * IN, angle=-45, seats=1, shape="chair", back="s")
     report(pl, "L5")
     json.dump(pl, open('plans/living-room-l5.json', 'w'), indent=2)
 
 
-def l6():
-    """Conversation: two 108" sofas facing each other off the TV wall, two swivel chairs closing the far end."""
-    pl = new("Living Room – L6 (facing sofas + swivels, seats 10)")
-    for r in pl["rooms"]:
-        if r["name"] == "Living Room": r["label_at"] = [-7.4, 4.85]
-    L = 108 * IN; zc = 1.85 + L / 2
-    gapx = 100 * IN                                   # front to front
-    piece(pl, "Sofa 108\"", TVX - gapx / 2 - D / 2, zc, D, L, seats=4, shape="sofa", back="w")
-    piece(pl, "Sofa 108\"", TVX + gapx / 2 + D / 2, zc, D, L, seats=4, shape="sofa", back="e")
-    for dx in (-0.47, 0.47):
-        piece(pl, "Swivel", TVX + dx, 4.15, 32 * IN, 32 * IN, seats=1, shape="chair", back="s")
-    piece(pl, "Coffee table", TVX, 2.95, 30 * IN, 60 * IN)
-    report(pl, "L6")
-    json.dump(pl, open('plans/living-room-l6.json', 'w'), indent=2)
-
-
-l3(); l4(); l5(); l6()
+l3(); l4(); l5()
