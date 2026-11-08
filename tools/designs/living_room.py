@@ -136,4 +136,47 @@ def l4():
     json.dump(pl, open('plans/living-room-l4.json', 'w'), indent=2)
 
 
-l3(); l4()
+
+def l5():
+    """Theater: 4 recliners in front, 4 wall-hugger recliners on a 7" riser along the front window, 2 swivels in 1A."""
+    pl = new("Living Room – L5 (theater: two rows of recliners, seats 10)")
+    RW, RD = 36 * IN, 40 * IN
+    z0 = 2.85
+    for k in range(4):
+        cx = TVX + (k - 1.5) * RW
+        piece(pl, "", cx, z0 + RD / 2, RW, RD, seats=1, shape="chair", back="s")
+    pl["fixtures"].insert(-4, dict(name="", rect=r4([TVX - 2 * RW - 0.02, z0 - 20 * IN, TVX + 2 * RW + 0.02, z0]),
+                                   shape="rug"))                     # footrests out
+    RW2 = 40 * IN
+    rx0, rx1 = -8.22, -3.77
+    riser = [rx0, 4.32, rx1, 5.516]
+    pl["fixtures"].append(dict(name="", rect=r4(riser), shape="rug"))
+    n = 4; gap = ((rx1 - rx0) - n * RW2) / (n + 1)
+    for k in range(n):
+        cx = rx0 + gap + RW2 / 2 + k * (RW2 + gap)
+        piece(pl, "", cx, 5.516 - 0.03 - RD / 2, RW2, RD, seats=1, shape="chair", back="s")
+    pl["labels"] = pl.get("labels", []) + [{"at": [-7.55, 4.18], "text": "7\" riser"},
+                                           {"at": [TVX, 2.6], "text": "footrests out"}]
+    for cx, cz in [(-1.55, 3.0), (-0.75, 3.85)]:
+        piece(pl, "Swivel", cx, cz, 32 * IN, 32 * IN, angle=-45, seats=1, shape="chair", back="s")
+    report(pl, "L5")
+    json.dump(pl, open('plans/living-room-l5.json', 'w'), indent=2)
+
+
+def l6():
+    """Conversation: two 108" sofas facing each other off the TV wall, two swivel chairs closing the far end."""
+    pl = new("Living Room – L6 (facing sofas + swivels, seats 10)")
+    for r in pl["rooms"]:
+        if r["name"] == "Living Room": r["label_at"] = [-7.4, 4.85]
+    L = 108 * IN; zc = 1.85 + L / 2
+    gapx = 100 * IN                                   # front to front
+    piece(pl, "Sofa 108\"", TVX - gapx / 2 - D / 2, zc, D, L, seats=4, shape="sofa", back="w")
+    piece(pl, "Sofa 108\"", TVX + gapx / 2 + D / 2, zc, D, L, seats=4, shape="sofa", back="e")
+    for dx in (-0.47, 0.47):
+        piece(pl, "Swivel", TVX + dx, 4.15, 32 * IN, 32 * IN, seats=1, shape="chair", back="s")
+    piece(pl, "Coffee table", TVX, 2.95, 30 * IN, 60 * IN)
+    report(pl, "L6")
+    json.dump(pl, open('plans/living-room-l6.json', 'w'), indent=2)
+
+
+l3(); l4(); l5(); l6()

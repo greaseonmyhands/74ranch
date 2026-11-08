@@ -34,7 +34,7 @@ wall line as the bathroom door (centered on the section above the bathroom). Liv
 below the bathroom's south wall. Also includes the Fireplace box (with matched back-to-back
 fireplaces), Closet 3 and the Utility Closet from the working main floor.
 
-## Living Room – game-day layouts (L3, L4)
+## Living Room – game-day layouts (L3–L6)
 
 Built on Primary Suite P3 (`tools/designs/living_room.py` → `plans/living-room-l{3,4}.json`).
 An 85" TV hangs on the Living Room side of the Utility Closet wall, shifted 8" east so it clears the
@@ -50,6 +50,9 @@ Side-by-side: `floorplans/living-room-options.png`.
 The script checks every piece:
 - stays inside the room and is at least 4" from the other pieces;
 - keeps the Entry landing (3 ft), the hall mouth and the area in front of the Bedroom 2 door (30") clear.
+
+**L5 – theater rows** has 4 recliners about 8–9 ft from the TV. Behind them, 4 wall-hugger recliners sit on a 7" riser along the 15' front window. Two swivel chairs angle in from the old 1A corner.
+**L6 – facing sofas** puts two 108" sofas 100" apart, facing each other off the TV wall. Two swivel chairs close the far end. Comparison sheet: `floorplans/living-room-options-2.png`.
 
 Furniture can be turned with `"angle"` (degrees clockwise on the plan).
 
