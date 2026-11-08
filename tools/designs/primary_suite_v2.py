@@ -69,7 +69,7 @@ def north_bath(pl, xp, wc_w, vanity_in, laundry, linen):
     report[pl["title"]] = {"suite inside": f"{f(E - iW)} wide", "aisle": f(vz - (zc + 0.05)),
         "dressing": f"{f(E - iW)}x{f(SS - dN)}", "island aisles (front/back)": (f(icz - isl[1] / 2 * IN - dN), f(SS - back - (icz + isl[1] / 2 * IN)))}
 
-def south_bath(pl, xp, vanity_in):
+def south_bath(pl, xp, vanity_in, tub_in=(66, 36), shower_in=(60, 36), island_in=(48, 20)):
     """Dressing room north (a clean rectangle); bath south, entered from the entry strip.
     Along the bath's south wall, left to right: tub, shower, toilet (open, facing north)."""
     iW = xp + 0.05; cx = (iW + E) / 2
@@ -78,12 +78,12 @@ def south_bath(pl, xp, vanity_in):
     wall(pl, "Dressing / bath wall", [xp, zw], [3.708, zw])
     door(pl, "30in door, entry to bath", [xp, vz + 0.05], [xp, vz + 0.05 + 30 * IN], [xp - 1, vz + 0.4])
     opening(pl, "32in doorway between the vanities into the dressing room", [cx - 16 * IN, zw], [cx + 16 * IN, zw])
-    tub = [iW, SS - 36 * IN, iW + 66 * IN, SS]          # 66" x 36" soaking tub
-    sh = [tub[2] + 2 * IN, SS - 36 * IN, tub[2] + 2 * IN + 60 * IN, SS]
+    tub = [iW, SS - tub_in[1] * IN, iW + tub_in[0] * IN, SS]
+    sh = [tub[2] + 2 * IN, SS - shower_in[1] * IN, tub[2] + 2 * IN + shower_in[0] * IN, SS]
     wc_cx = E - 18 * IN
     wc = [wc_cx - 10 * IN, SS - 28 * IN, wc_cx + 10 * IN, SS]
-    fx(pl, "Tub 66\" × 36\"", tub, shape="tub")
-    fx(pl, "Shower\n60\" × 36\"", sh, hatch=".")
+    fx(pl, f"Tub {tub_in[0]}\" × {tub_in[1]}\"", tub, shape="tub")
+    fx(pl, f"Shower\n{shower_in[0]}\" × {shower_in[1]}\"", sh, hatch=".")
     fx(pl, "WC", wc, shape="toilet", front="n")
     fx(pl, f"His vanity {vanity_in}\"", [cx - 17.5 * IN - vanity_in * IN, bN, cx - 17.5 * IN, vz])
     fx(pl, f"Her vanity {vanity_in}\"", [cx + 17.5 * IN, bN, cx + 17.5 * IN + vanity_in * IN, vz])
@@ -95,14 +95,16 @@ def south_bath(pl, xp, vanity_in):
     fx(pl, "Shelves / drawers", [iW + arm, N, E - arm, N + back], shape="closet")
     fx(pl, "Hanging", [E - arm, N, E, dS], shape="closet", text_rotation=90)
     icz = (N + back + dS) / 2
-    fx(pl, "Island 48\" × 20\"", [cx - 24 * IN, icz - 10 * IN, cx + 24 * IN, icz + 10 * IN])
+    iw, idp = island_in[0] / 2 * IN, island_in[1] / 2 * IN
+    fx(pl, f"Island {island_in[0]}\" × {island_in[1]}\"", [cx - iw, icz - idp, cx + iw, icz + idp])
     room(pl, "Primary Bath", [cx, (vz + sh[1]) / 2], [cx, (vz + sh[1]) / 2], 7.5)
-    room(pl, "Dressing", [cx, dS - 0.3], [cx, icz + 10 * IN + 0.22], 7)
+    room(pl, "Dressing", [cx, dS - 0.3], [cx, icz + idp + 0.22], 7)
     report[pl["title"]] = {"suite inside": f"{f(E - iW)} wide", "dressing": f"{f(E - iW)}x{f(dS - N)}",
         "aisle vanities->shower/tub": (f(sh[1] - vz), f(tub[1] - vz)),
         "toilet centerline to shower / east wall": (f(wc_cx - sh[2]), f(E - wc_cx)), "toilet front to her vanity": f(wc[1] - vz),
         "bath door vs tub (door bottom, tub top)": (round(vz + 0.05 + 30 * IN, 3), round(tub[1], 3)),
-        "island aisles (front/back)": (f(dS - (icz + 10 * IN)), f(icz - 10 * IN - (N + back)))}
+        "island aisles (front/back)": (f(dS - (icz + idp)), f(icz - idp - (N + back))),
+        "W/D front to island": f((cx - iw) - (iW + 32 * IN)), "island to east hanging": f((E - arm) - (cx + iw))}
 
 def bed_north(pl, xp, door_w=-0.591):
     bcx = (W + door_w) / 2
@@ -119,6 +121,9 @@ pl = new("Primary Suite – P1", True);  north_bath(pl, xp1, 54, 40, "stacked", 
 json.dump(pl, open('plans/primary-suite-p1.json', 'w'), indent=2)
 pl = new("Primary Suite – P2", False); north_bath(pl, xp2, 60, 48, "side", True); bed_west(pl, xp2)
 json.dump(pl, open('plans/primary-suite-p2.json', 'w'), indent=2)
-pl = new("Primary Suite – P3", False); south_bath(pl, xp2, 48); bed_west(pl, xp2)
+xp3 = W - 0.05 + (76 + 2 * 30) * IN + 0.05    # bed on the north wall with 30" each side
+pl = new("Primary Suite – P3", False); south_bath(pl, xp3, 48, tub_in=(66, 36), shower_in=(48, 36), island_in=(40, 20))
+bed_north(pl, xp3, door_w=xp3 - 0.05)
+pl["rooms"][-1]["label_at"] = [round((W + xp3 - 0.05) / 2, 4), -1.65]
 json.dump(pl, open('plans/primary-suite-p3.json', 'w'), indent=2)
 for k, v in report.items(): print(k, v)

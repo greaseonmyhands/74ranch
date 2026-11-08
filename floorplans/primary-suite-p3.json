@@ -97,12 +97,12 @@
     },
     {
       "name": "Dressing",
-      "width_m": 4.404,
+      "width_m": 3.998,
       "depth_m": 2.17,
-      "width_ft_in": "14'5\"",
+      "width_ft_in": "13'1\"",
       "depth_ft_in": "7'1\"",
-      "area_m2": 9.55,
-      "area_sqft": 102.8,
+      "area_m2": 8.67,
+      "area_sqft": 93.4,
       "rectangular": true
     },
     {
@@ -197,22 +197,22 @@
     },
     {
       "name": "Primary Bath",
-      "width_m": 4.404,
+      "width_m": 3.998,
       "depth_m": 2.462,
-      "width_ft_in": "14'5\"",
+      "width_ft_in": "13'1\"",
       "depth_ft_in": "8'1\"",
-      "area_m2": 10.84,
-      "area_sqft": 116.7,
+      "area_m2": 9.84,
+      "area_sqft": 105.9,
       "rectangular": true
     },
     {
       "name": "Primary Bedroom",
-      "width_m": 3.048,
+      "width_m": 3.455,
       "depth_m": 4.632,
-      "width_ft_in": "10'0\"",
+      "width_ft_in": "11'4\"",
       "depth_ft_in": "15'2\"",
-      "area_m2": 12.1,
-      "area_sqft": 130.2,
+      "area_m2": 13.98,
+      "area_sqft": 150.5,
       "rectangular": false
     },
     {
@@ -342,8 +342,8 @@
     {
       "name": "Wall_plan_nolabel_27",
       "added": true,
-      "length_m": 4.404,
-      "length_ft_in": "14'5\"",
+      "length_m": 3.998,
+      "length_ft_in": "13'1\"",
       "height_m": 2.5
     },
     {
@@ -1100,8 +1100,8 @@
       "depth_ft_in": "3'0\""
     },
     {
-      "name": "Shower\n60\" \u00d7 36\"",
-      "width_ft_in": "5'0\"",
+      "name": "Shower\n48\" \u00d7 36\"",
+      "width_ft_in": "4'0\"",
       "depth_ft_in": "3'0\""
     },
     {
@@ -1131,7 +1131,7 @@
     },
     {
       "name": "Shelves / drawers",
-      "width_ft_in": "10'5\"",
+      "width_ft_in": "9'1\"",
       "depth_ft_in": "1'4\""
     },
     {
@@ -1140,14 +1140,14 @@
       "depth_ft_in": "6'9\""
     },
     {
-      "name": "Island 48\" \u00d7 20\"",
-      "width_ft_in": "4'0\"",
+      "name": "Island 40\" \u00d7 20\"",
+      "width_ft_in": "3'4\"",
       "depth_ft_in": "1'8\""
     },
     {
       "name": "King bed\n76\" \u00d7 80\"",
-      "width_ft_in": "6'8\"",
-      "depth_ft_in": "6'4\""
+      "width_ft_in": "6'4\"",
+      "depth_ft_in": "6'8\""
     }
   ],
   "openings": [

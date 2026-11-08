@@ -47,7 +47,7 @@ dressing room with an island; the strip becomes an entry area inside the suite d
 |---|---|---|---|---|---|---|---|
 | P1 | [PNG](floorplans/primary-suite-p1.png) | North wall | Keeps the exterior door; bath above, dressing below | 190 sq ft | 69 + 16, 40" vanities | 75 sq ft, 30" × 18" island | Stacked W/D |
 | P2 | [PNG](floorplans/primary-suite-p2.png) | West wall | Exterior door removed; bath above, dressing below | 130 sq ft | 99 + 18, 48" vanities, linen | 103 sq ft, 48" × 20" island | Side-by-side W/D |
-| P3 | [PNG](floorplans/primary-suite-p3.png) | West wall | Exterior door removed; dressing above, bath below (entered from the entry area, gets the east window) | 130 sq ft | ~117, 48" vanities; along the south wall: 66" × 36" tub, 60" × 36" shower, toilet (no WC room) | 103 sq ft, 48" × 20" island | Stacked W/D at the bottom of the dressing room's west wall, by the doorway; hanging along the rest of the west wall and the whole east wall |
+| P3 | [PNG](floorplans/primary-suite-p3.png) | North wall (30" each side) | Exterior door removed; dressing above, bath below (entered from the entry area, gets the east window) | 150 sq ft | 106, 48" vanities; along the south wall: 66" × 36" tub, 48" × 36" shower, toilet (no WC room) | 93 sq ft, 40" × 20" island | Stacked W/D at the bottom of the dressing room's west wall, by the doorway; hanging along the rest of the west wall and the whole east wall |
 
 Island aisles are ~23" front and back in all three; the bath aisle is ~32".
 
