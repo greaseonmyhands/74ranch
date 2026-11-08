@@ -385,30 +385,6 @@
         -2.5312
       ],
       "show_length": false
-    },
-    {
-      "label": "WC room north wall",
-      "from": [
-        -0.696,
-        -1.0834
-      ],
-      "to": [
-        0.928,
-        -1.0834
-      ],
-      "show_length": false
-    },
-    {
-      "label": "WC room east wall",
-      "from": [
-        0.928,
-        -1.0834
-      ],
-      "to": [
-        0.928,
-        -0.069
-      ],
-      "show_length": false
     }
   ],
   "add_floor": [
@@ -851,27 +827,14 @@
     {
       "at": [
         1.506,
-        -1.5156
+        -1.4906
       ],
       "name": "Primary Bath",
       "compact": true,
       "label_size": 7.5,
       "label_at": [
-        1.756,
-        -1.5406
-      ]
-    },
-    {
-      "at": [
-        0.141,
-        -0.5762
-      ],
-      "name": "WC",
-      "compact": true,
-      "label_size": 6.5,
-      "label_at": [
-        0.4716,
-        -0.5762
+        1.506,
+        -1.4906
       ]
     },
     {
@@ -926,35 +889,35 @@
       ]
     },
     {
-      "name": "WC",
+      "name": "Tub 60\" \u00d7 32\"",
       "rect": [
         -0.646,
-        -0.8302,
-        0.0652,
-        -0.3222
+        -0.9318,
+        0.878,
+        -0.119
       ],
-      "shape": "toilet",
-      "front": "e"
+      "shape": "tub"
     },
     {
-      "name": "Shower\n36\" \u00d7 60\"",
+      "name": "Shower\n60\" \u00d7 36\"",
       "rect": [
-        2.7436,
-        -1.643,
-        3.658,
+        0.9288,
+        -1.0334,
+        2.4528,
         -0.119
       ],
       "hatch": "."
     },
     {
-      "name": "Tub 60\" \u00d7 32\"",
+      "name": "WC",
       "rect": [
-        1.0288,
-        -0.9318,
-        2.5528,
+        2.9468,
+        -0.8302,
+        3.4548,
         -0.119
       ],
-      "shape": "tub"
+      "shape": "toilet",
+      "front": "n"
     },
     {
       "name": "His vanity 48\"",
@@ -1166,7 +1129,7 @@
       ]
     },
     {
-      "label": "30in door, entry to bath aisle",
+      "label": "30in door, entry to bath",
       "from": [
         -0.696,
         -1.8978
@@ -1178,21 +1141,6 @@
       "swing_toward": [
         -1.696,
         -1.5478
-      ]
-    },
-    {
-      "label": "24in WC room door",
-      "from": [
-        0.2176,
-        -1.0834
-      ],
-      "to": [
-        0.8272,
-        -1.0834
-      ],
-      "swing_toward": [
-        0.428,
-        -0.0834
       ]
     }
   ]

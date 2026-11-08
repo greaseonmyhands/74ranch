@@ -201,9 +201,9 @@
       "depth_m": 2.462,
       "width_ft_in": "14'5\"",
       "depth_ft_in": "8'1\"",
-      "area_m2": 9.2,
-      "area_sqft": 99.0,
-      "rectangular": false
+      "area_m2": 10.84,
+      "area_sqft": 116.7,
+      "rectangular": true
     },
     {
       "name": "Primary Bedroom",
@@ -223,16 +223,6 @@
       "depth_ft_in": "2'9\"",
       "area_m2": 1.77,
       "area_sqft": 19.1,
-      "rectangular": true
-    },
-    {
-      "name": "WC",
-      "width_m": 1.624,
-      "depth_m": 1.014,
-      "width_ft_in": "5'4\"",
-      "depth_ft_in": "3'4\"",
-      "area_m2": 1.65,
-      "area_sqft": 17.7,
       "rectangular": true
     }
   ],
@@ -469,13 +459,6 @@
       "height_m": 2.5
     },
     {
-      "name": "Wall_plan_nolabel_28",
-      "added": true,
-      "length_m": 1.624,
-      "length_ft_in": "5'4\"",
-      "height_m": 2.5
-    },
-    {
       "name": "Wall_added_0~4",
       "added": true,
       "length_m": 1.584,
@@ -508,13 +491,6 @@
       "added": true,
       "length_m": 1.27,
       "length_ft_in": "4'2\"",
-      "height_m": 2.5
-    },
-    {
-      "name": "Wall_plan_nolabel_29",
-      "added": true,
-      "length_m": 1.014,
-      "length_ft_in": "3'4\"",
       "height_m": 2.5
     },
     {
@@ -733,13 +709,6 @@
       "name": "Door_plan_6",
       "width_m": 0.762,
       "width_ft_in": "2'6\"",
-      "height_m": 2.03,
-      "height_ft_in": "6'8\""
-    },
-    {
-      "name": "Door_plan_7",
-      "width_m": 0.61,
-      "width_ft_in": "2'0\"",
       "height_m": 2.03,
       "height_ft_in": "6'8\""
     }
@@ -1126,19 +1095,19 @@
       "depth_ft_in": "2'9\""
     },
     {
-      "name": "WC",
-      "width_ft_in": "2'4\"",
-      "depth_ft_in": "1'8\""
-    },
-    {
-      "name": "Shower\n36\" \u00d7 60\"",
-      "width_ft_in": "3'0\"",
-      "depth_ft_in": "5'0\""
-    },
-    {
       "name": "Tub 60\" \u00d7 32\"",
       "width_ft_in": "5'0\"",
       "depth_ft_in": "2'8\""
+    },
+    {
+      "name": "Shower\n60\" \u00d7 36\"",
+      "width_ft_in": "5'0\"",
+      "depth_ft_in": "3'0\""
+    },
+    {
+      "name": "WC",
+      "width_ft_in": "1'8\"",
+      "depth_ft_in": "2'4\""
     },
     {
       "name": "His vanity 48\"",
