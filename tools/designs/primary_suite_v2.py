@@ -78,11 +78,11 @@ def south_bath(pl, xp, vanity_in):
     wall(pl, "Dressing / bath wall", [xp, zw], [3.708, zw])
     door(pl, "30in door, entry to bath", [xp, vz + 0.05], [xp, vz + 0.05 + 30 * IN], [xp - 1, vz + 0.4])
     opening(pl, "32in doorway between the vanities into the dressing room", [cx - 16 * IN, zw], [cx + 16 * IN, zw])
-    tub = [iW, SS - 32 * IN, iW + 60 * IN, SS]
+    tub = [iW, SS - 36 * IN, iW + 66 * IN, SS]          # 66" x 36" soaking tub
     sh = [tub[2] + 2 * IN, SS - 36 * IN, tub[2] + 2 * IN + 60 * IN, SS]
     wc_cx = E - 18 * IN
     wc = [wc_cx - 10 * IN, SS - 28 * IN, wc_cx + 10 * IN, SS]
-    fx(pl, "Tub 60\" × 32\"", tub, shape="tub")
+    fx(pl, "Tub 66\" × 36\"", tub, shape="tub")
     fx(pl, "Shower\n60\" × 36\"", sh, hatch=".")
     fx(pl, "WC", wc, shape="toilet", front="n")
     fx(pl, f"His vanity {vanity_in}\"", [cx - 17.5 * IN - vanity_in * IN, bN, cx - 17.5 * IN, vz])
