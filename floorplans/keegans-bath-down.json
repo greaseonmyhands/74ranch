@@ -76,6 +76,16 @@
       "rectangular": true
     },
     {
+      "name": "Closet 3",
+      "width_m": 1.273,
+      "depth_m": 0.843,
+      "width_ft_in": "4'2\"",
+      "depth_ft_in": "2'9\"",
+      "area_m2": 1.07,
+      "area_sqft": 11.5,
+      "rectangular": true
+    },
+    {
       "name": "Dining",
       "width_m": 5.614,
       "depth_m": 4.633,
@@ -94,6 +104,16 @@
       "area_m2": 7.53,
       "area_sqft": 81.1,
       "rectangular": false
+    },
+    {
+      "name": "Fireplace",
+      "width_m": 1.704,
+      "depth_m": 0.843,
+      "width_ft_in": "5'7\"",
+      "depth_ft_in": "2'9\"",
+      "area_m2": 1.44,
+      "area_sqft": 15.5,
+      "rectangular": true
     },
     {
       "name": "Front Porch",
@@ -174,6 +194,16 @@
       "area_m2": 32.49,
       "area_sqft": 349.8,
       "rectangular": false
+    },
+    {
+      "name": "Utility Closet",
+      "width_m": 2.103,
+      "depth_m": 0.843,
+      "width_ft_in": "6'11\"",
+      "depth_ft_in": "2'9\"",
+      "area_m2": 1.77,
+      "area_sqft": 19.1,
+      "rectangular": true
     }
   ],
   "walls": [
@@ -479,6 +509,20 @@
       "height_m": 2.5
     },
     {
+      "name": "Wall_plan_nolabel_23",
+      "added": true,
+      "length_m": 0.843,
+      "length_ft_in": "2'9\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_plan_nolabel_24",
+      "added": true,
+      "length_m": 0.843,
+      "length_ft_in": "2'9\"",
+      "height_m": 2.5
+    },
+    {
       "name": "Wall_9~0",
       "added": false,
       "length_m": 0.786,
@@ -511,6 +555,13 @@
       "added": true,
       "length_m": 0.116,
       "length_ft_in": "0'5\"",
+      "height_m": 2.5
+    },
+    {
+      "name": "Wall_plan_nolabel_25",
+      "added": true,
+      "length_m": 0.1,
+      "length_ft_in": "0'4\"",
       "height_m": 2.5
     }
   ],
@@ -617,6 +668,13 @@
       "name": "Door_plan_4",
       "width_m": 1.829,
       "width_ft_in": "6'0\"",
+      "height_m": 2.03,
+      "height_ft_in": "6'8\""
+    },
+    {
+      "name": "Door_plan_5",
+      "width_m": 0.61,
+      "width_ft_in": "2'0\"",
       "height_m": 2.03,
       "height_ft_in": "6'8\""
     }
@@ -864,6 +922,16 @@
       "bottom_height_m": 0.73
     },
     {
+      "name": "fireplace_added_1~1",
+      "type": "fireplace",
+      "size_m": [
+        1.6,
+        0.26,
+        1.4
+      ],
+      "bottom_height_m": 0.0
+    },
+    {
       "name": "storage_shelf_1~1",
       "type": "shelf",
       "size_m": [
@@ -934,16 +1002,6 @@
       "bottom_height_m": -0.07
     },
     {
-      "name": "fireplace_0~1",
-      "type": "fireplace",
-      "size_m": [
-        2.12,
-        0.63,
-        1.51
-      ],
-      "bottom_height_m": -0.07
-    },
-    {
       "name": "storage_cabinet_mid3_0~1",
       "type": "base cab",
       "size_m": [
@@ -974,8 +1032,8 @@
       "bottom_height_m": -0.07
     }
   ],
-  "total_area_sqft": 2304.1,
-  "total_area_m2": 214.06,
+  "total_area_sqft": 2350.1,
+  "total_area_m2": 218.34,
   "fixtures": [
     {
       "name": "Shower\n40\" \u00d7 60\"",

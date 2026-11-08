@@ -9,7 +9,8 @@
     "Door_0",
     "Door_1",
     "table_other_rect_0",
-    "storage_cabinet_tall2_0"
+    "storage_cabinet_tall2_0",
+    "fireplace_0"
   ],
   "retype": {
     "refrigerator_1": "storage_cabinet"
@@ -26,6 +27,18 @@
       ],
       "bottom": 0.0,
       "height": 0.98
+    },
+    {
+      "label": "Dining fireplace: same size as the Living Room's and aligned with it (back to back)",
+      "type": "fireplace",
+      "rect": [
+        1.922,
+        2.059,
+        3.526,
+        2.316
+      ],
+      "bottom": 0.0,
+      "height": 1.4
     }
   ],
   "labels": [

@@ -324,6 +324,42 @@
         1.0932
       ],
       "show_length": false
+    },
+    {
+      "label": "Fireplace box west wall (Living Room fireplace's west edge)",
+      "from": [
+        -7.0366,
+        -0.069
+      ],
+      "to": [
+        -7.0366,
+        0.774
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Fireplace box east wall (Living Room fireplace's east edge)",
+      "from": [
+        -5.3326,
+        -0.069
+      ],
+      "to": [
+        -5.3326,
+        0.774
+      ],
+      "show_length": false
+    },
+    {
+      "label": "Close the 1.6 mm seam where the Living Room's north wall meets the North End's 1'6\" wall",
+      "from": [
+        -3.8,
+        0.774
+      ],
+      "to": [
+        -3.7,
+        0.774
+      ],
+      "show_length": false
     }
   ],
   "add_floor": [
@@ -524,6 +560,60 @@
         -10.8486,
         3.982
       ]
+    ],
+    [
+      [
+        -7.0366,
+        -0.069
+      ],
+      [
+        -5.3326,
+        -0.069
+      ],
+      [
+        -5.3326,
+        0.774
+      ],
+      [
+        -7.0366,
+        0.774
+      ]
+    ],
+    [
+      [
+        -8.3096,
+        -0.069
+      ],
+      [
+        -7.0366,
+        -0.069
+      ],
+      [
+        -7.0366,
+        0.774
+      ],
+      [
+        -8.3096,
+        0.774
+      ]
+    ],
+    [
+      [
+        -5.3326,
+        -0.069
+      ],
+      [
+        -3.23,
+        -0.069
+      ],
+      [
+        -3.23,
+        0.774
+      ],
+      [
+        -5.3326,
+        0.774
+      ]
     ]
   ],
   "room_dividers": [
@@ -683,6 +773,38 @@
       "name": "Bedroom 2 Closet",
       "compact": true,
       "label_size": 8
+    },
+    {
+      "at": [
+        -6.1846,
+        0.3525
+      ],
+      "name": "Fireplace",
+      "compact": true,
+      "label_size": 7,
+      "no_furniture": true
+    },
+    {
+      "at": [
+        -7.5231,
+        0.3525
+      ],
+      "name": "Closet 3",
+      "compact": true,
+      "label_size": 6.5,
+      "label_at": [
+        -7.42,
+        0.3525
+      ]
+    },
+    {
+      "at": [
+        -4.2813,
+        0.3525
+      ],
+      "name": "Utility Closet",
+      "compact": true,
+      "label_size": 7
     }
   ],
   "fixtures": [
@@ -811,6 +933,21 @@
       "swing_toward": [
         2.2204,
         2.0932
+      ]
+    },
+    {
+      "label": "24in Closet 3 door in the 2'9\" wall (off the Entry hall), hinged at its north end, swinging into the closet",
+      "from": [
+        -8.3096,
+        0.0477
+      ],
+      "to": [
+        -8.3096,
+        0.6573
+      ],
+      "swing_toward": [
+        -7.3096,
+        0.35250000000000004
       ]
     }
   ]

@@ -23,7 +23,8 @@ to the bathroom's north wall. In Bedroom 2, a wall across the room just above it
 **Bedroom 2 Closet** (about 9'5" × 3'6" inside, 37 sq ft, with 6' bifold doors centered on its wall), leaving Bedroom 2 at
 134 sq ft (11'9" × 11'10"). The Primary Suite's 36" door from the Living Room now sits on the same
 wall line as the bathroom door (centered on the section above the bathroom). Living Room 408 sq ft; Bedroom 2's 36" door from the Living Room sits 2"
-below the bathroom's south wall.
+below the bathroom's south wall. Also includes the Fireplace box (with matched back-to-back
+fireplaces), Closet 3 and the Utility Closet from the working main floor.
 
 ## Room 2 master suite – four layouts
 
