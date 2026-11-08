@@ -1,6 +1,16 @@
 {
   "plans": [
     {
+      "id": "living-room-l1",
+      "title": "Living Room \u2013 L1 (U sectional, seats 10)",
+      "src": "plans/living-room-l1.png"
+    },
+    {
+      "id": "living-room-l2",
+      "title": "Living Room \u2013 L2 (sectional + bar ledge, seats 10\u201311)",
+      "src": "plans/living-room-l2.png"
+    },
+    {
       "id": "keegans-bath-down",
       "title": "Keegan's Plans \u2013 bathroom moved down",
       "src": "plans/keegans-bath-down.png"

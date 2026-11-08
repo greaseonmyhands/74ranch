@@ -570,7 +570,10 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
         summary["rooms"].append({"name": label, "width_m": round(w, 3), "depth_m": round(d, 3),
                                  "width_ft_in": ft_in(w), "depth_ft_in": ft_in(d),
                                  "area_m2": round(area, 2), "area_sqft": round(sqft(area), 1),
-                                 "rectangular": bool(rect)})
+                                 "rectangular": bool(rect),
+                                 "bounds_m": [round(v, 3) for v in fp.bounds],
+                                 "outline_m": [[round(x, 3), round(z, 3)] for x, z in
+                                               (fp.exterior.coords if fp.geom_type == "Polygon" else [])]})
     for d, l in zip(edits.get("room_dividers", []), divider_lines):  # open boundaries between rooms
         if d.get("hidden"):
             continue  # separates the rooms without drawing anything (e.g. across a plain opening)
@@ -689,6 +692,19 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
     for fx in edits.get("fixtures", []):
         x0, z0, x1, z1 = fx["rect"]
         poly = Polygon([(x0, z0), (x1, z0), (x1, z1), (x0, z1)])
+        if fx.get("shape") == "rug":
+            ax.add_patch(poly_patch(poly, fc="none", ec="#a08f72", lw=0.9, ls=(0, (5, 3)), zorder=1.6))
+            ax.text(x0 + 0.08, z1 - 0.08, fx["name"], ha="left", va="bottom", fontsize=6, color="#8a7a5e", zorder=1.7)
+            continue
+        if fx.get("shape") == "tv":
+            ax.add_patch(poly_patch(poly, fc="#2b2f2d", ec="#2b2f2d", lw=0.9, zorder=3.6))
+            ax.text((x0 + x1) / 2, max(z0, z1) + 0.06, fx["name"], ha="center", va="top", fontsize=6.5, color="#333", zorder=4.5)
+            continue
+        if fx.get("shape") == "stool":  # round bar stool, no label
+            from matplotlib.patches import Circle
+            ax.add_patch(Circle(((x0 + x1) / 2, (z0 + z1) / 2), abs(x1 - x0) / 2, fc="#e9e5dc",
+                                ec="#555", lw=0.8, zorder=3.4))
+            continue
         ax.add_patch(poly_patch(poly, fc="white", ec="#555", lw=0.9, zorder=3))
         if fx.get("hatch"):  # light pattern (e.g. shower floor) under the outline
             ax.add_patch(poly_patch(poly, fc="none", ec="#bbb", lw=0, zorder=3.1,
@@ -732,6 +748,31 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
                 (sz, ez) = (zb - 0.15, za + 0.15) if up == "n" else (za + 0.15, zb - 0.15)
                 ax.annotate("", xy=(xc, ez), xytext=(xc, sz), zorder=3.6,
                             arrowprops=dict(arrowstyle="-|>", color="#555", lw=1.1))
+        if fx.get("shape") in ("sofa", "chair"):  # seat: back cushion band + arms ("back": n/s/e/w)
+            xa, xb, za, zb = min(x0, x1), max(x0, x1), min(z0, z1), max(z0, z1)
+            bk = fx.get("back", "s"); bd, ad = 8 * IN, 6 * IN
+            if bk in ("n", "s"):
+                band = _rect(xa, za, xb, za + bd) if bk == "n" else _rect(xa, zb - bd, xb, zb)
+                arms = [_rect(xa, za, xa + ad, zb), _rect(xb - ad, za, xb, zb)]
+            else:
+                band = _rect(xa, za, xa + bd, zb) if bk == "w" else _rect(xb - bd, za, xb, zb)
+                arms = [_rect(xa, za, xb, za + ad), _rect(xa, zb - ad, xb, zb)]
+            if fx.get("arms") is False:
+                arms = []
+            for q in [band] + arms:
+                ax.add_patch(poly_patch(q, fc="#e9e5dc", ec="#777", lw=0.7, zorder=3.4))
+            n = fx.get("seats", 0)  # seat-cushion seams, so the seat count reads at a glance
+            if n > 1:
+                if bk in ("n", "s"):
+                    zs = (za + bd, zb) if bk == "n" else (za, zb - bd)
+                    for k in range(1, n):
+                        xs = xa + (xb - xa) * k / n
+                        ax.plot([xs, xs], zs, color="#aaa", lw=0.6, zorder=3.45)
+                else:
+                    xs2 = (xa + bd, xb) if bk == "w" else (xa, xb - bd)
+                    for k in range(1, n):
+                        zz = za + (zb - za) * k / n
+                        ax.plot(xs2, [zz, zz], color="#aaa", lw=0.6, zorder=3.45)
         if fx.get("shape") == "tub":  # bathtub: rounded basin inset inside the rim
             from matplotlib.patches import FancyBboxPatch
             xa, xb, za, zb = min(x0, x1), max(x0, x1), min(z0, z1), max(z0, z1)

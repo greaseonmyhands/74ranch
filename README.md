@@ -34,6 +34,21 @@ wall line as the bathroom door (centered on the section above the bathroom). Liv
 below the bathroom's south wall. Also includes the Fireplace box (with matched back-to-back
 fireplaces), Closet 3 and the Utility Closet from the working main floor.
 
+## Living Room – game-day layouts (L1, L2)
+
+Built on Primary Suite P3 (`tools/designs/living_room.py` → `plans/living-room-l{1,2}.json`).
+An 85" TV is mounted on the Living Room side of the Utility Closet wall. It is shifted 8" east of
+that wall's centre so it clears the fireplace box (about 4" gap). The goal is to seat 10 facing the TV.
+Side-by-side: `floorplans/living-room-options.png`.
+
+| | Seating | Distances |
+|---|---|---|
+| **L1** | 168" U sectional (5 across the back + 2 on each return = 9) + swivel chair in the old 1A pocket = **10**. 60×36 ottoman in the middle. | Back row 9–12 ft from the TV. The returns stop 38" short of the fireplace front. |
+| **L2** | 132" L sectional (4 + 2 on the return = 6) + 42"-high bar ledge behind it with 4 stools (24.8" spacing) = **10**, + swivel chair = **11**. | Sofa 8–11 ft from the TV, stools about 13 ft. |
+
+In both layouts, the walk from the hall to the Entry passes between the TV wall and the seating
+(about 38–42" clear). The Bedroom 2 door stays clear.
+
 ## Primary Suite designs for the larger suite (P1–P3)
 
 Built on "Keegan's Plans – bathroom moved down", where the suite gained the 18' × 3'7" strip above the
