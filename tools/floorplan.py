@@ -29,6 +29,7 @@ import trimesh
 from matplotlib.patches import PathPatch, Polygon as MplPolygon
 from matplotlib.path import Path as MplPath
 from shapely.geometry import LineString, MultiPolygon, Point, Polygon
+from shapely import affinity
 from shapely.ops import polylabel, unary_union
 
 WALL_T = 0.10  # RoomPlan models every wall as a 10 cm box centered on the scanned surface
@@ -145,6 +146,13 @@ def _axis_rect(poly):
     if poly.is_empty or abs(poly.area - shapely_box_area(poly)) > 1e-6 * max(poly.area, 1e-9) + 1e-9:
         return None
     return poly.bounds
+
+
+def fixture_poly(fx):
+    """A planned fixture's footprint: its rect, turned by "angle" degrees (clockwise on the plan) about its centre."""
+    x0, z0, x1, z1 = fx["rect"]
+    p = Polygon([(x0, z0), (x1, z0), (x1, z1), (x0, z1)])
+    return affinity.rotate(p, fx["angle"], origin=((x0 + x1) / 2, (z0 + z1) / 2)) if fx.get("angle") else p
 
 
 def shapely_box_area(poly):
@@ -452,7 +460,7 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
                              for m in walls.values() if footprint(m) is not None])
 
     furn = [footprint(m) for n, m in objects.items() if m.bounds[0][1] <= 1.2]
-    furn += [_rect(*fx["rect"]) for fx in edits.get("fixtures", [])]  # planned fixtures too
+    furn += [fixture_poly(fx) for fx in edits.get("fixtures", [])]  # planned fixtures too
     furn_union = unary_union([f.convex_hull for f in furn if f is not None]) if furn else None
 
     floor_polys = {n: footprint(m) for n, m in floors.items()}
@@ -691,7 +699,9 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
     IN = 0.0254
     for fx in edits.get("fixtures", []):
         x0, z0, x1, z1 = fx["rect"]
-        poly = Polygon([(x0, z0), (x1, z0), (x1, z1), (x0, z1)])
+        ang = fx.get("angle", 0)
+        turn = (lambda g, _o=((x0 + x1) / 2, (z0 + z1) / 2), _a=ang: affinity.rotate(g, _a, origin=_o)) if ang else (lambda g: g)
+        poly = turn(Polygon([(x0, z0), (x1, z0), (x1, z1), (x0, z1)]))
         if fx.get("shape") == "rug":
             ax.add_patch(poly_patch(poly, fc="none", ec="#a08f72", lw=0.9, ls=(0, (5, 3)), zorder=1.6))
             ax.text(x0 + 0.08, z1 - 0.08, fx["name"], ha="left", va="bottom", fontsize=6, color="#8a7a5e", zorder=1.7)
@@ -760,19 +770,21 @@ def render(nodes, swings, added, edits, stem, outdir, source=""):
             if fx.get("arms") is False:
                 arms = []
             for q in [band] + arms:
-                ax.add_patch(poly_patch(q, fc="#e9e5dc", ec="#777", lw=0.7, zorder=3.4))
+                ax.add_patch(poly_patch(turn(q), fc="#e9e5dc", ec="#777", lw=0.7, zorder=3.4))
             n = fx.get("seats", 0)  # seat-cushion seams, so the seat count reads at a glance
             if n > 1:
                 if bk in ("n", "s"):
                     zs = (za + bd, zb) if bk == "n" else (za, zb - bd)
                     for k in range(1, n):
                         xs = xa + (xb - xa) * k / n
-                        ax.plot([xs, xs], zs, color="#aaa", lw=0.6, zorder=3.45)
+                        ln = turn(LineString([(xs, zs[0]), (xs, zs[1])])).coords
+                        ax.plot(*zip(*ln), color="#aaa", lw=0.6, zorder=3.45)
                 else:
                     xs2 = (xa + bd, xb) if bk == "w" else (xa, xb - bd)
                     for k in range(1, n):
                         zz = za + (zb - za) * k / n
-                        ax.plot(xs2, [zz, zz], color="#aaa", lw=0.6, zorder=3.45)
+                        ln = turn(LineString([(xs2[0], zz), (xs2[1], zz)])).coords
+                        ax.plot(*zip(*ln), color="#aaa", lw=0.6, zorder=3.45)
         if fx.get("shape") == "tub":  # bathtub: rounded basin inset inside the rim
             from matplotlib.patches import FancyBboxPatch
             xa, xb, za, zb = min(x0, x1), max(x0, x1), min(z0, z1), max(z0, z1)

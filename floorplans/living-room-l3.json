@@ -1,5 +1,5 @@
 {
-  "source": "plans/living-room-l1.json",
+  "source": "plans/living-room-l3.json",
   "ceiling_height": {
     "m": 2.5,
     "ft_in": "8'2\""
@@ -3546,29 +3546,24 @@
       "depth_ft_in": "6'8\""
     },
     {
-      "name": "U sectional",
-      "width_ft_in": "14'0\"",
-      "depth_ft_in": "3'3\""
+      "name": "Sofa 171\"",
+      "width_ft_in": "14'4\"",
+      "depth_ft_in": "3'2\""
     },
     {
-      "name": "",
-      "width_ft_in": "3'3\"",
-      "depth_ft_in": "5'1\""
+      "name": "Sofa 132\"",
+      "width_ft_in": "11'1\"",
+      "depth_ft_in": "3'2\""
     },
     {
-      "name": "",
-      "width_ft_in": "3'3\"",
-      "depth_ft_in": "5'1\""
+      "name": "Coffee table",
+      "width_ft_in": "4'6\"",
+      "depth_ft_in": "2'2\""
     },
     {
-      "name": "Ottoman 60\u00d736",
-      "width_ft_in": "5'0\"",
-      "depth_ft_in": "3'0\""
-    },
-    {
-      "name": "Swivel",
-      "width_ft_in": "2'10\"",
-      "depth_ft_in": "2'10\""
+      "name": "Coffee table",
+      "width_ft_in": "3'6\"",
+      "depth_ft_in": "2'0\""
     }
   ],
   "openings": [

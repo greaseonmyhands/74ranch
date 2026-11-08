@@ -1,27 +1,34 @@
-"""Living Room game-day layouts L1, L2 on top of Primary Suite P3 (seat 10 facing the TV).
-Writes plans/living-room-l{1,2}.json.
+"""Living Room game-day layouts on top of Primary Suite P3, spread across the room's full width.
+Writes plans/living-room-l3.json (wide arc) and plans/living-room-l4.json (long sectional + angled wing).
 
-TV on the Living Room side of the Utility Closet's back wall (right of the fireplace).
+TV (85") on the Living Room side of the Utility Closet's back wall, right of the fireplace.
 Living Room geometry (wall faces, metres; x east, z south):
   north (TV / fireplace) wall z 0.824, fireplace box x -6.987..-5.383 projecting to z 1.031
   hall from the Dining room / Primary Suite / bath opens on the north wall at x -3.18..-1.96
   west wall x -8.26 with the Entry opening at z 2.79..3.93
   south wall z 5.516 west of x -3.73 (front-of-house jog), z 4.644 east of it
-  east part (old Room 1A) below the bath: x -1.96..0.073, z 1.83..4.644, Bedroom 2 door on its east wall
+  east part (old Room 1A) below the bath (z 1.83): x -1.96..0.073; Bedroom 2 door on its east wall z ~1.9..2.8
+"Angle" turns a piece clockwise on the plan about its centre (+ faces it north-east, - north-west).
 """
-import json, copy
+import json, copy, math
+from shapely.geometry import Polygon, box
+from shapely import affinity
 IN = 0.0254
 FT = 0.3048
 base = json.load(open('plans/primary-suite-p3.json'))
 r4 = lambda v: [round(x, 4) for x in v]
 f = lambda m: round(m / IN, 1)
 WALL_N = 0.824
-FP_FRONT, FP_E = 1.031, -5.383
-WALL_N_END = -3.28                 # north wall face ends at the hall opening
-S_WEST, S_EAST, JOG_X = 5.516, 4.644, -3.73
-TVW = 74.4 * IN                    # 85" TV
-TVX = -4.33                        # centred on the wall between the fireplace box and the hall opening
-SEAT_D = 39 * IN                   # sectional depth
+TVW = 74.4 * IN
+TVX = -4.33                                       # clears the fireplace box, ends before the hall opening
+TV = (TVX, WALL_N + 0.05)
+D = 38 * IN                                       # sofa depth
+# floor the furniture must stay inside (Living Room, wall faces), and areas to keep clear
+ROOM = Polygon([(-8.26, 1.031), (-3.28, 1.031), (-3.28, 0.824), (-1.96, 0.824), (-1.96, 1.83),
+                (0.073, 1.83), (0.073, 4.644), (-3.73, 4.644), (-3.73, 5.516), (-8.26, 5.516)])
+KEEP_CLEAR = {"entry landing": box(-8.26, 2.79, -7.36, 3.93),        # 3 ft in from the entry opening
+              "Bedroom 2 door": box(-0.69, 1.83, 0.073, 2.85),      # 30" in front of the door
+              "hall mouth": box(-3.18, 0.824, -1.96, 1.74)}
 
 
 def new(title):
@@ -29,65 +36,104 @@ def new(title):
     pl["notes"] = title + ". " + pl["notes"]
     for r in pl["rooms"]:
         if r["name"] == "Living Room":
-            r["label_at"] = [-7.3, 4.85]; r["compact"] = True
-    tv = [TVX - TVW / 2, WALL_N, TVX + TVW / 2, WALL_N + 3 * IN]
-    assert tv[0] > FP_E and tv[2] < WALL_N_END
-    pl["fixtures"].append(dict(name="TV 85\"", rect=r4(tv), shape="tv"))
+            r["label_at"] = [-5.9, 1.75]; r["compact"] = True
+    pl["fixtures"].append(dict(name="TV 85\"", rect=r4([TVX - TVW / 2, WALL_N, TVX + TVW / 2, WALL_N + 3 * IN]), shape="tv"))
+    pl["_pieces"] = []
     return pl
 
 
-def fx(pl, name, rect, **k): pl["fixtures"].append(dict(name=name, rect=r4(rect), **k))
-def ft(m): return round(m / FT, 1)
+def piece(pl, name, cx, cz, w, d, angle=0, seats=0, **k):
+    """A seat centred at (cx, cz), w wide x d deep, facing north before turning by angle."""
+    rect = [cx - w / 2, cz - d / 2, cx + w / 2, cz + d / 2]
+    fx = dict(name=name, rect=r4(rect), **k)
+    if angle: fx["angle"] = angle
+    if seats: fx["seats"] = seats
+    pl["fixtures"].append(fx)
+    poly = affinity.rotate(box(*rect), angle, origin=(cx, cz))
+    pl["_pieces"].append((name or "piece", poly, seats, cx, cz, angle))
+    return poly
 
 
-def l1():
-    """U-shaped sectional (9) + swivel chair in the old 1A pocket (10)."""
-    pl = new("Living Room – L1 (game day: U sectional, seats 10)")
-    back = 4.55
-    w = 168 * IN                                   # 39" corner + 3 × 30" + 39" corner
-    x0, x1 = TVX - w / 2, TVX + w / 2
-    front = back - SEAT_D
-    ret_n = 2.0                                    # returns stop ~38" short of the fireplace front
-    fx(pl, "U sectional", [x0, front, x1, back], shape="sofa", back="s", arms=False, seats=5)
-    fx(pl, "", [x0, ret_n, x0 + SEAT_D, front], shape="sofa", back="w", arms=False, seats=2)
-    fx(pl, "", [x1 - SEAT_D, ret_n, x1, front], shape="sofa", back="e", arms=False, seats=2)
-    ott = [TVX - 30 * IN, (ret_n + front) / 2 - 18 * IN, TVX + 30 * IN, (ret_n + front) / 2 + 18 * IN]
-    fx(pl, "Ottoman 60×36", ott)
-    sw = [-1.45, 2.95, -1.45 + 34 * IN, 2.95 + 34 * IN]
-    fx(pl, "Swivel", sw, shape="chair", back="e")
-    json.dump(pl, open('plans/living-room-l1.json', 'w'), indent=2)
-    print(f"L1  back row to TV {ft(front - WALL_N)}-{ft(back - WALL_N)} ft  returns to fireplace front {f(ret_n - FP_FRONT)} in"
-          f"  west return to west wall {f(x0 - (-8.26))} in  east return to hall opening x {round(x1, 2)} (hall -3.18..-1.96)"
-          f"  ottoman to seats {f(ott[0] - (x0 + SEAT_D))} / {f(front - ott[3])} in"
-          f"  swivel to TV {ft(((sw[0] - TVX) ** 2 + (sw[1] - WALL_N) ** 2) ** .5)} ft")
+def report(pl, tag):
+    polys = [p for _, p, *_ in pl["_pieces"]]
+    total = 0
+    for i, (name, p, seats, cx, cz, a) in enumerate(pl["_pieces"]):
+        if not ROOM.buffer(1e-6).contains(p): print(f"  !! {tag}: {name} leaves the room", [round(v, 2) for v in p.bounds])
+        for kname, kc in KEEP_CLEAR.items():
+            if p.intersects(kc): print(f"  !! {tag}: {name} blocks the {kname}", [round(v, 2) for v in p.bounds])
+        for q in polys[i + 1:]:
+            if p.intersection(q).area > 1e-4: print(f"  !! {tag}: {name} overlaps another piece")
+        if seats:
+            total += seats
+            dx, dz = TV[0] - cx, cz - TV[1]
+            print(f"  {tag} {name:14s} seats {seats}  to TV {math.hypot(dx, dz) / FT:4.1f} ft  "
+                  f"off the screen's axis {abs(math.degrees(math.atan2(dx, dz))):3.0f}°")
+    print(f"  {tag} total seats {total}")
+    del pl["_pieces"]
 
 
-def l2():
-    """L sectional (6) + bar ledge with 4 stools behind it (10) + optional swivel (11)."""
-    pl = new("Living Room – L2 (game day: sectional + bar ledge, seats 10–11)")
-    front = 3.30
-    back = front + SEAT_D
-    x0, x1 = -6.05, -2.70                           # 132" run, corner on the east end
-    ret_n = 1.90
-    fx(pl, "Sectional", [x0, front, x1, back], shape="sofa", back="s", arms=False, seats=4)
-    fx(pl, "", [x1 - SEAT_D, ret_n, x1, front], shape="sofa", back="e", arms=False, seats=2)
-    tbl = [(x0 + x1 - SEAT_D) / 2 - 24 * IN, front - 18 * IN - 30 * IN,
-           (x0 + x1 - SEAT_D) / 2 + 24 * IN, front - 18 * IN]
-    fx(pl, "Coffee table", tbl)
-    lx0, lx1 = -6.35, JOG_X - 0.10                  # ledge stays west of the jog wall
-    ledge = [lx0, back, lx1, back + 12 * IN]
-    fx(pl, "Bar ledge 42\" high", ledge)
-    n = 4; sp = (lx1 - lx0) / n; d = 16 * IN
-    for k in range(n):
-        cx = lx0 + sp * (k + .5); cz = ledge[3] + 4 * IN + d / 2
-        fx(pl, "", [cx - d / 2, cz - d / 2, cx + d / 2, cz + d / 2], shape="stool")
-    sw = [-1.45, 2.95, -1.45 + 34 * IN, 2.95 + 34 * IN]
-    fx(pl, "Swivel", sw, shape="chair", back="e")
-    json.dump(pl, open('plans/living-room-l2.json', 'w'), indent=2)
-    print(f"L2  sofa to TV {ft(front - WALL_N)}-{ft(back - WALL_N)} ft  stools to TV ~{ft(ledge[3] + 12 * IN - WALL_N)} ft"
-          f"  stool spacing {f(sp)} in  stool back edge to south wall {f(S_WEST - (ledge[3] + 4 * IN + d))} in"
-          f"  return to hall/TV wall {f(ret_n - WALL_N)} in  sofa west end to west wall {f(x0 + 8.26)} in"
-          f"  table to sofa {f(front - tbl[3])} in")
+def fits(pl, poly, gap=4 * IN):
+    if not ROOM.buffer(1e-6).contains(poly): return False
+    if any(poly.intersects(k) for k in KEEP_CLEAR.values()): return False
+    return all(poly.distance(q) >= gap for _, q, *_ in pl["_pieces"])
 
 
-l1(); l2()
+def place(pl, name, w, d, xs, zs, score, turn=1.0, **k):
+    """Best spot in the search window for a seat turned toward the TV (turn = share of the full turn)."""
+    best = None
+    for cx in xs:
+      for cz in zs:
+        for t in (1.0, 0.85, 0.7, 0.55):
+            a = round(math.degrees(math.atan2(TV[0] - cx, cz - TV[1])) * t * turn)
+            poly = affinity.rotate(box(cx - w / 2, cz - d / 2, cx + w / 2, cz + d / 2), a, origin=(cx, cz))
+            if fits(pl, poly):
+                sc = score(cx, cz, poly) + 0.4 * (1 - t)
+                if best is None or sc < best[0]: best = (sc, cx, cz, a)
+    if not best:
+        print(f"  !! no spot for {name}"); return None
+    _, cx, cz, a = best
+    return piece(pl, name, cx, cz, w, d, angle=a, **k)
+
+
+rng = lambda a, b, st=0.025: [round(a + st * i, 4) for i in range(int(round((b - a) / st)) + 1)]
+off_axis = lambda cx, cz: abs(math.atan2(TV[0] - cx, cz - TV[1]))
+
+
+def wing(pl, name, T, side, w, a, **k):
+    """A sofa turned a degrees whose inner front corner sits at point T (the end of the piece it continues).
+    side "e": continues east and turns to face north-west (a < 0); side "w": mirror image."""
+    vx, vz = (-w / 2 if side == "e" else w / 2), -D / 2
+    r = math.radians(a)
+    rx, rz = vx * math.cos(r) - vz * math.sin(r), vx * math.sin(r) + vz * math.cos(r)
+    return piece(pl, name, T[0] - rx, T[1] - rz, w, D, angle=a, **k)
+
+
+def l3():
+    """Wall to wall: two long sofas with their backs to the front windows, stepping with the front-of-house jog."""
+    pl = new("Living Room – L3 (wall to wall: two long sofas, seats 10–11)")
+    S_W, S_E, JOG = 5.516, 4.644, -3.73
+    w0, w1 = -8.20, JOG - 0.10                    # west: 171" sectional, 6 seats
+    piece(pl, "Sofa 171\"", (w0 + w1) / 2, S_W - D / 2, w1 - w0, D, seats=6, shape="sofa", back="s")
+    e0, e1 = JOG + 0.05, -0.30                    # east: 132" sofa, 4-5 seats
+    piece(pl, "Sofa 132\"", (e0 + e1) / 2, S_E - D / 2, e1 - e0, D, seats=4, shape="sofa", back="s")
+    piece(pl, "Coffee table", -5.95, S_W - D - 18 * IN - 13 * IN, 54 * IN, 26 * IN)
+    piece(pl, "Coffee table", -2.45, S_E - D - 18 * IN - 12 * IN, 42 * IN, 24 * IN)
+    report(pl, "L3")
+    json.dump(pl, open('plans/living-room-l3.json', 'w'), indent=2)
+
+
+def l4():
+    """Long sectional across the room + a wing turned toward the TV in the old 1A corner."""
+    pl = new("Living Room – L4 (wide sectional + angled wing, seats 10)")
+    x0, x1 = -7.18, -2.80                        # 172" run, 6 seats
+    front = 4.60 - D
+    piece(pl, "Sectional", (x0 + x1) / 2, front + D / 2, x1 - x0, D, seats=7, shape="sofa", back="s", arms=False)
+    piece(pl, "", x0 - 3 * IN, front + D / 2, 6 * IN, D, shape="sofa", back="s", arms=False)   # west arm
+    wing(pl, "Wing", (x1, front), "e", 78 * IN, -40, seats=3, shape="sofa", back="s", arms=False)
+    piece(pl, "Coffee table", -6.0, front - 18 * IN - 13 * IN, 48 * IN, 26 * IN)
+    piece(pl, "Coffee table", -4.1, front - 18 * IN - 13 * IN, 48 * IN, 26 * IN)
+    report(pl, "L4")
+    json.dump(pl, open('plans/living-room-l4.json', 'w'), indent=2)
+
+
+l3(); l4()
