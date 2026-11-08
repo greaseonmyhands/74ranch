@@ -6,5 +6,8 @@
   "plans/room2-option-h.png": "floorplans/room2-option-h.png",
   "plans/room2-option-i.png": "floorplans/room2-option-i.png",
   "plans/room2-option-j.png": "floorplans/room2-option-j.png",
-  "plans.json": "tools/redline/plans.json"
+  "plans.json": "tools/redline/plans.json",
+  "plans/primary-suite-p3.png": "floorplans/primary-suite-p3.png",
+  "plans/primary-suite-p2.png": "floorplans/primary-suite-p2.png",
+  "plans/primary-suite-p1.png": "floorplans/primary-suite-p1.png"
 }

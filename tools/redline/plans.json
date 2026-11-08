@@ -6,6 +6,21 @@
       "src": "plans/keegans-bath-down.png"
     },
     {
+      "id": "primary-suite-p1",
+      "title": "Primary Suite \u2013 P1",
+      "src": "plans/primary-suite-p1.png"
+    },
+    {
+      "id": "primary-suite-p2",
+      "title": "Primary Suite \u2013 P2",
+      "src": "plans/primary-suite-p2.png"
+    },
+    {
+      "id": "primary-suite-p3",
+      "title": "Primary Suite \u2013 P3",
+      "src": "plans/primary-suite-p3.png"
+    },
+    {
       "id": "keegans-plans",
       "title": "Keegan's Plans (locked)",
       "src": "plans/keegans-plans.png"
