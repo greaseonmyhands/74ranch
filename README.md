@@ -34,11 +34,11 @@ wall line as the bathroom door (centered on the section above the bathroom). Liv
 below the bathroom's south wall. Also includes the Fireplace box (with matched back-to-back
 fireplaces), Closet 3 and the Utility Closet from the working main floor.
 
-## Living Room – game-day layouts (L3–L5, L7, L8)
+## Living Room – layouts (L3–L5, L7–L9)
 
-Built on Primary Suite P3 (`tools/designs/living_room.py` → `plans/living-room-l{3,4,5,7,8}.json`).
+Built on Primary Suite P3 (`tools/designs/living_room.py` → `plans/living-room-l{3,4,5,7,8,9}.json`).
 An 85" TV hangs on the Living Room side of the Utility Closet wall, shifted 8" east to clear the
-fireplace box. Each layout seats 10. Side-by-side: `floorplans/living-room-options.png`.
+fireplace box. L3–L7 seat 10 for game day; L8 and L9 use the existing sectional and seat 7. Side-by-side (L3–L5): `floorplans/living-room-options.png`.
 
 **Wall removal:** these layouts need the wall between the formal living room and old Room 1A removed. Keegan
 confirmed it is **not load-bearing** (Nov 8, 2026).
@@ -56,6 +56,7 @@ door. The hall opens straight onto it. Seating stays south of the lane. The scri
 | **L4 – wide sectional + wing** | 161" sectional (6) + 84" wing (3) turned 23° toward the TV + swivel in the SW corner (1) | 10.9 / ~12 ft |
 | **L7 – curved sectional** | 9-seat curved sectional on a 100° arc centred on the TV (each seat faces the screen), 42" round ottoman in the middle, swivel chair in the old 1A corner | 10.9 ft (every seat) / 14.8 ft |
 | **L8 – our 8' × 8' sectional at 45°** | The existing 8' × 8' L sectional turned 45°: corner toward the front window, arms opening toward the TV (5 seats). Square ottoman set as a diamond between the arms, plus 2 swivel chairs (1A corner and SW corner) = 7 | 9.6–10.4 ft / ~15 ft |
+| **L9 – our 8' × 8' sectional squared up (everyday pick)** | The existing sectional in the front-window bay: long run 4" off the window facing the TV, return arm on the west with its back to the Entry (5 seats). 36" ottoman, plus 2 swivels and a side table under the old 1A window = 7. Nothing floats: 8 ft of open floor between the seat fronts and the walkway, 37" from the return arm to the walkway, 6.7 ft from the Entry opening to the sectional. Detail: `floorplans/living-room-l9-detail.png` | 11.9 ft (long run) / 11–15 ft |
 | **L5 – theater rows** | 4 recliners in front + 4 wall-hugger recliners on a 7" riser along the front window + 2 swivels in the 1A corner | 8–9 / 13–17 ft |
 
 Dropped: L1 (U sectional) and L2 (sectional + bar ledge) were bunched in the middle. L6 (facing sofas)

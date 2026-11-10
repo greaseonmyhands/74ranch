@@ -221,4 +221,28 @@ def l8(cz=5.20, cx=TVX):
     json.dump(pl, open('plans/living-room-l8.json', 'w'), indent=2)
 
 
-l3(); l4(); l5(); l7(); l8()
+def l9():
+    """Everyday: the 8' x 8' sectional squared up in the front-window bay, back to the window, return arm
+    screening the Entry. Nothing floats in the room; the whole middle stays open."""
+    pl = new("Living Room – L9 (8' x 8' sectional squared up, open middle)")
+    L, Dp = 96 * IN, 38 * IN
+    x1 = -3.73 - 2 * IN                            # east end stops at the front-of-house jog
+    x0 = x1 - L
+    back = 5.516 - 4 * IN                          # 4" off the window wall for drapes
+    piece(pl, "8' sectional", (x0 + x1) / 2, back - Dp / 2, L, Dp, seats=3, shape="sofa", back="s", arms=False)
+    piece(pl, "", x0 + Dp / 2, back - Dp - (L - Dp) / 2, L - Dp, Dp, angle=90, seats=2, shape="sofa",
+          back="s", arms=False)                    # return arm: back to the Entry, faces east
+    front = back - Dp
+    piece(pl, "Ottoman", (x0 + Dp + x1) / 2, front - 16 * IN - 18 * IN, 36 * IN, 36 * IN)
+    for cx, cz, a in [(-2.72, 3.95, -30), (-0.85, 3.95, -45)]:
+        piece(pl, "Swivel", cx, cz, 32 * IN, 32 * IN, angle=a, seats=1, shape="chair", back="s")
+    piece(pl, "Side table", -1.78, 4.25, 20 * IN, 20 * IN, shape="stool")
+    walk = KEEP_CLEAR["walkway"]
+    print(f"  L9 seat front to TV wall {(front - WALL_N) / FT:.1f} ft; open floor between the seat front and the"
+          f" walkway {(front - 2.02) / FT:.1f} ft; return arm to the walkway"
+          f" {pl['_pieces'][1][1].distance(walk) / IN:.0f} in, to the Entry opening {(x0 + 8.26) / FT:.1f} ft")
+    report(pl, "L9")
+    json.dump(pl, open('plans/living-room-l9.json', 'w'), indent=2)
+
+
+l3(); l4(); l5(); l7(); l8(); l9()
