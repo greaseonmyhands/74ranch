@@ -1,6 +1,11 @@
 {
   "plans": [
     {
+      "id": "north-end-as-scanned",
+      "title": "Main floor \u2013 North End as scanned",
+      "src": "plans/north-end-as-scanned.png"
+    },
+    {
       "id": "living-room-l8",
       "title": "Living Room \u2013 L8 (8' \u00d7 8' sectional at 45\u00b0)",
       "src": "plans/living-room-l8.png"

@@ -34,6 +34,19 @@ wall line as the bathroom door (centered on the section above the bathroom). Liv
 below the bathroom's south wall. Also includes the Fireplace box (with matched back-to-back
 fireplaces), Closet 3 and the Utility Closet from the working main floor.
 
+## Main floor – North End as scanned (no North End changes)
+
+`plans/north-end-as-scanned.json` → `floorplans/north-end-as-scanned.png` (2,348 sq ft).
+
+This is the whole main floor with scan 1 exactly as scanned, using the variant
+`scans/2026-11-06_scan1.original.edits.json`; only loose furniture is hidden.
+- **Room 1** is one open 24'3" × 16'1" room: no 1A/1B wall, no Bedroom 2.
+- **Room 2** is 24'4" × 14'9" and opens to Room 1 at its west end.
+- The small **Hallway** (with the 3'2" wall) is still there.
+- No new bathroom, primary suite, Bedroom 2 closet or living room furniture.
+- The 12'10" wall between the Front Living Room and Room 1 stays.
+- Everything outside the North End matches the current plans.
+
 ## Living Room – game-day layouts (L3–L5, L7, L8)
 
 Built on Primary Suite P3 (`tools/designs/living_room.py` → `plans/living-room-l{3,4,5,7,8}.json`).
